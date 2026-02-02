@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hair by Akose - Professional mobile hair styling and handmade accessories. Braiding, plaiting, and beautiful hair transformations brought to your doorstep.">
+    <meta name="keywords" content="hair styling, braids, mobile hair stylist, natural hair, box braids, cornrows, hair salon, Akose">
+    <title>Hair by Akose | Mobile Hair Styling & Accessories</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    
+    <!-- Desktop/Tablet Navigation -->
+    <nav class="desktop-nav" id="desktopNav">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="assets/images/logo.jpeg" alt="Hair by Akose" class="logo-image">
+            </div>
+              <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="index.html#services" class="nav-link">Services</a></li>
+                <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+                <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+                <li><a href="index.html#testimonials" class="nav-link">Testimonials</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="cta-button active">Book Now</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-background">
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <span class="hero-badge">Mobile Hair Artistry</span>
+            <h1 class="hero-title">
+                <span class="title-line">Your Crown,</span>
+                <span class="title-line">Our Passion</span>
+            </h1>
+            <p class="hero-subtitle">Professional braiding, styling & handcrafted accessories — brought directly to your doorstep</p>
+            <div class="hero-buttons">
+                <a href="contact.html" class="btn btn-primary">Book Appointment</a>
+                <a href="portfolio.html" class="btn btn-secondary">View Portfolio</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">200+</span>
+                    <span class="stat-label">Happy Clients</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">500+</span>
+                    <span class="stat-label">Styles Created</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">5★</span>
+                    <span class="stat-label">Rated Service</span>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll to explore</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">What We Offer</span>
+                <h2 class="section-title">Signature Services</h2>
+                <p class="section-description">From intricate braids to stunning accessories, we bring artistry to every strand</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card" data-service="box-braids">
+                    <div class="service-icon">
+                        <i class="fas fa-sparkles"></i>
+                    </div>
+                    <h3 class="service-title">Box Braids</h3>
+                    <p class="service-description">Classic protective styling with endless customization options. Perfect for all occasions and hair types.</p>
+                    <ul class="service-features">
+                        <li>Jumbo, medium, or small sizes</li>
+                        <li>Color options available</li>
+                        <li>4-10 hours duration</li>
+                        <li>Lasts 6-8 weeks</li>
+                    </ul>
+                    <a href="pricing.html" class="service-link">View Pricing →</a>
+                </div>
+
+                <div class="service-card" data-service="cornrows">
+                    <div class="service-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h3 class="service-title">Cornrows</h3>
+                    <p class="service-description">Intricate designs and beautiful patterns that showcase your unique style. From simple to complex.</p>
+                    <ul class="service-features">
+                        <li>Custom patterns & designs</li>
+                        <li>Feed-in technique</li>
+                        <li>2-5 hours duration</li>
+                        <li>Straight back or creative styles</li>
+                    </ul>
+                    <a href="pricing.html" class="service-link">View Pricing →</a>
+                </div>
+
+                <div class="service-card" data-service="twists">
+                    <div class="service-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3 class="service-title">Twists</h3>
+                    <p class="service-description">Natural, elegant styles that promote healthy hair growth and offer incredible versatility.</p>
+                    <ul class="service-features">
+                        <li>Senegalese twists</li>
+                        <li>Marley twists</li>
+                        <li>Passion twists</li>
+                        <li>3-7 hours duration</li>
+                    </ul>
+                    <a href="pricing.html" class="service-link">View Pricing →</a>
+                </div>
+
+                <div class="service-card" data-service="weaves">
+                    <div class="service-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3 class="service-title">Weaves & Extensions</h3>
+                    <p class="service-description">Premium quality extensions for volume, length, and endless styling possibilities.</p>
+                    <ul class="service-features">
+                        <li>Human hair & synthetic options</li>
+                        <li>Sew-in & quick weaves</li>
+                        <li>Closure & frontal installs</li>
+                        <li>3-6 hours duration</li>
+                    </ul>
+                    <a href="pricing.html" class="service-link">View Pricing →</a>
+                </div>
+
+                <div class="service-card" data-service="natural">
+                    <div class="service-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 class="service-title">Natural Hair Styling</h3>
+                    <p class="service-description">Gentle care and styling for your natural texture with nourishing treatments and maintenance.</p>
+                    <ul class="service-features">
+                        <li>Deep conditioning treatments</li>
+                        <li>Twist-outs & braid-outs</li>
+                        <li>Wash & blow dry</li>
+                        <li>1-3 hours duration</li>
+                    </ul>
+                    <a href="pricing.html" class="service-link">View Pricing →</a>
+                </div>
+
+                <div class="service-card" data-service="kids">
+                    <div class="service-icon">
+                        <i class="fas fa-child"></i>
+                    </div>
+                    <h3 class="service-title">Children's Hair Styling</h3>
+                    <p class="service-description">Gentle, age-appropriate styling for kids. Patient care with fun, playful styles they'll love.</p>
+                    <ul class="service-features">
+                        <li>Kid-friendly atmosphere</li>
+                        <li>Simple braids & twists</li>
+                        <li>Protective styles for school</li>
+                        <li>1-4 hours duration</li>
+                    </ul>
+                    <a href="pricing.html" class="service-link">View Pricing →</a>
+                </div>
+
+                <div class="service-card" data-service="locs">
+                    <div class="service-icon">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <h3 class="service-title">Locs Maintenance</h3>
+                    <p class="service-description">Professional loc care including retwisting, styling, and maintenance for healthy, beautiful locs.</p>
+                    <ul class="service-features">
+                        <li>Retwisting & palm rolling</li>
+                        <li>Loc styling & updos</li>
+                        <li>Starter locs available</li>
+                        <li>2-4 hours duration</li>
+                    </ul>
+                    <a href="pricing.html" class="service-link">View Pricing →</a>
+                </div>
+
+                <div class="service-card" data-service="accessories">
+                    <div class="service-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3 class="service-title">Handmade Accessories</h3>
+                    <p class="service-description">Unique, handcrafted bracelets and hair accessories to complement your style perfectly.</p>
+                    <ul class="service-features">
+                        <li>Custom designs available</li>
+                        <li>Natural materials</li>
+                        <li>Hair beads & cuffs</li>
+                        <li>Perfect gifts</li>
+                    </ul>
+                    <a href="contact.html" class="service-link">Shop Now →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+      <!-- Featured Work / Mini Portfolio -->
+    <section class="featured-work">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Transformations</span>
+                <h2 class="section-title">Recent Work</h2>
+            </div>
+            
+            <div class="work-gallery">
+                <div class="work-item large">
+                        <img src="assets/images/kb.jpeg" alt="knotless-braids" class="work-image">
+                        <div class="work-overlay">
+                        <h3>Knotless Braids</h3>
+                        <p>7 hours • Pain-free</p>
+                    </div>
+                </div>
+                
+               <div class="work-item large">
+                        <img src="assets/images/intcrate.jfif" alt="Intricate twist-out" class="work-image">
+                        <span class="placeholder-text">Intricate Twist-Out<br>Pattern</span>
+                    <div class="work-overlay">
+                        <h3>Jumbo Box Braids</h3>
+                        <p>8 hours • Color blend</p>
+                    </div>
+                </div>
+                
+                <div class="work-item">
+                    <div class="work-image">
+                        <img src="assets/images/senegal.jfif" alt="Senegalese Twists" class="work-image">
+                    </div>
+                    <div class="work-overlay">
+                        <h3>Senegalese Twists</h3>
+                        <p>6 hours • Medium length</p>
+                    </div>
+                </div>
+                
+                <div class="work-item wide">
+                    <div class="work-image" >
+                        <img src="assets/images/bbj.jpeg" alt="knotless-braids" class="work-image">
+                    </div>
+                    <div class="work-overlay">
+                        <h3>Jumbo Box Braids</h3>
+                        <p>7 hours • Pain-free</p>
+                    </div>
+                </div>
+                
+                <div class="work-item">
+                    <div class="work-image">
+                        <img src="assets/images/natural.jfif" alt="Natural Hair Styling" class="work-image">
+                    </div>
+                    <div class="work-overlay">
+                        <h3>Natural Twist-Out</h3>
+                        <p>2 hours • Defined curls</p>
+                    </div>
+                </div>
+                
+                <div class="work-item">
+                    <div class="work-image">
+                        <img src="assets/images/passion.jfif" alt="Passion Twists" class="work-image">
+                    </div>
+                    <div class="work-overlay">
+                        <h3>Passion Twists</h3>
+                        <p>8 hours • Bohemian style</p>
+                    </div>
+                </div>
+                
+                <div class="work-item large">
+                    <div class="work-image">
+                        <img src="assets/images/micro.jfif" alt="Micro Locs Install" class="work-image">
+                    </div>
+                    <div class="work-overlay">
+                        <h3>Micro Locs</h3>
+                        <p>14 hours • Detailed work</p>
+                    </div>
+                </div>
+                
+                <div class="work-item">
+                    <div class="work-image">
+                        <img src="assets/images/kb (2).jpeg" alt="Kids Braids" class="work-image">
+                    </div>
+                    <div class="work-overlay">
+                        <h3>Kids Cornrows</h3>
+                        <p>2 hours • Gentle styling</p>
+                    </div>
+                </div>
+                
+                <div class="work-item">
+                    <div class="work-image">
+                        <img src="assets/images/marley.jfif" alt="Marley Twists" class="work-image">
+                    </div>
+                    <div class="work-overlay">
+                        <h3>Marley Twists</h3>
+                        <p>6 hours • Textured beauty</p>
+                    </div>
+                </div>
+                
+                <div class="work-item">
+                    <div class="work-image">
+                        <img src="assets/images/bridal.jfif" alt="Bridal Style" class="work-image">
+                    </div>
+                    <div class="work-overlay">
+                        <h3>Bridal Updo</h3>
+                        <p>4 hours • Special occasion</p>
+                    </div>
+                </div>
+                
+                <div class="work-item">
+                    <div class="work-image">
+                        <img src="assets/images/retouch.jfif" alt="Locs Retouch" class="work-image">    
+                    </div>
+                    <div class="work-overlay">
+                        <h3>Locs Maintenance</h3>
+                        <p>3 hours • Fresh retouch</p>
+                    </div>
+                </div>
+                
+                <div class="work-item">
+                    <div class="work-image">
+                        <img src="assets/images/wigs.jfif" alt="Wig Install" class="work-image">
+                    </div>
+                    <div class="work-overlay">
+                        <h3>Wig Lines</h3>
+                        <p>1 hour • Natural look</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <a href="portfolio.html" class="btn btn-outline">View Full Portfolio</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Client Love</span>
+                <h2 class="section-title">What They Say</h2>
+            </div>
+            
+            <div class="testimonials-slider" id="testimonialsSlider">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"Akose is absolutely amazing! She came to my home and spent 6 hours creating the most beautiful box braids. Her attention to detail is incredible, and the braids lasted for months. Highly recommend!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar" style="background: linear-gradient(135deg, #0F3D3E 0%, #1A5F61 100%);">F</div>
+                        <div class="author-info">
+                            <h4>Foi Nyamu</h4>
+                            <span>Box Braids Client</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"I've been going to Akose for over a year now. She's professional, talented, and her mobile service is so convenient! Plus, her handmade bracelets are gorgeous – I've bought several as gifts."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar" style="background: linear-gradient(135deg, #D4A574 0%, #E6C89A 100%);">V</div>
+                        <div class="author-info">
+                            <h4>Vanessa Pamba</h4>
+                            <span>Regular Client</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"Best decision ever! Akose did my hair for my graduation and it turned out perfect. The cornrow pattern was neat, intricate, and beautiful. She truly made me feel like a princess"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar" style="background: linear-gradient(135deg, #1A5F61 0%, #0A2C2D 100%);">K</div>
+                        <div class="author-info">
+                            <h4>Kyla Mwangi</h4>
+                            <span>Regular Client</span>
+                        </div>
+                    </div>
+                </div>         
+            </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Ready for Your Transformation?</h2>
+                <p class="cta-text">Book your appointment today and experience the convenience of professional hair styling in the comfort of your home</p>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="btn btn-primary btn-lg">Book Appointment</a>
+                    <a href="https://wa.me/+254725351803" class="btn btn-whatsapp btn-lg" target="_blank">
+                        <i class="fab fa-whatsapp"></i> WhatsApp Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-logo">
+                        <img src="assets/images/logo.jpeg" alt="Hair by Akose" class="footer-logo-image">
+                    </h3>
+                    <p>Professional mobile hair styling and handmade accessories, bringing beauty to your doorstep.</p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/hairbyakose?igsh=YW1pdTc0ZzBua2p4&utm_source=qr" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://web.facebook.com/vivienne.akose" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.tiktok.com/@hairbyakose?_r=1&_t=ZS-93RrembQpYD" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                        <a href="http://www.youtube.com/@vivienneakose8306" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#services">Box Braids</a></li>
+                        <li><a href="#services">Cornrows</a></li>
+                        <li><a href="#services">Twists & Locs</a></li>
+                        <li><a href="#services">Natural Hair</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> +(254)725-351-803</li>
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:vivienneakose22@gmail.com" class="email-link">vivienneakose22@gmail.com</a></li>
+                        <li><i class="fas fa-map-marker-alt"></i>@ your place of comfort</li>
+                        <li><i class="fas fa-clock"></i> Mon-Sat: 9AM - 8PM</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Hair by Akose. All rights reserved.</p>
+                <p>Crafted with <i class="fas fa-heart"></i> and passion</p>
+                <p>by #mimsanii</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="mobile-nav" id="mobileNav">
+        <a href="#home" class="mobile-nav-item active">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="#services" class="mobile-nav-item">
+            <i class="fas fa-scissors"></i>
+            <span>Services</span>
+        </a>
+        <a href="portfolio.html" class="mobile-nav-item">
+            <i class="fas fa-images"></i>
+            <span>Gallery</span>
+        </a>
+        <a href="contact.html" class="mobile-nav-item">
+            <i class="fas fa-calendar"></i>
+            <span>Book</span>
+        </a>
+    </nav>
+
+    <!--

@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Book your appointment with Hair by Akose. Contact us via WhatsApp, email, or phone for mobile hair styling services.">
+    <title>Contact & Book | Hair by Akose</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="assets/css/contact.css">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    
+    <!-- Desktop/Tablet Navigation -->
+    <nav class="desktop-nav" id="desktopNav">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/images/logo.jpeg" alt="Hair by Akose" class="logo-image">
+                </a>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="index.html#services" class="nav-link">Services</a></li>
+                <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+                <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+                <li><a href="index.html#testimonials" class="nav-link">Testimonials</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="cta-button active">Book Now</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <span class="hero-badge">Let's Connect</span>
+            <h1 class="page-title">Book Your Appointment</h1>
+            <p class="page-subtitle">Ready for your transformation? Choose your preferred way to get in touch!</p>
+        </div>
+    </section>
+
+    <!-- Quick Contact Options -->
+    <section class="quick-contact">
+        <div class="container">
+            <div class="contact-methods">
+                <a href="https://wa.me/+254725351803?text=Hi%20Akose!%20I'd%20like%20to%20book%20an%20appointment." class="contact-card whatsapp" target="_blank">
+                    <div class="contact-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <h3>WhatsApp</h3>
+                    <p>Instant response via WhatsApp</p>
+                    <span class="contact-action">Message Now →</span>
+                </a>
+
+                <a href="tel:+12345678900" class="contact-card phone">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3>Call/Text</h3>
+                    <p>+254 725 351803</p>
+                    <span class="contact-action">Call Now →</span>
+                </a>
+
+                <a href="mailto:vivienneakose22@gmail.com" class="contact-card email">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email</h3>
+                    <p><span class="__cf_email__" data-cfemail="fe969b929291be969f978c9c879f95918d9bd09d9193">[vivienneakose22@gmail.com]</span></p>
+                    <span class="contact-action">Send Email →</span>
+                </a>
+
+                <a href="#contact-form" class="contact-card form">
+                    <div class="contact-icon">
+                        <i class="fas fa-paper-plane"></i>
+                    </div>
+                    <h3>Contact Form</h3>
+                    <p>Fill out our quick form</p>
+                    <span class="contact-action">Fill Form →</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="contact-form-section" id="contact-form">
+        <div class="container">
+            <div class="form-wrapper">
+                <div class="form-header">
+                    <h2>Send Me a Message</h2>
+                    <p>Fill out the form below and I'll get back to you within 24 hours</p>
+                </div>
+
+                <form id="contactForm" class="contact-form" action="https://formspree.io/f/xrelydra" method="POST">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" required class="form-control" placeholder="Your name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" required class="form-control" placeholder="0712 345 678">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address (Optional)</label>
+                        <input type="email" id="email" name="_replyto" class="form-control" placeholder="your.email@example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="service">Service Interested In *</label>
+                        <select id="service" name="service" required class="form-control">
+                            <option value="">-- Select a Service --</option>
+                            <option value="Box Braids">Box Braids</option>
+                            <option value="Cornrows">Cornrows</option>
+                            <option value="Knotless Braids">Knotless Braids</option>
+                            <option value="Twists">Twists (Senegalese, Marley, Passion)</option>
+                            <option value="Weaves">Weaves & Extensions</option>
+                            <option value="Natural Hair">Natural Hair Care</option>
+                            <option value="Kids">Children's Styling</option>
+                            <option value="Locs">Locs Maintenance</option>
+                            <option value="Bridal">Bridal Styling</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="date">Preferred Date</label>
+                            <input type="date" id="date" name="date" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="time">Preferred Time</label>
+                            <select id="time" name="time" class="form-control">
+                                <option value="">-- Select Time --</option>
+                                <option value="Morning (9AM-12PM)">Morning (9AM-12PM)</option>
+                                <option value="Afternoon (12PM-5PM)">Afternoon (12PM-5PM)</option>
+                                <option value="Evening (5PM-8PM)">Evening (5PM-8PM)</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="location">Location *</label>
+                        <input type="text" id="location" name="location" required class="form-control" placeholder="e.g. Nairobi CBD, Thika, Machakos">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Additional Details</label>
+                        <textarea id="message" name="message" rows="5" class="form-control" placeholder="Tell me about your hair type, desired style, or any special requests..."></textarea>
+                    </div>
+                    
+                    <!-- Hidden fields for Formspree -->
+                    <input type="hidden" name="_subject" value="🌟 New Booking Request - Hair by Akose">
+                    <input type="hidden" name="_template" value="box">
+                    <input type="text" name="_gotcha" style="display:none">
+
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="consent" required>
+                            <span>I consent to being contacted about my appointment *</span>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-lg btn-block" id="submitBtn">
+                        <i class="fas fa-paper-plane"></i> Send Booking Request
+                    </button>
+
+                    <p class="form-note">* Required fields • Akose will receive your message via email and respond within 24 hours</p>
+                </form>
+
+                <div class="form-success" id="formSuccess" style="display: none;">
+                    <i class="fas fa-check-circle" style="color: #10B981; font-size: 4rem;"></i>
+                    <h3>Booking Request Sent Successfully! ✅</h3>
+                    <p style="font-size: 1.15rem; margin: 1.5rem 0;">
+                        Thank you for choosing Hair by Akose! Your booking request has been received.
+                    </p>
+                    
+                    <div style="background: #E8F2F2; padding: 1.5rem; border-radius: 10px; margin: 2rem 0; border-left: 4px solid #0F3D3E;">
+                        <h4 style="color: #0F3D3E; margin-bottom: 1rem;">📱 What Happens Next:</h4>
+                        <ul style="text-align: left; line-height: 2; color: #0F3D3E;">
+                            <li>✅ Akose will receive your details via email</li>
+                            <li>✅ You'll get a response within 24 hours</li>
+                            <li>✅ Akose will contact you via WhatsApp or phone</li>
+                            <li>✅ Your appointment will be confirmed with all details</li>
+                        </ul>
+                    </div>
+                    
+                    <p style="margin-top: 2rem;">
+                        <strong>Need immediate assistance?</strong><br>
+                        <a href="https://wa.me/+254725351803?text=Hi%20Akose!%20I%20just%20submitted%20a%20booking%20form." 
+                           class="btn btn-whatsapp" style="margin-top: 1rem; display: inline-block;">
+                            <i class="fab fa-whatsapp"></i> Message on WhatsApp
+                        </a>
+                    </p>
+                    
+                    <button onclick="location.reload()" class="btn btn-outline" style="margin-top: 1.5rem;">
+                        Submit Another Booking
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Business Info Section -->
+    <section class="business-info">
+        <div class="container">
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Business Hours</h3>
+                    <ul>
+                        <li><strong>Monday - Friday:</strong> 9:00 AM - 8:00 PM</li>
+                        <li><strong>Saturday:</strong> 9:00 AM - 8:00 PM</li>
+                        <li><strong>Sunday:</strong> By Appointment Only</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Service Area</h3>
+                    <p>I provide mobile services across multiple cities in Kenya:</p>
+                    <ul>
+                        <li><strong>Nairobi</strong> - All areas</li>
+                        <li><strong>Thika</strong> - Town & surroundings</li>
+                        <li><strong>Machakos</strong> - Town & environs</li>
+                        <li><strong>Limuru</strong> - And nearby areas</li>
+                    </ul>
+                    <p class="service-radius"><strong>Mobile Service:</strong> I come to you!</p>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-info-circle"></i>
+                    </div>
+                    <h3>Booking Policy</h3>
+                    <ul>
+                        <li>Deposit required to secure appointment</li>
+                        <li>24-hour cancellation notice required</li>
+                        <li>Please have clean, detangled hair</li>
+                        <li>Provide your own hair/extensions</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Got Questions?</span>
+                <h2 class="section-title">Frequently Asked Questions</h2>
+            </div>
+
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How do I book an appointment?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>You can book via WhatsApp (fastest), call/text, email, or use the contact form above. I'll confirm your appointment and discuss details like location, timing, and any specific requirements.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Do I need to provide my own hair?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, typically clients provide their own hair/extensions. I can recommend brands and quantities based on your chosen style. If you need help sourcing hair, let me know during booking.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What's your cancellation policy?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Please provide at least 24 hours notice for cancellations or rescheduling. Deposits are non-refundable but can be applied to a rescheduled appointment within 30 days.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How long do appointments usually take?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>It varies by style! Small box braids can take 8-10 hours, while simple cornrows might take 2-3 hours. Check the pricing page for estimated durations, and I'll give you a more accurate timeframe when you book.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Do you charge a travel fee?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>I serve the Greater Metro Area (30-mile radius) with no travel fee. Locations outside this area may incur a small travel charge, which we'll discuss during booking.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What forms of payment do you accept?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>I accept cash or Mpesa. A deposit is required when booking, with the balance due upon completion of service.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Can you work with kids?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely! I love working with children and have special patience and techniques to make the experience enjoyable for them. Kids' styles are typically simpler and quicker.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What should I prepare before you arrive?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Please have your hair clean and detangled. Set up a comfortable space with good lighting, a chair, mirror, and access to an outlet. Have your hair/extensions ready, and any hair accessories you'd like to use.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof -->
+    <section class="social-section">
+        <div class="container">
+            <h2>Follow My Work</h2>
+            <p>See more transformations and stay updated on Instagram, TikTok, and Facebook!</p>
+            <div class="social-links-large">
+                <a href="https://www.instagram.com/hairbyakose" class="social-link-large instagram" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                    <span>@hairbyakose</span>
+                </a>
+                <a href="https://www.tiktok.com/@hairbyakose" class="social-link-large tiktok" target="_blank">
+                    <i class="fab fa-tiktok"></i>
+                    <span>@hairbyakose</span>
+                </a>
+                <a href="https://www.facebook.com/hairbyakose" class="social-link-large facebook" target="_blank">
+                    <i class="fab fa-facebook"></i>
+                    <span>Hair by Akose</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-logo">
+                        <img src="assets/images/logo.jpeg" alt="Hair by Akose" class="footer-logo-image">
+                    </h3>
+                    <p>Professional mobile hair styling and handmade accessories, bringing beauty to your doorstep.</p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/hairbyakose" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/hairbyakose" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.tiktok.com/@hairbyakose" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://www.youtube.com/@hairbyakose" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html#services">Services</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="pricing.html">Box Braids</a></li>
+                        <li><a href="pricing.html">Cornrows</a></li>
+                        <li><a href="pricing.html">Twists</a></li>
+                        <li><a href="pricing.html">Natural Hair</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                     <ul>
+                        <li><i class="fas fa-phone"></i> +(254)725-351-803</li>
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:vivienneakose22@gmail.com" class="email-link">vivienneakose22@gmail.com</a></li>
+                        <li><i class="fas fa-map-marker-alt"></i>@ your place of comfort</li>
+                        <li><i class="fas fa-clock"></i> Mon-Sat: 9AM - 8PM</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Hair by Akose. All rights reserved.</p>
+                <p>Crafted with <i class="fas fa-heart"></i> and passion</p>
+                <p> by #mimsanii</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="mobile-nav" id="mobileNav">
+        <a href="index.html" class="mobile-nav-item">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="index.html#services" class="mobile-nav-item">
+            <i class="fas fa-scissors"></i>
+            <span>Services</span>
+        </a>
+        <a href="pricing.html" class="mobile-nav-item">
+            <i class="fas fa-tags"></i>
+            <span>Pricing</span>
+        </a>
+        <a href="contact.html" class="mobile-nav-item active">
+            <i class="fas fa-calendar-check"></i>
+            <span>Book</span>
+            <!-- Scripts -->
+<script src="assets/js/main.js"></script>
+<script src="assets/js/contact.js"></script>
+</body>
+</html>
