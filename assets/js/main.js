@@ -387,3 +387,20 @@ function throttle(func, limit) {
         }
     };
 }
+
+
+// ==========================================
+// SCROLL ANIMATIONS
+// ==========================================
+
+// Add scrolled class to header
+window.addEventListener("scroll", function() {
+    const nav = document.getElementById("desktopNav");
+    if (window.scrollY > 100) {
+        nav.classList.add("scrolled");
+    } else {
+        nav.classList.remove("scrolled");
+    }
+});
+
+console.log("Hair by Akose - Website loaded with animations! ✨");
