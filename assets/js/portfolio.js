@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const galleryItems = document.querySelectorAll('.gallery-item');
     const loadMoreBtn = document.getElementById('loadMore');
     
-    // Filter functionality
+    // Filter functionality with smooth animations
     filterButtons.forEach(button => {
         button.addEventListener('click', function() {
             const filter = this.dataset.filter;
@@ -15,15 +15,18 @@ document.addEventListener('DOMContentLoaded', function() {
             filterButtons.forEach(btn => btn.classList.remove('active'));
             this.classList.add('active');
             
-            // Filter gallery items
-            galleryItems.forEach(item => {
+            // Filter gallery items with stagger animation
+            galleryItems.forEach((item, index) => {
                 const category = item.dataset.category;
                 
                 if (filter === 'all' || category === filter) {
                     item.classList.remove('hidden');
-                    item.style.animation = 'fadeIn 0.5s ease';
+                    item.style.animation = `fadeInScale 0.5s ease ${index * 0.05}s forwards`;
                 } else {
-                    item.classList.add('hidden');
+                    item.style.animation = 'fadeOut 0.3s ease forwards';
+                    setTimeout(() => {
+                        item.classList.add('hidden');
+                    }, 300);
                 }
             });
         });
@@ -33,18 +36,14 @@ document.addEventListener('DOMContentLoaded', function() {
     if (loadMoreBtn) {
         loadMoreBtn.addEventListener('click', function() {
             // In production, this would load more images
-            alert('Load more functionality - add more gallery items here!');
+            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
+            
+            setTimeout(() => {
+                this.innerHTML = '<i class="fas fa-plus"></i> Load More Work';
+                alert('Add more portfolio images here!');
+            }, 1000);
         });
     }
     
-    // Lightbox/zoom functionality (basic)
-    const iconBtns = document.querySelectorAll('.icon-btn');
-    iconBtns.forEach(btn => {
-        btn.addEventListener('click', function(e) {
-            e.stopPropagation();
-            alert('Lightbox view would open here - implement with a library like Lightbox2 or Fancybox');
-        });
-    });
-    
-    console.log('Portfolio gallery initialized ✨');
+    console.log('Portfolio gallery initialized with animations ✨');
 });
