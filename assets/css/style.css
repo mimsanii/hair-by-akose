@@ -244,7 +244,7 @@ button {
     font-family: var(--font-display);
     font-size: 0.95rem;
     font-weight: 600;
-    color: rgba(255, 255, 255, 0.95);
+    color: rgba(9, 53, 31, 0.527);
     position: relative;
     transition: all var(--transition-base);
 }
