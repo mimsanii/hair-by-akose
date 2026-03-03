@@ -5,57 +5,353 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="View Hair by Akose's portfolio of beautiful braids, twists, weaves, and natural hair transformations.">
     <title>Portfolio | Hair by Akose</title>
-    
-    <!-- Fonts -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Styles -->
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/responsive.css">
-    <link rel="stylesheet" href="assets/css/portfolio.css">
-    
-    <!-- Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --teal-deep:   #0B3535;
+            --teal:        #0F3D3E;
+            --teal-mid:    #145254;
+            --teal-light:  #1A6466;
+            --black:       #071E1E;
+            --black-soft:  #0A2828;
+            --black-card:  #0D3030;
+            --black-edge:  #113838;
+            --gold:        #D4A96A;
+            --gold-light:  #E2C08A;
+            --gold-dark:   #B8894E;
+            --white:       #F5EDD8;
+            --white-dim:   rgba(245,237,216,0.6);
+            --grad-gold:   linear-gradient(135deg, #B8894E 0%, #D4A96A 40%, #E2C08A 60%, #D4A96A 100%);
+            --font-display: 'Syne', sans-serif;
+            --font-body:    'Cormorant Garamond', serif;
+            --ease: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-body); background: var(--black); color: var(--white); line-height: 1.75; overflow-x: hidden; }
+        img { max-width:100%; height:auto; display:block; }
+        a { text-decoration:none; color:inherit; transition: all 0.3s ease; }
+
+        /* Grain overlay */
+        body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events:none; z-index:9999; opacity:0.25; }
+
+        .container { width:100%; max-width:1400px; margin:0 auto; padding:0 2rem; }
+
+        .section-label { display:inline-flex; align-items:center; gap:0.75rem; font-family:var(--font-display); font-size:0.7rem; font-weight:700; letter-spacing:0.25em; text-transform:uppercase; color:var(--gold); margin-bottom:1.5rem; }
+        .section-label::before, .section-label::after { content:''; display:block; width:30px; height:1px; background:var(--gold); opacity:0.6; }
+
+        /* NAV */
+        .nav { position:fixed; top:0; left:0; right:0; z-index:1000; padding:1.5rem 0; transition:all 0.4s ease; }
+        .nav.scrolled { background:rgba(7,30,30,0.97); backdrop-filter:blur(20px); border-bottom:1px solid rgba(212,169,106,0.2); padding:1rem 0; }
+        .nav-inner { max-width:1400px; margin:0 auto; padding:0 2rem; display:flex; justify-content:space-between; align-items:center; }
+        .nav-logo img { height:55px; width:auto; object-fit:contain; }
+        .nav-links { display:flex; list-style:none; gap:2.5rem; align-items:center; }
+        .nav-links a { font-family:var(--font-display); font-size:0.78rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--white-dim); }
+        .nav-links a:hover, .nav-links a.active-link { color:var(--gold); }
+        .nav-links .nav-cta { padding:0.6rem 1.5rem; border:1px solid var(--gold); color:var(--gold); border-radius:100px; }
+        .nav-links .nav-cta:hover { background:var(--gold); color:var(--black); }
+        .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; }
+        .hamburger span { width:24px; height:2px; background:var(--white); border-radius:2px; }
+
+        /* PAGE HERO */
+        .page-hero {
+            min-height: 55vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 10rem 2rem 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: -20%; left: 50%;
+            transform: translateX(-50%);
+            width: 70vw; height: 70vw;
+            background: radial-gradient(ellipse, rgba(212,169,106,0.1) 0%, transparent 65%);
+            pointer-events: none;
+        }
+        /* Vertical lines */
+        .hero-lines { position:absolute; inset:0; pointer-events:none; }
+        .hero-lines span { position:absolute; top:0; bottom:0; width:1px; background:linear-gradient(to bottom, transparent, rgba(212,169,106,0.1), transparent); }
+        .hero-lines span:nth-child(1){left:20%} .hero-lines span:nth-child(2){left:40%}
+        .hero-lines span:nth-child(3){left:60%} .hero-lines span:nth-child(4){left:80%}
+
+        .hero-inner { position:relative; z-index:2; animation: fadeUp 1s var(--ease) both; }
+        @keyframes fadeUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+
+        .hero-eyebrow { display:inline-flex; align-items:center; gap:0.75rem; font-family:var(--font-display); font-size:0.7rem; font-weight:700; letter-spacing:0.3em; text-transform:uppercase; color:var(--gold); margin-bottom:1.5rem; }
+        .hero-eyebrow::before, .hero-eyebrow::after { content:''; width:40px; height:1px; background:var(--gold); opacity:0.5; }
+
+        .page-title { font-family:var(--font-display); font-size:clamp(3.5rem, 10vw, 8rem); font-weight:800; line-height:0.95; letter-spacing:-0.03em; margin-bottom:1.5rem; }
+        .page-title span { display:block; background:var(--grad-gold); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; font-style:italic; }
+        .page-subtitle { font-family:var(--font-body); font-size:clamp(1rem, 2vw, 1.3rem); color:var(--white-dim); font-style:italic; max-width:550px; margin:0 auto; }
+
+        /* FILTER */
+        .filter-section {
+            padding: 2.5rem 0;
+            background: var(--black-soft);
+            position: sticky;
+            top: 72px;
+            z-index: 100;
+            border-bottom: 1px solid rgba(212,169,106,0.1);
+            backdrop-filter: blur(10px);
+        }
+        .filter-buttons { display:flex; gap:0.75rem; justify-content:center; flex-wrap:wrap; }
+        .filter-btn {
+            padding: 0.6rem 1.5rem;
+            font-family: var(--font-display);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            background: transparent;
+            color: var(--white-dim);
+            border: 1px solid rgba(212,169,106,0.2);
+            border-radius: 100px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .filter-btn:hover { border-color:var(--gold); color:var(--gold); }
+        .filter-btn.active { background:var(--grad-gold); color:var(--black); border-color:transparent; box-shadow:0 4px 20px rgba(212,169,106,0.3); }
+
+        /* GALLERY */
+        .portfolio-gallery { padding: 5rem 0 6rem; background: var(--black); }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 1.25rem;
+        }
+
+        /* Default span */
+        .gallery-item { grid-column: span 4; }
+        .gallery-item.large { grid-column: span 6; }
+        .gallery-item.wide  { grid-column: span 8; }
+        .gallery-item.tall  { grid-column: span 3; }
+
+        .gallery-card {
+            position: relative;
+            border-radius: 14px;
+            overflow: hidden;
+            cursor: pointer;
+            background: var(--black-card);
+            border: 1px solid rgba(212,169,106,0.08);
+            transition: all 0.4s var(--ease);
+            height: 100%;
+            min-height: 280px;
+        }
+        .gallery-item.large .gallery-card { min-height: 380px; }
+        .gallery-item.wide  .gallery-card { min-height: 260px; }
+
+        .gallery-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s var(--ease);
+            position: absolute;
+            inset: 0;
+        }
+        .gallery-card:hover img { transform: scale(1.07); }
+        .gallery-card:hover { border-color: rgba(212,169,106,0.3); box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(7,30,30,0.92) 0%, rgba(7,30,30,0.3) 50%, transparent 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1.75rem;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .gallery-card:hover .gallery-overlay { opacity: 1; }
+
+        .gallery-overlay h3 { font-family:var(--font-display); font-size:1.2rem; font-weight:700; color:var(--white); margin-bottom:0.3rem; }
+        .gallery-overlay p { font-family:var(--font-display); font-size:0.75rem; letter-spacing:0.1em; color:var(--gold-light); text-transform:uppercase; margin-bottom:1rem; }
+
+        .zoom-btn {
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            background: var(--grad-gold);
+            border: none;
+            color: var(--black);
+            display: flex; align-items:center; justify-content:center;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            align-self: flex-start;
+        }
+        .zoom-btn:hover { transform: scale(1.15); }
+
+        /* Category tag on card */
+        .gallery-tag {
+            position: absolute;
+            top: 1rem; left: 1rem;
+            background: rgba(7,30,30,0.8);
+            border: 1px solid rgba(212,169,106,0.3);
+            border-radius: 100px;
+            padding: 0.3rem 0.85rem;
+            font-family: var(--font-display);
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gold);
+            backdrop-filter: blur(8px);
+            z-index: 2;
+        }
+
+        .gallery-item.hidden { display: none; }
+
+        /* Load more */
+        .load-more-wrap { text-align:center; margin-top:3.5rem; }
+        .btn-ghost-gold {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 1rem 2.5rem;
+            background: transparent;
+            color: var(--gold);
+            font-family: var(--font-display);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            border: 1px solid rgba(212,169,106,0.4);
+            border-radius: 100px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .btn-ghost-gold:hover { background: var(--grad-gold); color: var(--black); border-color:transparent; box-shadow: 0 8px 30px rgba(212,169,106,0.3); }
+
+        /* LIGHTBOX */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(7,30,30,0.97);
+            backdrop-filter: blur(20px);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        .lightbox.open { display: flex; animation: fadeIn 0.3s ease; }
+        @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+        .lightbox-inner { position:relative; max-width:900px; width:100%; }
+        .lightbox-inner img { width:100%; border-radius:16px; border:1px solid rgba(212,169,106,0.2); box-shadow:0 40px 100px rgba(0,0,0,0.8); max-height:85vh; object-fit:contain; }
+        .lightbox-close { position:absolute; top:-1rem; right:-1rem; width:44px; height:44px; border-radius:50%; background:var(--grad-gold); border:none; color:var(--black); font-size:1.1rem; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all 0.3s ease; }
+        .lightbox-close:hover { transform:scale(1.1); }
+        .lightbox-caption { text-align:center; margin-top:1.25rem; }
+        .lightbox-caption h3 { font-family:var(--font-display); font-size:1.3rem; color:var(--white); }
+        .lightbox-caption p { font-family:var(--font-display); font-size:0.75rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--gold); margin-top:0.3rem; }
+        .lightbox-nav { position:absolute; top:50%; transform:translateY(-50%); width:44px; height:44px; border-radius:50%; background:rgba(7,30,30,0.8); border:1px solid rgba(212,169,106,0.3); color:var(--gold); font-size:1rem; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all 0.3s ease; }
+        .lightbox-nav:hover { background:var(--grad-gold); color:var(--black); border-color:transparent; }
+        .lightbox-prev { left:-3.5rem; }
+        .lightbox-next { right:-3.5rem; }
+
+        /* CTA */
+        .cta { padding:8rem 0; background:var(--black-soft); position:relative; overflow:hidden; }
+        .cta::before { content:''; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:60vw; height:60vw; background:radial-gradient(ellipse, rgba(212,169,106,0.08) 0%, transparent 65%); pointer-events:none; }
+        .cta-inner { text-align:center; max-width:700px; margin:0 auto; position:relative; z-index:2; }
+        .cta-title { font-family:var(--font-display); font-size:clamp(2rem,5vw,4rem); font-weight:800; color:var(--white); margin-bottom:1rem; }
+        .cta-text { font-size:1.2rem; color:var(--white-dim); font-style:italic; margin-bottom:3rem; }
+        .cta-btns { display:flex; gap:1.25rem; justify-content:center; flex-wrap:wrap; }
+        .btn-gold { display:inline-flex; align-items:center; gap:0.5rem; padding:1rem 2.5rem; background:var(--grad-gold); color:var(--black); font-family:var(--font-display); font-size:0.8rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; border-radius:100px; transition:all 0.3s ease; box-shadow:0 0 30px rgba(212,169,106,0.25); }
+        .btn-gold:hover { transform:translateY(-3px); box-shadow:0 10px 40px rgba(212,169,106,0.4); }
+        .btn-whatsapp { display:inline-flex; align-items:center; gap:0.75rem; padding:1rem 2.5rem; background:#25D366; color:white; font-family:var(--font-display); font-size:0.8rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; border-radius:100px; transition:all 0.3s ease; }
+        .btn-whatsapp:hover { background:#1DAD52; transform:translateY(-3px); }
+
+        /* FOOTER */
+        .footer { background:var(--black-soft); border-top:1px solid rgba(212,169,106,0.18); padding:5rem 0 2.5rem; }
+        .footer-grid { display:grid; grid-template-columns:1.5fr repeat(3,1fr); gap:3rem; margin-bottom:4rem; }
+        .footer-brand img { height:70px; width:auto; object-fit:contain; margin-bottom:1.25rem; }
+        .footer-brand p { font-size:1rem; color:var(--white-dim); line-height:1.7; margin-bottom:1.5rem; }
+        .socials { display:flex; gap:0.75rem; }
+        .socials a { width:42px; height:42px; border-radius:50%; background:var(--black-card); border:1px solid rgba(212,169,106,0.15); display:flex; align-items:center; justify-content:center; font-size:1rem; color:var(--white-dim); transition:all 0.3s ease; }
+        .socials a:hover { background:var(--gold); color:var(--black); border-color:var(--gold); transform:translateY(-3px); }
+        .footer-col h4 { font-family:var(--font-display); font-size:0.75rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:1.5rem; }
+        .footer-col ul { list-style:none; }
+        .footer-col ul li { margin-bottom:0.7rem; font-size:0.95rem; color:var(--white-dim); transition:color 0.3s ease; }
+        .footer-col ul li:hover { color:var(--white); }
+        .footer-col ul li i { color:var(--gold); width:16px; margin-right:0.5rem; }
+        .footer-col ul li a { color:inherit; }
+        .footer-col ul li a:hover { color:var(--gold); }
+        .footer-bottom { border-top:1px solid rgba(212,169,106,0.1); padding-top:2rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; font-size:0.85rem; color:rgba(245,237,216,0.3); font-family:var(--font-display); }
+
+        /* MOBILE NAV */
+        .mobile-nav { display:none; }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .gallery-item { grid-column: span 6; }
+            .gallery-item.large { grid-column: span 6; }
+            .gallery-item.wide { grid-column: span 12; }
+            .footer-grid { grid-template-columns: 1fr 1fr; gap:2.5rem; }
+            .lightbox-prev { left:-0.5rem; } .lightbox-next { right:-0.5rem; }
+        }
+        @media (max-width: 768px) {
+            .nav-links { display:none; }
+            .hamburger { display:flex; }
+            .gallery-grid { grid-template-columns: 1fr 1fr; gap:0.85rem; }
+            .gallery-item, .gallery-item.large, .gallery-item.wide, .gallery-item.tall { grid-column: span 1; }
+            .gallery-card { min-height: 220px !important; }
+            .footer-grid { grid-template-columns:1fr; }
+            .footer-bottom { flex-direction:column; text-align:center; }
+            .mobile-nav { display:flex; position:fixed; bottom:0; left:0; right:0; background:rgba(7,30,30,0.99); border-top:1px solid rgba(212,169,106,0.15); backdrop-filter:blur(20px); z-index:1000; padding:0.75rem 0 1rem; }
+            .mobile-nav a { flex:1; display:flex; flex-direction:column; align-items:center; gap:0.3rem; font-family:var(--font-display); font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--white-dim); }
+            .mobile-nav a.active, .mobile-nav a:hover { color:var(--gold); }
+            .mobile-nav a i { font-size:1.2rem; }
+            body { padding-bottom:4.5rem; }
+        }
+    </style>
 </head>
 <body>
-    
-    <!-- Desktop/Tablet Navigation -->
-    <nav class="desktop-nav" id="desktopNav">
-        <div class="nav-container">
-            <div class="logo">
-                <a href="index.html">
-                    <img src="assets/images/logo.jpeg" alt="Hair by Akose" class="logo-image">
-                </a>
+
+    <!-- NAV -->
+    <nav class="nav" id="mainNav">
+        <div class="nav-inner">
+            <div class="nav-logo">
+                <a href="index.html"><img src="assets/images/logo.jpeg" alt="Hair by Akose"></a>
             </div>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="index.html#services" class="nav-link">Services</a></li>
-                <li><a href="portfolio.html" class="nav-link active">Portfolio</a></li>
-                <li><a href="pricing.html" class="nav-link">Pricing</a></li>
-                <li><a href="index.html#testimonials" class="nav-link">Testimonials</a></li>
-                <li><a href="about.html" class="nav-link">About</a></li>
-                <li><a href="contact.html" class="cta-button">Book Now</a></li>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#story">Story</a></li>
+                <li><a href="portfolio.html" class="active-link">Portfolio</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="contact.html" class="nav-cta">Book Now</a></li>
             </ul>
             <div class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
+                <span></span><span></span><span></span>
             </div>
         </div>
     </nav>
 
-    <!-- Page Hero -->
+    <!-- PAGE HERO -->
     <section class="page-hero">
-        <div class="container">
-            <span class="hero-badge">My Work</span>
-            <h1 class="page-title">Portfolio</h1>
-            <p class="page-subtitle">Browse through transformations and see the artistry behind every style</p>
+        <div class="hero-lines"><span></span><span></span><span></span><span></span></div>
+        <div class="hero-inner">
+            <div class="hero-eyebrow">Hair by Akose</div>
+            <h1 class="page-title">
+                My Work &<br><span>Portfolio</span>
+            </h1>
+            <p class="page-subtitle">Browse transformations and see the artistry behind every style</p>
         </div>
     </section>
 
-    <!-- Filter Section -->
+    <!-- FILTER -->
     <section class="filter-section">
         <div class="container">
             <div class="filter-buttons">
@@ -71,351 +367,339 @@
         </div>
     </section>
 
-    <!-- Portfolio Gallery -->
+    <!-- GALLERY -->
     <section class="portfolio-gallery">
         <div class="container">
             <div class="gallery-grid" id="galleryGrid">
-                
-                <!-- Portfolio Item 1 -->
+
+                <div class="gallery-item large" data-category="braids">
+                    <div class="gallery-card">
+                        <span class="gallery-tag">Braids</span>
+                        <img src="assets/images/bbs.jpeg" alt="Small Box Braids">
+                        <div class="gallery-overlay">
+                            <h3>Small Box Braids</h3>
+                            <p>8 hrs · Protective Style</p>
+                            <button class="zoom-btn"><i class="fas fa-expand"></i></button>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="gallery-item" data-category="braids">
-                     <img src="assets/images/bbs.jpeg" alt="knotless-braids" class="work-image">
-                    <div class="gallery-image" style="background: linear-gradient(135deg, #B88B5C 0%, #E6C89A 100%);">
-                        <span class="placeholder-text">Box Braids<br>Small</span>
-                    </div>
-                    <div class="gallery-overlay">
-                        <h3>Small Box Braids</h3>
-                        <p>8 hours • Protective Style</p>
-                        <div class="gallery-icons">
-                            <button class="icon-btn"><i class="fas fa-search-plus"></i></button>
+                    <div class="gallery-card">
+                        <span class="gallery-tag">Braids</span>
+                        <img src="assets/images/bbm.jpeg" alt="Medium Box Braids">
+                        <div class="gallery-overlay">
+                            <h3>Medium Box Braids</h3>
+                            <p>6 hrs · With Color</p>
+                            <button class="zoom-btn"><i class="fas fa-expand"></i></button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Portfolio Item 2 -->
-                <div class="gallery-item" data-category="braids">
-                        <img src="assets/images/bbm.jpeg" alt="medium-box-braids" class="work-image">
-                    <div class="gallery-image" style="background: linear-gradient(135deg, #1A5F61 0%, #0A2C2D 100%);">
-                        <span class="placeholder-text">Box Braids<br>Medium</span>
-                    </div>
-                    <div class="gallery-overlay">
-                        <h3>Medium Box Braids</h3>
-                        <p>6 hours • With Color</p>
-                        <div class="gallery-icons">
-                            <button class="icon-btn"><i class="fas fa-search-plus"></i></button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Portfolio Item 3 -->
                 <div class="gallery-item" data-category="cornrows">
-                    <img src="assets/images/kb.jpeg" alt="knotless-braids" class="work-image">
-                    <div class="gallery-image" style="background: linear-gradient(135deg, #D4A574 0%, #E6C89A 100%);">
-                        <span class="placeholder-text">knotless<br>Braids</span>
-                    </div>
-                    <div class="gallery-overlay">
-                        <h3>Knotless Braids</h3>
-                        <p>4 hours • Sleek Finish</p>
-                        <div class="gallery-icons">
-                            <button class="icon-btn"><i class="fas fa-search-plus"></i></button>
+                    <div class="gallery-card">
+                        <span class="gallery-tag">Cornrows</span>
+                        <img src="assets/images/kb.jpeg" alt="Knotless Braids">
+                        <div class="gallery-overlay">
+                            <h3>Knotless Braids</h3>
+                            <p>4 hrs · Sleek Finish</p>
+                            <button class="zoom-btn"><i class="fas fa-expand"></i></button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Portfolio Item 4 -->
                 <div class="gallery-item" data-category="cornrows">
-                    <img src="assets/images/cc.jpeg" alt="complex-cornrows" class="work-image">
-                    <div class="gallery-image" style="background: linear-gradient(135deg, #0A2C2D 0%, #1A5F61 100%);">
-                        <span class="placeholder-text">Complex<br>Cornrows</span>
-                    </div>
-                    <div class="gallery-overlay">
-                        <h3>Intricate Cornrow Pattern</h3>
-                        <p>5 hours • Custom Design</p>
-                        <div class="gallery-icons">
-                            <button class="icon-btn"><i class="fas fa-search-plus"></i></button>
+                    <div class="gallery-card">
+                        <span class="gallery-tag">Cornrows</span>
+                        <img src="assets/images/cc.jpeg" alt="Complex Cornrows">
+                        <div class="gallery-overlay">
+                            <h3>Intricate Cornrow Pattern</h3>
+                            <p>5 hrs · Custom Design</p>
+                            <button class="zoom-btn"><i class="fas fa-expand"></i></button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Portfolio Item 5 -->
                 <div class="gallery-item large" data-category="twists">
-                    <img src="assets/images/senegal.jfif" alt="senegalese-twists" class="work-image">
-                    <div class="gallery-image" style="background: linear-gradient(135deg, #B88B5C 0%, #D4A574 100%);">
-                        <span class="placeholder-text">Senegalese<br>Twists</span>
-                    </div>
-                    <div class="gallery-overlay">
-                        <h3>Senegalese Twists</h3>
-                        <p>7 hours • Long Length</p>
-                        <div class="gallery-icons">
-                            <button class="icon-btn"><i class="fas fa-search-plus"></i></button>
+                    <div class="gallery-card">
+                        <span class="gallery-tag">Twists</span>
+                        <img src="assets/images/senegal.jfif" alt="Senegalese Twists">
+                        <div class="gallery-overlay">
+                            <h3>Senegalese Twists</h3>
+                            <p>7 hrs · Long Length</p>
+                            <button class="zoom-btn"><i class="fas fa-expand"></i></button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Portfolio Item 6 -->
                 <div class="gallery-item" data-category="twists">
-                    <img src="assets/images/passion.jfif" alt="passion-twists" class="work-image">
-                    <div class="gallery-image" style="background: linear-gradient(135deg, #0F3D3E 0%, #D4A574 100%);">
-                        <span class="placeholder-text">Passion<br>Twists</span>
-                    </div>
-                    <div class="gallery-overlay">
-                        <h3>Passion Twists</h3>
-                        <p>8 hours • Bohemian Style</p>
-                        <div class="gallery-icons">
-                            <button class="icon-btn"><i class="fas fa-search-plus"></i></button>
+                    <div class="gallery-card">
+                        <span class="gallery-tag">Twists</span>
+                        <img src="assets/images/passion.jfif" alt="Passion Twists">
+                        <div class="gallery-overlay">
+                            <h3>Passion Twists</h3>
+                            <p>8 hrs · Bohemian Style</p>
+                            <button class="zoom-btn"><i class="fas fa-expand"></i></button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Portfolio Item 7 -->
-                <div class="gallery-item" data-category="weaves">
-                    <img src="assets/images/cs.jpeg" alt="frontal-install" class="work-image">
-                    <div class="gallery-image" style="background: linear-gradient(135deg, #1A5F61 0%, #0F3D3E 100%);">
-                        <span class="placeholder-text">Conrows<br>simple</span>
-                    </div>
-                    <div class="gallery-overlay">
-                        <h3>Conrows Simple</h3>
-                        <p>7 hours • Natural Hairline</p>
-                        <div class="gallery-icons">
-                            <button class="icon-btn"><i class="fas fa-search-plus"></i></button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Portfolio Item 8 -->
-                <div class="gallery-item" data-category="natural">
-                    <img src="assets/images/natural.jfif" alt="natural-twist-out" class="work-image">
-                    <div class="gallery-image" style="background: linear-gradient(135deg, #D4A574 0%, #B88B5C 100%);">
-                        <span class="placeholder-text">Natural<br>Twist-Out</span>
-                    </div>
-                    <div class="gallery-overlay">
-                        <h3>Defined Twist-Out</h3>
-                        <p>2 hours • Volume & Definition</p>
-                        <div class="gallery-icons">
-                            <button class="icon-btn"><i class="fas fa-search-plus"></i></button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Portfolio Item 9 -->
-                <div class="gallery-item" data-category="locs">
-                    <img src="assets/images/retouch.jfif" alt="locs-retouch" class="work-image">
-                    <div class="gallery-image" style="background: linear-gradient(135deg, #0A2C2D 0%, #0F3D3E 100%);">
-                        <span class="placeholder-text">Locs<br>Retouch</span>
-                    </div>
-                    <div class="gallery-overlay">
-                        <h3>Locs Retouch & Style</h3>
-                        <p>3 hours • Fresh & Clean</p>
-                        <div class="gallery-icons">
-                            <button class="icon-btn"><i class="fas fa-search-plus"></i></button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Portfolio Item 10 -->
-                <div class="gallery-item" data-category="kids">
-                    <img src="assets/images/kb (2).jpeg" alt="kids-braids" class="work-image">
-                    <div class="gallery-image" style="background: linear-gradient(135deg, #E6C89A 0%, #D4A574 100%);">
-                        <span class="placeholder-text">Kids<br>Braids</span>
-                    </div>
-                    <div class="gallery-overlay">
-                        <h3>Kids Cornrow Style</h3>
-                        <p>2 hours • Back to School</p>
-                        <div class="gallery-icons">
-                            <button class="icon-btn"><i class="fas fa-search-plus"></i></button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Portfolio Item 11 -->
-                <div class="gallery-item" data-category="braids">
-                    <img src="assets/images/bbj.jpeg" alt="jumbo-braids" class="work-image">
-                    <div class="gallery-image" style="background: linear-gradient(135deg, #1A5F61 0%, #D4A574 100%);">
-                        <span class="placeholder-text">Jumbo<br>Braids</span>
-                    </div>
-                    <div class="gallery-overlay">
-                        <h3>Jumbo Box Braids</h3>
-                        <p>4 hours • Quick Style</p>
-                        <div class="gallery-icons">
-                            <button class="icon-btn"><i class="fas fa-search-plus"></i></button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Portfolio Item 12 -->
                 <div class="gallery-item" data-category="cornrows">
-                    <img src="assets/images/kidconrow.jpeg" alt="kids conrow" class="work-image">
-                    <div class="gallery-image" style="background: linear-gradient(135deg, #0F3D3E 0%, #B88B5C 100%);">
-                        <span class="placeholder-text">Kids<br>Conrow</span>
+                    <div class="gallery-card">
+                        <span class="gallery-tag">Cornrows</span>
+                        <img src="assets/images/cs.jpeg" alt="Simple Cornrows">
+                        <div class="gallery-overlay">
+                            <h3>Simple Cornrows</h3>
+                            <p>2 hrs · Clean & Neat</p>
+                            <button class="zoom-btn"><i class="fas fa-expand"></i></button>
+                        </div>
                     </div>
-                    <div class="gallery-overlay">
-                        <h3>Kids Conrow</h3>
-                        <p>3 hours • Elegant Style</p>
-                        <div class="gallery-icons">
-                            <button class="icon-btn"><i class="fas fa-search-plus"></i></button>
+                </div>
+
+                <div class="gallery-item" data-category="natural">
+                    <div class="gallery-card">
+                        <span class="gallery-tag">Natural</span>
+                        <img src="assets/images/natural.jfif" alt="Natural Twist-Out">
+                        <div class="gallery-overlay">
+                            <h3>Defined Twist-Out</h3>
+                            <p>2 hrs · Volume & Definition</p>
+                            <button class="zoom-btn"><i class="fas fa-expand"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="locs">
+                    <div class="gallery-card">
+                        <span class="gallery-tag">Locs</span>
+                        <img src="assets/images/retouch.jfif" alt="Locs Retouch">
+                        <div class="gallery-overlay">
+                            <h3>Locs Retouch & Style</h3>
+                            <p>3 hrs · Fresh & Clean</p>
+                            <button class="zoom-btn"><i class="fas fa-expand"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="kids">
+                    <div class="gallery-card">
+                        <span class="gallery-tag">Kids</span>
+                        <img src="assets/images/kb (2).jpeg" alt="Kids Cornrow Style">
+                        <div class="gallery-overlay">
+                            <h3>Kids Cornrow Style</h3>
+                            <p>2 hrs · Back to School</p>
+                            <button class="zoom-btn"><i class="fas fa-expand"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="braids">
+                    <div class="gallery-card">
+                        <span class="gallery-tag">Braids</span>
+                        <img src="assets/images/bbj.jpeg" alt="Jumbo Box Braids">
+                        <div class="gallery-overlay">
+                            <h3>Jumbo Box Braids</h3>
+                            <p>4 hrs · Quick Style</p>
+                            <button class="zoom-btn"><i class="fas fa-expand"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="kids">
+                    <div class="gallery-card">
+                        <span class="gallery-tag">Kids</span>
+                        <img src="assets/images/kidconrow.jpeg" alt="Kids Cornrow">
+                        <div class="gallery-overlay">
+                            <h3>Kids Cornrow</h3>
+                            <p>3 hrs · Elegant Style</p>
+                            <button class="zoom-btn"><i class="fas fa-expand"></i></button>
                         </div>
                     </div>
                 </div>
 
             </div>
 
-            <div class="load-more-container">
-                <button class="btn btn-outline" id="loadMore">
-                    <i class="fas fa-plus"></i> Load More
+            <div class="load-more-wrap">
+                <button class="btn-ghost-gold" id="loadMore">
+                    <i class="fas fa-plus"></i> Load More Work
                 </button>
             </div>
         </div>
     </section>
 
-    <!-- Before/After Section -->
-    <section class="before-after-section">
+    <!-- CTA -->
+    <section class="cta">
         <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Transformations</span>
-                <h2 class="section-title">Before & After</h2>
-                <p class="section-description">See the amazing transformations</p>
-            </div>
-
-            <div class="ba-grid">
-                <div class="ba-item">
-                    <div class="ba-images">
-                        <div class="ba-image before" style="background: linear-gradient(135deg, rgba(15, 61, 62, 0.3) 0%, rgba(26, 95, 97, 0.3) 100%);">
-                            <span class="ba-label">Before</span>
-                        </div>
-                        <div class="ba-image after" style="background: linear-gradient(135deg, #0F3D3E 0%, #1A5F61 100%);">
-                            <span class="ba-label">After</span>
-                        </div>
-                    </div>
-                    <h3>Box Braids Transformation</h3>
-                </div>
-
-                <div class="ba-item">
-                    <div class="ba-images">
-                        <div class="ba-image before" style="background: linear-gradient(135deg, rgba(212, 165, 116, 0.3) 0%, rgba(230, 200, 154, 0.3) 100%);">
-                            <span class="ba-label">Before</span>
-                        </div>
-                        <div class="ba-image after" style="background: linear-gradient(135deg, #D4A574 0%, #E6C89A 100%);">
-                            <span class="ba-label">After</span>
-                        </div>
-                    </div>
-                    <h3>Feed-in Cornrows</h3>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="container">
-            <div class="cta-content">
+            <div class="cta-inner">
+                <span class="section-label">Ready?</span>
                 <h2 class="cta-title">Want to Be My Next Transformation?</h2>
                 <p class="cta-text">Book your appointment today and let's create something beautiful together!</p>
-                <div class="cta-buttons">
-                    <a href="contact.html" class="btn btn-primary btn-lg">Book Appointment</a>
-                    <a href="https://wa.me/1234567890?text=Hi%20Akose!%20I%20loved%20your%20portfolio!%20I'd%20like%20to%20book%20an%20appointment." class="btn btn-whatsapp btn-lg" target="_blank">
-                        <i class="fab fa-whatsapp"></i> WhatsApp Me
-                    </a>
+                <div class="cta-btns">
+                    <a href="contact.html" class="btn-gold"><i class="fas fa-calendar-check"></i> Book Appointment</a>
+                    <a href="https://wa.me/+254725351803?text=Hi%20Akose!%20I%20loved%20your%20portfolio!%20I'd%20like%20to%20book%20an%20appointment." class="btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp Me</a>
                 </div>
             </div>
         </div>
     </section>
 
- <!-- Footer -->
+    <!-- FOOTER -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3 class="footer-logo">
-                        <img src="assets/images/logo.jpeg" alt="Hair by Akose" class="footer-logo-image">
-                    </h3>
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="assets/images/logo.jpeg" alt="Hair by Akose">
                     <p>Professional mobile hair styling and handmade accessories, bringing beauty to your doorstep.</p>
-                    <div class="social-links">
+                    <div class="socials">
                         <a href="https://www.instagram.com/hairbyakose?igsh=YW1pdTc0ZzBua2p4&utm_source=qr" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                         <a href="https://web.facebook.com/vivienne.akose" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
                         <a href="https://www.tiktok.com/@hairbyakose?_r=1&_t=ZS-93RrembQpYD" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
                         <a href="http://www.youtube.com/@vivienneakose8306" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
-
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
+                <div class="footer-col">
+                    <h4>Navigate</h4>
                     <ul>
-                        <li><a href="#services">Services</a></li>
+                        <li><a href="index.html#story">My Story</a></li>
                         <li><a href="portfolio.html">Portfolio</a></li>
                         <li><a href="pricing.html">Pricing</a></li>
-                        <li><a href="about.html">About</a></li>
+                        <li><a href="index.html#about">About</a></li>
                     </ul>
                 </div>
-
-                <div class="footer-section">
+                <div class="footer-col">
                     <h4>Services</h4>
                     <ul>
-                        <li><a href="#services">Box Braids</a></li>
-                        <li><a href="#services">Cornrows</a></li>
-                        <li><a href="#services">Twists & Locs</a></li>
-                        <li><a href="#services">Natural Hair</a></li>
+                        <li><a href="index.html#services">Box Braids</a></li>
+                        <li><a href="index.html#services">Cornrows</a></li>
+                        <li><a href="index.html#services">Twists & Locs</a></li>
+                        <li><a href="index.html#services">Natural Hair</a></li>
                     </ul>
                 </div>
-
-                <div class="footer-section">
+                <div class="footer-col">
                     <h4>Contact</h4>
                     <ul>
-                        <li><i class="fas fa-phone"></i> +(254)725-351-803</li>
-                        <li><i class="fas fa-envelope"></i> <a href="mailto:vivienneakose22@gmail.com" class="email-link">vivienneakose22@gmail.com</a></li>
-                        <li><i class="fas fa-map-marker-alt"></i>@ your place of comfort</li>
-                        <li><i class="fas fa-clock"></i> Mon-Sat: 9AM - 8PM</li>
+                        <li><i class="fas fa-phone"></i> +(254) 725-351-803</li>
+                        <li><i class="fas fa-envelope"></i><a href="mailto:vivienneakose22@gmail.com"> vivienneakose22@gmail.com</a></li>
+                        <li><i class="fas fa-map-marker-alt"></i> @ your place of comfort</li>
+                        <li><i class="fas fa-clock"></i> Mon–Sat: 9AM – 8PM</li>
                     </ul>
                 </div>
             </div>
-
             <div class="footer-bottom">
-                <p>&copy; 2026 Hair by Akose. All rights reserved.</p>
-                <p>Crafted with <i class="fas fa-heart"></i> and passion</p>
-                <p>by #mimsanii</p>
+                <span>&copy; 2026 Hair by Akose. All rights reserved.</span>
+                <span>Crafted with <i class="fas fa-heart" style="color:var(--gold)"></i> and passion · by #mimsanii</span>
             </div>
         </div>
     </footer>
 
-    <!-- Mobile Bottom Navigation -->
-    <nav class="mobile-nav" id="mobileNav">
-        <a href="#home" class="mobile-nav-item active">
-            <i class="fas fa-home"></i>
-            <span>Home</span>
-        </a>
-        <a href="#services" class="mobile-nav-item">
-            <i class="fas fa-scissors"></i>
-            <span>Services</span>
-        </a>
-        <a href="portfolio.html" class="mobile-nav-item">
-            <i class="fas fa-images"></i>
-            <span>Gallery</span>
-        </a>
-        <a href="contact.html" class="mobile-nav-item">
-            <i class="fas fa-calendar"></i>
-            <span>Book</span>
-        </a>
-    </nav>
-    <!-- Mobile Bottom Navigation -->
-    <nav class="mobile-nav" id="mobileNav">
-        <a href="index.html" class="mobile-nav-item">
-            <i class="fas fa-home"></i>
-            <span>Home</span>
-        </a>
-        <a href="index.html#services" class="mobile-nav-item">
-            <i class="fas fa-scissors"></i>
-            <span>Services</span>
-        </a>
-        <a href="portfolio.html" class="mobile-nav-item active">
-            <i class="fas fa-images"></i>
-            <span>Gallery</span>
-        </a>
-        <a href="contact.html" class="mobile-nav-item">
-            <i class="fas fa-calendar"></i>
-            <span>Book</span>
-        </a>
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-inner">
+            <button class="lightbox-close" id="lightboxClose"><i class="fas fa-times"></i></button>
+            <button class="lightbox-nav lightbox-prev" id="lightboxPrev"><i class="fas fa-chevron-left"></i></button>
+            <button class="lightbox-nav lightbox-next" id="lightboxNext"><i class="fas fa-chevron-right"></i></button>
+            <img src="" alt="" id="lightboxImg">
+            <div class="lightbox-caption">
+                <h3 id="lightboxTitle"></h3>
+                <p id="lightboxMeta"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- MOBILE NAV -->
+    <nav class="mobile-nav">
+        <a href="index.html"><i class="fas fa-home"></i><span>Home</span></a>
+        <a href="index.html#services"><i class="fas fa-scissors"></i><span>Services</span></a>
+        <a href="portfolio.html" class="active"><i class="fas fa-images"></i><span>Gallery</span></a>
+        <a href="contact.html"><i class="fas fa-calendar"></i><span>Book</span></a>
     </nav>
 
-    <!-- Scripts -->
-    <script src="assets/js/main.js"></script>
-    <script src="assets/js/portfolio.js"></script>
+    <script>
+        // Sticky nav
+        const nav = document.getElementById('mainNav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 60);
+        });
+
+        // Filter
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                const filter = this.dataset.filter;
+                galleryItems.forEach(item => {
+                    const match = filter === 'all' || item.dataset.category === filter;
+                    item.classList.toggle('hidden', !match);
+                    if (match) item.style.animation = 'fadeUp 0.5s ease both';
+                });
+            });
+        });
+
+        // Lightbox
+        const lightbox    = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxTitle = document.getElementById('lightboxTitle');
+        const lightboxMeta  = document.getElementById('lightboxMeta');
+
+        // Collect all visible items for prev/next
+        let lightboxIndex = 0;
+        const getVisible = () => [...galleryItems].filter(i => !i.classList.contains('hidden'));
+
+        function openLightbox(item) {
+            const img   = item.querySelector('img');
+            const h3    = item.querySelector('.gallery-overlay h3');
+            const p     = item.querySelector('.gallery-overlay p');
+            lightboxImg.src = img.src;
+            lightboxImg.alt = img.alt;
+            lightboxTitle.textContent = h3 ? h3.textContent : '';
+            lightboxMeta.textContent  = p  ? p.textContent  : '';
+            lightboxIndex = getVisible().indexOf(item);
+            lightbox.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        function navigateLightbox(dir) {
+            const visible = getVisible();
+            lightboxIndex = (lightboxIndex + dir + visible.length) % visible.length;
+            openLightbox(visible[lightboxIndex]);
+        }
+
+        // Open on zoom btn or card click
+        document.querySelectorAll('.gallery-card').forEach(card => {
+            card.addEventListener('click', () => {
+                openLightbox(card.closest('.gallery-item'));
+            });
+        });
+
+        document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+        document.getElementById('lightboxPrev').addEventListener('click', (e) => { e.stopPropagation(); navigateLightbox(-1); });
+        document.getElementById('lightboxNext').addEventListener('click', (e) => { e.stopPropagation(); navigateLightbox(1); });
+
+        // Close on backdrop click
+        lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+
+        // Keyboard nav
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('open')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft')  navigateLightbox(-1);
+            if (e.key === 'ArrowRight') navigateLightbox(1);
+        });
+
+        // Load more (placeholder)
+        document.getElementById('loadMore').addEventListener('click', function() {
+            this.textContent = 'More coming soon!';
+            this.disabled = true;
+            this.style.opacity = '0.5';
+        });
+
+        console.log('Portfolio initialized ✨');
+    </script>
 </body>
 </html>
