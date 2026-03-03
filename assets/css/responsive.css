@@ -1,0 +1,611 @@
+/* ==========================================
+   RESPONSIVE STYLES - ADAPTIVE LAYOUTS
+   Mobile, Tablet, Laptop, Desktop, TV
+   ========================================== */
+
+/* ==========================================
+   MOBILE DEVICES (320px - 767px)
+   Portrait phones - vertical scrolling
+   ========================================== */
+
+@media (max-width: 767px) {
+    
+    /* Logo sizing for mobile */
+    .logo-image {
+        height: 45px;
+    }
+    
+    /* Hide desktop nav, show mobile nav */
+    .desktop-nav {
+        padding: 0.875rem var(--space-sm);
+    }
+    
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 75%;
+        height: 100vh;
+        background: white;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 6rem 2rem 2rem;
+        gap: 1.5rem;
+        box-shadow: var(--shadow-lg);
+        transition: right 0.4s ease;
+        z-index: 999;
+    }
+    
+    .nav-menu.active {
+        right: 0;
+    }
+    
+    .hamburger {
+        display: flex;
+        z-index: 1001;
+    }
+    
+    .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+    
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+    }
+    
+    .cta-button {
+        width: 100%;
+        text-align: center;
+    }
+    
+    /* Mobile menu overlay */
+    .nav-menu.active::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 25%;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 998;
+    }
+    
+    /* Hero - Vertical stacked layout */
+    .hero {
+        min-height: 100vh;
+        padding: 7rem var(--space-sm) 6rem;
+        text-align: center;
+    }
+    
+    .hero-title {
+        font-size: 2.75rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .hero-buttons .btn {
+        width: 100%;
+    }
+    
+    .hero-stats {
+        gap: 2rem;
+        flex-direction: column;
+    }
+    
+    .scroll-indicator {
+        display: none;
+    }
+    
+    /* Section padding adjustment */
+    .services,
+    .featured-work,
+    .testimonials,
+    .cta-section {
+        padding: 3rem 0;
+    }
+    
+    .section-header {
+        margin-bottom: 2.5rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .section-description {
+        font-size: 1.05rem;
+    }
+    
+    /* Services - 1 column, full width cards */
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .service-card {
+        padding: 2rem 1.5rem;
+    }
+    
+    .service-title {
+        font-size: 1.5rem;
+    }
+    
+    /* Featured Work - 1-2 columns */
+    .work-gallery {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .work-item,
+    .work-item.large,
+    .work-item.wide {
+        grid-column: span 1;
+        aspect-ratio: 4/5;
+    }
+    
+    /* Testimonials - vertical swipe */
+    .testimonials-slider {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .testimonial-card {
+        padding: 1.75rem;
+    }
+    
+    .testimonial-text {
+        font-size: 1.05rem;
+    }
+    
+    .slider-controls {
+        gap: 1rem;
+    }
+    
+    /* CTA Section */
+    .cta-title {
+        font-size: 2rem;
+    }
+    
+    .cta-text {
+        font-size: 1.1rem;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .cta-buttons .btn {
+        width: 100%;
+    }
+    
+    /* Footer */
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    /* Show Mobile Bottom Navigation */
+    .mobile-nav {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: white;
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        padding: 0.75rem 0;
+        justify-content: space-around;
+        align-items: center;
+        z-index: 999;
+        border-top: 1px solid var(--border-color);
+    }
+    
+    .mobile-nav-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.25rem;
+        color: var(--text-light);
+        font-size: 0.75rem;
+        font-family: var(--font-display);
+        font-weight: 600;
+        transition: var(--transition-fast);
+        padding: 0.5rem 1rem;
+        min-width: 70px;
+    }
+    
+    .mobile-nav-item i {
+        font-size: 1.25rem;
+    }
+    
+    .mobile-nav-item.active {
+        color: var(--primary);
+    }
+    
+    .mobile-nav-item:hover {
+        color: var(--primary);
+    }
+    
+    /* Add bottom padding to body to account for mobile nav */
+    body {
+        padding-bottom: 80px;
+    }
+    
+    /* Ensure last sections have extra padding */
+    .footer {
+        padding-bottom: 6rem;
+    }
+    
+    /* Adjust container padding */
+    .container {
+        padding: 0 var(--space-sm);
+    }
+}
+
+/* ==========================================
+   TABLET DEVICES (768px - 1024px)
+   Portrait & landscape tablets
+   ========================================== */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    
+    /* Navigation adjustments */
+    .nav-container {
+        padding: 1rem var(--space-md);
+    }
+    
+    .nav-menu {
+        gap: 1.5rem;
+    }
+    
+    .nav-link {
+        font-size: 0.9rem;
+    }
+    
+    /* Hero - Split layout in landscape */
+    .hero {
+        padding: 7rem var(--space-md) 4rem;
+    }
+    
+    .hero-title {
+        font-size: 4rem;
+    }
+    
+    .hero-stats {
+        gap: 3rem;
+    }
+    
+    /* Services - 2 column grid */
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.75rem;
+    }
+    
+    /* Featured Work - 2-3 columns */
+    .work-gallery {
+        grid-template-columns: repeat(6, 1fr);
+        gap: 1.25rem;
+    }
+    
+    .work-item {
+        grid-column: span 3;
+    }
+    
+    .work-item.large {
+        grid-column: span 3;
+    }
+    
+    .work-item.wide {
+        grid-column: span 6;
+    }
+    
+    /* Testimonials - 2 per row */
+    .testimonials-slider {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* Footer - 2 columns */
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Tablet Landscape Specific */
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    
+    .hero {
+        min-height: 90vh;
+    }
+    
+    .hero-content {
+        max-width: 800px;
+    }
+    
+    .services-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* ==========================================
+   LAPTOP/SMALL DESKTOP (1025px - 1440px)
+   Standard desktop experience
+   ========================================== */
+
+@media (min-width: 1025px) and (max-width: 1440px) {
+    
+    /* Navigation */
+    .nav-container {
+        max-width: 1400px;
+    }
+    
+    /* Hero with parallax effect */
+    .hero {
+        min-height: 95vh;
+    }
+    
+    .hero-background {
+        background-attachment: fixed;
+    }
+    
+    /* Services - 3 columns */
+    .services-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    /* Featured Work - 4 columns */
+    .work-gallery {
+        grid-template-columns: repeat(12, 1fr);
+    }
+    
+    .work-item {
+        grid-column: span 3;
+    }
+    
+    .work-item.large {
+        grid-column: span 6;
+    }
+    
+    .work-item.wide {
+        grid-column: span 6;
+    }
+    
+    /* Testimonials - 3 per row */
+    .testimonials-slider {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    /* Hover effects */
+    .service-card:hover {
+        transform: translateY(-10px);
+    }
+    
+    .work-item:hover {
+        transform: scale(1.03);
+    }
+}
+
+/* ==========================================
+   LARGE DESKTOP (1441px - 1920px)
+   Wide screen layouts
+   ========================================== */
+
+@media (min-width: 1441px) and (max-width: 1920px) {
+    
+    /* Container max width */
+    .container {
+        max-width: 1600px;
+    }
+    
+    .nav-container {
+        max-width: 1600px;
+    }
+    
+    /* Hero - Cinematic */
+    .hero {
+        min-height: 100vh;
+    }
+    
+    .hero-title {
+        font-size: 6.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.75rem;
+    }
+    
+    /* Services - can go to 4 columns if needed */
+    .services-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2.5rem;
+    }
+    
+    /* Featured Work - 5-6 columns */
+    .work-gallery {
+        grid-template-columns: repeat(12, 1fr);
+        gap: 2rem;
+    }
+    
+    .work-item {
+        grid-column: span 3;
+    }
+    
+    .work-item.large {
+        grid-column: span 5;
+    }
+    
+    .work-item.wide {
+        grid-column: span 7;
+    }
+    
+    /* Sections - more padding */
+    .services,
+    .featured-work,
+    .testimonials {
+        padding: 8rem 0;
+    }
+    
+    .cta-section {
+        padding: 8rem 0;
+    }
+}
+
+/* ==========================================
+   4K/TV SCREENS (1921px+)
+   Extra large displays
+   ========================================== */
+
+@media (min-width: 1921px) {
+    
+    html {
+        font-size: 18px; /* Larger base font */
+    }
+    
+    .container,
+    .nav-container {
+        max-width: 1800px;
+    }
+    
+    /* Hero - Ultra wide cinematic */
+    .hero {
+        min-height: 100vh;
+    }
+    
+    .hero-title {
+        font-size: 8rem;
+    }
+    
+    /* Services */
+    .services-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 3rem;
+    }
+    
+    /* Featured Work - Maximum columns */
+    .work-gallery {
+        grid-template-columns: repeat(12, 1fr);
+        gap: 2.5rem;
+    }
+    
+    .work-item {
+        grid-column: span 2;
+    }
+    
+    .work-item.large {
+        grid-column: span 4;
+    }
+    
+    .work-item.wide {
+        grid-column: span 6;
+    }
+    
+    /* Testimonials */
+    .testimonials-slider {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* ==========================================
+   TOUCH DEVICE OPTIMIZATIONS
+   ========================================== */
+
+@media (hover: none) and (pointer: coarse) {
+    
+    /* Larger touch targets */
+    .btn {
+        min-height: 48px;
+        padding: 1.25rem 2rem;
+    }
+    
+    .mobile-nav-item {
+        min-width: 60px;
+        min-height: 60px;
+    }
+    
+    .service-card {
+        border: 2px solid var(--border-color);
+    }
+    
+    /* Remove hover effects on touch devices */
+    .service-card:hover {
+        transform: none;
+    }
+    
+    .work-item:hover {
+        transform: none;
+    }
+    
+    /* Show overlays by default on touch */
+    .work-overlay {
+        transform: translateY(0);
+        background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+    }
+}
+
+/* ==========================================
+   PRINT STYLES
+   ========================================== */
+
+@media print {
+    .desktop-nav,
+    .mobile-nav,
+    .hero-buttons,
+    .cta-section,
+    .scroll-indicator {
+        display: none;
+    }
+    
+    body {
+        padding-bottom: 0;
+    }
+    
+    .hero {
+        min-height: auto;
+        padding: 2rem 0;
+    }
+    
+    .section {
+        page-break-inside: avoid;
+    }
+}
+
+/* ==========================================
+   REDUCED MOTION PREFERENCE
+   ========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .hero-background::before,
+    .hero-background::after {
+        animation: none;
+    }
+    
+    .scroll-indicator {
+        animation: none;
+    }
+}
+
+/* ==========================================
+   DARK MODE SUPPORT (Optional)
+   ========================================== */
+
+@media (prefers-color-scheme: dark) {
+    /* Can implement dark mode styles here if desired */
+    /* For now, keeping light theme as primary */
+}

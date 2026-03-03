@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="View Hair by Akose's portfolio of beautiful braids, twists, weaves, and natural hair transformations.">
+    <title>Portfolio | Hair by Akose</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="assets/css/portfolio.css">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    
+    <!-- Desktop/Tablet Navigation -->
+    <nav class="desktop-nav" id="desktopNav">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/images/logo.jpeg" alt="Hair by Akose" class="logo-image">
+                </a>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="index.html#services" class="nav-link">Services</a></li>
+                <li><a href="portfolio.html" class="nav-link active">Portfolio</a></li>
+                <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+                <li><a href="index.html#testimonials" class="nav-link">Testimonials</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="cta-button">Book Now</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <span class="hero-badge">My Work</span>
+            <h1 class="page-title">Portfolio</h1>
+            <p class="page-subtitle">Browse through transformations and see the artistry behind every style</p>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="filter-section">
+        <div class="container">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All Work</button>
+                <button class="filter-btn" data-filter="braids">Braids</button>
+                <button class="filter-btn" data-filter="cornrows">Cornrows</button>
+                <button class="filter-btn" data-filter="twists">Twists</button>
+                <button class="filter-btn" data-filter="weaves">Weaves</button>
+                <button class="filter-btn" data-filter="natural">Natural Hair</button>
+                <button class="filter-btn" data-filter="locs">Locs</button>
+                <button class="filter-btn" data-filter="kids">Kids</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Gallery -->
+    <section class="portfolio-gallery">
+        <div class="container">
+            <div class="gallery-grid" id="galleryGrid">
+                
+                <!-- Portfolio Item 1 -->
+                <div class="gallery-item" data-category="braids">
+                     <img src="assets/images/bbs.jpeg" alt="knotless-braids" class="work-image">
+                    <div class="gallery-image" style="background: linear-gradient(135deg, #B88B5C 0%, #E6C89A 100%);">
+                        <span class="placeholder-text">Box Braids<br>Small</span>
+                    </div>
+                    <div class="gallery-overlay">
+                        <h3>Small Box Braids</h3>
+                        <p>8 hours • Protective Style</p>
+                        <div class="gallery-icons">
+                            <button class="icon-btn"><i class="fas fa-search-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 2 -->
+                <div class="gallery-item" data-category="braids">
+                        <img src="assets/images/bbm.jpeg" alt="medium-box-braids" class="work-image">
+                    <div class="gallery-image" style="background: linear-gradient(135deg, #1A5F61 0%, #0A2C2D 100%);">
+                        <span class="placeholder-text">Box Braids<br>Medium</span>
+                    </div>
+                    <div class="gallery-overlay">
+                        <h3>Medium Box Braids</h3>
+                        <p>6 hours • With Color</p>
+                        <div class="gallery-icons">
+                            <button class="icon-btn"><i class="fas fa-search-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 3 -->
+                <div class="gallery-item" data-category="cornrows">
+                    <img src="assets/images/kb.jpeg" alt="knotless-braids" class="work-image">
+                    <div class="gallery-image" style="background: linear-gradient(135deg, #D4A574 0%, #E6C89A 100%);">
+                        <span class="placeholder-text">knotless<br>Braids</span>
+                    </div>
+                    <div class="gallery-overlay">
+                        <h3>Knotless Braids</h3>
+                        <p>4 hours • Sleek Finish</p>
+                        <div class="gallery-icons">
+                            <button class="icon-btn"><i class="fas fa-search-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 4 -->
+                <div class="gallery-item" data-category="cornrows">
+                    <img src="assets/images/cc.jpeg" alt="complex-cornrows" class="work-image">
+                    <div class="gallery-image" style="background: linear-gradient(135deg, #0A2C2D 0%, #1A5F61 100%);">
+                        <span class="placeholder-text">Complex<br>Cornrows</span>
+                    </div>
+                    <div class="gallery-overlay">
+                        <h3>Intricate Cornrow Pattern</h3>
+                        <p>5 hours • Custom Design</p>
+                        <div class="gallery-icons">
+                            <button class="icon-btn"><i class="fas fa-search-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 5 -->
+                <div class="gallery-item large" data-category="twists">
+                    <img src="assets/images/senegal.jfif" alt="senegalese-twists" class="work-image">
+                    <div class="gallery-image" style="background: linear-gradient(135deg, #B88B5C 0%, #D4A574 100%);">
+                        <span class="placeholder-text">Senegalese<br>Twists</span>
+                    </div>
+                    <div class="gallery-overlay">
+                        <h3>Senegalese Twists</h3>
+                        <p>7 hours • Long Length</p>
+                        <div class="gallery-icons">
+                            <button class="icon-btn"><i class="fas fa-search-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 6 -->
+                <div class="gallery-item" data-category="twists">
+                    <img src="assets/images/passion.jfif" alt="passion-twists" class="work-image">
+                    <div class="gallery-image" style="background: linear-gradient(135deg, #0F3D3E 0%, #D4A574 100%);">
+                        <span class="placeholder-text">Passion<br>Twists</span>
+                    </div>
+                    <div class="gallery-overlay">
+                        <h3>Passion Twists</h3>
+                        <p>8 hours • Bohemian Style</p>
+                        <div class="gallery-icons">
+                            <button class="icon-btn"><i class="fas fa-search-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 7 -->
+                <div class="gallery-item" data-category="weaves">
+                    <img src="assets/images/cs.jpeg" alt="frontal-install" class="work-image">
+                    <div class="gallery-image" style="background: linear-gradient(135deg, #1A5F61 0%, #0F3D3E 100%);">
+                        <span class="placeholder-text">Conrows<br>simple</span>
+                    </div>
+                    <div class="gallery-overlay">
+                        <h3>Conrows Simple</h3>
+                        <p>7 hours • Natural Hairline</p>
+                        <div class="gallery-icons">
+                            <button class="icon-btn"><i class="fas fa-search-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 8 -->
+                <div class="gallery-item" data-category="natural">
+                    <img src="assets/images/natural.jfif" alt="natural-twist-out" class="work-image">
+                    <div class="gallery-image" style="background: linear-gradient(135deg, #D4A574 0%, #B88B5C 100%);">
+                        <span class="placeholder-text">Natural<br>Twist-Out</span>
+                    </div>
+                    <div class="gallery-overlay">
+                        <h3>Defined Twist-Out</h3>
+                        <p>2 hours • Volume & Definition</p>
+                        <div class="gallery-icons">
+                            <button class="icon-btn"><i class="fas fa-search-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 9 -->
+                <div class="gallery-item" data-category="locs">
+                    <img src="assets/images/retouch.jfif" alt="locs-retouch" class="work-image">
+                    <div class="gallery-image" style="background: linear-gradient(135deg, #0A2C2D 0%, #0F3D3E 100%);">
+                        <span class="placeholder-text">Locs<br>Retouch</span>
+                    </div>
+                    <div class="gallery-overlay">
+                        <h3>Locs Retouch & Style</h3>
+                        <p>3 hours • Fresh & Clean</p>
+                        <div class="gallery-icons">
+                            <button class="icon-btn"><i class="fas fa-search-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 10 -->
+                <div class="gallery-item" data-category="kids">
+                    <img src="assets/images/kb (2).jpeg" alt="kids-braids" class="work-image">
+                    <div class="gallery-image" style="background: linear-gradient(135deg, #E6C89A 0%, #D4A574 100%);">
+                        <span class="placeholder-text">Kids<br>Braids</span>
+                    </div>
+                    <div class="gallery-overlay">
+                        <h3>Kids Cornrow Style</h3>
+                        <p>2 hours • Back to School</p>
+                        <div class="gallery-icons">
+                            <button class="icon-btn"><i class="fas fa-search-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 11 -->
+                <div class="gallery-item" data-category="braids">
+                    <img src="assets/images/bbj.jpeg" alt="jumbo-braids" class="work-image">
+                    <div class="gallery-image" style="background: linear-gradient(135deg, #1A5F61 0%, #D4A574 100%);">
+                        <span class="placeholder-text">Jumbo<br>Braids</span>
+                    </div>
+                    <div class="gallery-overlay">
+                        <h3>Jumbo Box Braids</h3>
+                        <p>4 hours • Quick Style</p>
+                        <div class="gallery-icons">
+                            <button class="icon-btn"><i class="fas fa-search-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 12 -->
+                <div class="gallery-item" data-category="cornrows">
+                    <img src="assets/images/kidconrow.jpeg" alt="kids conrow" class="work-image">
+                    <div class="gallery-image" style="background: linear-gradient(135deg, #0F3D3E 0%, #B88B5C 100%);">
+                        <span class="placeholder-text">Kids<br>Conrow</span>
+                    </div>
+                    <div class="gallery-overlay">
+                        <h3>Kids Conrow</h3>
+                        <p>3 hours • Elegant Style</p>
+                        <div class="gallery-icons">
+                            <button class="icon-btn"><i class="fas fa-search-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="load-more-container">
+                <button class="btn btn-outline" id="loadMore">
+                    <i class="fas fa-plus"></i> Load More
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Before/After Section -->
+    <section class="before-after-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Transformations</span>
+                <h2 class="section-title">Before & After</h2>
+                <p class="section-description">See the amazing transformations</p>
+            </div>
+
+            <div class="ba-grid">
+                <div class="ba-item">
+                    <div class="ba-images">
+                        <div class="ba-image before" style="background: linear-gradient(135deg, rgba(15, 61, 62, 0.3) 0%, rgba(26, 95, 97, 0.3) 100%);">
+                            <span class="ba-label">Before</span>
+                        </div>
+                        <div class="ba-image after" style="background: linear-gradient(135deg, #0F3D3E 0%, #1A5F61 100%);">
+                            <span class="ba-label">After</span>
+                        </div>
+                    </div>
+                    <h3>Box Braids Transformation</h3>
+                </div>
+
+                <div class="ba-item">
+                    <div class="ba-images">
+                        <div class="ba-image before" style="background: linear-gradient(135deg, rgba(212, 165, 116, 0.3) 0%, rgba(230, 200, 154, 0.3) 100%);">
+                            <span class="ba-label">Before</span>
+                        </div>
+                        <div class="ba-image after" style="background: linear-gradient(135deg, #D4A574 0%, #E6C89A 100%);">
+                            <span class="ba-label">After</span>
+                        </div>
+                    </div>
+                    <h3>Feed-in Cornrows</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Want to Be My Next Transformation?</h2>
+                <p class="cta-text">Book your appointment today and let's create something beautiful together!</p>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="btn btn-primary btn-lg">Book Appointment</a>
+                    <a href="https://wa.me/1234567890?text=Hi%20Akose!%20I%20loved%20your%20portfolio!%20I'd%20like%20to%20book%20an%20appointment." class="btn btn-whatsapp btn-lg" target="_blank">
+                        <i class="fab fa-whatsapp"></i> WhatsApp Me
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+ <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-logo">
+                        <img src="assets/images/logo.jpeg" alt="Hair by Akose" class="footer-logo-image">
+                    </h3>
+                    <p>Professional mobile hair styling and handmade accessories, bringing beauty to your doorstep.</p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/hairbyakose?igsh=YW1pdTc0ZzBua2p4&utm_source=qr" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://web.facebook.com/vivienne.akose" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.tiktok.com/@hairbyakose?_r=1&_t=ZS-93RrembQpYD" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                        <a href="http://www.youtube.com/@vivienneakose8306" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#services">Box Braids</a></li>
+                        <li><a href="#services">Cornrows</a></li>
+                        <li><a href="#services">Twists & Locs</a></li>
+                        <li><a href="#services">Natural Hair</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> +(254)725-351-803</li>
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:vivienneakose22@gmail.com" class="email-link">vivienneakose22@gmail.com</a></li>
+                        <li><i class="fas fa-map-marker-alt"></i>@ your place of comfort</li>
+                        <li><i class="fas fa-clock"></i> Mon-Sat: 9AM - 8PM</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Hair by Akose. All rights reserved.</p>
+                <p>Crafted with <i class="fas fa-heart"></i> and passion</p>
+                <p>by #mimsanii</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="mobile-nav" id="mobileNav">
+        <a href="#home" class="mobile-nav-item active">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="#services" class="mobile-nav-item">
+            <i class="fas fa-scissors"></i>
+            <span>Services</span>
+        </a>
+        <a href="portfolio.html" class="mobile-nav-item">
+            <i class="fas fa-images"></i>
+            <span>Gallery</span>
+        </a>
+        <a href="contact.html" class="mobile-nav-item">
+            <i class="fas fa-calendar"></i>
+            <span>Book</span>
+        </a>
+    </nav>
+    <!-- Mobile Bottom Navigation -->
+    <nav class="mobile-nav" id="mobileNav">
+        <a href="index.html" class="mobile-nav-item">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="index.html#services" class="mobile-nav-item">
+            <i class="fas fa-scissors"></i>
+            <span>Services</span>
+        </a>
+        <a href="portfolio.html" class="mobile-nav-item active">
+            <i class="fas fa-images"></i>
+            <span>Gallery</span>
+        </a>
+        <a href="contact.html" class="mobile-nav-item">
+            <i class="fas fa-calendar"></i>
+            <span>Book</span>
+        </a>
+    </nav>
+
+    <!-- Scripts -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/portfolio.js"></script>
+</body>
+</html>
