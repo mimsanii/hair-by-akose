@@ -3,480 +3,752 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Hair by Akose pricing - Affordable, transparent pricing for all hair styling services. Book your appointment today!">
+    <meta name="description" content="Hair by Akose pricing - Affordable, transparent pricing for all hair styling services.">
     <title>Pricing | Hair by Akose</title>
-    
-    <!-- Fonts -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Styles -->
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/responsive.css">
-    <link rel="stylesheet" href="assets/css/pricing.css">
-    
-    <!-- Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --teal-deep:  #0B3535;
+            --teal:       #0F3D3E;
+            --teal-mid:   #145254;
+            --teal-light: #1A6466;
+            --black:      #071E1E;
+            --black-soft: #0A2828;
+            --black-card: #0D3030;
+            --black-edge: #113838;
+            --gold:       #D4A96A;
+            --gold-light: #E2C08A;
+            --gold-dark:  #B8894E;
+            --white:      #F5EDD8;
+            --white-dim:  rgba(245,237,216,0.6);
+            --grad-gold:  linear-gradient(135deg, #B8894E 0%, #D4A96A 40%, #E2C08A 60%, #D4A96A 100%);
+            --font-display: 'Syne', sans-serif;
+            --font-body:    'Cormorant Garamond', serif;
+            --ease: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-body); background: var(--black); color: var(--white); line-height: 1.75; overflow-x: hidden; }
+        img { max-width:100%; height:auto; display:block; }
+        a { text-decoration:none; color:inherit; transition: all 0.3s ease; }
+
+        body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events:none; z-index:9999; opacity:0.25; }
+
+        .container { width:100%; max-width:1400px; margin:0 auto; padding:0 2rem; }
+        .section-label { display:inline-flex; align-items:center; gap:0.75rem; font-family:var(--font-display); font-size:0.7rem; font-weight:700; letter-spacing:0.25em; text-transform:uppercase; color:var(--gold); margin-bottom:1.5rem; }
+        .section-label::before, .section-label::after { content:''; display:block; width:30px; height:1px; background:var(--gold); opacity:0.6; }
+
+        /* NAV */
+        .nav { position:fixed; top:0; left:0; right:0; z-index:1000; padding:1.5rem 0; transition:all 0.4s ease; }
+        .nav.scrolled { background:rgba(7,30,30,0.97); backdrop-filter:blur(20px); border-bottom:1px solid rgba(212,169,106,0.2); padding:1rem 0; }
+        .nav-inner { max-width:1400px; margin:0 auto; padding:0 2rem; display:flex; justify-content:space-between; align-items:center; }
+        .nav-logo img { height:55px; width:auto; object-fit:contain; }
+        .nav-links { display:flex; list-style:none; gap:2.5rem; align-items:center; }
+        .nav-links a { font-family:var(--font-display); font-size:0.78rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--white-dim); }
+        .nav-links a:hover, .nav-links a.active-link { color:var(--gold); }
+        .nav-links .nav-cta { padding:0.6rem 1.5rem; border:1px solid var(--gold); color:var(--gold); border-radius:100px; }
+        .nav-links .nav-cta:hover { background:var(--gold); color:var(--black); }
+        .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; }
+        .hamburger span { width:24px; height:2px; background:var(--white); border-radius:2px; }
+
+        /* ── PAGE HERO ── */
+        .page-hero {
+            min-height: 60vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            padding: 10rem 2rem 6rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .page-hero::before { content:''; position:fixed; top:0; left:0; right:0; bottom:0; background:radial-gradient(ellipse at 70% 40%, rgba(212,169,106,0.07) 0%, transparent 60%); pointer-events:none; z-index:0; }
+
+        /* Vertical lines */
+        .hero-lines { position:fixed; inset:0; pointer-events:none; z-index:0; }
+        .hero-lines span { position:absolute; top:0; bottom:0; width:1px; background:linear-gradient(to bottom, transparent, rgba(212,169,106,0.08), transparent); }
+        .hero-lines span:nth-child(1){left:20%} .hero-lines span:nth-child(2){left:40%}
+        .hero-lines span:nth-child(3){left:60%} .hero-lines span:nth-child(4){left:80%}
+
+        .hero-text { position:relative; z-index:2; animation: fadeUp 1s var(--ease) both; }
+        @keyframes fadeUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+
+        .hero-eyebrow { display:inline-flex; align-items:center; gap:0.75rem; font-family:var(--font-display); font-size:0.7rem; font-weight:700; letter-spacing:0.3em; text-transform:uppercase; color:var(--gold); margin-bottom:1.5rem; }
+        .hero-eyebrow::before, .hero-eyebrow::after { content:''; width:30px; height:1px; background:var(--gold); opacity:0.5; }
+
+        .page-title { font-family:var(--font-display); font-size:clamp(3rem,8vw,7rem); font-weight:800; line-height:0.95; letter-spacing:-0.03em; margin-bottom:1.5rem; }
+        .page-title .gold { background:var(--grad-gold); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; font-style:italic; }
+        .page-subtitle { font-size:1.25rem; color:var(--white-dim); font-style:italic; line-height:1.7; margin-bottom:2.5rem; }
+
+        /* Quick stats in hero */
+        .hero-chips { display:flex; gap:1rem; flex-wrap:wrap; }
+        .chip { display:inline-flex; align-items:center; gap:0.5rem; padding:0.5rem 1.1rem; background:var(--black-card); border:1px solid rgba(212,169,106,0.2); border-radius:100px; font-family:var(--font-display); font-size:0.72rem; font-weight:600; letter-spacing:0.08em; color:var(--white-dim); }
+        .chip i { color:var(--gold); }
+
+        /* ── CALCULATOR (right side of hero) ── */
+        .calculator-wrap { position:relative; z-index:2; animation: fadeUp 1s var(--ease) 0.2s both; }
+        .calculator-card {
+            background: var(--black-card);
+            border: 1px solid rgba(212,169,106,0.2);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        .calculator-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:var(--grad-gold); }
+        .calculator-card h2 { font-family:var(--font-display); font-size:1.6rem; font-weight:800; color:var(--white); margin-bottom:0.4rem; }
+        .calculator-card > p { font-size:1rem; color:var(--white-dim); margin-bottom:2rem; font-style:italic; }
+
+        .calc-label { display:block; font-family:var(--font-display); font-size:0.72rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:var(--gold); margin-bottom:0.6rem; }
+        .calc-select {
+            width:100%;
+            padding: 1rem 1.25rem;
+            background: var(--black-soft);
+            border: 1px solid rgba(212,169,106,0.2);
+            border-radius: 10px;
+            color: var(--white);
+            font-family: var(--font-body);
+            font-size: 1.05rem;
+            cursor: pointer;
+            transition: border-color 0.3s ease;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23D4A96A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1.25rem center;
+        }
+        .calc-select:focus { outline:none; border-color:var(--gold); box-shadow:0 0 0 3px rgba(212,169,106,0.1); }
+        .calc-select option { background: var(--black-card); color: var(--white); }
+
+        /* Quote result */
+        .quote-result {
+            display: none;
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            background: var(--black-soft);
+            border: 1px solid rgba(212,169,106,0.25);
+            border-radius: 12px;
+            animation: fadeUp 0.4s var(--ease) both;
+        }
+        .quote-result.show { display:block; }
+        .quote-name { font-family:var(--font-display); font-size:1.3rem; font-weight:700; color:var(--white); margin-bottom:1rem; }
+        .quote-stats { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1.5rem; }
+        .q-stat { background:var(--black-card); border-radius:10px; padding:1rem; text-align:center; border:1px solid rgba(212,169,106,0.1); }
+        .q-stat .q-val { display:block; font-family:var(--font-display); font-size:1.3rem; font-weight:800; background:var(--grad-gold); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+        .q-stat .q-lbl { font-family:var(--font-display); font-size:0.65rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--white-dim); margin-top:0.2rem; display:block; }
+        .btn-wa { display:flex; align-items:center; justify-content:center; gap:0.75rem; width:100%; padding:1rem; background:#25D366; color:white; font-family:var(--font-display); font-size:0.8rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; border:none; border-radius:10px; cursor:pointer; transition:all 0.3s ease; }
+        .btn-wa:hover { background:#1DAD52; transform:translateY(-2px); box-shadow:0 8px 24px rgba(37,211,102,0.3); }
+
+        /* ── PRICING SECTION ── */
+        .pricing-section { padding:7rem 0; background:var(--black-soft); }
+
+        /* Category tabs */
+        .cat-tabs { display:flex; gap:0.75rem; flex-wrap:wrap; justify-content:center; margin-bottom:3.5rem; }
+        .cat-tab { padding:0.65rem 1.5rem; font-family:var(--font-display); font-size:0.75rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; background:transparent; color:var(--white-dim); border:1px solid rgba(212,169,106,0.2); border-radius:100px; cursor:pointer; transition:all 0.3s ease; }
+        .cat-tab:hover { border-color:var(--gold); color:var(--gold); }
+        .cat-tab.active { background:var(--grad-gold); color:var(--black); border-color:transparent; box-shadow:0 4px 20px rgba(212,169,106,0.3); }
+
+        /* Pricing panel */
+        .pricing-panel { display:none; animation: fadeUp 0.4s var(--ease) both; }
+        .pricing-panel.active { display:block; }
+
+        .panel-header { display:flex; align-items:center; gap:1.5rem; margin-bottom:2.5rem; padding-bottom:2rem; border-bottom:1px solid rgba(212,169,106,0.15); }
+        .panel-icon { width:64px; height:64px; border-radius:14px; background:rgba(212,169,106,0.1); border:1px solid rgba(212,169,106,0.2); display:flex; align-items:center; justify-content:center; font-size:1.75rem; color:var(--gold); }
+        .panel-header h2 { font-family:var(--font-display); font-size:2.5rem; font-weight:800; color:var(--white); }
+        .panel-header p { font-size:1.05rem; color:var(--white-dim); font-style:italic; }
+
+        /* Price rows */
+        .price-rows { display:grid; gap:1px; background:rgba(212,169,106,0.08); border-radius:16px; overflow:hidden; border:1px solid rgba(212,169,106,0.1); }
+        .price-row {
+            display: grid;
+            grid-template-columns: 1fr auto auto;
+            align-items: center;
+            gap: 2rem;
+            padding: 1.5rem 2rem;
+            background: var(--black-card);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .price-row:hover { background:var(--black-edge); padding-left:2.5rem; }
+        .price-row:hover .pr-name { color:var(--gold-light); }
+
+        .pr-name { font-family:var(--font-display); font-size:1.1rem; font-weight:700; color:var(--white); transition:color 0.3s ease; }
+        .pr-duration { font-family:var(--font-display); font-size:0.72rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--white-dim); display:flex; align-items:center; gap:0.4rem; }
+        .pr-duration i { color:var(--gold); opacity:0.7; }
+        .pr-price { font-family:var(--font-display); font-size:1.2rem; font-weight:800; background:var(--grad-gold); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; white-space:nowrap; }
+
+        .book-row-btn {
+            display: none;
+            padding: 0.4rem 1rem;
+            background: transparent;
+            border: 1px solid rgba(212,169,106,0.3);
+            border-radius: 100px;
+            color: var(--gold);
+            font-family: var(--font-display);
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        .price-row:hover .book-row-btn { display:block; }
+        .book-row-btn:hover { background:var(--grad-gold); color:var(--black); border-color:transparent; }
+
+        /* ── NOTES ── */
+        .notes-section { padding:6rem 0; background:var(--black); }
+        .notes-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1.5rem; margin-top:3.5rem; }
+        .note-card { padding:2rem; background:var(--black-card); border:1px solid rgba(212,169,106,0.1); border-radius:16px; transition:all 0.3s ease; }
+        .note-card:hover { border-color:rgba(212,169,106,0.3); transform:translateY(-4px); }
+        .note-icon { width:48px; height:48px; border-radius:10px; background:rgba(212,169,106,0.1); border:1px solid rgba(212,169,106,0.2); display:flex; align-items:center; justify-content:center; font-size:1.1rem; color:var(--gold); margin-bottom:1.25rem; }
+        .note-card h4 { font-family:var(--font-display); font-size:1rem; font-weight:700; color:var(--white); margin-bottom:0.5rem; }
+        .note-card p { font-size:1rem; color:var(--white-dim); line-height:1.7; }
+
+        /* ── CTA ── */
+        .cta { padding:8rem 0; background:var(--black-soft); position:relative; overflow:hidden; }
+        .cta::before { content:''; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:60vw; height:60vw; background:radial-gradient(ellipse, rgba(212,169,106,0.08) 0%, transparent 65%); pointer-events:none; }
+        .cta-inner { text-align:center; max-width:700px; margin:0 auto; position:relative; z-index:2; }
+        .cta-title { font-family:var(--font-display); font-size:clamp(2rem,5vw,4rem); font-weight:800; color:var(--white); margin-bottom:1rem; }
+        .cta-text { font-size:1.2rem; color:var(--white-dim); font-style:italic; margin-bottom:3rem; }
+        .cta-btns { display:flex; gap:1.25rem; justify-content:center; flex-wrap:wrap; }
+        .btn-gold { display:inline-flex; align-items:center; gap:0.5rem; padding:1rem 2.5rem; background:var(--grad-gold); color:var(--black); font-family:var(--font-display); font-size:0.8rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; border-radius:100px; transition:all 0.3s ease; box-shadow:0 0 30px rgba(212,169,106,0.25); border:none; cursor:pointer; }
+        .btn-gold:hover { transform:translateY(-3px); box-shadow:0 10px 40px rgba(212,169,106,0.4); }
+        .btn-ghost { display:inline-flex; align-items:center; gap:0.5rem; padding:1rem 2.5rem; background:transparent; color:var(--white); font-family:var(--font-display); font-size:0.8rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; border-radius:100px; border:1px solid rgba(245,237,216,0.25); transition:all 0.3s ease; }
+        .btn-ghost:hover { border-color:var(--gold); color:var(--gold); transform:translateY(-3px); }
+
+        /* ── FOOTER ── */
+        .footer { background:var(--black-soft); border-top:1px solid rgba(212,169,106,0.18); padding:5rem 0 2.5rem; }
+        .footer-grid { display:grid; grid-template-columns:1.5fr repeat(3,1fr); gap:3rem; margin-bottom:4rem; }
+        .footer-brand img { height:70px; width:auto; object-fit:contain; margin-bottom:1.25rem; }
+        .footer-brand p { font-size:1rem; color:var(--white-dim); line-height:1.7; margin-bottom:1.5rem; }
+        .socials { display:flex; gap:0.75rem; }
+        .socials a { width:42px; height:42px; border-radius:50%; background:var(--black-card); border:1px solid rgba(212,169,106,0.15); display:flex; align-items:center; justify-content:center; font-size:1rem; color:var(--white-dim); transition:all 0.3s ease; }
+        .socials a:hover { background:var(--gold); color:var(--black); border-color:var(--gold); transform:translateY(-3px); }
+        .footer-col h4 { font-family:var(--font-display); font-size:0.75rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:1.5rem; }
+        .footer-col ul { list-style:none; }
+        .footer-col ul li { margin-bottom:0.7rem; font-size:0.95rem; color:var(--white-dim); transition:color 0.3s ease; }
+        .footer-col ul li:hover { color:var(--white); }
+        .footer-col ul li i { color:var(--gold); width:16px; margin-right:0.5rem; }
+        .footer-col ul li a { color:inherit; }
+        .footer-col ul li a:hover { color:var(--gold); }
+        .footer-bottom { border-top:1px solid rgba(212,169,106,0.1); padding-top:2rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; font-size:0.85rem; color:rgba(245,237,216,0.3); font-family:var(--font-display); }
+
+        /* MOBILE NAV */
+        .mobile-nav { display:none; }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .page-hero { grid-template-columns:1fr; gap:3rem; padding-top:9rem; }
+            .notes-grid { grid-template-columns:repeat(2,1fr); }
+            .footer-grid { grid-template-columns:1fr 1fr; gap:2.5rem; }
+        }
+        @media (max-width: 768px) {
+            .nav-links { display:none; }
+            .hamburger { display:flex; }
+            .price-row { grid-template-columns:1fr; gap:0.5rem; }
+            .pr-price { font-size:1rem; }
+            .notes-grid { grid-template-columns:1fr; }
+            .footer-grid { grid-template-columns:1fr; }
+            .footer-bottom { flex-direction:column; text-align:center; }
+            .mobile-nav { display:flex; position:fixed; bottom:0; left:0; right:0; background:rgba(7,30,30,0.99); border-top:1px solid rgba(212,169,106,0.15); backdrop-filter:blur(20px); z-index:1000; padding:0.75rem 0 1rem; }
+            .mobile-nav a { flex:1; display:flex; flex-direction:column; align-items:center; gap:0.3rem; font-family:var(--font-display); font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--white-dim); }
+            .mobile-nav a.active, .mobile-nav a:hover { color:var(--gold); }
+            .mobile-nav a i { font-size:1.2rem; }
+            body { padding-bottom:4.5rem; }
+            .quote-stats { grid-template-columns:1fr; }
+        }
+    </style>
 </head>
 <body>
-    
-    <!-- Desktop/Tablet Navigation -->
-    <nav class="desktop-nav" id="desktopNav">
-        <div class="nav-container">
-            <div class="logo">
-                <a href="index.html">
-                    <img src="assets/images/logo.jpeg" alt="Hair by Akose" class="logo-image">
-                </a>
+
+    <!-- NAV -->
+    <nav class="nav" id="mainNav">
+        <div class="nav-inner">
+            <div class="nav-logo">
+                <a href="index.html"><img src="assets/images/logo.jpeg" alt="Hair by Akose"></a>
             </div>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="index.html#services" class="nav-link">Services</a></li>
-                <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
-                <li><a href="pricing.html" class="nav-link active">Pricing</a></li>
-                <li><a href="index.html#testimonials" class="nav-link">Testimonials</a></li>
-                <li><a href="about.html" class="nav-link">About</a></li>
-                <li><a href="contact.html" class="cta-button">Book Now</a></li>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#story">Story</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="pricing.html" class="active-link">Pricing</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="contact.html" class="nav-cta">Book Now</a></li>
             </ul>
             <div class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
+                <span></span><span></span><span></span>
             </div>
         </div>
     </nav>
 
-    <!-- Page Hero -->
-    <section class="page-hero">
+    <!-- HERO + CALCULATOR -->
+    <div style="background:var(--black); padding-bottom:0;">
+        <div class="hero-lines"><span></span><span></span><span></span><span></span></div>
+        <div class="page-hero">
+            <!-- Left: text -->
+            <div class="hero-text">
+                <div class="hero-eyebrow">Transparent Pricing</div>
+                <h1 class="page-title">
+                    Fair Prices,<br>
+                    <span class="gold">Beautiful Hair</span>
+                </h1>
+                <p class="page-subtitle">No hidden fees. No surprises. Just honest pricing for gorgeous results at your doorstep.</p>
+                <div class="hero-chips">
+                    <span class="chip"><i class="fas fa-check-circle"></i> No hidden fees</span>
+                    <span class="chip"><i class="fas fa-map-marker-alt"></i> Mobile service</span>
+                    <span class="chip"><i class="fas fa-whatsapp fab"></i> WhatsApp booking</span>
+                    <span class="chip"><i class="fas fa-clock"></i> Flexible hours</span>
+                </div>
+            </div>
+
+            <!-- Right: calculator -->
+            <div class="calculator-wrap">
+                <div class="calculator-card">
+                    <h2>Quick Quote</h2>
+                    <p>Select a service for instant pricing</p>
+
+                    <label class="calc-label" for="serviceSelect">Choose Service</label>
+                    <select class="calc-select" id="serviceSelect">
+                        <option value="">— Select a service —</option>
+                        <optgroup label="✦ Braids">
+                            <option value="box-braids-small">Box Braids — Small</option>
+                            <option value="box-braids-medium">Box Braids — Medium</option>
+                            <option value="box-braids-jumbo">Box Braids — Jumbo</option>
+                            <option value="cornrows-simple">Cornrows — Simple</option>
+                            <option value="cornrows-complex">Cornrows — Complex</option>
+                            <option value="knotless-braids">Knotless Braids</option>
+                            <option value="micro-braiding">Micro Braiding</option>
+                        </optgroup>
+                        <optgroup label="✦ Twists">
+                            <option value="senegalese-twists">Senegalese Twists</option>
+                            <option value="marley-twists">Marley Twists</option>
+                            <option value="passion-twists">Passion Twists</option>
+                            <option value="kinky-twists">Kinky Twists</option>
+                            <option value="twist-out">Twist Out</option>
+                        </optgroup>
+                        <optgroup label="✦ Weaves & Natural">
+                            <option value="weave-install">Weave Install</option>
+                            <option value="wig-lines">Wig Lines</option>
+                            <option value="natural-styling">Natural Hair Styling</option>
+                            <option value="bridal-styling">Bridal Styling</option>
+                        </optgroup>
+                        <optgroup label="✦ Children's">
+                            <option value="kids-braids">Kids Braids</option>
+                            <option value="kids-twists">Kids Twists</option>
+                            <option value="kids-cornrows">Kids Cornrows</option>
+                        </optgroup>
+                        <optgroup label="✦ Locs">
+                            <option value="micro-locs">Micro Locs</option>
+                            <option value="micro-locs-retie">Micro Locs Retie</option>
+                            <option value="locs-retouch">Locs Retouch</option>
+                        </optgroup>
+                    </select>
+
+                    <div class="quote-result" id="quoteResult">
+                        <div class="quote-name" id="quoteName"></div>
+                        <div class="quote-stats">
+                            <div class="q-stat">
+                                <span class="q-val" id="quotePrice"></span>
+                                <span class="q-lbl">KES Price</span>
+                            </div>
+                            <div class="q-stat">
+                                <span class="q-val" id="quoteTime"></span>
+                                <span class="q-lbl">Hours</span>
+                            </div>
+                        </div>
+                        <button class="btn-wa" id="whatsappBookBtn">
+                            <i class="fab fa-whatsapp"></i> Book via WhatsApp
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PRICING TABLES (tabbed) -->
+    <section class="pricing-section" id="pricing">
         <div class="container">
-            <span class="hero-badge">Transparent Pricing</span>
-            <h1 class="page-title">Our Pricing</h1>
-            <p class="page-subtitle">Quality services at fair prices. No hidden fees, just beautiful hair.</p>
+            <div style="text-align:center; margin-bottom:1rem;">
+                <span class="section-label">Full Price List</span>
+                <h2 style="font-family:var(--font-display); font-size:clamp(2rem,4vw,3.5rem); font-weight:800; color:var(--white); margin-bottom:2rem;">All Services</h2>
+            </div>
+
+            <!-- Category tabs -->
+            <div class="cat-tabs">
+                <button class="cat-tab active" data-tab="braids"><i class="fas fa-sparkles"></i> Braids</button>
+                <button class="cat-tab" data-tab="twists"><i class="fas fa-leaf"></i> Twists</button>
+                <button class="cat-tab" data-tab="weaves"><i class="fas fa-gem"></i> Weaves & Natural</button>
+                <button class="cat-tab" data-tab="kids"><i class="fas fa-child"></i> Children's</button>
+                <button class="cat-tab" data-tab="locs"><i class="fas fa-spa"></i> Locs</button>
+            </div>
+
+            <!-- Braids Panel -->
+            <div class="pricing-panel active" id="panel-braids">
+                <div class="panel-header">
+                    <div class="panel-icon"><i class="fas fa-sparkles"></i></div>
+                    <div>
+                        <h2>Braids</h2>
+                        <p>Classic & knotless braiding styles for every occasion</p>
+                    </div>
+                </div>
+                <div class="price-rows">
+                    <div class="price-row" data-service="box-braids-small">
+                        <div><div class="pr-name">Box Braids — Small</div></div>
+                        <div class="pr-duration"><i class="fas fa-clock"></i> 8–10 hrs</div>
+                        <div style="display:flex;align-items:center;gap:1rem;"><div class="pr-price">KES 2,000</div><button class="book-row-btn">Book</button></div>
+                    </div>
+                    <div class="price-row" data-service="box-braids-medium">
+                        <div><div class="pr-name">Box Braids — Medium</div></div>
+                        <div class="pr-duration"><i class="fas fa-clock"></i> 6–8 hrs</div>
+                        <div style="display:flex;align-items:center;gap:1rem;"><div class="pr-price">KES 1,500</div><button class="book-row-btn">Book</button></div>
+                    </div>
+                    <div class="price-row" data-service="box-braids-jumbo">
+                        <div><div class="pr-name">Box Braids — Jumbo</div></div>
+                        <div class="pr-duration"><i class="fas fa-clock"></i> 4–6 hrs</div>
+                        <div style="display:flex;align-items:center;gap:1rem;"><div class="pr-price">KES 1,200</div><button class="book-row-btn">Book</button></div>
+                    </div>
+                    <div class="price-row" data-service="cornrows-simple">
+                        <div><div class="pr-name">Cornrows — Simple</div></div>
+                        <div class="pr-duration"><i class="fas fa-clock"></i> 2–3 hrs</div>
+                        <div style="display:flex;align-items:center;gap:1rem;"><div class="pr-price">KES 1,300</div><button class="book-row-btn">Book</button></div>
+                    </div>
+                    <div class="price-row" data-service="cornrows-complex">
+                        <div><div class="pr-name">Cornrows — Complex Pattern</div></div>
+                        <div class="pr-duration"><i class="fas fa-clock"></i> 3–5 hrs</div>
+                        <div style="display:flex;align-items:center;gap:1rem;"><div class="pr-price">KES 1,500</div><button class="book-row-btn">Book</button></div>
+                    </div>
+                    <div class="price-row" data-service="knotless-braids">
+                        <div><div class="pr-name">Knotless Braids</div></div>
+                        <div class="pr-duration"><i class="fas fa-clock"></i> 6–8 hrs</div>
+                        <div style="display:flex;align-items:center;gap:1rem;"><div class="pr-price">KES 1,200–2,000</div><button class="book-row-btn">Book</button></div>
+                    </div>
+                    <div class="price-row" data-service="micro-braiding">
+                        <div><div class="pr-name">Micro Braiding</div></div>
+                        <div class="pr-duration"><i class="fas fa-clock"></i> 10–14 hrs</div>
+                        <div style="display:flex;align-items:center;gap:1rem;"><div class="pr-price">KES 5,000–8,000</div><button class="book-row-btn">Book</button></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Twists Panel -->
+            <div class="pricing-panel" id="panel-twists">
+                <div class="panel-header">
+                    <div class="panel-icon"><i class="fas fa-leaf"></i></div>
+                    <div>
+                        <h2>Twists</h2>
+                        <p>Natural, elegant twist styles for healthy hair</p>
+                    </div>
+                </div>
+                <div class="price-rows">
+                    <div class="price-row" data-service="senegalese-twists">
+                        <div><div class="pr-name">Senegalese Twists</div></div>
+                        <div class="pr-duration"><i class="fas fa-clock"></i> 5–7 hrs</div>
+                        <div style="display:flex;align-items:center;gap:1rem;"><div class="pr-price">KES 1,500–2,000</div><button class="book-row-btn">Book</button></div>
+                    </div>
+                    <div class="price-row" data-service="marley-twists">
+                        <div><div class="pr-name">Marley Twists</div></div>
+                        <div class="pr-duration"><i class="fas fa-clock"></i> 5–7 hrs</div>
+                        <div style="display:flex;align-items:center;gap:1rem;"><div class="pr-price">KES 1,500–2,000</div><button class="book-row-btn">Book</button></div>
+                    </div>
+                    <div class="price-row" data-service="passion-twists">
+                        <div><div class="pr-name">Passion Twists</div></div>
+                        <div class="pr-duration"><i class="fas fa-clock"></i> 6–8 hrs</div>
+                        <div style="display:flex;align-items:center;gap:1rem;"><div class="pr-price">KES 1,500–2,000</div><button class="book-row-btn">Book</button></div>
+                    </div>
+                    <div class="price-row" data-service="kinky-twists">
+                        <div><div class="pr-name">Kinky Twists</div></div>
+                        <div class="pr-duration"><i class="fas fa-clock"></i> 5–7 hrs</div>
+                        <div style="display:flex;align-items:center;gap:1rem;"><div class="pr-price">KES 1,500–2,000</div><button class="book-row-btn">Book</button></div>
+                    </div>
+                    <div class="price-row" data-service="twist-out">
+                        <div><div class="pr-name">Twist Out</div></div>
+                        <div class="pr-duration"><i class="fas fa-clock"></i> 1.5–2 hrs</div>
+                        <div style="display:flex;align-items:center;gap:1rem;"><div class="pr-price">KES 1,000–1,500</div><button class="book-row-btn">Book</button></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Weaves & Natural Panel -->
+            <div class="pricing-panel" id="panel-weaves">
+                <div class="panel-header">
+                    <div class="panel-icon"><i class="fas fa-gem"></i></div>
+                    <div>
+                        <h2>Weaves & Natural Hair</h2>
+                        <p>Extensions, installs, and natural hair care</p>
+                    </div>
+                </div>
+                <div class="price-rows">
+                    <div class="price-row" data-service="weave-install">
+                        <div><div class="pr-name">Weave Install</div></div>
+                        <div class="pr-duration"><i class="fas fa-clock"></i> 4–6 hrs</div>
+                        <div style="display:flex;align-items:center;gap:1rem;"><div class="pr-price">KES 1,500–2,000</div><button class="book-row-btn">Book</button></div>
+                    </div>
+                    <div class="price-row" data-service="wig-lines">
+                        <div><div class="pr-name">Wig Lines</div></div>
+                        <div class="pr-duration"><i class="fas fa-clock"></i> 1–2 hrs</div>
+                        <div style="display:flex;align-items:center;gap:1rem;"><div class="pr-price">KES 500–1,000</div><button class="book-row-btn">Book</button></div>
+                    </div>
+                    <div class="price-row" data-service="natural-styling">
+                        <div><div class="pr-name">Natural Hair Styling</div></div>
+                        <div class="pr-duration"><i class="fas fa-clock"></i> 2–4 hrs</div>
+                        <div style="display:flex;align-items:center;gap:1rem;"><div class="pr-price">KES 1,000–1,800</div><button class="book-row-btn">Book</button></div>
+                    </div>
+                    <div class="price-row" data-service="bridal-styling">
+                        <div><div class="pr-name">Bridal Styling</div></div>
+                        <div class="pr-duration"><i class="fas fa-clock"></i> 3–5 hrs</div>
+                        <div style="display:flex;align-items:center;gap:1rem;"><div class="pr-price">KES 1,800–2,000</div><button class="book-row-btn">Book</button></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kids Panel -->
+            <div class="pricing-panel" id="panel-kids">
+                <div class="panel-header">
+                    <div class="panel-icon"><i class="fas fa-child"></i></div>
+                    <div>
+                        <h2>Children's Styles</h2>
+                        <p>Gentle, fun styles for little ones</p>
+                    </div>
+                </div>
+                <div class="price-rows">
+                    <div class="price-row" data-service="kids-braids">
+                        <div><div class="pr-name">Kids Braids</div></div>
+                        <div class="pr-duration"><i class="fas fa-clock"></i> 2–4 hrs</div>
+                        <div style="display:flex;align-items:center;gap:1rem;"><div class="pr-price">KES 1,000</div><button class="book-row-btn">Book</button></div>
+                    </div>
+                    <div class="price-row" data-service="kids-twists">
+                        <div><div class="pr-name">Kids Twists</div></div>
+                        <div class="pr-duration"><i class="fas fa-clock"></i> 2–3 hrs</div>
+                        <div style="display:flex;align-items:center;gap:1rem;"><div class="pr-price">KES 1,000</div><button class="book-row-btn">Book</button></div>
+                    </div>
+                    <div class="price-row" data-service="kids-cornrows">
+                        <div><div class="pr-name">Kids Cornrows</div></div>
+                        <div class="pr-duration"><i class="fas fa-clock"></i> 1–2 hrs</div>
+                        <div style="display:flex;align-items:center;gap:1rem;"><div class="pr-price">KES 800</div><button class="book-row-btn">Book</button></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Locs Panel -->
+            <div class="pricing-panel" id="panel-locs">
+                <div class="panel-header">
+                    <div class="panel-icon"><i class="fas fa-spa"></i></div>
+                    <div>
+                        <h2>Locs Maintenance</h2>
+                        <p>Professional loc care & maintenance services</p>
+                    </div>
+                </div>
+                <div class="price-rows">
+                    <div class="price-row" data-service="micro-locs">
+                        <div><div class="pr-name">Micro Locs</div></div>
+                        <div class="pr-duration"><i class="fas fa-clock"></i> 12–16 hrs</div>
+                        <div style="display:flex;align-items:center;gap:1rem;"><div class="pr-price">KES 6,000</div><button class="book-row-btn">Book</button></div>
+                    </div>
+                    <div class="price-row" data-service="micro-locs-retie">
+                        <div><div class="pr-name">Micro Locs Retie</div></div>
+                        <div class="pr-duration"><i class="fas fa-clock"></i> 6–8 hrs</div>
+                        <div style="display:flex;align-items:center;gap:1rem;"><div class="pr-price">KES 2,500–3,500</div><button class="book-row-btn">Book</button></div>
+                    </div>
+                    <div class="price-row" data-service="locs-retouch">
+                        <div><div class="pr-name">Locs Retouch</div></div>
+                        <div class="pr-duration"><i class="fas fa-clock"></i> 2–3 hrs</div>
+                        <div style="display:flex;align-items:center;gap:1rem;"><div class="pr-price">KES 1,200–1,500</div><button class="book-row-btn">Book</button></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Pricing Section -->
-    <section class="pricing-section">
+    <!-- NOTES -->
+    <section class="notes-section">
         <div class="container">
-            
-            <!-- Pricing Calculator -->
-            <div class="pricing-calculator">
-                <h2>Quick Quote</h2>
-                <p>Select a service to get instant pricing and book via WhatsApp</p>
-                
-                <div class="calculator-form">
-                    <div class="form-group">
-                        <label for="serviceSelect">Choose Service</label>
-                        <select id="serviceSelect" class="form-control">
-                            <option value="">-- Select a Service --</option>
-                            <option value="box-braids-small" data-price="2000" data-time="8-10">Box Braids (Small)</option>
-                            <option value="box-braids-medium" data-price="1500" data-time="6-8">Box Braids (Medium)</option>
-                            <option value="box-braids-jumbo" data-price="1200" data-time="4-6">Box Braids (Jumbo)</option>
-                            <option value="cornrows-simple" data-price="1300" data-time="2-3">Cornrows (Simple)</option>
-                            <option value="cornrows-complex" data-price="1500" data-time="3-5">Cornrows (Complex Pattern)</option>
-                            <option value="knotless-braids" data-price="1200-2000" data-time="6-8">Knotless Braids</option>
-                            <option value="micro-braiding" data-price="5000-8000" data-time="10-14">Micro Braiding</option>
-                            <option value="senegalese-twists" data-price="1500-2000" data-time="5-7">Senegalese Twists</option>
-                            <option value="marley-twists" data-price="1500-2000" data-time="5-7">Marley Twists</option>
-                            <option value="passion-twists" data-price="1500-2000" data-time="6-8">Passion Twists</option>
-                            <option value="kinky-twists" data-price="1500-2000" data-time="5-7">Kinky Twists</option>
-                            <option value="wig-lines" data-price="500-1000" data-time="1-2">Wig Lines</option>
-                            <option value="weave-install" data-price="1500-2000" data-time="4-6">Weave Install</option>
-                            <option value="twist-out" data-price="1000-1500" data-time="1.5-2">Twist Out</option>
-                            <option value="kids-braids" data-price="1000" data-time="2-4">Kids Braids</option>
-                            <option value="kids-twists" data-price="1000" data-time="2-3">Kids Twists</option>
-                            <option value="kids-cornrows" data-price="800" data-time="1-2">Kids Cornrows</option>
-                            <option value="micro-locs" data-price="6000" data-time="12-16">Micro Locs</option>
-                            <option value="micro-locs-retie" data-price="2500-3500" data-time="6-8">Micro Locs Retie</option>
-                            <option value="locs-retouch" data-price="1200-1500" data-time="2-3">Locs Retouch</option>
-                            <option value="bridal-styling" data-price="1800-2000" data-time="3-5">Bridal Styling</option>
-                            <option value="natural-styling" data-price="1000-1800" data-time="2-4">Natural Hair Styling</option>
-                        </select>
-                    </div>
-
-                    <div class="quote-result" id="quoteResult" style="display: none;">
-                        <div class="quote-details">
-                            <h3 id="quoteName"></h3>
-                            <div class="quote-info">
-                                <div class="info-item">
-                                    <i class="fas fa-dollar-sign"></i>
-                                    <span>Price: KES <span id="quotePrice"></span></span>
-                                </div>
-                                <div class="info-item">
-                                    <i class="fas fa-clock"></i>
-                                    <span>Duration: <span id="quoteTime"></span> hours</span>
-                                </div>
-                            </div>
-                            <button class="btn btn-primary btn-lg whatsapp-book" id="whatsappBookBtn">
-                                <i class="fab fa-whatsapp"></i> Book via WhatsApp
-                            </button>
-                        </div>
-                    </div>
+            <div style="text-align:center;">
+                <span class="section-label">Good to Know</span>
+                <h2 style="font-family:var(--font-display); font-size:clamp(2rem,4vw,3.5rem); font-weight:800; color:var(--white);">Pricing Notes</h2>
+            </div>
+            <div class="notes-grid">
+                <div class="note-card">
+                    <div class="note-icon"><i class="fas fa-info-circle"></i></div>
+                    <h4>Price Variations</h4>
+                    <p>Final price depends on hair length, thickness, and style complexity.</p>
+                </div>
+                <div class="note-card">
+                    <div class="note-icon"><i class="fas fa-shopping-bag"></i></div>
+                    <h4>Hair & Materials</h4>
+                    <p>Client provides hair unless otherwise arranged. Additional cost may apply.</p>
+                </div>
+                <div class="note-card">
+                    <div class="note-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <h4>Travel Fee</h4>
+                    <p>May apply for locations outside service area — discussed during booking.</p>
+                </div>
+                <div class="note-card">
+                    <div class="note-icon"><i class="fas fa-calendar-check"></i></div>
+                    <h4>Deposit Required</h4>
+                    <p>A deposit is required to secure your appointment (non-refundable).</p>
                 </div>
             </div>
-
-            <!-- Pricing Tables -->
-            <div class="pricing-tables">
-                
-                <!-- Braids Pricing -->
-                <div class="pricing-table">
-                    <div class="table-header">
-                        <i class="fas fa-sparkles"></i>
-                        <h3>Braids</h3>
-                    </div>
-                    <div class="table-body">
-                        <div class="price-item">
-                            <div class="price-info">
-                                <h4>Box Braids - Small</h4>
-                                <span class="duration">8-10 hours</span>
-                            </div>
-                            <div class="price-value">KES 2,000</div>
-                        </div>
-                        <div class="price-item">
-                            <div class="price-info">
-                                <h4>Box Braids - Medium</h4>
-                                <span class="duration">6-8 hours</span>
-                            </div>
-                            <div class="price-value">KES 1,500</div>
-                        </div>
-                        <div class="price-item">
-                            <div class="price-info">
-                                <h4>Box Braids - Jumbo</h4>
-                                <span class="duration">4-6 hours</span>
-                            </div>
-                            <div class="price-value">KES 1,200</div>
-                        </div>
-                        <div class="price-item">
-                            <div class="price-info">
-                                <h4>Cornrows (Simple)</h4>
-                                <span class="duration">2-3 hours</span>
-                            </div>
-                            <div class="price-value">KES 1,300</div>
-                        </div>
-                        <div class="price-item">
-                            <div class="price-info">
-                                <h4>Cornrows (Complex)</h4>
-                                <span class="duration">3-5 hours</span>
-                            </div>
-                            <div class="price-value">KES 1,500</div>
-                        </div>
-                        <div class="price-item">
-                            <div class="price-info">
-                                <h4>Knotless Braids</h4>
-                                <span class="duration">6-8 hours</span>
-                            </div>
-                            <div class="price-value">KES 1,200-2,000</div>
-                        </div>
-                        <div class="price-item">
-                            <div class="price-info">
-                                <h4>Micro Braiding</h4>
-                                <span class="duration">10-14 hours</span>
-                            </div>
-                            <div class="price-value">KES 5,000-8,000</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Twists Pricing -->
-                <div class="pricing-table">
-                    <div class="table-header">
-                        <i class="fas fa-leaf"></i>
-                        <h3>Twists</h3>
-                    </div>
-                    <div class="table-body">
-                        <div class="price-item">
-                            <div class="price-info">
-                                <h4>Senegalese Twists</h4>
-                                <span class="duration">5-7 hours</span>
-                            </div>
-                            <div class="price-value">KES 1,500-2,000</div>
-                        </div>
-                        <div class="price-item">
-                            <div class="price-info">
-                                <h4>Marley Twists</h4>
-                                <span class="duration">5-7 hours</span>
-                            </div>
-                            <div class="price-value">KES 1,500-2,000</div>
-                        </div>
-                        <div class="price-item">
-                            <div class="price-info">
-                                <h4>Passion Twists</h4>
-                                <span class="duration">6-8 hours</span>
-                            </div>
-                            <div class="price-value">KES 1,500-2,000</div>
-                        </div>
-                        <div class="price-item">
-                            <div class="price-info">
-                                <h4>Kinky Twists</h4>
-                                <span class="duration">5-7 hours</span>
-                            </div>
-                            <div class="price-value">KES 1,500-2,000</div>
-                        </div>
-                        <div class="price-item">
-                            <div class="price-info">
-                                <h4>Twist Out</h4>
-                                <span class="duration">1.5-2 hours</span>
-                            </div>
-                            <div class="price-value">KES 1,000-1,500</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Weaves Pricing -->
-                <div class="pricing-table">
-                    <div class="table-header">
-                        <i class="fas fa-gem"></i>
-                        <h3>Weaves & Installs</h3>
-                    </div>
-                    <div class="table-body">
-                        <div class="price-item">
-                            <div class="price-info">
-                                <h4>Weave Install</h4>
-                                <span class="duration">4-6 hours</span>
-                            </div>
-                            <div class="price-value">KES 1,500-2,000</div>
-                        </div>
-                        <div class="price-item">
-                            <div class="price-info">
-                                <h4>Wig Lines</h4>
-                                <span class="duration">1-2 hours</span>
-                            </div>
-                            <div class="price-value">KES 500-1,000</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Natural Hair Pricing -->
-                <div class="pricing-table">
-                    <div class="table-header">
-                        <i class="fas fa-heart"></i>
-                        <h3>Natural Hair Care</h3>
-                    </div>
-                    <div class="table-body">
-                        <div class="price-item">
-                            <div class="price-info">
-                                <h4>Natural Hair Styling</h4>
-                                <span class="duration">2-4 hours</span>
-                            </div>
-                            <div class="price-value">KES 1,000-1,800</div>
-                        </div>
-                        <div class="price-item">
-                            <div class="price-info">
-                                <h4>Twist Out</h4>
-                                <span class="duration">1.5-2 hours</span>
-                            </div>
-                            <div class="price-value">KES 1,000-1,500</div>
-                        </div>
-                        <div class="price-item">
-                            <div class="price-info">
-                                <h4>Bridal Styling</h4>
-                                <span class="duration">3-5 hours</span>
-                            </div>
-                            <div class="price-value">KES 1,800-2,000</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Kids Hair Pricing -->
-                <div class="pricing-table">
-                    <div class="table-header">
-                        <i class="fas fa-child"></i>
-                        <h3>Children's Styles</h3>
-                    </div>
-                    <div class="table-body">
-                        <div class="price-item">
-                            <div class="price-info">
-                                <h4>Kids Braids</h4>
-                                <span class="duration">2-4 hours</span>
-                            </div>
-                            <div class="price-value">KES 1,000</div>
-                        </div>
-                        <div class="price-item">
-                            <div class="price-info">
-                                <h4>Kids Twists</h4>
-                                <span class="duration">2-3 hours</span>
-                            </div>
-                            <div class="price-value">KES 1,000</div>
-                        </div>
-                        <div class="price-item">
-                            <div class="price-info">
-                                <h4>Kids Cornrows</h4>
-                                <span class="duration">1-2 hours</span>
-                            </div>
-                            <div class="price-value">KES 800</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Locs Pricing -->
-                <div class="pricing-table">
-                    <div class="table-header">
-                        <i class="fas fa-spa"></i>
-                        <h3>Locs Maintenance</h3>
-                    </div>
-                    <div class="table-body">
-                        <div class="price-item">
-                            <div class="price-info">
-                                <h4>Micro Locs</h4>
-                                <span class="duration">12-16 hours</span>
-                            </div>
-                            <div class="price-value">KES 6,000</div>
-                        </div>
-                        <div class="price-item">
-                            <div class="price-info">
-                                <h4>Micro Locs Retie</h4>
-                                <span class="duration">6-8 hours</span>
-                            </div>
-                            <div class="price-value">KES 2,500-3,500</div>
-                        </div>
-                        <div class="price-item">
-                            <div class="price-info">
-                                <h4>Locs Retouch</h4>
-                                <span class="duration">2-3 hours</span>
-                            </div>
-                            <div class="price-value">KES 1,200-1,500</div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- Pricing Notes -->
-            <div class="pricing-notes">
-                <h3>Pricing Notes</h3>
-                <div class="notes-grid">
-                    <div class="note-card">
-                        <i class="fas fa-info-circle"></i>
-                        <p><strong>Price Variations:</strong> Final price depends on hair length, thickness, and style complexity.</p>
-                    </div>
-                    <div class="note-card">
-                        <i class="fas fa-shopping-bag"></i>
-                        <p><strong>Hair/Materials:</strong> Client provides hair unless otherwise arranged (additional cost applies).</p>
-                    </div>
-                    <div class="note-card">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <p><strong>Travel Fee:</strong> May apply for locations outside service area (discussed during booking).</p>
-                    </div>
-                    <div class="note-card">
-                        <i class="fas fa-calendar-check"></i>
-                        <p><strong>Deposit:</strong> deposit required to secure appointment (non-refundable).</p>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta-section">
+    <!-- CTA -->
+    <section class="cta">
         <div class="container">
-            <div class="cta-content">
+            <div class="cta-inner">
+                <span class="section-label">Let's Go</span>
                 <h2 class="cta-title">Ready to Book Your Appointment?</h2>
-                <p class="cta-text">Contact us via WhatsApp for instant booking and personalized pricing</p>
-                <div class="cta-buttons">
-                    <a href="https://wa.me/+254725351803?text=Hi%20Akose!%20I'd%20like%20to%20book%20an%20appointment." class="btn btn-whatsapp btn-lg" target="_blank">
-                        <i class="fab fa-whatsapp"></i> Book via WhatsApp
-                    </a>
-                    <a href="contact.html" class="btn btn-secondary btn-lg">Other Contact Options</a>
+                <p class="cta-text">Contact via WhatsApp for instant booking and personalised pricing.</p>
+                <div class="cta-btns">
+                    <a href="https://wa.me/+254725351803?text=Hi%20Akose!%20I'd%20like%20to%20book%20an%20appointment." class="btn-gold" target="_blank"><i class="fab fa-whatsapp"></i> Book via WhatsApp</a>
+                    <a href="contact.html" class="btn-ghost">Other Contact Options</a>
                 </div>
             </div>
         </div>
     </section>
 
- <!-- Footer -->
+    <!-- FOOTER -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3 class="footer-logo">
-                        <img src="assets/images/logo.jpeg" alt="Hair by Akose" class="footer-logo-image">
-                    </h3>
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="assets/images/logo.jpeg" alt="Hair by Akose">
                     <p>Professional mobile hair styling and handmade accessories, bringing beauty to your doorstep.</p>
-                    <div class="social-links">
+                    <div class="socials">
                         <a href="https://www.instagram.com/hairbyakose?igsh=YW1pdTc0ZzBua2p4&utm_source=qr" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                         <a href="https://web.facebook.com/vivienne.akose" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
                         <a href="https://www.tiktok.com/@hairbyakose?_r=1&_t=ZS-93RrembQpYD" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
                         <a href="http://www.youtube.com/@vivienneakose8306" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
-
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
+                <div class="footer-col">
+                    <h4>Navigate</h4>
                     <ul>
-                        <li><a href="#services">Services</a></li>
+                        <li><a href="index.html#story">My Story</a></li>
                         <li><a href="portfolio.html">Portfolio</a></li>
                         <li><a href="pricing.html">Pricing</a></li>
-                        <li><a href="about.html">About</a></li>
+                        <li><a href="index.html#about">About</a></li>
                     </ul>
                 </div>
-
-                <div class="footer-section">
+                <div class="footer-col">
                     <h4>Services</h4>
                     <ul>
-                        <li><a href="#services">Box Braids</a></li>
-                        <li><a href="#services">Cornrows</a></li>
-                        <li><a href="#services">Twists & Locs</a></li>
-                        <li><a href="#services">Natural Hair</a></li>
+                        <li><a href="index.html#services">Box Braids</a></li>
+                        <li><a href="index.html#services">Cornrows</a></li>
+                        <li><a href="index.html#services">Twists & Locs</a></li>
+                        <li><a href="index.html#services">Natural Hair</a></li>
                     </ul>
                 </div>
-
-                <div class="footer-section">
+                <div class="footer-col">
                     <h4>Contact</h4>
                     <ul>
-                        <li><i class="fas fa-phone"></i> +(254)725-351-803</li>
-                        <li><i class="fas fa-envelope"></i> <a href="mailto:vivienneakose22@gmail.com" class="email-link">vivienneakose22@gmail.com</a></li>
-                        <li><i class="fas fa-map-marker-alt"></i>@ your place of comfort</li>
-                        <li><i class="fas fa-clock"></i> Mon-Sat: 9AM - 8PM</li>
+                        <li><i class="fas fa-phone"></i> +(254) 725-351-803</li>
+                        <li><i class="fas fa-envelope"></i><a href="mailto:vivienneakose22@gmail.com"> vivienneakose22@gmail.com</a></li>
+                        <li><i class="fas fa-map-marker-alt"></i> @ your place of comfort</li>
+                        <li><i class="fas fa-clock"></i> Mon–Sat: 9AM – 8PM</li>
                     </ul>
                 </div>
             </div>
-
             <div class="footer-bottom">
-                <p>&copy; 2026 Hair by Akose. All rights reserved.</p>
-                <p>Crafted with <i class="fas fa-heart"></i> and passion</p>
-                <p>by #mimsanii</p>
+                <span>&copy; 2026 Hair by Akose. All rights reserved.</span>
+                <span>Crafted with <i class="fas fa-heart" style="color:var(--gold)"></i> and passion · by #mimsanii</span>
             </div>
         </div>
     </footer>
 
-    <!-- Mobile Bottom Navigation -->
-    <nav class="mobile-nav" id="mobileNav">
-        <a href="#home" class="mobile-nav-item active">
-            <i class="fas fa-home"></i>
-            <span>Home</span>
-        </a>
-        <a href="#services" class="mobile-nav-item">
-            <i class="fas fa-scissors"></i>
-            <span>Services</span>
-        </a>
-        <a href="portfolio.html" class="mobile-nav-item">
-            <i class="fas fa-images"></i>
-            <span>Gallery</span>
-        </a>
-        <a href="contact.html" class="mobile-nav-item">
-            <i class="fas fa-calendar"></i>
-            <span>Book</span>
-        </a>
+    <!-- MOBILE NAV -->
+    <nav class="mobile-nav">
+        <a href="index.html"><i class="fas fa-home"></i><span>Home</span></a>
+        <a href="index.html#services"><i class="fas fa-scissors"></i><span>Services</span></a>
+        <a href="pricing.html" class="active"><i class="fas fa-tags"></i><span>Pricing</span></a>
+        <a href="contact.html"><i class="fas fa-calendar"></i><span>Book</span></a>
     </nav>
 
-    <!-- Mobile Bottom Navigation -->
-    <nav class="mobile-nav" id="mobileNav">
-        <a href="index.html" class="mobile-nav-item">
-            <i class="fas fa-home"></i>
-            <span>Home</span>
-        </a>
-        <a href="index.html#services" class="mobile-nav-item">
-            <i class="fas fa-scissors"></i>
-            <span>Services</span>
-        </a>
-        <a href="pricing.html" class="mobile-nav-item active">
-            <i class="fas fa-tags"></i>
-            <span>Pricing</span>
-        </a>
-        <a href="contact.html" class="mobile-nav-item">
-            <i class="fas fa-calendar"></i>
-            <span>Book</span>
-        </a>
-    </nav>
+    <script>
+        // Sticky nav
+        const nav = document.getElementById('mainNav');
+        window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
 
-    <!--
+        // Service data
+        const WHATSAPP = '+254725351803';
+        const services = {
+            'box-braids-small':   { name:'Box Braids — Small',          price:'2,000',       time:'8–10' },
+            'box-braids-medium':  { name:'Box Braids — Medium',         price:'1,500',       time:'6–8'  },
+            'box-braids-jumbo':   { name:'Box Braids — Jumbo',          price:'1,200',       time:'4–6'  },
+            'cornrows-simple':    { name:'Cornrows — Simple',           price:'1,300',       time:'2–3'  },
+            'cornrows-complex':   { name:'Cornrows — Complex',          price:'1,500',       time:'3–5'  },
+            'knotless-braids':    { name:'Knotless Braids',             price:'1,200–2,000', time:'6–8'  },
+            'micro-braiding':     { name:'Micro Braiding',              price:'5,000–8,000', time:'10–14'},
+            'senegalese-twists':  { name:'Senegalese Twists',           price:'1,500–2,000', time:'5–7'  },
+            'marley-twists':      { name:'Marley Twists',               price:'1,500–2,000', time:'5–7'  },
+            'passion-twists':     { name:'Passion Twists',              price:'1,500–2,000', time:'6–8'  },
+            'kinky-twists':       { name:'Kinky Twists',                price:'1,500–2,000', time:'5–7'  },
+            'twist-out':          { name:'Twist Out',                   price:'1,000–1,500', time:'1.5–2'},
+            'weave-install':      { name:'Weave Install',               price:'1,500–2,000', time:'4–6'  },
+            'wig-lines':          { name:'Wig Lines',                   price:'500–1,000',   time:'1–2'  },
+            'natural-styling':    { name:'Natural Hair Styling',        price:'1,000–1,800', time:'2–4'  },
+            'bridal-styling':     { name:'Bridal Styling',              price:'1,800–2,000', time:'3–5'  },
+            'kids-braids':        { name:'Kids Braids',                 price:'1,000',       time:'2–4'  },
+            'kids-twists':        { name:'Kids Twists',                 price:'1,000',       time:'2–3'  },
+            'kids-cornrows':      { name:'Kids Cornrows',               price:'800',         time:'1–2'  },
+            'micro-locs':         { name:'Micro Locs',                  price:'6,000',       time:'12–16'},
+            'micro-locs-retie':   { name:'Micro Locs Retie',            price:'2,500–3,500', time:'6–8'  },
+            'locs-retouch':       { name:'Locs Retouch',                price:'1,200–1,500', time:'2–3'  },
+        };
+
+        function bookWhatsApp(svc) {
+            const s = services[svc];
+            if (!s) return;
+            const msg = `Hi Akose! 👋\n\nI'd like to book an appointment for:\n\n📌 Service: ${s.name}\n💰 Price: KES ${s.price}\n⏱️ Duration: ${s.time} hours\n\nPlease let me know your available dates. Thank you!`;
+            window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+
+        // Calculator
+        const sel = document.getElementById('serviceSelect');
+        const res = document.getElementById('quoteResult');
+        sel.addEventListener('change', function() {
+            const s = services[this.value];
+            if (!s) { res.classList.remove('show'); return; }
+            document.getElementById('quoteName').textContent  = s.name;
+            document.getElementById('quotePrice').textContent = s.price;
+            document.getElementById('quoteTime').textContent  = s.time;
+            res.classList.add('show');
+            document.getElementById('whatsappBookBtn').onclick = () => bookWhatsApp(this.value);
+        });
+
+        // Tab switching
+        document.querySelectorAll('.cat-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.pricing-panel').forEach(p => p.classList.remove('active'));
+                this.classList.add('active');
+                document.getElementById('panel-' + this.dataset.tab).classList.add('active');
+            });
+        });
+
+        // Row book buttons
+        document.querySelectorAll('.price-row').forEach(row => {
+            const btn = row.querySelector('.book-row-btn');
+            if (btn) btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                bookWhatsApp(row.dataset.service);
+            });
+            // Click row → scroll to calculator & pre-select
+            row.addEventListener('click', () => {
+                sel.value = row.dataset.service;
+                sel.dispatchEvent(new Event('change'));
+                document.querySelector('.calculator-card').scrollIntoView({ behavior:'smooth', block:'center' });
+            });
+        });
+
+        console.log('Pricing page initialized ✨');
+    </script>
+</body>
+</html>
