@@ -1234,7 +1234,7 @@ var io = new IntersectionObserver(function(entries){
     if(e.isIntersecting){setTimeout(function(){e.target.style.opacity='1';e.target.style.transform='translateY(0)';},i*38);io.unobserve(e.target);}
   });
 },{threshold:.08});
-el){ io.observe(el); });
+fadeEls.forEach(function(el){ io.observe(el); });
 
 /* page fade in */
 document.body.style.opacity='0';
