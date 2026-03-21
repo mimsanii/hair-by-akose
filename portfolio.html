@@ -1,705 +1,871 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="View Hair by Akose's portfolio of beautiful braids, twists, weaves, and natural hair transformations.">
-    <title>Portfolio | Hair by Akose</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="View Hair by Akose's portfolio of beautiful braids, twists, weaves, and natural hair transformations.">
+<title>Portfolio | Hair by Akose</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+/* ── TOKENS ── */
+:root{
+  --teal:#0F3D3E;--teal-light:#1A6466;
+  --black:#071E1E;--black-soft:#0A2828;--black-card:#0D3030;--black-edge:#113838;
+  --gold:#D4A96A;--gold-light:#E2C08A;--gold-dark:#B8894E;
+  --white:#F5EDD8;--white-dim:rgba(245,237,216,0.6);
+  --grad-gold:linear-gradient(135deg,#B8894E 0%,#D4A96A 40%,#E2C08A 60%,#D4A96A 100%);
+  --font-display:'Syne',sans-serif;--font-body:'Cormorant Garamond',serif;
+  --ease:cubic-bezier(0.16,1,0.3,1);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--font-body);background:var(--black);color:var(--white);line-height:1.75;overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+a{text-decoration:none;color:inherit;transition:all .3s ease}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;opacity:.22}
+.container{width:100%;max-width:1400px;margin:0 auto;padding:0 2rem}
+#scroll-progress{position:fixed;top:0;left:0;height:3px;background:var(--grad-gold);z-index:10000;width:0;transition:width .08s linear;pointer-events:none}
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+/* ── NAV ── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.5rem 0;transition:all .4s ease}
+.nav.scrolled{background:rgba(7,30,30,.97);backdrop-filter:blur(20px);border-bottom:1px solid rgba(212,169,106,.2);padding:1rem 0}
+.nav-inner{max-width:1400px;margin:0 auto;padding:0 2rem;display:flex;justify-content:space-between;align-items:center}
+.nav-logo img{height:55px;width:auto;object-fit:contain}
+.nav-links{display:flex;list-style:none;gap:2.5rem;align-items:center}
+.nav-links a{font-family:var(--font-display);font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--white-dim)}
+.nav-links a:hover,.nav-links a.active-link{color:var(--gold)}
+.nav-links .nav-cta{padding:.6rem 1.5rem;border:1px solid var(--gold);color:var(--gold);border-radius:100px}
+.nav-links .nav-cta:hover{background:var(--gold);color:var(--black)}
 
-    <style>
-        :root {
-            --teal-deep:   #0B3535;
-            --teal:        #0F3D3E;
-            --teal-mid:    #145254;
-            --teal-light:  #1A6466;
-            --black:       #071E1E;
-            --black-soft:  #0A2828;
-            --black-card:  #0D3030;
-            --black-edge:  #113838;
-            --gold:        #D4A96A;
-            --gold-light:  #E2C08A;
-            --gold-dark:   #B8894E;
-            --white:       #F5EDD8;
-            --white-dim:   rgba(245,237,216,0.6);
-            --grad-gold:   linear-gradient(135deg, #B8894E 0%, #D4A96A 40%, #E2C08A 60%, #D4A96A 100%);
-            --font-display: 'Syne', sans-serif;
-            --font-body:    'Cormorant Garamond', serif;
-            --ease: cubic-bezier(0.16, 1, 0.3, 1);
-        }
+/* ── HAMBURGER — glass pill (matches index.html) ── */
+.hamburger{
+  display:none;flex-direction:column;gap:6px;cursor:pointer;
+  z-index:1100;position:relative;padding:.55rem .7rem;
+  background:rgba(245,237,216,.06);border:1px solid rgba(212,169,106,.25);
+  border-radius:10px;backdrop-filter:blur(8px);
+  transition:background .25s,border-color .25s;
+}
+.hamburger:hover{background:rgba(212,169,106,.12);border-color:rgba(212,169,106,.5)}
+.hamburger span{display:block;height:1.5px;background:var(--white);border-radius:2px;transition:all .38s var(--ease)}
+.hamburger span:nth-child(1){width:22px}
+.hamburger span:nth-child(2){width:16px;margin-left:auto;background:var(--gold)}
+.hamburger span:nth-child(3){width:22px}
+.hamburger.open{background:rgba(212,169,106,.15);border-color:rgba(212,169,106,.5)}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(0,5.5px);width:20px}
+.hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(0,-5.5px);width:20px}
 
-        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-        html { scroll-behavior: smooth; }
-        body { font-family: var(--font-body); background: var(--black); color: var(--white); line-height: 1.75; overflow-x: hidden; }
-        img { max-width:100%; height:auto; display:block; }
-        a { text-decoration:none; color:inherit; transition: all 0.3s ease; }
+/* ── SLIDE PANEL — same as index.html ── */
+.mob-menu-backdrop{
+  display:none;position:fixed;inset:0;
+  background:rgba(7,30,30,.55);backdrop-filter:blur(3px);
+  z-index:1070;opacity:0;transition:opacity .35s ease;
+}
+.mob-menu-backdrop.open{display:block;opacity:1}
+.mob-menu{
+  display:flex;flex-direction:column;justify-content:center;
+  position:fixed;top:0;right:0;bottom:0;
+  width:68%;max-width:300px;
+  background:rgba(7,30,30,.72);
+  backdrop-filter:blur(22px) saturate(1.6);
+  -webkit-backdrop-filter:blur(22px) saturate(1.6);
+  border-left:1px solid rgba(212,169,106,.22);
+  z-index:1080;padding:5.5rem 1.6rem 4rem 1.5rem;
+  transform:translateX(100%);
+  transition:transform .4s var(--ease);
+  pointer-events:none;overflow-y:auto;
+}
+.mob-menu.open{transform:translateX(0);pointer-events:auto}
+.mob-menu-close{
+  position:absolute;top:1rem;right:1rem;width:34px;height:34px;
+  background:rgba(212,169,106,.08);border:1px solid rgba(212,169,106,.22);
+  border-radius:6px;display:flex;align-items:center;justify-content:center;
+  color:rgba(212,169,106,.7);font-size:.85rem;cursor:pointer;transition:all .2s;
+}
+.mob-menu-close:hover{background:rgba(212,169,106,.2);color:var(--gold)}
+.mob-menu-brand{
+  font-family:var(--font-body);font-size:1.1rem;font-weight:600;font-style:italic;
+  letter-spacing:.04em;color:var(--gold);margin-bottom:2rem;padding-bottom:1rem;
+  border-bottom:1px solid rgba(212,169,106,.25);
+}
+.mob-menu-links{display:flex;flex-direction:column;width:100%}
+.mob-menu-links::before{content:'';display:block;height:1px;background:linear-gradient(90deg,rgba(212,169,106,.35),rgba(212,169,106,.08))}
+.mob-menu-links a{
+  font-family:var(--font-body);font-size:1.6rem;font-weight:600;
+  color:rgba(245,237,216,.78);letter-spacing:.01em;padding:.75rem 0;
+  border-bottom:1px solid;border-image:linear-gradient(90deg,rgba(212,169,106,.35),rgba(212,169,106,.06)) 1;
+  display:flex;align-items:center;justify-content:space-between;
+  transition:color .22s,letter-spacing .22s;
+}
+.mob-menu-links a.active-link{color:var(--gold)}
+.mob-menu-links a::after{
+  content:'↗';font-family:var(--font-display);font-size:.7rem;font-style:normal;
+  color:rgba(212,169,106,.3);transition:color .22s,transform .22s;flex-shrink:0;margin-left:.5rem;
+}
+.mob-menu-links a:hover::after,.mob-menu-links a:active::after{color:var(--gold);transform:translate(3px,-3px)}
+.mob-menu-links a:hover,.mob-menu-links a:active{color:#F5EDD8;letter-spacing:.04em}
+.mob-menu-cta{
+  margin-top:1.75rem;display:flex;align-items:center;justify-content:center;gap:.5rem;
+  padding:.85rem 1.2rem;background:var(--grad-gold);color:#071E1E;
+  font-family:var(--font-display);font-size:.68rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+}
+.mob-menu-socials{display:flex;gap:.6rem;margin-top:1.5rem}
+.mob-menu-socials a{
+  width:32px;height:32px;background:rgba(245,237,216,.04);
+  border:1px solid rgba(212,169,106,.18);border-radius:4px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.82rem;color:rgba(245,237,216,.4);transition:all .2s;
+}
+.mob-menu-socials a:hover{background:rgba(212,169,106,.12);color:var(--gold);border-color:rgba(212,169,106,.5)}
+.mob-menu-meta{
+  margin-top:1.1rem;font-family:var(--font-body);font-style:italic;
+  font-size:.82rem;letter-spacing:.03em;color:rgba(245,237,216,.25);line-height:1.8;
+}
 
-        /* Grain overlay */
-        body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events:none; z-index:9999; opacity:0.25; }
+/* ── PAGE HERO ── */
+.page-hero{
+  min-height:52vh;display:flex;align-items:center;justify-content:center;
+  text-align:center;padding:10rem 2rem 4rem;position:relative;overflow:hidden;
+}
+.page-hero::before{
+  content:'';position:absolute;top:-20%;left:50%;transform:translateX(-50%);
+  width:70vw;height:70vw;
+  background:radial-gradient(ellipse,rgba(212,169,106,.1) 0%,transparent 65%);
+  pointer-events:none;
+}
+.hero-lines{position:absolute;inset:0;pointer-events:none}
+.hero-lines span{position:absolute;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,rgba(212,169,106,.1),transparent)}
+.hero-lines span:nth-child(1){left:20%}.hero-lines span:nth-child(2){left:40%}
+.hero-lines span:nth-child(3){left:60%}.hero-lines span:nth-child(4){left:80%}
+.hero-inner{position:relative;z-index:2;animation:fadeUp .9s var(--ease) both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:.75rem;
+  font-family:var(--font-display);font-size:.7rem;font-weight:700;
+  letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;
+}
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';width:40px;height:1px;background:var(--gold);opacity:.5}
+.page-title{
+  font-family:var(--font-display);font-size:clamp(3.5rem,10vw,8rem);
+  font-weight:800;line-height:.95;letter-spacing:-.03em;margin-bottom:1.25rem;
+  color:var(--white);
+}
+.page-title span{
+  display:block;background:var(--grad-gold);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;font-style:italic;
+}
+.page-subtitle{font-size:clamp(1rem,2vw,1.25rem);color:var(--white-dim);font-style:italic;max-width:520px;margin:0 auto}
 
-        .container { width:100%; max-width:1400px; margin:0 auto; padding:0 2rem; }
+/* ── FILTER BAR ── */
+.filter-section{
+  padding:2rem 0;background:var(--black-soft);
+  position:sticky;top:0;z-index:100;
+  border-bottom:1px solid rgba(212,169,106,.1);
+  backdrop-filter:blur(10px);
+}
+.filter-buttons{display:flex;gap:.65rem;justify-content:center;flex-wrap:wrap}
+.filter-btn{
+  padding:.55rem 1.35rem;font-family:var(--font-display);font-size:.72rem;
+  font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  background:transparent;color:var(--white-dim);
+  border:1px solid rgba(212,169,106,.2);border-radius:100px;
+  cursor:pointer;transition:all .3s ease;
+}
+.filter-btn:hover{border-color:var(--gold);color:var(--gold)}
+.filter-btn.active{background:var(--grad-gold);color:var(--black);border-color:transparent;box-shadow:0 4px 20px rgba(212,169,106,.3)}
 
-        .section-label { display:inline-flex; align-items:center; gap:0.75rem; font-family:var(--font-display); font-size:0.7rem; font-weight:700; letter-spacing:0.25em; text-transform:uppercase; color:var(--gold); margin-bottom:1.5rem; }
-        .section-label::before, .section-label::after { content:''; display:block; width:30px; height:1px; background:var(--gold); opacity:0.6; }
+/* ── GALLERY ── */
+.portfolio-gallery{padding:5rem 0 6rem;background:var(--black)}
+.gallery-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:1.25rem}
+.gallery-item{grid-column:span 4}
+.gallery-item.large{grid-column:span 6}
+.gallery-item.wide{grid-column:span 8}
+.gallery-item.tall{grid-column:span 3}
+.gallery-card{
+  position:relative;border-radius:14px;overflow:hidden;cursor:pointer;
+  background:var(--black-card);border:1px solid rgba(212,169,106,.08);
+  transition:all .4s var(--ease);height:100%;min-height:280px;
+}
+.gallery-item.large .gallery-card{min-height:380px}
+.gallery-item.wide  .gallery-card{min-height:260px}
+.gallery-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s var(--ease);position:absolute;inset:0}
+.gallery-card:hover img{transform:scale(1.07)}
+.gallery-card:hover{border-color:rgba(212,169,106,.3);box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.gallery-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(7,30,30,.92) 0%,rgba(7,30,30,.3) 50%,transparent 100%);
+  display:flex;flex-direction:column;justify-content:flex-end;padding:1.75rem;
+  opacity:0;transition:opacity .4s ease;
+}
+.gallery-card:hover .gallery-overlay{opacity:1}
+.gallery-overlay h3{font-family:var(--font-display);font-size:1.15rem;font-weight:700;color:var(--white);margin-bottom:.3rem}
+.gallery-overlay p{font-family:var(--font-display);font-size:.72rem;letter-spacing:.1em;color:var(--gold-light);text-transform:uppercase;margin-bottom:1rem}
+.zoom-btn{
+  width:38px;height:38px;border-radius:50%;background:var(--grad-gold);border:none;
+  color:var(--black);display:flex;align-items:center;justify-content:center;
+  font-size:.85rem;cursor:pointer;transition:all .3s ease;align-self:flex-start;
+}
+.zoom-btn:hover{transform:scale(1.15)}
+.gallery-tag{
+  position:absolute;top:1rem;left:1rem;
+  background:rgba(7,30,30,.8);border:1px solid rgba(212,169,106,.3);
+  border-radius:100px;padding:.28rem .8rem;
+  font-family:var(--font-display);font-size:.62rem;font-weight:700;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--gold);
+  backdrop-filter:blur(8px);z-index:2;
+}
+.gallery-item.hidden{display:none}
+.load-more-wrap{text-align:center;margin-top:3.5rem}
+.btn-ghost-gold{
+  display:inline-flex;align-items:center;gap:.6rem;padding:1rem 2.5rem;
+  background:transparent;color:var(--gold);font-family:var(--font-display);
+  font-size:.8rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  border:1px solid rgba(212,169,106,.4);border-radius:100px;cursor:pointer;transition:all .3s ease;
+}
+.btn-ghost-gold:hover{background:var(--grad-gold);color:var(--black);border-color:transparent;box-shadow:0 8px 30px rgba(212,169,106,.3)}
 
-        /* NAV */
-        .nav { position:fixed; top:0; left:0; right:0; z-index:1000; padding:1.5rem 0; transition:all 0.4s ease; }
-        .nav.scrolled { background:rgba(7,30,30,0.97); backdrop-filter:blur(20px); border-bottom:1px solid rgba(212,169,106,0.2); padding:1rem 0; }
-        .nav-inner { max-width:1400px; margin:0 auto; padding:0 2rem; display:flex; justify-content:space-between; align-items:center; }
-        .nav-logo img { height:55px; width:auto; object-fit:contain; }
-        .nav-links { display:flex; list-style:none; gap:2.5rem; align-items:center; }
-        .nav-links a { font-family:var(--font-display); font-size:0.78rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--white-dim); }
-        .nav-links a:hover, .nav-links a.active-link { color:var(--gold); }
-        .nav-links .nav-cta { padding:0.6rem 1.5rem; border:1px solid var(--gold); color:var(--gold); border-radius:100px; }
-        .nav-links .nav-cta:hover { background:var(--gold); color:var(--black); }
-        .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; }
-        .hamburger span { width:24px; height:2px; background:var(--white); border-radius:2px; }
+/* ── LIGHTBOX ── */
+.lightbox{
+  position:fixed;inset:0;background:rgba(7,30,30,.97);
+  backdrop-filter:blur(20px);z-index:2000;
+  display:none;align-items:center;justify-content:center;padding:2rem;
+}
+.lightbox.open{display:flex;animation:lbFade .3s ease}
+@keyframes lbFade{from{opacity:0}to{opacity:1}}
+.lightbox-inner{position:relative;max-width:900px;width:100%}
+.lightbox-inner img{width:100%;border-radius:16px;border:1px solid rgba(212,169,106,.2);box-shadow:0 40px 100px rgba(0,0,0,.8);max-height:85vh;object-fit:contain}
+.lightbox-close{position:absolute;top:-1rem;right:-1rem;width:44px;height:44px;border-radius:50%;background:var(--grad-gold);border:none;color:var(--black);font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s}
+.lightbox-close:hover{transform:scale(1.1)}
+.lightbox-caption{text-align:center;margin-top:1.25rem}
+.lightbox-caption h3{font-family:var(--font-display);font-size:1.25rem;color:var(--white)}
+.lightbox-caption p{font-family:var(--font-display);font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-top:.3rem}
+.lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:rgba(7,30,30,.8);border:1px solid rgba(212,169,106,.3);color:var(--gold);font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s}
+.lightbox-nav:hover{background:var(--grad-gold);color:var(--black);border-color:transparent}
+.lightbox-prev{left:-3.5rem}.lightbox-next{right:-3.5rem}
 
-        /* PAGE HERO */
-        .page-hero {
-            min-height: 55vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 10rem 2rem 5rem;
-            position: relative;
-            overflow: hidden;
-        }
-        .page-hero::before {
-            content: '';
-            position: absolute;
-            top: -20%; left: 50%;
-            transform: translateX(-50%);
-            width: 70vw; height: 70vw;
-            background: radial-gradient(ellipse, rgba(212,169,106,0.1) 0%, transparent 65%);
-            pointer-events: none;
-        }
-        /* Vertical lines */
-        .hero-lines { position:absolute; inset:0; pointer-events:none; }
-        .hero-lines span { position:absolute; top:0; bottom:0; width:1px; background:linear-gradient(to bottom, transparent, rgba(212,169,106,0.1), transparent); }
-        .hero-lines span:nth-child(1){left:20%} .hero-lines span:nth-child(2){left:40%}
-        .hero-lines span:nth-child(3){left:60%} .hero-lines span:nth-child(4){left:80%}
+/* ── CTA ── */
+.cta{padding:8rem 0;background:var(--black-soft);position:relative;overflow:hidden}
+.cta::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:60vw;height:60vw;background:radial-gradient(ellipse,rgba(212,169,106,.08) 0%,transparent 65%);pointer-events:none}
+.cta-inner{text-align:center;max-width:700px;margin:0 auto;position:relative;z-index:2}
+.cta-title{font-family:var(--font-display);font-size:clamp(2rem,5vw,4rem);font-weight:800;color:var(--white);margin-bottom:1rem}
+.cta-text{font-size:1.2rem;color:var(--white-dim);font-style:italic;margin-bottom:3rem}
+.cta-btns{display:flex;gap:1.25rem;justify-content:center;flex-wrap:wrap}
+.btn-gold{display:inline-flex;align-items:center;gap:.5rem;padding:1rem 2.5rem;background:var(--grad-gold);color:var(--black);font-family:var(--font-display);font-size:.8rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;border-radius:100px;transition:all .3s;box-shadow:0 0 30px rgba(212,169,106,.25)}
+.btn-gold:hover{transform:translateY(-3px);box-shadow:0 10px 40px rgba(212,169,106,.4)}
+.btn-whatsapp{display:inline-flex;align-items:center;gap:.75rem;padding:1rem 2.5rem;background:#25D366;color:white;font-family:var(--font-display);font-size:.8rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;border-radius:100px;transition:all .3s}
+.btn-whatsapp:hover{background:#1DAD52;transform:translateY(-3px)}
 
-        .hero-inner { position:relative; z-index:2; animation: fadeUp 1s var(--ease) both; }
-        @keyframes fadeUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+/* ── FOOTER ── */
+.footer{background:var(--black-soft);border-top:1px solid rgba(212,169,106,.18);padding:5rem 0 2.5rem}
+.footer-grid{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:3rem;margin-bottom:4rem}
+.footer-brand img{height:70px;width:auto;object-fit:contain;margin-bottom:1.25rem}
+.footer-brand p{font-size:1rem;color:var(--white-dim);line-height:1.7;margin-bottom:1.5rem}
+.socials{display:flex;gap:.75rem}
+.socials a{width:42px;height:42px;border-radius:50%;background:var(--black-card);border:1px solid rgba(212,169,106,.15);display:flex;align-items:center;justify-content:center;font-size:1rem;color:var(--white-dim);transition:all .3s}
+.socials a:hover{background:var(--gold);color:var(--black);border-color:var(--gold);transform:translateY(-3px)}
+.footer-col h4{font-family:var(--font-display);font-size:.75rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem}
+.footer-col ul{list-style:none}
+.footer-col ul li{margin-bottom:.7rem;font-size:.95rem;color:var(--white-dim)}
+.footer-col ul li i{color:var(--gold);width:16px;margin-right:.5rem}
+.footer-col ul li a{color:inherit}
+.footer-col ul li a:hover{color:var(--gold)}
+.footer-bottom{border-top:1px solid rgba(212,169,106,.1);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:.85rem;color:rgba(245,237,216,.3);font-family:var(--font-display)}
 
-        .hero-eyebrow { display:inline-flex; align-items:center; gap:0.75rem; font-family:var(--font-display); font-size:0.7rem; font-weight:700; letter-spacing:0.3em; text-transform:uppercase; color:var(--gold); margin-bottom:1.5rem; }
-        .hero-eyebrow::before, .hero-eyebrow::after { content:''; width:40px; height:1px; background:var(--gold); opacity:0.5; }
+/* ── TABLET ≤ 1024px ── */
+@media(max-width:1024px){
+  .gallery-item{grid-column:span 6}
+  .gallery-item.large{grid-column:span 6}
+  .gallery-item.wide{grid-column:span 12}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:2.5rem}
+  .footer-brand{grid-column:span 2}
+  .lightbox-prev{left:-.5rem}.lightbox-next{right:-.5rem}
+}
 
-        .page-title { font-family:var(--font-display); font-size:clamp(3.5rem, 10vw, 8rem); font-weight:800; line-height:0.95; letter-spacing:-0.03em; margin-bottom:1.5rem; }
-        .page-title span { display:block; background:var(--grad-gold); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; font-style:italic; }
-        .page-subtitle { font-family:var(--font-body); font-size:clamp(1rem, 2vw, 1.3rem); color:var(--white-dim); font-style:italic; max-width:550px; margin:0 auto; }
+/* ═══════════════════════════════════
+   MOBILE ≤ 767px  —  BOLD SPLIT STYLE
+═══════════════════════════════════ */
+@media(max-width:767px){
+  html{font-size:15px}
+  body{padding-bottom:4.75rem}
+  .container{padding:0 1rem}
 
-        /* FILTER */
-        .filter-section {
-            padding: 2.5rem 0;
-            background: var(--black-soft);
-            position: sticky;
-            top: 72px;
-            z-index: 100;
-            border-bottom: 1px solid rgba(212,169,106,0.1);
-            backdrop-filter: blur(10px);
-        }
-        .filter-buttons { display:flex; gap:0.75rem; justify-content:center; flex-wrap:wrap; }
-        .filter-btn {
-            padding: 0.6rem 1.5rem;
-            font-family: var(--font-display);
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            background: transparent;
-            color: var(--white-dim);
-            border: 1px solid rgba(212,169,106,0.2);
-            border-radius: 100px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        .filter-btn:hover { border-color:var(--gold); color:var(--gold); }
-        .filter-btn.active { background:var(--grad-gold); color:var(--black); border-color:transparent; box-shadow:0 4px 20px rgba(212,169,106,0.3); }
+  /* NAV */
+  .nav{padding:.85rem 0;background:rgba(7,30,30,.97);backdrop-filter:blur(16px);border-bottom:1px solid rgba(212,169,106,.14)}
+  .nav-inner{padding:0 1rem}
+  .nav-logo img{height:40px}
+  .nav-links{display:none!important}
+  .hamburger{display:flex}
 
-        /* GALLERY */
-        .portfolio-gallery { padding: 5rem 0 6rem; background: var(--black); }
+  /* PAGE HERO — compact split-style header */
+  .page-hero{
+    min-height:auto;padding:0;
+    display:grid;grid-template-columns:38% 62%;
+    align-items:stretch;
+  }
+  .page-hero::before{display:none}
+  .hero-lines{display:none}
+  .hero-inner{
+    grid-column:1 / span 2;
+    display:grid;grid-template-columns:38% 62%;
+    align-items:stretch;
+  }
 
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(12, 1fr);
-            gap: 1.25rem;
-        }
+  /* LEFT: gold block with category label */
+  .hero-gold-side{
+    background:var(--gold);
+    display:flex;flex-direction:column;align-items:center;
+    justify-content:space-between;
+    padding:5.5rem .65rem 1.5rem;
+    position:relative;overflow:hidden;
+  }
+  .hero-gold-side::before{
+    content:'P';position:absolute;bottom:-1.5rem;left:50%;
+    transform:translateX(-50%);
+    font-family:var(--font-display);font-size:11rem;font-weight:800;
+    color:rgba(7,30,30,.11);line-height:1;pointer-events:none;
+  }
+  .hero-gold-side .brand-vert{
+    font-family:var(--font-display);font-size:.48rem;font-weight:800;
+    letter-spacing:.18em;text-transform:uppercase;color:var(--black);
+    writing-mode:vertical-rl;text-orientation:mixed;transform:rotate(180deg);opacity:.7;
+  }
+  .hero-gold-side .count-tag{
+    background:var(--black);color:var(--gold);
+    font-family:var(--font-display);font-size:.5rem;font-weight:700;
+    letter-spacing:.15em;text-transform:uppercase;
+    padding:.4rem .5rem;width:100%;text-align:center;
+  }
 
-        /* Default span */
-        .gallery-item { grid-column: span 4; }
-        .gallery-item.large { grid-column: span 6; }
-        .gallery-item.wide  { grid-column: span 8; }
-        .gallery-item.tall  { grid-column: span 3; }
+  /* RIGHT: dark block with title */
+  .hero-dark-side{
+    background:var(--black-soft);
+    display:flex;flex-direction:column;justify-content:flex-end;
+    padding:5.5rem 1rem 1.5rem;
+  }
+  .hero-eyebrow{font-size:.54rem;letter-spacing:.16em;margin-bottom:.7rem;justify-content:flex-start}
+  .hero-eyebrow::before{width:12px}
+  .hero-eyebrow::after{display:none}
+  .page-title{
+    font-size:clamp(2rem,9vw,3rem);
+    line-height:.92;letter-spacing:-.04em;margin-bottom:.8rem;color:var(--white);
+  }
+  .page-title span{font-size:clamp(1.8rem,8.5vw,2.8rem)}
+  .page-subtitle{font-size:.82rem;text-align:left;margin:0;line-height:1.55}
 
-        .gallery-card {
-            position: relative;
-            border-radius: 14px;
-            overflow: hidden;
-            cursor: pointer;
-            background: var(--black-card);
-            border: 1px solid rgba(212,169,106,0.08);
-            transition: all 0.4s var(--ease);
-            height: 100%;
-            min-height: 280px;
-        }
-        .gallery-item.large .gallery-card { min-height: 380px; }
-        .gallery-item.wide  .gallery-card { min-height: 260px; }
+  /* FILTER BAR — horizontal scroll on mobile */
+  .filter-section{padding:1rem 0;top:56px}
+  .filter-buttons{
+    flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    scrollbar-width:none;justify-content:flex-start;
+    padding:0 1rem;gap:.5rem;
+  }
+  .filter-buttons::-webkit-scrollbar{display:none}
+  .filter-btn{
+    flex-shrink:0;padding:.48rem 1.1rem;
+    font-size:.65rem;border-radius:0;letter-spacing:.08em;
+    white-space:nowrap;
+  }
+  .filter-btn.active{border-radius:0}
 
-        .gallery-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.6s var(--ease);
-            position: absolute;
-            inset: 0;
-        }
-        .gallery-card:hover img { transform: scale(1.07); }
-        .gallery-card:hover { border-color: rgba(212,169,106,0.3); box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+  /* GALLERY — magazine masonry 2-col */
+  .portfolio-gallery{padding:2rem 0 4rem}
+  .gallery-grid{
+    display:grid;grid-template-columns:1fr 1fr;
+    grid-auto-rows:auto;gap:.4rem;padding:0 1rem;
+  }
+  /* reset all desktop spans */
+  .gallery-item,
+  .gallery-item.large,
+  .gallery-item.wide,
+  .gallery-item.tall{grid-column:unset;aspect-ratio:unset}
 
-        .gallery-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(7,30,30,0.92) 0%, rgba(7,30,30,0.3) 50%, transparent 100%);
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 1.75rem;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-        .gallery-card:hover .gallery-overlay { opacity: 1; }
+  /* magazine layout pattern */
+  .gallery-item:nth-child(1){grid-column:span 2;aspect-ratio:16/9}
+  .gallery-item:nth-child(2){aspect-ratio:3/4}
+  .gallery-item:nth-child(3){aspect-ratio:3/4}
+  .gallery-item:nth-child(4){grid-column:span 2;aspect-ratio:21/8}
+  .gallery-item:nth-child(5){aspect-ratio:1}
+  .gallery-item:nth-child(6){aspect-ratio:1}
+  .gallery-item:nth-child(7){grid-column:span 2;aspect-ratio:16/7}
+  .gallery-item:nth-child(8){aspect-ratio:3/4}
+  .gallery-item:nth-child(9){aspect-ratio:3/4}
+  .gallery-item:nth-child(10){grid-column:span 2;aspect-ratio:16/8}
+  .gallery-item:nth-child(11){aspect-ratio:1}
+  .gallery-item:nth-child(12){aspect-ratio:1}
 
-        .gallery-overlay h3 { font-family:var(--font-display); font-size:1.2rem; font-weight:700; color:var(--white); margin-bottom:0.3rem; }
-        .gallery-overlay p { font-family:var(--font-display); font-size:0.75rem; letter-spacing:0.1em; color:var(--gold-light); text-transform:uppercase; margin-bottom:1rem; }
+  .gallery-card{border-radius:4px;min-height:unset!important}
 
-        .zoom-btn {
-            width: 40px; height: 40px;
-            border-radius: 50%;
-            background: var(--grad-gold);
-            border: none;
-            color: var(--black);
-            display: flex; align-items:center; justify-content:center;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            align-self: flex-start;
-        }
-        .zoom-btn:hover { transform: scale(1.15); }
+  /* always-visible captions on mobile */
+  .gallery-overlay{
+    opacity:1;
+    background:linear-gradient(to top,rgba(7,30,30,.88) 0%,transparent 55%);
+    padding:.75rem;
+  }
+  .gallery-overlay h3{font-size:.8rem;margin-bottom:.08rem}
+  .gallery-overlay p{font-size:.62rem;margin-bottom:.5rem}
+  .zoom-btn{width:30px;height:30px;font-size:.72rem}
+  .gallery-tag{font-size:.56rem;padding:.22rem .65rem;top:.6rem;left:.6rem}
 
-        /* Category tag on card */
-        .gallery-tag {
-            position: absolute;
-            top: 1rem; left: 1rem;
-            background: rgba(7,30,30,0.8);
-            border: 1px solid rgba(212,169,106,0.3);
-            border-radius: 100px;
-            padding: 0.3rem 0.85rem;
-            font-family: var(--font-display);
-            font-size: 0.65rem;
-            font-weight: 700;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--gold);
-            backdrop-filter: blur(8px);
-            z-index: 2;
-        }
+  .load-more-wrap{margin-top:2rem;padding:0 1rem}
+  .btn-ghost-gold{padding:.85rem 1.5rem;font-size:.72rem;border-radius:0;width:100%;justify-content:center}
 
-        .gallery-item.hidden { display: none; }
+  /* LIGHTBOX — full screen on mobile */
+  .lightbox{padding:.75rem}
+  .lightbox-inner img{border-radius:8px;max-height:70vh}
+  .lightbox-close{top:-.5rem;right:-.5rem;width:36px;height:36px;font-size:.95rem}
+  .lightbox-prev{left:0}.lightbox-next{right:0}
+  .lightbox-caption h3{font-size:1.05rem}
+  .lightbox-caption p{font-size:.65rem}
 
-        /* Load more */
-        .load-more-wrap { text-align:center; margin-top:3.5rem; }
-        .btn-ghost-gold {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            padding: 1rem 2.5rem;
-            background: transparent;
-            color: var(--gold);
-            font-family: var(--font-display);
-            font-size: 0.8rem;
-            font-weight: 700;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            border: 1px solid rgba(212,169,106,0.4);
-            border-radius: 100px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        .btn-ghost-gold:hover { background: var(--grad-gold); color: var(--black); border-color:transparent; box-shadow: 0 8px 30px rgba(212,169,106,0.3); }
+  /* CTA */
+  .cta{padding:4rem 0}
+  .cta-inner{text-align:left;padding:0 1rem}
+  .cta-title{font-size:clamp(1.55rem,8vw,2.4rem);margin-bottom:.85rem}
+  .cta-text{font-size:.97rem;margin-bottom:1.75rem}
+  .cta-btns{flex-direction:column;gap:.65rem;align-items:stretch}
+  .btn-gold,.btn-whatsapp{padding:.9rem 1.25rem;font-size:.74rem;border-radius:0;justify-content:center}
 
-        /* LIGHTBOX */
-        .lightbox {
-            position: fixed;
-            inset: 0;
-            background: rgba(7,30,30,0.97);
-            backdrop-filter: blur(20px);
-            z-index: 2000;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-        }
-        .lightbox.open { display: flex; animation: fadeIn 0.3s ease; }
-        @keyframes fadeIn { from{opacity:0} to{opacity:1} }
-        .lightbox-inner { position:relative; max-width:900px; width:100%; }
-        .lightbox-inner img { width:100%; border-radius:16px; border:1px solid rgba(212,169,106,0.2); box-shadow:0 40px 100px rgba(0,0,0,0.8); max-height:85vh; object-fit:contain; }
-        .lightbox-close { position:absolute; top:-1rem; right:-1rem; width:44px; height:44px; border-radius:50%; background:var(--grad-gold); border:none; color:var(--black); font-size:1.1rem; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all 0.3s ease; }
-        .lightbox-close:hover { transform:scale(1.1); }
-        .lightbox-caption { text-align:center; margin-top:1.25rem; }
-        .lightbox-caption h3 { font-family:var(--font-display); font-size:1.3rem; color:var(--white); }
-        .lightbox-caption p { font-family:var(--font-display); font-size:0.75rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--gold); margin-top:0.3rem; }
-        .lightbox-nav { position:absolute; top:50%; transform:translateY(-50%); width:44px; height:44px; border-radius:50%; background:rgba(7,30,30,0.8); border:1px solid rgba(212,169,106,0.3); color:var(--gold); font-size:1rem; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all 0.3s ease; }
-        .lightbox-nav:hover { background:var(--grad-gold); color:var(--black); border-color:transparent; }
-        .lightbox-prev { left:-3.5rem; }
-        .lightbox-next { right:-3.5rem; }
+  /* FOOTER */
+  .footer{padding:2.5rem 0 1rem}
+  .footer-grid{grid-template-columns:1fr;gap:1.75rem;margin-bottom:2rem}
+  .footer-brand{grid-column:unset}
+  .footer-brand img{height:48px;margin-bottom:.85rem}
+  .footer-brand p{font-size:.86rem;margin-bottom:1rem}
+  .socials a{width:36px;height:36px;font-size:.85rem;border-radius:0}
+  .footer-col h4{font-size:.6rem;margin-bottom:.8rem}
+  .footer-col ul li{font-size:.85rem;margin-bottom:.42rem}
+  .footer-bottom{flex-direction:column;text-align:center;gap:.3rem;font-size:.7rem}
 
-        /* CTA */
-        .cta { padding:8rem 0; background:var(--black-soft); position:relative; overflow:hidden; }
-        .cta::before { content:''; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:60vw; height:60vw; background:radial-gradient(ellipse, rgba(212,169,106,0.08) 0%, transparent 65%); pointer-events:none; }
-        .cta-inner { text-align:center; max-width:700px; margin:0 auto; position:relative; z-index:2; }
-        .cta-title { font-family:var(--font-display); font-size:clamp(2rem,5vw,4rem); font-weight:800; color:var(--white); margin-bottom:1rem; }
-        .cta-text { font-size:1.2rem; color:var(--white-dim); font-style:italic; margin-bottom:3rem; }
-        .cta-btns { display:flex; gap:1.25rem; justify-content:center; flex-wrap:wrap; }
-        .btn-gold { display:inline-flex; align-items:center; gap:0.5rem; padding:1rem 2.5rem; background:var(--grad-gold); color:var(--black); font-family:var(--font-display); font-size:0.8rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; border-radius:100px; transition:all 0.3s ease; box-shadow:0 0 30px rgba(212,169,106,0.25); }
-        .btn-gold:hover { transform:translateY(-3px); box-shadow:0 10px 40px rgba(212,169,106,0.4); }
-        .btn-whatsapp { display:inline-flex; align-items:center; gap:0.75rem; padding:1rem 2.5rem; background:#25D366; color:white; font-family:var(--font-display); font-size:0.8rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; border-radius:100px; transition:all 0.3s ease; }
-        .btn-whatsapp:hover { background:#1DAD52; transform:translateY(-3px); }
+  /* BOTTOM NAV — matches index.html */
+  .mob-bottom-nav{
+    display:grid!important;grid-template-columns:repeat(4,1fr);
+    position:fixed;bottom:0;left:0;right:0;height:4.25rem;
+    padding-bottom:env(safe-area-inset-bottom,0);
+    background:rgba(7,30,30,.99);backdrop-filter:blur(20px);
+    border-top:1px solid rgba(212,169,106,.18);z-index:1000;
+  }
+  .mob-bottom-nav a{
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:.25rem;font-family:var(--font-display);font-size:.52rem;
+    letter-spacing:.1em;text-transform:uppercase;color:rgba(245,237,216,.38);
+    position:relative;transition:color .22s;
+  }
+  .mob-bottom-nav a i{font-size:1.12rem;transition:transform .22s}
+  .mob-bottom-nav a.active,.mob-bottom-nav a:hover{color:var(--gold)}
+  .mob-bottom-nav a.active i{transform:translateY(-2px)}
+  .mob-bottom-nav a.active::before{
+    content:'';position:absolute;top:0;left:10%;right:10%;
+    height:2.5px;background:var(--grad-gold);
+  }
+  .mob-bottom-nav a:last-child{
+    background:var(--grad-gold);color:#071E1E;font-weight:800;
+  }
+  .mob-bottom-nav a:last-child i{color:#071E1E}
+  .mob-bottom-nav a:last-child.active::before{display:none}
+}
 
-        /* FOOTER */
-        .footer { background:var(--black-soft); border-top:1px solid rgba(212,169,106,0.18); padding:5rem 0 2.5rem; }
-        .footer-grid { display:grid; grid-template-columns:1.5fr repeat(3,1fr); gap:3rem; margin-bottom:4rem; }
-        .footer-brand img { height:70px; width:auto; object-fit:contain; margin-bottom:1.25rem; }
-        .footer-brand p { font-size:1rem; color:var(--white-dim); line-height:1.7; margin-bottom:1.5rem; }
-        .socials { display:flex; gap:0.75rem; }
-        .socials a { width:42px; height:42px; border-radius:50%; background:var(--black-card); border:1px solid rgba(212,169,106,0.15); display:flex; align-items:center; justify-content:center; font-size:1rem; color:var(--white-dim); transition:all 0.3s ease; }
-        .socials a:hover { background:var(--gold); color:var(--black); border-color:var(--gold); transform:translateY(-3px); }
-        .footer-col h4 { font-family:var(--font-display); font-size:0.75rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:1.5rem; }
-        .footer-col ul { list-style:none; }
-        .footer-col ul li { margin-bottom:0.7rem; font-size:0.95rem; color:var(--white-dim); transition:color 0.3s ease; }
-        .footer-col ul li:hover { color:var(--white); }
-        .footer-col ul li i { color:var(--gold); width:16px; margin-right:0.5rem; }
-        .footer-col ul li a { color:inherit; }
-        .footer-col ul li a:hover { color:var(--gold); }
-        .footer-bottom { border-top:1px solid rgba(212,169,106,0.1); padding-top:2rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; font-size:0.85rem; color:rgba(245,237,216,0.3); font-family:var(--font-display); }
-
-        /* MOBILE NAV */
-        .mobile-nav { display:none; }
-
-        /* RESPONSIVE */
-        @media (max-width: 1024px) {
-            .gallery-item { grid-column: span 6; }
-            .gallery-item.large { grid-column: span 6; }
-            .gallery-item.wide { grid-column: span 12; }
-            .footer-grid { grid-template-columns: 1fr 1fr; gap:2.5rem; }
-            .lightbox-prev { left:-0.5rem; } .lightbox-next { right:-0.5rem; }
-        }
-        @media (max-width: 768px) {
-            .nav-links { display:none; }
-            .hamburger { display:flex; }
-            .gallery-grid { grid-template-columns: 1fr 1fr; gap:0.85rem; }
-            .gallery-item, .gallery-item.large, .gallery-item.wide, .gallery-item.tall { grid-column: span 1; }
-            .gallery-card { min-height: 220px !important; }
-            .footer-grid { grid-template-columns:1fr; }
-            .footer-bottom { flex-direction:column; text-align:center; }
-            .mobile-nav { display:flex; position:fixed; bottom:0; left:0; right:0; background:rgba(7,30,30,0.99); border-top:1px solid rgba(212,169,106,0.15); backdrop-filter:blur(20px); z-index:1000; padding:0.75rem 0 1rem; }
-            .mobile-nav a { flex:1; display:flex; flex-direction:column; align-items:center; gap:0.3rem; font-family:var(--font-display); font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--white-dim); }
-            .mobile-nav a.active, .mobile-nav a:hover { color:var(--gold); }
-            .mobile-nav a i { font-size:1.2rem; }
-            body { padding-bottom:4.5rem; }
-        }
-    </style>
+@media(max-width:380px){
+  .page-title{font-size:clamp(1.75rem,8.5vw,2.5rem)}
+  .page-title span{font-size:clamp(1.6rem,8vw,2.3rem)}
+}
+</style>
 </head>
 <body>
 
-    <!-- NAV -->
-    <nav class="nav" id="mainNav">
-        <div class="nav-inner">
-            <div class="nav-logo">
-                <a href="index.html"><img src="assets/images/logo.jpeg" alt="Hair by Akose"></a>
-            </div>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="index.html#story">Story</a></li>
-                <li><a href="portfolio.html" class="active-link">Portfolio</a></li>
-                <li><a href="pricing.html">Pricing</a></li>
-                <li><a href="index.html#about">About</a></li>
-                <li><a href="contact.html" class="nav-cta">Book Now</a></li>
-            </ul>
-            <div class="hamburger" id="hamburger">
-                <span></span><span></span><span></span>
-            </div>
-        </div>
-    </nav>
+<div id="scroll-progress"></div>
 
-    <!-- PAGE HERO -->
-    <section class="page-hero">
-        <div class="hero-lines"><span></span><span></span><span></span><span></span></div>
-        <div class="hero-inner">
-            <div class="hero-eyebrow">Hair by Akose</div>
-            <h1 class="page-title">
-                My Work &<br><span>Portfolio</span>
-            </h1>
-            <p class="page-subtitle">Browse transformations and see the artistry behind every style</p>
-        </div>
-    </section>
+<!-- NAV -->
+<nav class="nav" id="mainNav">
+  <div class="nav-inner">
+    <div class="nav-logo"><a href="index.html"><img src="assets/images/logo.jpeg" alt="Hair by Akose"></a></div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#story">Story</a></li>
+      <li><a href="portfolio.html" class="active-link">Portfolio</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="contact.html" class="nav-cta">Book Now</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </div>
+</nav>
 
-    <!-- FILTER -->
-    <section class="filter-section">
-        <div class="container">
-            <div class="filter-buttons">
-                <button class="filter-btn active" data-filter="all">All Work</button>
-                <button class="filter-btn" data-filter="braids">Braids</button>
-                <button class="filter-btn" data-filter="cornrows">Cornrows</button>
-                <button class="filter-btn" data-filter="twists">Twists</button>
-                <button class="filter-btn" data-filter="weaves">Weaves</button>
-                <button class="filter-btn" data-filter="natural">Natural Hair</button>
-                <button class="filter-btn" data-filter="locs">Locs</button>
-                <button class="filter-btn" data-filter="kids">Kids</button>
-            </div>
-        </div>
-    </section>
+<!-- SLIDE PANEL MENU -->
+<div class="mob-menu-backdrop" id="mobBackdrop" onclick="cM()"></div>
+<div class="mob-menu" id="mobMenu">
+  <button class="mob-menu-close" onclick="cM()" aria-label="Close menu"><i class="fas fa-times"></i></button>
+  <div class="mob-menu-brand">Hair by Akose</div>
+  <div class="mob-menu-links">
+    <a href="index.html"        onclick="cM()">Home</a>
+    <a href="index.html#story"  onclick="cM()">Story</a>
+    <a href="portfolio.html"    onclick="cM()" class="active-link">Portfolio</a>
+    <a href="pricing.html"      onclick="cM()">Pricing</a>
+    <a href="index.html#about"  onclick="cM()">About</a>
+  </div>
+  <a href="contact.html" class="mob-menu-cta"><i class="fas fa-calendar-check"></i> Book Appointment</a>
+  <div class="mob-menu-socials">
+    <a href="https://www.instagram.com/hairbyakose" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://web.facebook.com/vivienne.akose" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+    <a href="https://www.tiktok.com/@hairbyakose" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+    <a href="https://wa.me/+254725351803" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+  </div>
+  <p class="mob-menu-meta">Nairobi &middot; +(254) 725-351-803<br>Mon–Sat: 9AM – 8PM</p>
+</div>
 
-    <!-- GALLERY -->
-    <section class="portfolio-gallery">
-        <div class="container">
-            <div class="gallery-grid" id="galleryGrid">
-
-                <div class="gallery-item large" data-category="braids">
-                    <div class="gallery-card">
-                        <span class="gallery-tag">Braids</span>
-                        <img src="assets/images/bbs.jpeg" alt="Small Box Braids">
-                        <div class="gallery-overlay">
-                            <h3>Small Box Braids</h3>
-                            <p>8 hrs · Protective Style</p>
-                            <button class="zoom-btn"><i class="fas fa-expand"></i></button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="braids">
-                    <div class="gallery-card">
-                        <span class="gallery-tag">Braids</span>
-                        <img src="assets/images/bbm.jpeg" alt="Medium Box Braids">
-                        <div class="gallery-overlay">
-                            <h3>Medium Box Braids</h3>
-                            <p>6 hrs · With Color</p>
-                            <button class="zoom-btn"><i class="fas fa-expand"></i></button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="cornrows">
-                    <div class="gallery-card">
-                        <span class="gallery-tag">Cornrows</span>
-                        <img src="assets/images/kb.jpeg" alt="Knotless Braids">
-                        <div class="gallery-overlay">
-                            <h3>Knotless Braids</h3>
-                            <p>4 hrs · Sleek Finish</p>
-                            <button class="zoom-btn"><i class="fas fa-expand"></i></button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="cornrows">
-                    <div class="gallery-card">
-                        <span class="gallery-tag">Cornrows</span>
-                        <img src="assets/images/cc.jpeg" alt="Complex Cornrows">
-                        <div class="gallery-overlay">
-                            <h3>Intricate Cornrow Pattern</h3>
-                            <p>5 hrs · Custom Design</p>
-                            <button class="zoom-btn"><i class="fas fa-expand"></i></button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="gallery-item large" data-category="twists">
-                    <div class="gallery-card">
-                        <span class="gallery-tag">Twists</span>
-                        <img src="assets/images/Twistouts-natural-hair.jpeg" alt="Twistsouts natural hair">
-                        <div class="gallery-overlay">
-                            <h3>Twistsouts</h3>
-                            <p>7 hrs · Long Length</p>
-                            <button class="zoom-btn"><i class="fas fa-expand"></i></button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="twists">
-                    <div class="gallery-card">
-                        <span class="gallery-tag">Twists</span>
-                        <img src="assets/images/Mini-Passion-Twist.jpeg" alt="Passion Twists">
-                        <div class="gallery-overlay">
-                            <h3>Passion Twists</h3>
-                            <p>8 hrs · Bohemian Style</p>
-                            <button class="zoom-btn"><i class="fas fa-expand"></i></button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="cornrows">
-                    <div class="gallery-card">
-                        <span class="gallery-tag">Cornrows</span>
-                        <img src="assets/images/cs.jpeg" alt="Simple Cornrows">
-                        <div class="gallery-overlay">
-                            <h3>Simple Cornrows</h3>
-                            <p>2 hrs · Clean & Neat</p>
-                            <button class="zoom-btn"><i class="fas fa-expand"></i></button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="natural">
-                    <div class="gallery-card">
-                        <span class="gallery-tag">Natural</span>
-                        <img src="assets/images/Natural.jpeg" alt="Natural Twist-Out">
-                        <div class="gallery-overlay">
-                            <h3>Defined Twist-Out</h3>
-                            <p>2 hrs · Volume & Definition</p>
-                            <button class="zoom-btn"><i class="fas fa-expand"></i></button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="locs">
-                    <div class="gallery-card">
-                        <span class="gallery-tag">Locs</span>
-                        <img src="assets/images/retouch.jfif" alt="Locs Retouch">
-                        <div class="gallery-overlay">
-                            <h3>Locs Retouch & Style</h3>
-                            <p>3 hrs · Fresh & Clean</p>
-                            <button class="zoom-btn"><i class="fas fa-expand"></i></button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="kids">
-                    <div class="gallery-card">
-                        <span class="gallery-tag">Kids</span>
-                        <img src="assets/images/kb (2).jpeg" alt="Kids Cornrow Style">
-                        <div class="gallery-overlay">
-                            <h3>Kids Cornrow Style</h3>
-                            <p>2 hrs · Back to School</p>
-                            <button class="zoom-btn"><i class="fas fa-expand"></i></button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="braids">
-                    <div class="gallery-card">
-                        <span class="gallery-tag">Braids</span>
-                        <img src="assets/images/bbj.jpeg" alt="Jumbo Box Braids">
-                        <div class="gallery-overlay">
-                            <h3>Jumbo Box Braids</h3>
-                            <p>4 hrs · Quick Style</p>
-                            <button class="zoom-btn"><i class="fas fa-expand"></i></button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="kids">
-                    <div class="gallery-card">
-                        <span class="gallery-tag">Kids</span>
-                        <img src="assets/images/kidconrow.jpeg" alt="Kids Cornrow">
-                        <div class="gallery-overlay">
-                            <h3>Kids Cornrow</h3>
-                            <p>3 hrs · Elegant Style</p>
-                            <button class="zoom-btn"><i class="fas fa-expand"></i></button>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="load-more-wrap">
-                <button class="btn-ghost-gold" id="loadMore">
-                    <i class="fas fa-plus"></i> Load More Work
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="cta">
-        <div class="container">
-            <div class="cta-inner">
-                <span class="section-label">Ready?</span>
-                <h2 class="cta-title">Want to Be My Next Transformation?</h2>
-                <p class="cta-text">Book your appointment today and let's create something beautiful together!</p>
-                <div class="cta-btns">
-                    <a href="contact.html" class="btn-gold"><i class="fas fa-calendar-check"></i> Book Appointment</a>
-                    <a href="https://wa.me/+254725351803?text=Hi%20Akose!%20I%20loved%20your%20portfolio!%20I'd%20like%20to%20book%20an%20appointment." class="btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp Me</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <img src="assets/images/logo.jpeg" alt="Hair by Akose">
-                    <p>Professional mobile hair styling and handmade accessories, bringing beauty to your doorstep.</p>
-                    <div class="socials">
-                        <a href="https://www.instagram.com/hairbyakose?igsh=YW1pdTc0ZzBua2p4&utm_source=qr" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://web.facebook.com/vivienne.akose" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                        <a href="https://www.tiktok.com/@hairbyakose?_r=1&_t=ZS-93RrembQpYD" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-                        <a href="http://www.youtube.com/@vivienneakose8306" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-                <div class="footer-col">
-                    <h4>Navigate</h4>
-                    <ul>
-                        <li><a href="index.html#story">My Story</a></li>
-                        <li><a href="portfolio.html">Portfolio</a></li>
-                        <li><a href="pricing.html">Pricing</a></li>
-                        <li><a href="index.html#about">About</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Services</h4>
-                    <ul>
-                        <li><a href="index.html#services">Box Braids</a></li>
-                        <li><a href="index.html#services">Cornrows</a></li>
-                        <li><a href="index.html#services">Twists & Locs</a></li>
-                        <li><a href="index.html#services">Natural Hair</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Contact</h4>
-                    <ul>
-                        <li><i class="fas fa-phone"></i> +(254) 725-351-803</li>
-                        <li><i class="fas fa-envelope"></i><a href="mailto:vivienneakose22@gmail.com"> vivienneakose22@gmail.com</a></li>
-                        <li><i class="fas fa-map-marker-alt"></i> @ your place of comfort</li>
-                        <li><i class="fas fa-clock"></i> Mon–Sat: 9AM – 8PM</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <span>&copy; 2026 Hair by Akose. All rights reserved.</span>
-                <span>Crafted with <i class="fas fa-heart" style="color:var(--gold)"></i> and passion · by #mimsanii</span>
-            </div>
-        </div>
-    </footer>
-
-    <!-- LIGHTBOX -->
-    <div class="lightbox" id="lightbox">
-        <div class="lightbox-inner">
-            <button class="lightbox-close" id="lightboxClose"><i class="fas fa-times"></i></button>
-            <button class="lightbox-nav lightbox-prev" id="lightboxPrev"><i class="fas fa-chevron-left"></i></button>
-            <button class="lightbox-nav lightbox-next" id="lightboxNext"><i class="fas fa-chevron-right"></i></button>
-            <img src="" alt="" id="lightboxImg">
-            <div class="lightbox-caption">
-                <h3 id="lightboxTitle"></h3>
-                <p id="lightboxMeta"></p>
-            </div>
-        </div>
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="hero-lines"><span></span><span></span><span></span><span></span></div>
+  <div class="hero-inner">
+    <!-- mobile left gold panel -->
+    <div class="hero-gold-side">
+      <span class="brand-vert">Hair by Akose</span>
+      <span class="count-tag">12 Looks</span>
     </div>
+    <!-- mobile right dark panel / desktop full content -->
+    <div class="hero-dark-side">
+      <div class="hero-eyebrow">Hair by Akose</div>
+      <h1 class="page-title">My Work &amp;<br><span>Portfolio</span></h1>
+      <p class="page-subtitle">Browse transformations and see the artistry behind every style</p>
+    </div>
+  </div>
+</section>
 
-    <!-- MOBILE NAV -->
-    <nav class="mobile-nav">
-        <a href="index.html"><i class="fas fa-home"></i><span>Home</span></a>
-        <a href="index.html#services"><i class="fas fa-scissors"></i><span>Services</span></a>
-        <a href="portfolio.html" class="active"><i class="fas fa-images"></i><span>Gallery</span></a>
-        <a href="contact.html"><i class="fas fa-calendar"></i><span>Book</span></a>
-    </nav>
+<!-- FILTER -->
+<section class="filter-section">
+  <div class="container">
+    <div class="filter-buttons">
+      <button class="filter-btn active" data-filter="all">All Work</button>
+      <button class="filter-btn" data-filter="braids">Braids</button>
+      <button class="filter-btn" data-filter="cornrows">Cornrows</button>
+      <button class="filter-btn" data-filter="twists">Twists</button>
+      <button class="filter-btn" data-filter="weaves">Weaves</button>
+      <button class="filter-btn" data-filter="natural">Natural</button>
+      <button class="filter-btn" data-filter="locs">Locs</button>
+      <button class="filter-btn" data-filter="kids">Kids</button>
+    </div>
+  </div>
+</section>
 
-    <script>
-        // Sticky nav
-        const nav = document.getElementById('mainNav');
-        window.addEventListener('scroll', () => {
-            nav.classList.toggle('scrolled', window.scrollY > 60);
-        });
+<!-- GALLERY -->
+<section class="portfolio-gallery">
+  <div class="container">
+    <div class="gallery-grid" id="galleryGrid">
 
-        // Filter
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const galleryItems = document.querySelectorAll('.gallery-item');
+      <div class="gallery-item large" data-category="braids">
+        <div class="gallery-card">
+          <span class="gallery-tag">Braids</span>
+          <img src="assets/images/bbs.jpeg" alt="Small Box Braids">
+          <div class="gallery-overlay"><h3>Small Box Braids</h3><p>8 hrs · Protective Style</p><button class="zoom-btn"><i class="fas fa-expand"></i></button></div>
+        </div>
+      </div>
 
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                filterBtns.forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                const filter = this.dataset.filter;
-                galleryItems.forEach(item => {
-                    const match = filter === 'all' || item.dataset.category === filter;
-                    item.classList.toggle('hidden', !match);
-                    if (match) item.style.animation = 'fadeUp 0.5s ease both';
-                });
-            });
-        });
+      <div class="gallery-item" data-category="braids">
+        <div class="gallery-card">
+          <span class="gallery-tag">Braids</span>
+          <img src="assets/images/bbm.jpeg" alt="Medium Box Braids">
+          <div class="gallery-overlay"><h3>Medium Box Braids</h3><p>6 hrs · With Color</p><button class="zoom-btn"><i class="fas fa-expand"></i></button></div>
+        </div>
+      </div>
 
-        // Lightbox
-        const lightbox    = document.getElementById('lightbox');
-        const lightboxImg = document.getElementById('lightboxImg');
-        const lightboxTitle = document.getElementById('lightboxTitle');
-        const lightboxMeta  = document.getElementById('lightboxMeta');
+      <div class="gallery-item" data-category="cornrows">
+        <div class="gallery-card">
+          <span class="gallery-tag">Cornrows</span>
+          <img src="assets/images/kb.jpeg" alt="Knotless Braids">
+          <div class="gallery-overlay"><h3>Knotless Braids</h3><p>4 hrs · Sleek Finish</p><button class="zoom-btn"><i class="fas fa-expand"></i></button></div>
+        </div>
+      </div>
 
-        // Collect all visible items for prev/next
-        let lightboxIndex = 0;
-        const getVisible = () => [...galleryItems].filter(i => !i.classList.contains('hidden'));
+      <div class="gallery-item" data-category="cornrows">
+        <div class="gallery-card">
+          <span class="gallery-tag">Cornrows</span>
+          <img src="assets/images/cc.jpeg" alt="Complex Cornrows">
+          <div class="gallery-overlay"><h3>Intricate Cornrow Pattern</h3><p>5 hrs · Custom Design</p><button class="zoom-btn"><i class="fas fa-expand"></i></button></div>
+        </div>
+      </div>
 
-        function openLightbox(item) {
-            const img   = item.querySelector('img');
-            const h3    = item.querySelector('.gallery-overlay h3');
-            const p     = item.querySelector('.gallery-overlay p');
-            lightboxImg.src = img.src;
-            lightboxImg.alt = img.alt;
-            lightboxTitle.textContent = h3 ? h3.textContent : '';
-            lightboxMeta.textContent  = p  ? p.textContent  : '';
-            lightboxIndex = getVisible().indexOf(item);
-            lightbox.classList.add('open');
-            document.body.style.overflow = 'hidden';
-        }
+      <div class="gallery-item large" data-category="twists">
+        <div class="gallery-card">
+          <span class="gallery-tag">Twists</span>
+          <img src="assets/images/Twistouts-natural-hair.jpeg" alt="Twistouts natural hair">
+          <div class="gallery-overlay"><h3>Twistouts</h3><p>7 hrs · Long Length</p><button class="zoom-btn"><i class="fas fa-expand"></i></button></div>
+        </div>
+      </div>
 
-        function closeLightbox() {
-            lightbox.classList.remove('open');
-            document.body.style.overflow = '';
-        }
+      <div class="gallery-item" data-category="twists">
+        <div class="gallery-card">
+          <span class="gallery-tag">Twists</span>
+          <img src="assets/images/Mini-Passion-Twist.jpeg" alt="Passion Twists">
+          <div class="gallery-overlay"><h3>Passion Twists</h3><p>8 hrs · Bohemian Style</p><button class="zoom-btn"><i class="fas fa-expand"></i></button></div>
+        </div>
+      </div>
 
-        function navigateLightbox(dir) {
-            const visible = getVisible();
-            lightboxIndex = (lightboxIndex + dir + visible.length) % visible.length;
-            openLightbox(visible[lightboxIndex]);
-        }
+      <div class="gallery-item" data-category="cornrows">
+        <div class="gallery-card">
+          <span class="gallery-tag">Cornrows</span>
+          <img src="assets/images/cs.jpeg" alt="Simple Cornrows">
+          <div class="gallery-overlay"><h3>Simple Cornrows</h3><p>2 hrs · Clean & Neat</p><button class="zoom-btn"><i class="fas fa-expand"></i></button></div>
+        </div>
+      </div>
 
-        // Open on zoom btn or card click
-        document.querySelectorAll('.gallery-card').forEach(card => {
-            card.addEventListener('click', () => {
-                openLightbox(card.closest('.gallery-item'));
-            });
-        });
+      <div class="gallery-item" data-category="natural">
+        <div class="gallery-card">
+          <span class="gallery-tag">Natural</span>
+          <img src="assets/images/Natural.jpeg" alt="Natural Twist-Out">
+          <div class="gallery-overlay"><h3>Defined Twist-Out</h3><p>2 hrs · Volume & Definition</p><button class="zoom-btn"><i class="fas fa-expand"></i></button></div>
+        </div>
+      </div>
 
-        document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
-        document.getElementById('lightboxPrev').addEventListener('click', (e) => { e.stopPropagation(); navigateLightbox(-1); });
-        document.getElementById('lightboxNext').addEventListener('click', (e) => { e.stopPropagation(); navigateLightbox(1); });
+      <div class="gallery-item" data-category="locs">
+        <div class="gallery-card">
+          <span class="gallery-tag">Locs</span>
+          <img src="assets/images/retouch.jfif" alt="Locs Retouch">
+          <div class="gallery-overlay"><h3>Locs Retouch & Style</h3><p>3 hrs · Fresh & Clean</p><button class="zoom-btn"><i class="fas fa-expand"></i></button></div>
+        </div>
+      </div>
 
-        // Close on backdrop click
-        lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+      <div class="gallery-item" data-category="kids">
+        <div class="gallery-card">
+          <span class="gallery-tag">Kids</span>
+          <img src="assets/images/kb (2).jpeg" alt="Kids Cornrow Style">
+          <div class="gallery-overlay"><h3>Kids Cornrow Style</h3><p>2 hrs · Back to School</p><button class="zoom-btn"><i class="fas fa-expand"></i></button></div>
+        </div>
+      </div>
 
-        // Keyboard nav
-        document.addEventListener('keydown', (e) => {
-            if (!lightbox.classList.contains('open')) return;
-            if (e.key === 'Escape') closeLightbox();
-            if (e.key === 'ArrowLeft')  navigateLightbox(-1);
-            if (e.key === 'ArrowRight') navigateLightbox(1);
-        });
+      <div class="gallery-item" data-category="braids">
+        <div class="gallery-card">
+          <span class="gallery-tag">Braids</span>
+          <img src="assets/images/bbj.jpeg" alt="Jumbo Box Braids">
+          <div class="gallery-overlay"><h3>Jumbo Box Braids</h3><p>4 hrs · Quick Style</p><button class="zoom-btn"><i class="fas fa-expand"></i></button></div>
+        </div>
+      </div>
 
-        // Load more (placeholder)
-        document.getElementById('loadMore').addEventListener('click', function() {
-            this.textContent = 'More coming soon!';
-            this.disabled = true;
-            this.style.opacity = '0.5';
-        });
+      <div class="gallery-item" data-category="kids">
+        <div class="gallery-card">
+          <span class="gallery-tag">Kids</span>
+          <img src="assets/images/kidconrow.jpeg" alt="Kids Cornrow">
+          <div class="gallery-overlay"><h3>Kids Cornrow</h3><p>3 hrs · Elegant Style</p><button class="zoom-btn"><i class="fas fa-expand"></i></button></div>
+        </div>
+      </div>
 
-        console.log('Portfolio initialized ✨');
-    </script>
+    </div>
+    <div class="load-more-wrap">
+      <button class="btn-ghost-gold" id="loadMore"><i class="fas fa-plus"></i> Load More Work</button>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="container">
+    <div class="cta-inner">
+      <h2 class="cta-title">Want to Be My Next Transformation?</h2>
+      <p class="cta-text">Book your appointment today and let's create something beautiful together!</p>
+      <div class="cta-btns">
+        <a href="contact.html" class="btn-gold"><i class="fas fa-calendar-check"></i> Book Appointment</a>
+        <a href="https://wa.me/+254725351803" class="btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp Me</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="assets/images/logo.jpeg" alt="Hair by Akose">
+        <p>Professional mobile hair styling and handmade accessories, bringing beauty to your doorstep.</p>
+        <div class="socials">
+          <a href="https://www.instagram.com/hairbyakose?igsh=YW1pdTc0ZzBua2p4&utm_source=qr" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://web.facebook.com/vivienne.akose" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="https://www.tiktok.com/@hairbyakose?_r=1&_t=ZS-93RrembQpYD" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          <a href="http://www.youtube.com/@vivienneakose8306" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="index.html#story">My Story</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="index.html#about">About</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="index.html#services">Box Braids</a></li>
+          <li><a href="index.html#services">Cornrows</a></li>
+          <li><a href="index.html#services">Twists & Locs</a></li>
+          <li><a href="index.html#services">Natural Hair</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><i class="fas fa-phone"></i> +(254) 725-351-803</li>
+          <li><i class="fas fa-envelope"></i> <a href="mailto:vivienneakose22@gmail.com">vivienneakose22@gmail.com</a></li>
+          <li><i class="fas fa-map-marker-alt"></i> @ your place of comfort</li>
+          <li><i class="fas fa-clock"></i> Mon–Sat: 9AM – 8PM</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Hair by Akose. All rights reserved.</span>
+      <span>Crafted with <i class="fas fa-heart" style="color:var(--gold)"></i> and passion &middot; by #mimsanii</span>
+    </div>
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-inner">
+    <button class="lightbox-close" id="lightboxClose"><i class="fas fa-times"></i></button>
+    <button class="lightbox-nav lightbox-prev" id="lightboxPrev"><i class="fas fa-chevron-left"></i></button>
+    <button class="lightbox-nav lightbox-next" id="lightboxNext"><i class="fas fa-chevron-right"></i></button>
+    <img src="" alt="" id="lightboxImg">
+    <div class="lightbox-caption">
+      <h3 id="lightboxTitle"></h3>
+      <p id="lightboxMeta"></p>
+    </div>
+  </div>
+</div>
+
+<!-- MOBILE BOTTOM NAV -->
+<nav class="mob-bottom-nav">
+  <a href="index.html"><i class="fas fa-home"></i><span>Home</span></a>
+  <a href="index.html#services"><i class="fas fa-scissors"></i><span>Services</span></a>
+  <a href="portfolio.html" class="active"><i class="fas fa-images"></i><span>Gallery</span></a>
+  <a href="contact.html"><i class="fas fa-calendar-check"></i><span>Book</span></a>
+</nav>
+
+<script>
+/* ── SCROLL PROGRESS ── */
+var bar = document.getElementById('scroll-progress');
+if(bar){
+  window.addEventListener('scroll', function(){
+    var p = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+    bar.style.width = Math.min(p,100) + '%';
+  }, {passive:true});
+}
+
+/* ── NAV ── */
+var nav = document.getElementById('mainNav');
+if(nav){
+  window.addEventListener('scroll', function(){
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  }, {passive:true});
+}
+
+/* ── SLIDE PANEL ── */
+var hb = document.getElementById('hamburger');
+var mm = document.getElementById('mobMenu');
+var bd = document.getElementById('mobBackdrop');
+
+function openMenu(){
+  if(!mm||!hb) return;
+  mm.classList.add('open');
+  if(bd) bd.classList.add('open');
+  hb.classList.add('open');
+  document.body.style.overflow='hidden';
+  document.body.style.position='fixed';
+  document.body.style.width='100%';
+}
+function cM(){
+  if(!mm||!hb) return;
+  mm.classList.remove('open');
+  if(bd) bd.classList.remove('open');
+  hb.classList.remove('open');
+  document.body.style.overflow='';
+  document.body.style.position='';
+  document.body.style.width='';
+}
+if(hb) hb.addEventListener('click', function(e){ e.stopPropagation(); mm&&mm.classList.contains('open')?cM():openMenu(); });
+document.addEventListener('keydown', function(e){ if(e.key==='Escape') cM(); });
+
+/* ── FILTER ── */
+var filterBtns  = document.querySelectorAll('.filter-btn');
+var galleryItems = document.querySelectorAll('.gallery-item');
+
+filterBtns.forEach(function(btn){
+  btn.addEventListener('click', function(){
+    filterBtns.forEach(function(b){ b.classList.remove('active'); });
+    this.classList.add('active');
+    var filter = this.dataset.filter;
+    galleryItems.forEach(function(item, i){
+      var match = filter === 'all' || item.dataset.category === filter;
+      item.classList.toggle('hidden', !match);
+      if(match){
+        item.style.opacity = '0';
+        item.style.transform = 'translateY(12px)';
+        item.style.transition = 'opacity .4s ease '+( i*35 )+'ms, transform .4s ease '+(i*35)+'ms';
+        setTimeout(function(){ item.style.opacity='1'; item.style.transform='translateY(0)'; }, 20);
+      }
+    });
+  });
+});
+
+/* ── LIGHTBOX ── */
+var lightbox     = document.getElementById('lightbox');
+var lightboxImg  = document.getElementById('lightboxImg');
+var lightboxTitle= document.getElementById('lightboxTitle');
+var lightboxMeta = document.getElementById('lightboxMeta');
+var lbIndex = 0;
+
+function getVisible(){ return Array.from(galleryItems).filter(function(i){ return !i.classList.contains('hidden'); }); }
+
+function openLightbox(item){
+  var img = item.querySelector('img');
+  var h3  = item.querySelector('.gallery-overlay h3');
+  var p   = item.querySelector('.gallery-overlay p');
+  lightboxImg.src   = img ? img.src : '';
+  lightboxImg.alt   = img ? img.alt : '';
+  lightboxTitle.textContent = h3 ? h3.textContent : '';
+  lightboxMeta.textContent  = p  ? p.textContent  : '';
+  lbIndex = getVisible().indexOf(item);
+  lightbox.classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeLightbox(){
+  lightbox.classList.remove('open');
+  document.body.style.overflow='';
+}
+function navLightbox(dir){
+  var vis = getVisible();
+  lbIndex = (lbIndex + dir + vis.length) % vis.length;
+  openLightbox(vis[lbIndex]);
+}
+
+document.querySelectorAll('.gallery-card').forEach(function(card){
+  card.addEventListener('click', function(){ openLightbox(card.closest('.gallery-item')); });
+});
+document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+document.getElementById('lightboxPrev').addEventListener('click', function(e){ e.stopPropagation(); navLightbox(-1); });
+document.getElementById('lightboxNext').addEventListener('click', function(e){ e.stopPropagation(); navLightbox(1); });
+lightbox.addEventListener('click', function(e){ if(e.target===lightbox) closeLightbox(); });
+document.addEventListener('keydown', function(e){
+  if(!lightbox.classList.contains('open')) return;
+  if(e.key==='Escape') closeLightbox();
+  if(e.key==='ArrowLeft')  navLightbox(-1);
+  if(e.key==='ArrowRight') navLightbox(1);
+});
+
+/* ── LOAD MORE ── */
+document.getElementById('loadMore').addEventListener('click', function(){
+  this.innerHTML = '<i class="fas fa-check"></i> More coming soon!';
+  this.disabled = true;
+  this.style.opacity = '.5';
+});
+
+/* ── FADE IN ON LOAD ── */
+document.body.style.opacity='0';
+setTimeout(function(){ document.body.style.transition='opacity .4s ease'; document.body.style.opacity='1'; }, 60);
+
+console.log('Portfolio ready ✨');
+</script>
 </body>
 </html>
