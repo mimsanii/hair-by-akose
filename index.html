@@ -41,21 +41,146 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .nav-links a:hover{color:var(--gold)}
 .nav-links .nav-cta{padding:.6rem 1.5rem;border:1px solid var(--gold);color:var(--gold);border-radius:100px}
 .nav-links .nav-cta:hover{background:var(--gold);color:var(--black)}
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;z-index:1100}
-.hamburger span{width:24px;height:2px;background:var(--white);border-radius:2px;transition:all .35s var(--ease);display:block}
-.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
-.hamburger.open span:nth-child(2){opacity:0}
-.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+/* ── HAMBURGER BUTTON — transparent glass pill ── */
+.hamburger{
+  display:none;flex-direction:column;gap:6px;cursor:pointer;
+  z-index:1100;position:relative;
+  padding:.55rem .7rem;
+  background:rgba(245,237,216,.06);
+  border:1px solid rgba(212,169,106,.25);
+  border-radius:10px;
+  backdrop-filter:blur(8px);
+  transition:background .25s ease,border-color .25s ease;
+}
+.hamburger:hover{background:rgba(212,169,106,.12);border-color:rgba(212,169,106,.5);}
+/* 3 lines — unequal widths for style */
+.hamburger span{display:block;height:1.5px;background:var(--white);border-radius:2px;transition:all .38s var(--ease);transform-origin:center;}
+.hamburger span:nth-child(1){width:22px;}
+.hamburger span:nth-child(2){width:16px;margin-left:auto;background:var(--gold);}
+.hamburger span:nth-child(3){width:22px;}
+/* open state → X */
+.hamburger.open{background:rgba(212,169,106,.15);border-color:rgba(212,169,106,.5);}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(0,5.5px);width:20px;}
+.hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0);}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(0,-5.5px);width:20px;}
 
-/* FULLSCREEN MENU */
-.mob-menu{display:none;position:fixed;inset:0;background:rgba(7,30,30,.99);backdrop-filter:blur(28px);z-index:1050;flex-direction:column;align-items:flex-start;justify-content:center;padding:2rem 2rem 6rem}
-.mob-menu.open{display:flex;animation:menuFade .3s var(--ease) both}
-@keyframes menuFade{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:translateY(0)}}
-.mob-menu-links{display:flex;flex-direction:column;gap:.25rem;width:100%}
-.mob-menu-links a{font-family:var(--font-display);font-size:clamp(2rem,9vw,3.5rem);font-weight:800;color:rgba(245,237,216,.15);letter-spacing:-.03em;line-height:1.15;transition:color .2s;padding:.15rem 0;border-bottom:1px solid rgba(212,169,106,.07)}
-.mob-menu-links a:hover{color:var(--white)}
-.mob-menu-cta{margin-top:2rem;display:inline-flex;align-items:center;gap:.6rem;padding:1rem 2rem;background:var(--grad-gold);color:var(--black);font-family:var(--font-display);font-size:.9rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
-.mob-menu-meta{margin-top:1.5rem;font-family:var(--font-display);font-size:.65rem;letter-spacing:.15em;color:rgba(245,237,216,.25);text-transform:uppercase}
+/* ── SLIDE PANEL — right half only ── */
+/* dim overlay (left half) */
+.mob-menu-backdrop{
+  display:none;position:fixed;inset:0;
+  background:rgba(7,30,30,.55);backdrop-filter:blur(3px);
+  z-index:1070;opacity:0;transition:opacity .35s ease;
+}
+.mob-menu-backdrop.open{display:block;opacity:1;}
+
+/* the panel itself slides in from right */
+.mob-menu{
+  display:flex;flex-direction:column;justify-content:center;
+  position:fixed;top:0;right:0;bottom:0;
+  width:68%;max-width:300px;
+  /* transparent frosted glass — page shows through */
+  background:rgba(7,30,30,.72);
+  backdrop-filter:blur(22px) saturate(1.6);
+  -webkit-backdrop-filter:blur(22px) saturate(1.6);
+  border-left:1px solid rgba(212,169,106,.22);
+  z-index:1080;
+  padding:5.5rem 1.6rem 4rem 1.5rem;
+  transform:translateX(100%);
+  transition:transform .4s cubic-bezier(0.16,1,0.3,1);
+  pointer-events:none;overflow-y:auto;
+}
+.mob-menu.open{transform:translateX(0);pointer-events:auto;}
+
+/* close X button */
+.mob-menu-close{
+  position:absolute;top:1rem;right:1rem;
+  width:34px;height:34px;
+  background:rgba(212,169,106,.08);
+  border:1px solid rgba(212,169,106,.22);
+  border-radius:6px;
+  display:flex;align-items:center;justify-content:center;
+  color:rgba(212,169,106,.7);font-size:.85rem;cursor:pointer;
+  transition:all .2s;
+}
+.mob-menu-close:hover{background:rgba(212,169,106,.2);color:var(--gold);}
+
+/* brand tag */
+.mob-menu-brand{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.1rem;font-weight:600;font-style:italic;
+  letter-spacing:.04em;color:var(--gold);
+  margin-bottom:2rem;padding-bottom:1rem;
+  border-bottom:1px solid rgba(212,169,106,.25);
+}
+
+/* nav links — Cormorant for elegance, gold hairlines as dividers */
+.mob-menu-links{display:flex;flex-direction:column;width:100%;}
+
+/* top border before first item */
+.mob-menu-links::before{
+  content:'';display:block;
+  height:1px;background:linear-gradient(90deg,rgba(212,169,106,.35),rgba(212,169,106,.08));
+  margin-bottom:0;
+}
+
+.mob-menu-links a{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.6rem;font-weight:600;font-style:normal;
+  color:rgba(245,237,216,.78);
+  letter-spacing:.01em;
+  padding:.75rem 0;
+  /* gold gradient divider line below each link */
+  border-bottom:1px solid;
+  border-image:linear-gradient(90deg,rgba(212,169,106,.35),rgba(212,169,106,.06)) 1;
+  display:flex;align-items:center;justify-content:space-between;
+  transition:color .22s,letter-spacing .22s;
+}
+.mob-menu-links a::after{
+  content:'↗';
+  font-family:'Syne',sans-serif;
+  font-size:.7rem;font-style:normal;
+  color:rgba(212,169,106,.3);
+  transition:color .22s,transform .22s;
+  flex-shrink:0;margin-left:.5rem;
+}
+.mob-menu-links a:hover,.mob-menu-links a:active{
+  color:#F5EDD8;letter-spacing:.04em;
+}
+.mob-menu-links a:hover::after,.mob-menu-links a:active::after{
+  color:var(--gold);transform:translate(3px,-3px);
+}
+
+/* book CTA */
+.mob-menu-cta{
+  margin-top:1.75rem;
+  display:flex;align-items:center;justify-content:center;gap:.5rem;
+  padding:.85rem 1.2rem;
+  background:linear-gradient(135deg,#B8894E 0%,#D4A96A 40%,#E2C08A 60%,#D4A96A 100%);
+  color:#071E1E;
+  font-family:'Syne',sans-serif;font-size:.68rem;font-weight:800;
+  letter-spacing:.14em;text-transform:uppercase;
+  border-radius:0;
+}
+
+/* socials */
+.mob-menu-socials{display:flex;gap:.6rem;margin-top:1.5rem;}
+.mob-menu-socials a{
+  width:32px;height:32px;
+  background:rgba(245,237,216,.04);
+  border:1px solid rgba(212,169,106,.18);
+  border-radius:4px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.82rem;color:rgba(245,237,216,.4);
+  transition:all .2s;
+}
+.mob-menu-socials a:hover{background:rgba(212,169,106,.12);color:var(--gold);border-color:rgba(212,169,106,.5);}
+
+.mob-menu-meta{
+  margin-top:1.1rem;
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:.82rem;letter-spacing:.03em;
+  color:rgba(245,237,216,.25);line-height:1.8;
+}
 
 /* DESKTOP HERO */
 .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:8rem 2rem 5rem}
@@ -486,7 +611,13 @@ body{padding-bottom:5rem}
   </div>
 </nav>
 
+<!-- backdrop dim -->
+<div class="mob-menu-backdrop" id="mobBackdrop" onclick="cM()"></div>
+
+<!-- slide panel -->
 <div class="mob-menu" id="mobMenu">
+  <button class="mob-menu-close" onclick="cM()" aria-label="Close menu"><i class="fas fa-times"></i></button>
+  <div class="mob-menu-brand">Hair by Akose</div>
   <div class="mob-menu-links">
     <a href="#home"     onclick="cM()">Home</a>
     <a href="#story"    onclick="cM()">Story</a>
@@ -496,7 +627,13 @@ body{padding-bottom:5rem}
     <a href="pricing.html" onclick="cM()">Pricing</a>
   </div>
   <a href="contact.html" class="mob-menu-cta"><i class="fas fa-calendar-check"></i> Book Appointment</a>
-  <p class="mob-menu-meta">Hair by Akose &middot; Nairobi &middot; +254 725 351 803</p>
+  <div class="mob-menu-socials">
+    <a href="https://www.instagram.com/hairbyakose" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://web.facebook.com/vivienne.akose" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+    <a href="https://www.tiktok.com/@hairbyakose" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+    <a href="https://wa.me/+254725351803" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+  </div>
+  <p class="mob-menu-meta">Nairobi &middot; +(254) 725-351-803<br>Mon–Sat: 9AM – 8PM</p>
 </div>
 
 <!-- HERO -->
@@ -758,10 +895,34 @@ const bar=document.getElementById('scroll-progress');
 window.addEventListener('scroll',()=>{if(bar){const p=window.scrollY/(document.body.scrollHeight-window.innerHeight)*100;bar.style.width=Math.min(p,100)+'%'}},{passive:true});
 const nav=document.getElementById('mainNav');
 window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>60),{passive:true});
-const hb=document.getElementById('hamburger'),mm=document.getElementById('mobMenu');
-function cM(){mm.classList.remove('open');hb.classList.remove('open');document.body.style.overflow=''}
-hb.addEventListener('click',()=>{const o=mm.classList.toggle('open');hb.classList.toggle('open',o);document.body.style.overflow=o?'hidden':''});
-document.addEventListener('keydown',e=>{if(e.key==='Escape')cM()});
+
+/* ── SLIDE PANEL MENU ── */
+const hb=document.getElementById('hamburger');
+const mm=document.getElementById('mobMenu');
+const bd=document.getElementById('mobBackdrop');
+
+function openMenu(){
+  mm.classList.add('open');
+  bd.classList.add('open');
+  hb.classList.add('open');
+  document.body.style.overflow='hidden';
+  document.body.style.position='fixed';
+  document.body.style.width='100%';
+}
+function cM(){
+  mm.classList.remove('open');
+  bd.classList.remove('open');
+  hb.classList.remove('open');
+  document.body.style.overflow='';
+  document.body.style.position='';
+  document.body.style.width='';
+}
+
+hb.addEventListener('click',function(e){
+  e.stopPropagation();
+  mm.classList.contains('open')?cM():openMenu();
+});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')cM();});
 const secs=document.querySelectorAll('section[id]'),nls=document.querySelectorAll('.mob-bottom-nav a');
 window.addEventListener('scroll',()=>{let c='';secs.forEach(s=>{if(window.scrollY>=s.offsetTop-140)c=s.id});nls.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+c))},{passive:true});
 const els=document.querySelectorAll('.svc-card,.why-card,.testi-card,.val-chip,.skill-row,.s-badge,.g-item');
