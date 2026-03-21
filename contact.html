@@ -1,768 +1,865 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Book your appointment with Hair by Akose. Contact via WhatsApp, email, or phone for mobile hair styling.">
-    <title>Book Now | Hair by Akose</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Book your appointment with Hair by Akose. Contact via WhatsApp, email, or phone for mobile hair styling.">
+<title>Book Now | Hair by Akose</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+/* ── TOKENS ── */
+:root{
+  --teal:#0F3D3E;--teal-light:#1A6466;
+  --black:#071E1E;--black-soft:#0A2828;--black-card:#0D3030;--black-edge:#113838;
+  --gold:#D4A96A;--gold-light:#E2C08A;--gold-dark:#B8894E;
+  --white:#F5EDD8;--white-dim:rgba(245,237,216,0.6);
+  --grad-gold:linear-gradient(135deg,#B8894E 0%,#D4A96A 40%,#E2C08A 60%,#D4A96A 100%);
+  --wa:#25D366;--wa-dark:#1DAD52;
+  --font-display:'Syne',sans-serif;--font-body:'Cormorant Garamond',serif;
+  --ease:cubic-bezier(0.16,1,0.3,1);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--font-body);background:var(--black);color:var(--white);line-height:1.75;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit;transition:all .3s ease}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none!important;z-index:9999;opacity:.22}
+.container{width:100%;max-width:1400px;margin:0 auto;padding:0 2rem}
+#scroll-progress{position:fixed;top:0;left:0;height:3px;background:var(--grad-gold);z-index:10000;width:0;transition:width .08s linear;pointer-events:none}
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+/* ── NAV ── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.5rem 0;transition:all .4s ease}
+.nav.scrolled{background:rgba(7,30,30,.97);backdrop-filter:blur(20px);border-bottom:1px solid rgba(212,169,106,.2);padding:1rem 0}
+.nav-inner{max-width:1400px;margin:0 auto;padding:0 2rem;display:flex;justify-content:space-between;align-items:center}
+.nav-logo img{height:55px;width:auto;object-fit:contain}
+.nav-links{display:flex;list-style:none;gap:2.5rem;align-items:center}
+.nav-links a{font-family:var(--font-display);font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--white-dim)}
+.nav-links a:hover{color:var(--gold)}
+.nav-links .nav-cta{padding:.6rem 1.5rem;border:1px solid var(--gold);color:var(--gold)!important;border-radius:100px;background:rgba(212,169,106,.1)}
+.nav-links .nav-cta:hover{background:var(--gold);color:var(--black)!important}
+.hamburger{
+  display:none;flex-direction:column;gap:6px;cursor:pointer;z-index:1100;
+  padding:.55rem .7rem;background:rgba(245,237,216,.06);
+  border:1px solid rgba(212,169,106,.25);border-radius:10px;
+  backdrop-filter:blur(8px);transition:background .25s,border-color .25s;
+}
+.hamburger:hover{background:rgba(212,169,106,.12);border-color:rgba(212,169,106,.5)}
+.hamburger span{display:block;height:1.5px;background:var(--white);border-radius:2px;transition:all .38s var(--ease)}
+.hamburger span:nth-child(1){width:22px}
+.hamburger span:nth-child(2){width:16px;margin-left:auto;background:var(--gold)}
+.hamburger span:nth-child(3){width:22px}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(0,5.5px);width:20px}
+.hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(0,-5.5px);width:20px}
 
-    <style>
-        :root {
-            --teal-deep:  #0B3535;
-            --teal:       #0F3D3E;
-            --teal-mid:   #145254;
-            --teal-light: #1A6466;
-            --black:      #071E1E;
-            --black-soft: #0A2828;
-            --black-card: #0D3030;
-            --black-edge: #113838;
-            --gold:       #D4A96A;
-            --gold-light: #E2C08A;
-            --gold-dark:  #B8894E;
-            --white:      #F5EDD8;
-            --white-dim:  rgba(245,237,216,0.6);
-            --grad-gold:  linear-gradient(135deg, #B8894E 0%, #D4A96A 40%, #E2C08A 60%, #D4A96A 100%);
-            --font-display: 'Syne', sans-serif;
-            --font-body:    'Cormorant Garamond', serif;
-            --ease: cubic-bezier(0.16, 1, 0.3, 1);
-        }
+/* ── SLIDE PANEL ── */
+.mob-menu-backdrop{display:none;position:fixed;inset:0;background:rgba(7,30,30,.55);backdrop-filter:blur(3px);z-index:1070;opacity:0;transition:opacity .35s ease}
+.mob-menu-backdrop.open{display:block;opacity:1}
+.mob-menu{display:flex;flex-direction:column;justify-content:center;position:fixed;top:0;right:0;bottom:0;width:68%;max-width:300px;background:rgba(7,30,30,.72);backdrop-filter:blur(22px) saturate(1.6);-webkit-backdrop-filter:blur(22px) saturate(1.6);border-left:1px solid rgba(212,169,106,.22);z-index:1080;padding:5.5rem 1.6rem 4rem 1.5rem;transform:translateX(100%);transition:transform .4s var(--ease);pointer-events:none;overflow-y:auto}
+.mob-menu.open{transform:translateX(0);pointer-events:auto}
+.mob-menu-close{position:absolute;top:1rem;right:1rem;width:34px;height:34px;background:rgba(212,169,106,.08);border:1px solid rgba(212,169,106,.22);border-radius:6px;display:flex;align-items:center;justify-content:center;color:rgba(212,169,106,.7);font-size:.85rem;cursor:pointer;transition:all .2s}
+.mob-menu-close:hover{background:rgba(212,169,106,.2);color:var(--gold)}
+.mob-menu-brand{font-family:var(--font-body);font-size:1.1rem;font-weight:600;font-style:italic;color:var(--gold);margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid rgba(212,169,106,.25)}
+.mob-menu-links{display:flex;flex-direction:column;width:100%}
+.mob-menu-links::before{content:'';display:block;height:1px;background:linear-gradient(90deg,rgba(212,169,106,.35),rgba(212,169,106,.08))}
+.mob-menu-links a{font-family:var(--font-body);font-size:1.6rem;font-weight:600;color:rgba(245,237,216,.78);padding:.75rem 0;border-bottom:1px solid;border-image:linear-gradient(90deg,rgba(212,169,106,.35),rgba(212,169,106,.06)) 1;display:flex;align-items:center;justify-content:space-between;transition:color .22s,letter-spacing .22s}
+.mob-menu-links a.active-link{color:var(--gold)}
+.mob-menu-links a::after{content:'↗';font-family:var(--font-display);font-size:.7rem;color:rgba(212,169,106,.3);transition:color .22s,transform .22s;flex-shrink:0;margin-left:.5rem}
+.mob-menu-links a:hover::after{color:var(--gold);transform:translate(3px,-3px)}
+.mob-menu-links a:hover{color:#F5EDD8;letter-spacing:.04em}
+.mob-menu-cta{margin-top:1.75rem;display:flex;align-items:center;justify-content:center;gap:.5rem;padding:.85rem 1.2rem;background:var(--grad-gold);color:#071E1E;font-family:var(--font-display);font-size:.68rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+.mob-menu-socials{display:flex;gap:.6rem;margin-top:1.5rem}
+.mob-menu-socials a{width:32px;height:32px;background:rgba(245,237,216,.04);border:1px solid rgba(212,169,106,.18);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:.82rem;color:rgba(245,237,216,.4);transition:all .2s}
+.mob-menu-socials a:hover{background:rgba(212,169,106,.12);color:var(--gold);border-color:rgba(212,169,106,.5)}
+.mob-menu-meta{margin-top:1.1rem;font-family:var(--font-body);font-style:italic;font-size:.82rem;color:rgba(245,237,216,.25);line-height:1.8}
 
-        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-        html { scroll-behavior: smooth; }
-        body { font-family: var(--font-body); background: var(--black); color: var(--white); line-height: 1.75; overflow-x: hidden; }
-        img { max-width:100%; display:block; }
-        a { text-decoration:none; color:inherit; transition: all 0.3s ease; }
+/* ── DESKTOP HERO ── */
+.page-hero{min-height:50vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:11rem 2rem 5rem;position:relative;overflow:hidden;background:var(--black)}
+.page-hero::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;border-radius:50%;border:1px solid rgba(212,169,106,.08);animation:ringPulse 6s ease-in-out infinite}
+.page-hero::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:900px;height:900px;border-radius:50%;border:1px solid rgba(212,169,106,.04);animation:ringPulse 6s ease-in-out 2s infinite}
+@keyframes ringPulse{0%,100%{opacity:.5;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.04)}}
+.hero-lines{position:absolute;inset:0;pointer-events:none}
+.hero-lines span{position:absolute;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,rgba(212,169,106,.08),transparent)}
+.hero-lines span:nth-child(1){left:20%}.hero-lines span:nth-child(2){left:40%}.hero-lines span:nth-child(3){left:60%}.hero-lines span:nth-child(4){left:80%}
+.hero-inner{position:relative;z-index:2;animation:fadeUp 1s var(--ease) both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:.75rem;font-family:var(--font-display);font-size:.7rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem}
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';width:40px;height:1px;background:var(--gold);opacity:.5}
+.page-title{font-family:var(--font-display);font-size:clamp(3rem,9vw,7.5rem);font-weight:800;line-height:.95;letter-spacing:-.03em;margin-bottom:1.5rem}
+.page-title .gold{display:block;background:var(--grad-gold);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-style:italic}
+.page-subtitle{font-size:1.2rem;color:var(--white-dim);font-style:italic;max-width:500px;margin:0 auto 2.5rem}
+.response-badge{display:inline-flex;align-items:center;gap:.6rem;padding:.6rem 1.4rem;background:rgba(37,211,102,.1);border:1px solid rgba(37,211,102,.3);border-radius:100px;font-family:var(--font-display);font-size:.72rem;font-weight:700;letter-spacing:.08em;color:var(--wa)}
+.response-badge::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--wa);animation:blink 1.5s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
 
-        body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events:none; z-index:9999; opacity:0.25; }
+/* ── CONTACT METHODS ── */
+.contact-methods-section{padding:5rem 0;background:var(--black-soft)}
+.methods-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem}
+.method-card{padding:2.5rem 2rem;background:var(--black-card);border:1px solid rgba(212,169,106,.1);border-radius:18px;text-align:center;transition:all .4s var(--ease);position:relative;overflow:hidden}
+.method-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad-gold);transform:scaleX(0);transition:transform .4s ease;transform-origin:left}
+.method-card:hover{border-color:rgba(212,169,106,.3);transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,.4)}
+.method-card:hover::before{transform:scaleX(1)}
+.method-card.whatsapp:hover{border-color:rgba(37,211,102,.4)}
+.method-card.whatsapp:hover::before{background:linear-gradient(135deg,#25D366,#1DAD52)}
+.method-icon{width:64px;height:64px;border-radius:16px;background:rgba(212,169,106,.08);border:1px solid rgba(212,169,106,.15);display:flex;align-items:center;justify-content:center;font-size:1.6rem;color:var(--gold);margin:0 auto 1.5rem;transition:all .3s}
+.method-card.whatsapp .method-icon{color:var(--wa);background:rgba(37,211,102,.08);border-color:rgba(37,211,102,.2)}
+.method-card:hover .method-icon{transform:scale(1.1)}
+.method-card h3{font-family:var(--font-display);font-size:1.15rem;font-weight:700;color:var(--white);margin-bottom:.5rem}
+.method-card p{font-size:1rem;color:var(--white-dim);margin-bottom:1.5rem;line-height:1.5}
+.method-action{font-family:var(--font-display);font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+.method-card.whatsapp .method-action{color:var(--wa)}
 
-        .container { width:100%; max-width:1400px; margin:0 auto; padding:0 2rem; }
-        .section-label { display:inline-flex; align-items:center; gap:0.75rem; font-family:var(--font-display); font-size:0.7rem; font-weight:700; letter-spacing:0.25em; text-transform:uppercase; color:var(--gold); margin-bottom:1.5rem; }
-        .section-label::before, .section-label::after { content:''; display:block; width:30px; height:1px; background:var(--gold); opacity:0.6; }
+/* ── MAIN SECTION ── */
+.main-section{padding:7rem 0;background:var(--black)}
+.main-grid{display:grid;grid-template-columns:1fr 420px;gap:5rem;align-items:start}
 
-        /* ── NAV ── */
-        .nav { position:fixed; top:0; left:0; right:0; z-index:1000; padding:1.5rem 0; transition:all 0.4s ease; }
-        .nav.scrolled { background:rgba(7,30,30,0.97); backdrop-filter:blur(20px); border-bottom:1px solid rgba(212,169,106,0.2); padding:1rem 0; }
-        .nav-inner { max-width:1400px; margin:0 auto; padding:0 2rem; display:flex; justify-content:space-between; align-items:center; }
-        .nav-logo img { height:55px; width:auto; object-fit:contain; }
-        .nav-links { display:flex; list-style:none; gap:2.5rem; align-items:center; }
-        .nav-links a { font-family:var(--font-display); font-size:0.78rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--white-dim); }
-        .nav-links a:hover { color:var(--gold); }
-        .nav-links .nav-cta { padding:0.6rem 1.5rem; border:1px solid var(--gold); color:var(--gold) !important; border-radius:100px; background:rgba(212,169,106,0.1); }
-        .nav-links .nav-cta:hover { background:var(--gold); color:var(--black) !important; }
-        .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; }
-        .hamburger span { width:24px; height:2px; background:var(--white); border-radius:2px; }
+/* FORM */
+.form-block h2{font-family:var(--font-display);font-size:clamp(2rem,4vw,3rem);font-weight:800;color:var(--white);margin-bottom:.5rem}
+.form-block>p{font-size:1.1rem;color:var(--white-dim);font-style:italic;margin-bottom:3rem}
+.form-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+.form-group{margin-bottom:1.25rem}
+.form-group label{display:block;font-family:var(--font-display);font-size:.72rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem}
+.form-input,.form-select,.form-textarea{width:100%;padding:1rem 1.25rem;background:var(--black-card);border:1px solid rgba(212,169,106,.15);border-radius:10px;color:var(--white);font-family:var(--font-body);font-size:1.05rem;transition:all .3s}
+.form-input::placeholder,.form-textarea::placeholder{color:rgba(245,237,216,.3)}
+.form-input:focus,.form-select:focus,.form-textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(212,169,106,.1);background:var(--black-edge)}
+.form-input:hover,.form-select:hover,.form-textarea:hover{border-color:rgba(212,169,106,.3)}
+.form-select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23D4A96A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1.25rem center;cursor:pointer}
+.form-select option{background:var(--black-card);color:var(--white)}
+input[type="date"].form-input::-webkit-calendar-picker-indicator{filter:invert(.7) sepia(1) saturate(3) hue-rotate(5deg);cursor:pointer}
+.form-textarea{resize:vertical;min-height:130px;line-height:1.7}
+.checkbox-wrap{display:flex;align-items:flex-start;gap:.75rem;cursor:pointer}
+.checkbox-wrap input[type="checkbox"]{display:none}
+.checkbox-box{width:20px;height:20px;min-width:20px;border:1px solid rgba(212,169,106,.3);border-radius:5px;background:var(--black-card);display:flex;align-items:center;justify-content:center;transition:all .3s;margin-top:3px}
+.checkbox-wrap input:checked+.checkbox-box{background:var(--grad-gold);border-color:var(--gold)}
+.checkbox-wrap input:checked+.checkbox-box::after{content:'✓';font-size:.75rem;color:var(--black);font-weight:900}
+.checkbox-wrap span{font-size:.95rem;color:var(--white-dim);line-height:1.5}
+.btn-submit{width:100%;padding:1.2rem;margin-top:1rem;background:var(--grad-gold);color:var(--black);font-family:var(--font-display);font-size:.85rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase;border:none;border-radius:12px;cursor:pointer;transition:all .3s;box-shadow:0 0 30px rgba(212,169,106,.2);display:flex;align-items:center;justify-content:center;gap:.75rem}
+.btn-submit:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(212,169,106,.4)}
+.btn-submit:disabled{opacity:.6;cursor:not-allowed;transform:none}
+.form-note{font-family:var(--font-display);font-size:.68rem;letter-spacing:.08em;color:rgba(245,237,216,.3);text-align:center;margin-top:1rem}
+.form-success{display:none;text-align:center;padding:4rem 2rem;animation:fadeUp .5s var(--ease) both}
+.form-success.show{display:block}
+.success-icon{width:80px;height:80px;border-radius:50%;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.3);display:flex;align-items:center;justify-content:center;font-size:2rem;color:#10B981;margin:0 auto 2rem}
+.form-success h3{font-family:var(--font-display);font-size:2rem;font-weight:800;color:var(--white);margin-bottom:1rem}
+.form-success p{font-size:1.1rem;color:var(--white-dim);font-style:italic;margin-bottom:2rem}
+.success-steps{background:var(--black-card);border:1px solid rgba(212,169,106,.15);border-radius:14px;padding:2rem;text-align:left;margin-bottom:2rem}
+.success-steps h4{font-family:var(--font-display);font-size:.8rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem}
+.success-step{display:flex;align-items:center;gap:.75rem;font-size:1rem;color:var(--white-dim);margin-bottom:.75rem}
+.success-step i{color:#10B981;width:16px}
+.btn-wa-full{display:flex;align-items:center;justify-content:center;gap:.75rem;width:100%;padding:1rem;background:var(--wa);color:white;font-family:var(--font-display);font-size:.8rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border-radius:12px;border:none;cursor:pointer;text-decoration:none;transition:all .3s;margin-bottom:1rem}
+.btn-wa-full:hover{background:var(--wa-dark);transform:translateY(-2px)}
+.btn-ghost-sm{display:inline-block;padding:.7rem 1.5rem;background:transparent;color:var(--white-dim);font-family:var(--font-display);font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(245,237,216,.15);border-radius:100px;cursor:pointer;transition:all .3s}
+.btn-ghost-sm:hover{border-color:var(--gold);color:var(--gold)}
 
-        /* ── HERO (full-width cinematic strip) ── */
-        .page-hero {
-            min-height: 50vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 11rem 2rem 5rem;
-            position: relative;
-            overflow: hidden;
-            background: var(--black);
-        }
-        /* Animated gold ring */
-        .page-hero::before {
-            content:'';
-            position:absolute;
-            top:50%; left:50%;
-            transform:translate(-50%,-50%);
-            width:600px; height:600px;
-            border-radius:50%;
-            border:1px solid rgba(212,169,106,0.08);
-            animation: ringPulse 6s ease-in-out infinite;
-        }
-        .page-hero::after {
-            content:'';
-            position:absolute;
-            top:50%; left:50%;
-            transform:translate(-50%,-50%);
-            width:900px; height:900px;
-            border-radius:50%;
-            border:1px solid rgba(212,169,106,0.04);
-            animation: ringPulse 6s ease-in-out 2s infinite;
-        }
-        @keyframes ringPulse { 0%,100%{opacity:0.5;transform:translate(-50%,-50%) scale(1)} 50%{opacity:1;transform:translate(-50%,-50%) scale(1.04)} }
+/* SIDEBAR */
+.sidebar{display:flex;flex-direction:column;gap:1.5rem;position:sticky;top:100px}
+.info-card{padding:2rem;background:var(--black-card);border:1px solid rgba(212,169,106,.1);border-radius:16px;transition:border-color .3s}
+.info-card:hover{border-color:rgba(212,169,106,.25)}
+.info-card-header{display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem}
+.info-icon{width:44px;height:44px;border-radius:10px;background:rgba(212,169,106,.08);border:1px solid rgba(212,169,106,.15);display:flex;align-items:center;justify-content:center;font-size:1rem;color:var(--gold);flex-shrink:0}
+.info-card h4{font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--white)}
+.info-card ul{list-style:none}
+.info-card ul li{font-size:.95rem;color:var(--white-dim);padding:.45rem 0;border-bottom:1px solid rgba(212,169,106,.06);display:flex;gap:.5rem;align-items:baseline}
+.info-card ul li:last-child{border-bottom:none}
+.info-card ul li strong{color:var(--white);font-weight:600;min-width:90px}
+.social-mini{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+.social-btn{display:flex;align-items:center;gap:.6rem;padding:.75rem 1rem;background:var(--black-soft);border:1px solid rgba(212,169,106,.1);border-radius:10px;font-family:var(--font-display);font-size:.7rem;font-weight:700;letter-spacing:.08em;color:var(--white-dim);transition:all .3s}
+.social-btn:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px)}
+.social-btn i{font-size:1.1rem}
+.social-btn.ig:hover{color:#E1306C;border-color:#E1306C}
+.social-btn.tk:hover{color:#fff;border-color:#fff}
+.social-btn.fb:hover{color:#1877F2;border-color:#1877F2}
+.social-btn.yt:hover{color:#FF0000;border-color:#FF0000}
 
-        .hero-lines { position:absolute; inset:0; pointer-events:none; }
-        .hero-lines span { position:absolute; top:0; bottom:0; width:1px; background:linear-gradient(to bottom, transparent, rgba(212,169,106,0.08), transparent); }
-        .hero-lines span:nth-child(1){left:20%} .hero-lines span:nth-child(2){left:40%}
-        .hero-lines span:nth-child(3){left:60%} .hero-lines span:nth-child(4){left:80%}
+/* ── FAQ ── */
+.faq-section{padding:7rem 0;background:var(--black-soft)}
+.faq-header{text-align:center;margin-bottom:4rem}
+.faq-header h2{font-family:var(--font-display);font-size:clamp(2rem,4vw,3.5rem);font-weight:800;color:var(--white)}
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(212,169,106,.08);border-radius:18px;overflow:hidden;border:1px solid rgba(212,169,106,.1);max-width:1100px;margin:0 auto}
+.faq-item{background:var(--black-card);transition:background .3s}
+.faq-item.open{background:var(--black-edge)}
+.faq-question{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.75rem 2rem;cursor:pointer}
+.faq-question h3{font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--white);line-height:1.4;transition:color .3s}
+.faq-item.open .faq-question h3{color:var(--gold-light)}
+.faq-toggle{width:32px;height:32px;min-width:32px;border-radius:50%;background:rgba(212,169,106,.08);border:1px solid rgba(212,169,106,.15);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:.75rem;transition:all .4s}
+.faq-item.open .faq-toggle{background:var(--grad-gold);color:var(--black);border-color:transparent;transform:rotate(45deg)}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .4s var(--ease),padding .3s}
+.faq-answer p{padding:0 2rem 1.75rem;font-size:1.05rem;color:var(--white-dim);line-height:1.8}
 
-        .hero-inner { position:relative; z-index:2; animation: fadeUp 1s var(--ease) both; }
-        @keyframes fadeUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+/* ── FOOTER ── */
+.footer{background:var(--black-soft);border-top:1px solid rgba(212,169,106,.18);padding:5rem 0 2.5rem}
+.footer-grid{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:3rem;margin-bottom:4rem}
+.footer-brand img{height:70px;width:auto;object-fit:contain;margin-bottom:1.25rem}
+.footer-brand p{font-size:1rem;color:var(--white-dim);line-height:1.7;margin-bottom:1.5rem}
+.socials{display:flex;gap:.75rem}
+.socials a{width:42px;height:42px;border-radius:50%;background:var(--black-card);border:1px solid rgba(212,169,106,.15);display:flex;align-items:center;justify-content:center;font-size:1rem;color:var(--white-dim);transition:all .3s}
+.socials a:hover{background:var(--gold);color:var(--black);border-color:var(--gold);transform:translateY(-3px)}
+.footer-col h4{font-family:var(--font-display);font-size:.75rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem}
+.footer-col ul{list-style:none}
+.footer-col ul li{margin-bottom:.7rem;font-size:.95rem;color:var(--white-dim)}
+.footer-col ul li i{color:var(--gold);width:16px;margin-right:.5rem}
+.footer-col ul li a{color:inherit}
+.footer-col ul li a:hover{color:var(--gold)}
+.footer-bottom{border-top:1px solid rgba(212,169,106,.1);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:.85rem;color:rgba(245,237,216,.3);font-family:var(--font-display)}
 
-        .hero-eyebrow { display:inline-flex; align-items:center; gap:0.75rem; font-family:var(--font-display); font-size:0.7rem; font-weight:700; letter-spacing:0.3em; text-transform:uppercase; color:var(--gold); margin-bottom:1.5rem; }
-        .hero-eyebrow::before, .hero-eyebrow::after { content:''; width:40px; height:1px; background:var(--gold); opacity:0.5; }
+/* ── TABLET ≤ 1024px ── */
+@media(max-width:1024px){
+  .main-grid{grid-template-columns:1fr;gap:4rem}
+  .sidebar{position:static}
+  .faq-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:2.5rem}
+  .footer-brand{grid-column:span 2}
+  .methods-grid{grid-template-columns:1fr 1fr}
+}
 
-        .page-title { font-family:var(--font-display); font-size:clamp(3rem,9vw,7.5rem); font-weight:800; line-height:0.95; letter-spacing:-0.03em; margin-bottom:1.5rem; }
-        .page-title .gold { display:block; background:var(--grad-gold); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; font-style:italic; }
-        .page-subtitle { font-size:1.2rem; color:var(--white-dim); font-style:italic; max-width:500px; margin:0 auto 2.5rem; }
+/* ═══════════════════════════════════════════
+   MOBILE ≤ 767px  —  IMMERSIVE BOOKING APP
+   Different from other pages: no bold split.
+   Full-screen cinematic top, app-like form.
+═══════════════════════════════════════════ */
+@media(max-width:767px){
+  html{font-size:15px}
+  body{padding-bottom:4.75rem}
+  .container{padding:0 1rem}
 
-        /* Response time badge */
-        .response-badge { display:inline-flex; align-items:center; gap:0.6rem; padding:0.6rem 1.4rem; background:rgba(37,211,102,0.1); border:1px solid rgba(37,211,102,0.3); border-radius:100px; font-family:var(--font-display); font-size:0.72rem; font-weight:700; letter-spacing:0.08em; color:#25D366; }
-        .response-badge::before { content:''; width:8px; height:8px; border-radius:50%; background:#25D366; animation:blink 1.5s ease-in-out infinite; }
-        @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+  /* NAV */
+  .nav{padding:.85rem 0;background:rgba(7,30,30,.97);backdrop-filter:blur(16px);border-bottom:1px solid rgba(212,169,106,.14)}
+  .nav-inner{padding:0 1rem}
+  .nav-logo img{height:40px}
+  .nav-links{display:none!important}
+  .hamburger{display:flex}
+  .hero-lines{display:none}
 
-        /* ── CONTACT METHODS (4 cards in a row) ── */
-        .contact-methods-section { padding:5rem 0; background:var(--black-soft); }
-        .methods-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1.25rem; }
+  /* ── MOBILE HERO: full-screen cinematic ── */
+  .page-hero{
+    min-height:100svh;padding:0;
+    display:flex;flex-direction:column;
+    align-items:stretch;justify-content:flex-end;
+    position:relative;
+  }
+  /* remove desktop ring animations on mobile */
+  .page-hero::before,.page-hero::after{display:none}
 
-        .method-card {
-            padding: 2.5rem 2rem;
-            background: var(--black-card);
-            border: 1px solid rgba(212,169,106,0.1);
-            border-radius: 18px;
-            text-align: center;
-            transition: all 0.4s var(--ease);
-            position: relative;
-            overflow: hidden;
-        }
-        .method-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:var(--grad-gold); transform:scaleX(0); transition:transform 0.4s ease; transform-origin:left; }
-        .method-card:hover { border-color:rgba(212,169,106,0.3); transform:translateY(-6px); box-shadow:0 20px 50px rgba(0,0,0,0.4); }
-        .method-card:hover::before { transform:scaleX(1); }
+  /* teal gradient backdrop */
+  .page-hero-bg{
+    position:absolute;inset:0;
+    background:
+      radial-gradient(ellipse 120% 60% at 50% 0%, rgba(26,100,102,.65) 0%, transparent 65%),
+      linear-gradient(175deg,#071E1E 0%,#0F3D3E 40%,#071E1E 100%);
+  }
+  /* large gold circle accent top-right */
+  .page-hero-ring{
+    position:absolute;top:-18vw;right:-18vw;
+    width:72vw;height:72vw;border-radius:50%;
+    border:1px solid rgba(212,169,106,.15);
+    pointer-events:none;
+  }
 
-        .method-card.whatsapp:hover { border-color:rgba(37,211,102,0.4); }
-        .method-card.whatsapp:hover::before { background:linear-gradient(135deg, #25D366, #1DAD52); }
+  .hero-inner{
+    position:relative;z-index:2;
+    padding:0 1.1rem 0;
+    text-align:left;
+    animation:none;
+    display:flex;flex-direction:column;
+    justify-content:flex-end;
+  }
 
-        .method-icon { width:64px; height:64px; border-radius:16px; background:rgba(212,169,106,0.08); border:1px solid rgba(212,169,106,0.15); display:flex; align-items:center; justify-content:center; font-size:1.6rem; color:var(--gold); margin:0 auto 1.5rem; transition:all 0.3s ease; }
-        .method-card.whatsapp .method-icon { color:#25D366; background:rgba(37,211,102,0.08); border-color:rgba(37,211,102,0.2); }
-        .method-card:hover .method-icon { transform:scale(1.1); }
-        .method-card h3 { font-family:var(--font-display); font-size:1.15rem; font-weight:700; color:var(--white); margin-bottom:0.5rem; }
-        .method-card p { font-size:1rem; color:var(--white-dim); margin-bottom:1.5rem; line-height:1.5; }
-        .method-action { font-family:var(--font-display); font-size:0.72rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); }
-        .method-card.whatsapp .method-action { color:#25D366; }
+  .hero-eyebrow{
+    font-size:.58rem;letter-spacing:.2em;
+    margin-bottom:.85rem;justify-content:flex-start;
+  }
+  .hero-eyebrow::before{width:14px}
+  .hero-eyebrow::after{display:none}
 
-        /* ── MAIN CONTENT: form + info side by side ── */
-        .main-section { padding:7rem 0; background:var(--black); }
-        .main-grid { display:grid; grid-template-columns:1fr 420px; gap:5rem; align-items:start; }
+  .page-title{
+    font-size:clamp(2.6rem,12vw,4rem);
+    line-height:.92;letter-spacing:-.04em;
+    margin-bottom:.85rem;color:var(--white);
+  }
+  .page-title .gold{font-size:clamp(2.3rem,11vw,3.7rem)}
+  .page-subtitle{
+    font-size:.88rem;margin:0 0 1.4rem;
+    max-width:100%;text-align:left;line-height:1.55;
+  }
+  .response-badge{font-size:.6rem;padding:.45rem 1rem;margin-bottom:0}
 
-        /* ── FORM ── */
-        /* wrapper for the booking form */
-        .form-block h2 { font-family:var(--font-display); font-size:clamp(2rem,4vw,3rem); font-weight:800; color:var(--white); margin-bottom:0.5rem; }
-        .form-block > p { font-size:1.1rem; color:var(--white-dim); font-style:italic; margin-bottom:3rem; }
+  /* ── BIG WHATSAPP BUTTON — full width, pinned in hero ── */
+  .mob-wa-hero{
+    display:flex;
+    margin:1.4rem 0 0;
+    background:var(--wa);
+    color:white;
+    align-items:center;justify-content:center;gap:.65rem;
+    padding:1.05rem 1.25rem;
+    font-family:var(--font-display);font-size:.78rem;font-weight:800;
+    letter-spacing:.12em;text-transform:uppercase;
+    text-decoration:none;
+    animation:waPulse 2.5s ease-in-out infinite;
+  }
+  @keyframes waPulse{
+    0%,100%{box-shadow:0 0 0 0 rgba(37,211,102,.4)}
+    50%{box-shadow:0 0 0 10px rgba(37,211,102,0)}
+  }
+  .mob-wa-hero i{font-size:1.15rem}
 
-        .form-grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:1.25rem; }
-        .form-group { margin-bottom:1.25rem; }
-        .form-group label { display:block; font-family:var(--font-display); font-size:0.72rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:var(--gold); margin-bottom:0.6rem; }
+  /* scroll cue strip */
+  .mob-scroll-strip{
+    display:flex;align-items:center;justify-content:center;
+    gap:.5rem;padding:.85rem 1rem;
+    background:rgba(7,30,30,.6);backdrop-filter:blur(8px);
+    font-family:var(--font-display);font-size:.56rem;
+    letter-spacing:.18em;text-transform:uppercase;
+    color:rgba(245,237,216,.4);
+    border-top:1px solid rgba(212,169,106,.1);
+  }
 
-        .form-input, .form-select, .form-textarea {
-            width:100%;
-            padding: 1rem 1.25rem;
-            background: var(--black-card);
-            border: 1px solid rgba(212,169,106,0.15);
-            border-radius: 10px;
-            color: var(--white);
-            font-family: var(--font-body);
-            font-size: 1.05rem;
-            transition: all 0.3s ease;
-        }
-        .form-input::placeholder, .form-textarea::placeholder { color:rgba(245,237,216,0.3); }
-        .form-input:focus, .form-select:focus, .form-textarea:focus { outline:none; border-color:var(--gold); box-shadow:0 0 0 3px rgba(212,169,106,0.1); background:var(--black-edge); }
-        .form-input:hover, .form-select:hover, .form-textarea:hover { border-color:rgba(212,169,106,0.3); }
+  /* ── CONTACT METHOD CARDS — horizontal scroll ── */
+  .contact-methods-section{padding:2rem 0 1.5rem}
+  .methods-grid{
+    display:flex;flex-direction:row;flex-wrap:nowrap;
+    overflow-x:auto;-webkit-overflow-scrolling:touch;
+    scroll-snap-type:x mandatory;scrollbar-width:none;
+    gap:.65rem;padding:.5rem 1rem 1rem;margin:0 -1rem;
+  }
+  .methods-grid::-webkit-scrollbar{display:none}
+  .method-card{
+    flex:0 0 62vw;max-width:62vw;
+    scroll-snap-align:start;
+    border-radius:0;padding:1.5rem 1.25rem;
+    transform:none!important;
+    border-top:2px solid rgba(212,169,106,.25);
+  }
+  .method-card::before{display:none}
+  .method-card.whatsapp{border-top-color:rgba(37,211,102,.4)}
+  .method-icon{width:44px;height:44px;font-size:1.2rem;margin-bottom:1rem;border-radius:0}
+  .method-card h3{font-size:1rem;margin-bottom:.35rem}
+  .method-card p{font-size:.85rem;margin-bottom:1rem}
+  .method-action{font-size:.64rem}
 
-        .form-select { appearance:none; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23D4A96A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 1.25rem center; cursor:pointer; }
-        .form-select option { background:var(--black-card); color:var(--white); }
+  /* ── BOOKING FORM — app-like ── */
+  .main-section{padding:2rem 0}
+  .main-grid{grid-template-columns:1fr;gap:0}
 
-        input[type="date"].form-input::-webkit-calendar-picker-indicator { filter:invert(0.7) sepia(1) saturate(3) hue-rotate(5deg); cursor:pointer; }
+  /* form header */
+  .form-block{padding:0}
+  .form-block h2{
+    font-size:clamp(1.7rem,8vw,2.5rem);
+    margin-bottom:.35rem;
+  }
+  .form-block>p{font-size:.92rem;margin-bottom:1.75rem}
 
-        .form-textarea { resize:vertical; min-height:130px; line-height:1.7; }
+  /* section label inline */
+  .form-block .section-label{font-size:.56rem;margin-bottom:.75rem}
 
-        /* Checkbox */
-        .checkbox-wrap { display:flex; align-items:flex-start; gap:0.75rem; cursor:pointer; }
-        .checkbox-wrap input[type="checkbox"] { display:none; }
-        .checkbox-box { width:20px; height:20px; min-width:20px; border:1px solid rgba(212,169,106,0.3); border-radius:5px; background:var(--black-card); display:flex; align-items:center; justify-content:center; transition:all 0.3s ease; margin-top:3px; }
-        .checkbox-wrap input:checked + .checkbox-box { background:var(--grad-gold); border-color:var(--gold); }
-        .checkbox-wrap input:checked + .checkbox-box::after { content:'✓'; font-size:0.75rem; color:var(--black); font-weight:900; }
-        .checkbox-wrap span { font-size:0.95rem; color:var(--white-dim); line-height:1.5; }
+  /* form field overrides */
+  .form-grid-2{grid-template-columns:1fr;gap:0}
+  .form-group{margin-bottom:0}
 
-        /* Submit button */
-        .btn-submit {
-            width:100%;
-            padding:1.2rem;
-            margin-top:1rem;
-            background:var(--grad-gold);
-            color:var(--black);
-            font-family:var(--font-display);
-            font-size:0.85rem;
-            font-weight:800;
-            letter-spacing:0.15em;
-            text-transform:uppercase;
-            border:none;
-            border-radius:12px;
-            cursor:pointer;
-            transition:all 0.3s ease;
-            box-shadow:0 0 30px rgba(212,169,106,0.2);
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            gap:0.75rem;
-        }
-        .btn-submit:hover { transform:translateY(-3px); box-shadow:0 12px 40px rgba(212,169,106,0.4); }
-        .btn-submit:disabled { opacity:0.6; cursor:not-allowed; transform:none; }
-        .form-note { font-family:var(--font-display); font-size:0.68rem; letter-spacing:0.08em; color:rgba(245,237,216,0.3); text-align:center; margin-top:1rem; }
+  /* each field is a full-bleed list item with gold left bar */
+  .form-group{
+    padding:.9rem 0;
+    border-bottom:1px solid rgba(212,169,106,.1);
+    position:relative;
+  }
+  .form-group:last-of-type{border-bottom:none}
+  .form-group label{
+    font-size:.58rem;letter-spacing:.14em;
+    margin-bottom:.45rem;display:block;
+  }
+  .form-input,.form-select,.form-textarea{
+    background:transparent;
+    border:none;border-bottom:1px solid rgba(212,169,106,.2);
+    border-radius:0;padding:.6rem 0;
+    font-size:.97rem;
+    color:var(--white);
+  }
+  .form-input:focus,.form-select:focus,.form-textarea:focus{
+    border-bottom-color:var(--gold);
+    box-shadow:none;background:transparent;
+  }
+  .form-input:hover,.form-select:hover,.form-textarea:hover{
+    border-bottom-color:rgba(212,169,106,.4);
+  }
+  .form-select{
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23D4A96A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-position:right 0 center;
+  }
+  .form-textarea{min-height:100px;border:1px solid rgba(212,169,106,.2);padding:.6rem .5rem;margin-top:.2rem}
+  .form-textarea:focus{border-color:var(--gold)}
 
-        /* Success state */
-        .form-success {
-            display:none;
-            text-align:center;
-            padding:4rem 2rem;
-            animation: fadeUp 0.5s var(--ease) both;
-        }
-        .form-success.show { display:block; }
-        .success-icon { width:80px; height:80px; border-radius:50%; background:rgba(16,185,129,0.1); border:1px solid rgba(16,185,129,0.3); display:flex; align-items:center; justify-content:center; font-size:2rem; color:#10B981; margin:0 auto 2rem; }
-        .form-success h3 { font-family:var(--font-display); font-size:2rem; font-weight:800; color:var(--white); margin-bottom:1rem; }
-        .form-success p { font-size:1.1rem; color:var(--white-dim); font-style:italic; margin-bottom:2rem; }
-        .success-steps { background:var(--black-card); border:1px solid rgba(212,169,106,0.15); border-radius:14px; padding:2rem; text-align:left; margin-bottom:2rem; }
-        .success-steps h4 { font-family:var(--font-display); font-size:0.8rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:var(--gold); margin-bottom:1.25rem; }
-        .success-step { display:flex; align-items:center; gap:0.75rem; font-size:1rem; color:var(--white-dim); margin-bottom:0.75rem; }
-        .success-step i { color:#10B981; width:16px; }
-        .btn-wa-full { display:flex; align-items:center; justify-content:center; gap:0.75rem; width:100%; padding:1rem; background:#25D366; color:white; font-family:var(--font-display); font-size:0.8rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; border-radius:12px; border:none; cursor:pointer; text-decoration:none; transition:all 0.3s ease; margin-bottom:1rem; }
-        .btn-wa-full:hover { background:#1DAD52; transform:translateY(-2px); }
-        .btn-ghost-sm { display:inline-block; padding:0.7rem 1.5rem; background:transparent; color:var(--white-dim); font-family:var(--font-display); font-size:0.72rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; border:1px solid rgba(245,237,216,0.15); border-radius:100px; cursor:pointer; transition:all 0.3s ease; }
-        .btn-ghost-sm:hover { border-color:var(--gold); color:var(--gold); }
+  .btn-submit{
+    border-radius:0;margin-top:1.5rem;
+    padding:1rem;font-size:.76rem;letter-spacing:.12em;
+  }
+  .form-note{font-size:.6rem;margin-top:.75rem}
 
-        /* ── SIDEBAR ── */
-        .sidebar { display:flex; flex-direction:column; gap:1.5rem; position:sticky; top:100px; }
+  /* success state */
+  .form-success{padding:2rem 0}
+  .success-icon{width:64px;height:64px;font-size:1.6rem}
+  .form-success h3{font-size:1.6rem}
+  .form-success p{font-size:.95rem}
+  .success-steps{padding:1.25rem;border-radius:0}
+  .success-step{font-size:.9rem}
+  .btn-wa-full{border-radius:0;font-size:.72rem;padding:.9rem}
+  .btn-ghost-sm{font-size:.65rem}
 
-        .info-card {
-            padding: 2rem;
-            background: var(--black-card);
-            border: 1px solid rgba(212,169,106,0.1);
-            border-radius: 16px;
-            transition: border-color 0.3s ease;
-        }
-        .info-card:hover { border-color:rgba(212,169,106,0.25); }
-        .info-card-header { display:flex; align-items:center; gap:1rem; margin-bottom:1.5rem; }
-        .info-icon { width:44px; height:44px; border-radius:10px; background:rgba(212,169,106,0.08); border:1px solid rgba(212,169,106,0.15); display:flex; align-items:center; justify-content:center; font-size:1rem; color:var(--gold); flex-shrink:0; }
-        .info-card h4 { font-family:var(--font-display); font-size:1rem; font-weight:700; color:var(--white); }
-        .info-card ul { list-style:none; }
-        .info-card ul li { font-size:0.95rem; color:var(--white-dim); padding:0.45rem 0; border-bottom:1px solid rgba(212,169,106,0.06); display:flex; gap:0.5rem; align-items:baseline; }
-        .info-card ul li:last-child { border-bottom:none; }
-        .info-card ul li strong { color:var(--white); font-weight:600; min-width:90px; }
+  /* sidebar — slim info strips instead of cards */
+  .sidebar{gap:0;margin-top:3rem}
+  .info-card{
+    border-radius:0;padding:1.25rem 0;
+    border:none;border-bottom:1px solid rgba(212,169,106,.1);
+    background:transparent;
+  }
+  .info-card:last-child{border-bottom:none}
+  .info-card:hover{border-color:rgba(212,169,106,.1)}
+  .info-card-header{margin-bottom:.85rem}
+  .info-icon{width:36px;height:36px;font-size:.85rem;border-radius:0}
+  .info-card h4{font-size:.9rem}
+  .info-card ul li{font-size:.85rem;padding:.35rem 0}
+  .info-card ul li strong{min-width:80px;font-size:.85rem}
 
-        /* Social mini-cards */
-        .social-mini { display:grid; grid-template-columns:1fr 1fr; gap:0.75rem; }
-        .social-btn { display:flex; align-items:center; gap:0.6rem; padding:0.75rem 1rem; background:var(--black-soft); border:1px solid rgba(212,169,106,0.1); border-radius:10px; font-family:var(--font-display); font-size:0.7rem; font-weight:700; letter-spacing:0.08em; color:var(--white-dim); transition:all 0.3s ease; }
-        .social-btn:hover { border-color:var(--gold); color:var(--gold); transform:translateY(-2px); }
-        .social-btn i { font-size:1.1rem; }
-        .social-btn.ig:hover { color:#E1306C; border-color:#E1306C; }
-        .social-btn.tk:hover { color:#ffffff; border-color:#ffffff; }
-        .social-btn.fb:hover { color:#1877F2; border-color:#1877F2; }
-        .social-btn.yt:hover { color:#FF0000; border-color:#FF0000; }
+  /* social grid stays 2-col */
+  .social-mini{gap:.5rem}
+  .social-btn{padding:.65rem .75rem;font-size:.65rem;border-radius:0}
 
-        /* ── FAQ ── */
-        .faq-section { padding:7rem 0; background:var(--black-soft); }
-        .faq-header { text-align:center; margin-bottom:4rem; }
-        .faq-header h2 { font-family:var(--font-display); font-size:clamp(2rem,4vw,3.5rem); font-weight:800; color:var(--white); }
+  /* ── FAQ — accordion list ── */
+  .faq-section{padding:3rem 0}
+  .faq-header{margin-bottom:1.75rem;text-align:left}
+  .faq-header h2{font-size:clamp(1.7rem,8vw,2.5rem)}
+  .faq-grid{grid-template-columns:1fr;border-radius:0;border-left:none;border-right:none}
+  .faq-question{padding:1.1rem 0;gap:.75rem}
+  .faq-question h3{font-size:.9rem}
+  .faq-toggle{width:28px;height:28px;min-width:28px;font-size:.7rem}
+  .faq-answer p{padding:0 0 1.25rem;font-size:.9rem}
 
-        .faq-grid { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:rgba(212,169,106,0.08); border-radius:18px; overflow:hidden; border:1px solid rgba(212,169,106,0.1); max-width:1100px; margin:0 auto; }
-        .faq-item { background:var(--black-card); transition:background 0.3s ease; }
-        .faq-item.open { background:var(--black-edge); }
+  /* ── FOOTER ── */
+  .footer{padding:2.5rem 0 1rem}
+  .footer-grid{grid-template-columns:1fr;gap:1.75rem;margin-bottom:2rem}
+  .footer-brand{grid-column:unset}
+  .footer-brand img{height:48px;margin-bottom:.85rem}
+  .footer-brand p{font-size:.86rem;margin-bottom:1rem}
+  .socials a{width:36px;height:36px;font-size:.85rem;border-radius:0}
+  .footer-col h4{font-size:.6rem;margin-bottom:.8rem}
+  .footer-col ul li{font-size:.85rem;margin-bottom:.42rem}
+  .footer-bottom{flex-direction:column;text-align:center;gap:.3rem;font-size:.7rem}
 
-        .faq-question { display:flex; justify-content:space-between; align-items:center; gap:1rem; padding:1.75rem 2rem; cursor:pointer; }
-        .faq-question h3 { font-family:var(--font-display); font-size:1rem; font-weight:700; color:var(--white); line-height:1.4; transition:color 0.3s ease; }
-        .faq-item.open .faq-question h3 { color:var(--gold-light); }
-        .faq-toggle { width:32px; height:32px; min-width:32px; border-radius:50%; background:rgba(212,169,106,0.08); border:1px solid rgba(212,169,106,0.15); display:flex; align-items:center; justify-content:center; color:var(--gold); font-size:0.75rem; transition:all 0.4s ease; }
-        .faq-item.open .faq-toggle { background:var(--grad-gold); color:var(--black); border-color:transparent; transform:rotate(45deg); }
+  /* ── BOTTOM NAV ── */
+  .mob-bottom-nav{
+    display:grid!important;grid-template-columns:repeat(4,1fr);
+    position:fixed;bottom:0;left:0;right:0;height:4.25rem;
+    padding-bottom:env(safe-area-inset-bottom,0);
+    background:rgba(7,30,30,.99);backdrop-filter:blur(20px);
+    border-top:1px solid rgba(212,169,106,.18);z-index:1000;
+  }
+  .mob-bottom-nav a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.25rem;font-family:var(--font-display);font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,237,216,.38);position:relative;transition:color .22s}
+  .mob-bottom-nav a i{font-size:1.12rem;transition:transform .22s}
+  .mob-bottom-nav a.active,.mob-bottom-nav a:hover{color:var(--gold)}
+  .mob-bottom-nav a.active i{transform:translateY(-2px)}
+  .mob-bottom-nav a.active::before{content:'';position:absolute;top:0;left:10%;right:10%;height:2.5px;background:var(--grad-gold)}
+  .mob-bottom-nav a:last-child{background:var(--grad-gold);color:#071E1E;font-weight:800}
+  .mob-bottom-nav a:last-child i{color:#071E1E}
+  .mob-bottom-nav a:last-child.active::before{display:none}
+}
 
-        .faq-answer { max-height:0; overflow:hidden; transition:max-height 0.4s var(--ease), padding 0.3s ease; }
-        .faq-answer p { padding:0 2rem 1.75rem; font-size:1.05rem; color:var(--white-dim); line-height:1.8; }
-
-        /* ── FOOTER ── */
-        .footer { background:var(--black-soft); border-top:1px solid rgba(212,169,106,0.18); padding:5rem 0 2.5rem; }
-        .footer-grid { display:grid; grid-template-columns:1.5fr repeat(3,1fr); gap:3rem; margin-bottom:4rem; }
-        .footer-brand img { height:70px; width:auto; object-fit:contain; margin-bottom:1.25rem; }
-        .footer-brand p { font-size:1rem; color:var(--white-dim); line-height:1.7; margin-bottom:1.5rem; }
-        .socials { display:flex; gap:0.75rem; }
-        .socials a { width:42px; height:42px; border-radius:50%; background:var(--black-card); border:1px solid rgba(212,169,106,0.15); display:flex; align-items:center; justify-content:center; font-size:1rem; color:var(--white-dim); transition:all 0.3s ease; }
-        .socials a:hover { background:var(--gold); color:var(--black); border-color:var(--gold); transform:translateY(-3px); }
-        .footer-col h4 { font-family:var(--font-display); font-size:0.75rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:1.5rem; }
-        .footer-col ul { list-style:none; }
-        .footer-col ul li { margin-bottom:0.7rem; font-size:0.95rem; color:var(--white-dim); }
-        .footer-col ul li i { color:var(--gold); width:16px; margin-right:0.5rem; }
-        .footer-col ul li a { color:inherit; }
-        .footer-col ul li a:hover { color:var(--gold); }
-        .footer-bottom { border-top:1px solid rgba(212,169,106,0.1); padding-top:2rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; font-size:0.85rem; color:rgba(245,237,216,0.3); font-family:var(--font-display); }
-
-        /* MOBILE NAV */
-        .mobile-nav { display:none; }
-
-        /* ── RESPONSIVE ── */
-        @media (max-width:1024px) {
-            .main-grid { grid-template-columns:1fr; gap:4rem; }
-            .sidebar { position:static; }
-            .faq-grid { grid-template-columns:1fr; }
-            .footer-grid { grid-template-columns:1fr 1fr; gap:2.5rem; }
-            .methods-grid { grid-template-columns:1fr 1fr; }
-        }
-        @media (max-width:768px) {
-            .nav-links { display:none; }
-            .hamburger { display:flex; }
-            .form-grid-2 { grid-template-columns:1fr; }
-            .methods-grid { grid-template-columns:1fr 1fr; gap:1rem; }
-            .social-mini { grid-template-columns:1fr 1fr; }
-            .footer-grid { grid-template-columns:1fr; }
-            .footer-bottom { flex-direction:column; text-align:center; }
-            .mobile-nav { display:flex; position:fixed; bottom:0; left:0; right:0; background:rgba(7,30,30,0.99); border-top:1px solid rgba(212,169,106,0.15); backdrop-filter:blur(20px); z-index:1000; padding:0.75rem 0 1rem; }
-            .mobile-nav a { flex:1; display:flex; flex-direction:column; align-items:center; gap:0.3rem; font-family:var(--font-display); font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--white-dim); }
-            .mobile-nav a.active, .mobile-nav a:hover { color:var(--gold); }
-            .mobile-nav a i { font-size:1.2rem; }
-            body { padding-bottom:4.5rem; }
-        }
-        @media (max-width:480px) {
-            .methods-grid { grid-template-columns:1fr; }
-        }
-    </style>
+@media(max-width:380px){
+  .page-title{font-size:clamp(2.2rem,11vw,3rem)}
+  .page-title .gold{font-size:clamp(2rem,10.5vw,2.8rem)}
+  .method-card{flex:0 0 78vw;max-width:78vw}
+}
+</style>
 </head>
 <body>
 
-    <!-- NAV -->
-    <nav class="nav" id="mainNav">
-        <div class="nav-inner">
-            <div class="nav-logo">
-                <a href="index.html"><img src="assets/images/logo.jpeg" alt="Hair by Akose"></a>
+<div id="scroll-progress"></div>
+
+<!-- NAV -->
+<nav class="nav" id="mainNav">
+  <div class="nav-inner">
+    <div class="nav-logo"><a href="index.html"><img src="assets/images/logo.jpeg" alt="Hair by Akose"></a></div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#story">Story</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="contact.html" class="nav-cta">Book Now</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+<!-- SLIDE PANEL -->
+<div class="mob-menu-backdrop" id="mobBackdrop" onclick="cM()"></div>
+<div class="mob-menu" id="mobMenu">
+  <button class="mob-menu-close" onclick="cM()"><i class="fas fa-times"></i></button>
+  <div class="mob-menu-brand">Hair by Akose</div>
+  <div class="mob-menu-links">
+    <a href="index.html"       onclick="cM()">Home</a>
+    <a href="index.html#story" onclick="cM()">Story</a>
+    <a href="portfolio.html"   onclick="cM()">Portfolio</a>
+    <a href="pricing.html"     onclick="cM()">Pricing</a>
+    <a href="index.html#about" onclick="cM()">About</a>
+  </div>
+  <a href="contact.html" class="mob-menu-cta active-link"><i class="fas fa-calendar-check"></i> Book Appointment</a>
+  <div class="mob-menu-socials">
+    <a href="https://www.instagram.com/hairbyakose" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://web.facebook.com/vivienne.akose" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+    <a href="https://www.tiktok.com/@hairbyakose" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+    <a href="https://wa.me/+254725351803" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+  </div>
+  <p class="mob-menu-meta">Nairobi &middot; +(254) 725-351-803<br>Mon–Sat: 9AM – 8PM</p>
+</div>
+
+<!-- HERO -->
+<section class="page-hero">
+  <!-- mobile decorative elements (hidden on desktop via CSS) -->
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-ring"></div>
+
+  <div class="hero-lines"><span></span><span></span><span></span><span></span></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Hair by Akose</div>
+    <h1 class="page-title">
+      Let's Make<br>
+      <span class="gold">Something Beautiful</span>
+    </h1>
+    <p class="page-subtitle">Choose how you'd like to get in touch — I'll respond as fast as possible.</p>
+    <div class="response-badge">Usually responds within 1 hour</div>
+
+    <!-- BIG WhatsApp CTA (mobile only, inside hero) -->
+    <a href="https://wa.me/+254725351803?text=Hi%20Akose!%20I'd%20like%20to%20book%20an%20appointment." class="mob-wa-hero" target="_blank">
+      <i class="fab fa-whatsapp"></i> Book via WhatsApp Now
+    </a>
+  </div>
+
+  <!-- scroll strip (mobile only) -->
+  <div class="mob-scroll-strip">
+    <i class="fas fa-chevron-down" style="font-size:.65rem;color:rgba(212,169,106,.5)"></i>
+    <span>Or choose another way below</span>
+    <i class="fas fa-chevron-down" style="font-size:.65rem;color:rgba(212,169,106,.5)"></i>
+  </div>
+</section>
+
+<!-- CONTACT METHODS -->
+<section class="contact-methods-section">
+  <div class="container">
+    <div class="methods-grid">
+      <a href="https://wa.me/+254725351803?text=Hi%20Akose!%20I'd%20like%20to%20book%20an%20appointment." class="method-card whatsapp" target="_blank">
+        <div class="method-icon"><i class="fab fa-whatsapp"></i></div>
+        <h3>WhatsApp</h3>
+        <p>Fastest way to reach me. Get a quote instantly.</p>
+        <span class="method-action">Message Now →</span>
+      </a>
+      <a href="tel:+254725351803" class="method-card">
+        <div class="method-icon"><i class="fas fa-phone"></i></div>
+        <h3>Call / Text</h3>
+        <p>+254 725 351 803</p>
+        <span class="method-action">Call Now →</span>
+      </a>
+      <a href="mailto:vivienneakose22@gmail.com" class="method-card">
+        <div class="method-icon"><i class="fas fa-envelope"></i></div>
+        <h3>Email</h3>
+        <p>vivienneakose22@gmail.com</p>
+        <span class="method-action">Send Email →</span>
+      </a>
+      <a href="#booking-form" class="method-card">
+        <div class="method-icon"><i class="fas fa-paper-plane"></i></div>
+        <h3>Booking Form</h3>
+        <p>Fill in your details for a full booking request.</p>
+        <span class="method-action">Fill Form →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FORM + SIDEBAR -->
+<section class="main-section" id="booking-form">
+  <div class="container">
+    <div class="main-grid">
+
+      <!-- FORM -->
+      <div class="form-block">
+        <span class="section-label">Book Appointment</span>
+        <h2>Send a Booking Request</h2>
+        <p>Fill in the details below and I'll confirm your appointment within 24 hours.</p>
+
+        <form id="contactForm" action="https://formspree.io/f/xrelydra" method="POST">
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label for="name">Full Name *</label>
+              <input type="text" id="name" name="name" required class="form-input" placeholder="Your name">
             </div>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="index.html#story">Story</a></li>
-                <li><a href="portfolio.html">Portfolio</a></li>
-                <li><a href="pricing.html">Pricing</a></li>
-                <li><a href="index.html#about">About</a></li>
-                <li><a href="contact.html" class="nav-cta">Book Now</a></li>
-            </ul>
-            <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+            <div class="form-group">
+              <label for="phone">Phone Number *</label>
+              <input type="tel" id="phone" name="phone" required class="form-input" placeholder="0712 345 678">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address (Optional)</label>
+            <input type="email" id="email" name="_replyto" class="form-input" placeholder="your.email@example.com">
+          </div>
+          <div class="form-group">
+            <label for="service">Service *</label>
+            <select id="service" name="service" required class="form-select">
+              <option value="">— Select a service —</option>
+              <option value="Box Braids">Box Braids</option>
+              <option value="Cornrows">Cornrows</option>
+              <option value="Knotless Braids">Knotless Braids</option>
+              <option value="Twists">Twists (Senegalese, Marley, Passion)</option>
+              <option value="Weaves">Weaves &amp; Extensions</option>
+              <option value="Natural Hair">Natural Hair Care</option>
+              <option value="Kids">Children's Styling</option>
+              <option value="Locs">Locs Maintenance</option>
+              <option value="Bridal">Bridal Styling</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label for="date">Preferred Date</label>
+              <input type="date" id="date" name="date" class="form-input">
+            </div>
+            <div class="form-group">
+              <label for="time">Preferred Time</label>
+              <select id="time" name="time" class="form-select">
+                <option value="">— Select time —</option>
+                <option value="Morning (9AM-12PM)">Morning (9AM–12PM)</option>
+                <option value="Afternoon (12PM-5PM)">Afternoon (12PM–5PM)</option>
+                <option value="Evening (5PM-8PM)">Evening (5PM–8PM)</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="location">Your Location *</label>
+            <input type="text" id="location" name="location" required class="form-input" placeholder="e.g. Nairobi CBD, Thika, Machakos">
+          </div>
+          <div class="form-group">
+            <label for="message">Additional Details</label>
+            <textarea id="message" name="message" class="form-textarea" placeholder="Hair type, desired style, length, any special requests..."></textarea>
+          </div>
+          <input type="hidden" name="_subject" value="🌟 New Booking Request - Hair by Akose">
+          <input type="hidden" name="_template" value="box">
+          <input type="text" name="_gotcha" style="display:none">
+          <div class="form-group">
+            <label class="checkbox-wrap">
+              <input type="checkbox" name="consent" required>
+              <span class="checkbox-box"></span>
+              <span>I consent to being contacted about my appointment *</span>
+            </label>
+          </div>
+          <button type="submit" class="btn-submit" id="submitBtn">
+            <i class="fas fa-paper-plane"></i> Send Booking Request
+          </button>
+          <p class="form-note">* Required fields &nbsp;·&nbsp; Response within 24 hours</p>
+        </form>
+
+        <!-- Success -->
+        <div class="form-success" id="formSuccess">
+          <div class="success-icon"><i class="fas fa-check"></i></div>
+          <h3>Request Sent!</h3>
+          <p>Thank you for choosing Hair by Akose. Your booking request has been received.</p>
+          <div class="success-steps">
+            <h4>What happens next</h4>
+            <div class="success-step"><i class="fas fa-check-circle"></i> Akose receives your details via email</div>
+            <div class="success-step"><i class="fas fa-check-circle"></i> You'll get a response within 24 hours</div>
+            <div class="success-step"><i class="fas fa-check-circle"></i> Akose will reach you via WhatsApp or phone</div>
+            <div class="success-step"><i class="fas fa-check-circle"></i> Appointment confirmed with all details</div>
+          </div>
+          <a href="https://wa.me/+254725351803?text=Hi%20Akose!%20I%20just%20submitted%20a%20booking%20form." class="btn-wa-full" target="_blank">
+            <i class="fab fa-whatsapp"></i> Need immediate help? WhatsApp me
+          </a>
+          <button onclick="location.reload()" class="btn-ghost-sm">Submit Another Booking</button>
         </div>
-    </nav>
+      </div>
 
-    <!-- HERO -->
-    <section class="page-hero">
-        <div class="hero-lines"><span></span><span></span><span></span><span></span></div>
-        <div class="hero-inner">
-            <div class="hero-eyebrow">Hair by Akose</div>
-            <h1 class="page-title">
-                Let's Make<br>
-                <span class="gold">Something Beautiful</span>
-            </h1>
-            <p class="page-subtitle">Choose how you'd like to get in touch — I'll respond as fast as possible.</p>
-            <div class="response-badge">Usually responds within 1 hour</div>
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <div class="info-card">
+          <div class="info-card-header">
+            <div class="info-icon"><i class="fas fa-clock"></i></div>
+            <h4>Business Hours</h4>
+          </div>
+          <ul>
+            <li><strong>Mon – Fri</strong> 9:00 AM – 8:00 PM</li>
+            <li><strong>Saturday</strong> 9:00 AM – 8:00 PM</li>
+            <li><strong>Sunday</strong> By appointment only</li>
+          </ul>
         </div>
-    </section>
-
-    <!-- CONTACT METHODS -->
-    <section class="contact-methods-section">
-        <div class="container">
-            <div class="methods-grid">
-                <a href="https://wa.me/+254725351803?text=Hi%20Akose!%20I'd%20like%20to%20book%20an%20appointment." class="method-card whatsapp" target="_blank">
-                    <div class="method-icon"><i class="fab fa-whatsapp"></i></div>
-                    <h3>WhatsApp</h3>
-                    <p>Fastest way to reach me. Get a quote instantly.</p>
-                    <span class="method-action">Message Now →</span>
-                </a>
-                <a href="tel:+254725351803" class="method-card">
-                    <div class="method-icon"><i class="fas fa-phone"></i></div>
-                    <h3>Call / Text</h3>
-                    <p>+254 725 351 803</p>
-                    <span class="method-action">Call Now →</span>
-                </a>
-                <a href="mailto:vivienneakose22@gmail.com" class="method-card">
-                    <div class="method-icon"><i class="fas fa-envelope"></i></div>
-                    <h3>Email</h3>
-                    <p>vivienneakose22@gmail.com</p>
-                    <span class="method-action">Send Email →</span>
-                </a>
-                <a href="#booking-form" class="method-card">
-                    <div class="method-icon"><i class="fas fa-paper-plane"></i></div>
-                    <h3>Booking Form</h3>
-                    <p>Fill in your details below for a full booking request.</p>
-                    <span class="method-action">Fill Form →</span>
-                </a>
-            </div>
+        <div class="info-card">
+          <div class="info-card-header">
+            <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <h4>Service Areas</h4>
+          </div>
+          <ul>
+            <li><strong>Nairobi</strong> All areas</li>
+            <li><strong>Thika</strong> Town &amp; surroundings</li>
+            <li><strong>Machakos</strong> Town &amp; environs</li>
+            <li><strong>Limuru</strong> And nearby areas</li>
+            <li><strong>Mobile</strong> I come to you! ✨</li>
+          </ul>
         </div>
-    </section>
-
-    <!-- FORM + SIDEBAR -->
-    <section class="main-section" id="booking-form">
-        <div class="container">
-            <div class="main-grid">
-
-                <!-- FORM -->
-                <div class="form-block">
-                    <span class="section-label">Book Appointment</span>
-                    <h2>Send a Booking Request</h2>
-                    <p>Fill in the details below and I'll confirm your appointment within 24 hours.</p>
-
-                    <form id="contactForm" action="https://formspree.io/f/xrelydra" method="POST">
-                        <div class="form-grid-2">
-                            <div class="form-group">
-                                <label for="name">Full Name *</label>
-                                <input type="text" id="name" name="name" required class="form-input" placeholder="Your name">
-                            </div>
-                            <div class="form-group">
-                                <label for="phone">Phone Number *</label>
-                                <input type="tel" id="phone" name="phone" required class="form-input" placeholder="0712 345 678">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="email">Email Address (Optional)</label>
-                            <input type="email" id="email" name="_replyto" class="form-input" placeholder="your.email@example.com">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="service">Service *</label>
-                            <select id="service" name="service" required class="form-select">
-                                <option value="">— Select a service —</option>
-                                <option value="Box Braids">Box Braids</option>
-                                <option value="Cornrows">Cornrows</option>
-                                <option value="Knotless Braids">Knotless Braids</option>
-                                <option value="Twists">Twists (Senegalese, Marley, Passion)</option>
-                                <option value="Weaves">Weaves & Extensions</option>
-                                <option value="Natural Hair">Natural Hair Care</option>
-                                <option value="Kids">Children's Styling</option>
-                                <option value="Locs">Locs Maintenance</option>
-                                <option value="Bridal">Bridal Styling</option>
-                                <option value="Other">Other</option>
-                            </select>
-                        </div>
-
-                        <div class="form-grid-2">
-                            <div class="form-group">
-                                <label for="date">Preferred Date</label>
-                                <input type="date" id="date" name="date" class="form-input">
-                            </div>
-                            <div class="form-group">
-                                <label for="time">Preferred Time</label>
-                                <select id="time" name="time" class="form-select">
-                                    <option value="">— Select time —</option>
-                                    <option value="Morning (9AM-12PM)">Morning (9AM–12PM)</option>
-                                    <option value="Afternoon (12PM-5PM)">Afternoon (12PM–5PM)</option>
-                                    <option value="Evening (5PM-8PM)">Evening (5PM–8PM)</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="location">Your Location *</label>
-                            <input type="text" id="location" name="location" required class="form-input" placeholder="e.g. Nairobi CBD, Thika, Machakos">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="message">Additional Details</label>
-                            <textarea id="message" name="message" class="form-textarea" placeholder="Hair type, desired style, length, any special requests..."></textarea>
-                        </div>
-
-                        <input type="hidden" name="_subject" value="🌟 New Booking Request - Hair by Akose">
-                        <input type="hidden" name="_template" value="box">
-                        <input type="text" name="_gotcha" style="display:none">
-
-                        <div class="form-group">
-                            <label class="checkbox-wrap">
-                                <input type="checkbox" name="consent" required>
-                                <span class="checkbox-box"></span>
-                                <span>I consent to being contacted about my appointment *</span>
-                            </label>
-                        </div>
-
-                        <button type="submit" class="btn-submit" id="submitBtn">
-                            <i class="fas fa-paper-plane"></i> Send Booking Request
-                        </button>
-                        <p class="form-note">* Required fields &nbsp;·&nbsp; Response within 24 hours</p>
-                    </form>
-
-                    <!-- Success state -->
-                    <div class="form-success" id="formSuccess">
-                        <div class="success-icon"><i class="fas fa-check"></i></div>
-                        <h3>Request Sent!</h3>
-                        <p>Thank you for choosing Hair by Akose. Your booking request has been received.</p>
-                        <div class="success-steps">
-                            <h4>What happens next</h4>
-                            <div class="success-step"><i class="fas fa-check-circle"></i> Akose receives your details via email</div>
-                            <div class="success-step"><i class="fas fa-check-circle"></i> You'll get a response within 24 hours</div>
-                            <div class="success-step"><i class="fas fa-check-circle"></i> Akose will reach you via WhatsApp or phone</div>
-                            <div class="success-step"><i class="fas fa-check-circle"></i> Appointment confirmed with all details</div>
-                        </div>
-                        <a href="https://wa.me/+254725351803?text=Hi%20Akose!%20I%20just%20submitted%20a%20booking%20form." class="btn-wa-full" target="_blank">
-                            <i class="fab fa-whatsapp"></i> Need immediate help? WhatsApp me
-                        </a>
-                        <button onclick="location.reload()" class="btn-ghost-sm">Submit Another Booking</button>
-                    </div>
-                </div>
-
-                <!-- SIDEBAR -->
-                <aside class="sidebar">
-
-                    <!-- Hours -->
-                    <div class="info-card">
-                        <div class="info-card-header">
-                            <div class="info-icon"><i class="fas fa-clock"></i></div>
-                            <h4>Business Hours</h4>
-                        </div>
-                        <ul>
-                            <li><strong>Mon – Fri</strong> 9:00 AM – 8:00 PM</li>
-                            <li><strong>Saturday</strong> 9:00 AM – 8:00 PM</li>
-                            <li><strong>Sunday</strong> By appointment only</li>
-                        </ul>
-                    </div>
-
-                    <!-- Service area -->
-                    <div class="info-card">
-                        <div class="info-card-header">
-                            <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
-                            <h4>Service Areas</h4>
-                        </div>
-                        <ul>
-                            <li><strong>Nairobi</strong> All areas</li>
-                            <li><strong>Thika</strong> Town & surroundings</li>
-                            <li><strong>Machakos</strong> Town & environs</li>
-                            <li><strong>Limuru</strong> And nearby areas</li>
-                            <li><strong>Mobile</strong> I come to you! ✨</li>
-                        </ul>
-                    </div>
-
-                    <!-- Booking policy -->
-                    <div class="info-card">
-                        <div class="info-card-header">
-                            <div class="info-icon"><i class="fas fa-info-circle"></i></div>
-                            <h4>Booking Policy</h4>
-                        </div>
-                        <ul>
-                            <li><strong>Deposit</strong> Required to secure slot</li>
-                            <li><strong>Cancellation</strong> 24hr notice needed</li>
-                            <li><strong>Hair prep</strong> Clean & detangled</li>
-                            <li><strong>Extensions</strong> Client provides own</li>
-                            <li><strong>Payment</strong> Cash or M-Pesa</li>
-                        </ul>
-                    </div>
-
-                    <!-- Socials -->
-                    <div class="info-card">
-                        <div class="info-card-header">
-                            <div class="info-icon"><i class="fas fa-heart"></i></div>
-                            <h4>Follow My Work</h4>
-                        </div>
-                        <div class="social-mini">
-                            <a href="https://www.instagram.com/hairbyakose?igsh=YW1pdTc0ZzBua2p4&utm_source=qr" class="social-btn ig" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
-                            <a href="https://www.tiktok.com/@hairbyakose?_r=1&_t=ZS-93RrembQpYD" class="social-btn tk" target="_blank"><i class="fab fa-tiktok"></i> TikTok</a>
-                            <a href="https://web.facebook.com/vivienne.akose" class="social-btn fb" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
-                            <a href="http://www.youtube.com/@vivienneakose8306" class="social-btn yt" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
-                        </div>
-                    </div>
-
-                </aside>
-            </div>
+        <div class="info-card">
+          <div class="info-card-header">
+            <div class="info-icon"><i class="fas fa-info-circle"></i></div>
+            <h4>Booking Policy</h4>
+          </div>
+          <ul>
+            <li><strong>Deposit</strong> Required to secure slot</li>
+            <li><strong>Cancellation</strong> 24hr notice needed</li>
+            <li><strong>Hair prep</strong> Clean &amp; detangled</li>
+            <li><strong>Extensions</strong> Client provides own</li>
+            <li><strong>Payment</strong> Cash or M-Pesa</li>
+          </ul>
         </div>
-    </section>
-
-    <!-- FAQ -->
-    <section class="faq-section">
-        <div class="container">
-            <div class="faq-header">
-                <span class="section-label">Got Questions?</span>
-                <h2>Frequently Asked</h2>
-            </div>
-            <div class="faq-grid" id="faqGrid">
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>How do I book an appointment?</h3>
-                        <div class="faq-toggle"><i class="fas fa-plus"></i></div>
-                    </div>
-                    <div class="faq-answer"><p>Via WhatsApp (fastest), call/text, email, or the form above. I'll confirm your appointment and discuss location, timing, and requirements.</p></div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>Do I need to provide my own hair?</h3>
-                        <div class="faq-toggle"><i class="fas fa-plus"></i></div>
-                    </div>
-                    <div class="faq-answer"><p>Yes, clients typically provide their own hair/extensions. I can recommend brands and quantities based on your chosen style — just ask during booking.</p></div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>What's your cancellation policy?</h3>
-                        <div class="faq-toggle"><i class="fas fa-plus"></i></div>
-                    </div>
-                    <div class="faq-answer"><p>Please give at least 24 hours notice. Deposits are non-refundable but can be applied to a rescheduled appointment within 30 days.</p></div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>How long do appointments take?</h3>
-                        <div class="faq-toggle"><i class="fas fa-plus"></i></div>
-                    </div>
-                    <div class="faq-answer"><p>It varies! Small box braids take 8–10 hours, simple cornrows 2–3 hours. Check the pricing page for estimates — I'll give you an accurate timeframe when you book.</p></div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>Do you charge a travel fee?</h3>
-                        <div class="faq-toggle"><i class="fas fa-plus"></i></div>
-                    </div>
-                    <div class="faq-answer"><p>Travel within the main service areas (Nairobi, Thika, Machakos, Limuru) is generally included. Locations further out may incur a small charge — discussed at booking.</p></div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>What payment methods do you accept?</h3>
-                        <div class="faq-toggle"><i class="fas fa-plus"></i></div>
-                    </div>
-                    <div class="faq-answer"><p>Cash or M-Pesa. A deposit is required to secure your slot, with the balance due on completion of service.</p></div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>Do you style children's hair?</h3>
-                        <div class="faq-toggle"><i class="fas fa-plus"></i></div>
-                    </div>
-                    <div class="faq-answer"><p>Absolutely! I love working with kids and use gentle techniques to make the experience fun and comfortable. Kids' styles are typically quicker too.</p></div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>How should I prepare before you arrive?</h3>
-                        <div class="faq-toggle"><i class="fas fa-plus"></i></div>
-                    </div>
-                    <div class="faq-answer"><p>Have your hair clean and detangled. Set up a comfortable space with good lighting, a chair, mirror, and access to a power outlet. Have your hair/extensions ready to go.</p></div>
-                </div>
-
-            </div>
+        <div class="info-card">
+          <div class="info-card-header">
+            <div class="info-icon"><i class="fas fa-heart"></i></div>
+            <h4>Follow My Work</h4>
+          </div>
+          <div class="social-mini">
+            <a href="https://www.instagram.com/hairbyakose?igsh=YW1pdTc0ZzBua2p4&utm_source=qr" class="social-btn ig" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+            <a href="https://www.tiktok.com/@hairbyakose?_r=1&_t=ZS-93RrembQpYD" class="social-btn tk" target="_blank"><i class="fab fa-tiktok"></i> TikTok</a>
+            <a href="https://web.facebook.com/vivienne.akose" class="social-btn fb" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+            <a href="http://www.youtube.com/@vivienneakose8306" class="social-btn yt" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
+          </div>
         </div>
-    </section>
+      </aside>
+    </div>
+  </div>
+</section>
 
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <img src="assets/images/logo.jpeg" alt="Hair by Akose">
-                    <p>Professional mobile hair styling and handmade accessories, bringing beauty to your doorstep.</p>
-                    <div class="socials">
-                        <a href="https://www.instagram.com/hairbyakose?igsh=YW1pdTc0ZzBua2p4&utm_source=qr" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://web.facebook.com/vivienne.akose" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                        <a href="https://www.tiktok.com/@hairbyakose?_r=1&_t=ZS-93RrembQpYD" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-                        <a href="http://www.youtube.com/@vivienneakose8306" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-                <div class="footer-col">
-                    <h4>Navigate</h4>
-                    <ul>
-                        <li><a href="index.html#story">My Story</a></li>
-                        <li><a href="portfolio.html">Portfolio</a></li>
-                        <li><a href="pricing.html">Pricing</a></li>
-                        <li><a href="index.html#about">About</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Services</h4>
-                    <ul>
-                        <li><a href="index.html#services">Box Braids</a></li>
-                        <li><a href="index.html#services">Cornrows</a></li>
-                        <li><a href="index.html#services">Twists & Locs</a></li>
-                        <li><a href="index.html#services">Natural Hair</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Contact</h4>
-                    <ul>
-                        <li><i class="fas fa-phone"></i> +(254) 725-351-803</li>
-                        <li><i class="fas fa-envelope"></i><a href="mailto:vivienneakose22@gmail.com"> vivienneakose22@gmail.com</a></li>
-                        <li><i class="fas fa-map-marker-alt"></i> @ your place of comfort</li>
-                        <li><i class="fas fa-clock"></i> Mon–Sat: 9AM – 8PM</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <span>&copy; 2026 Hair by Akose. All rights reserved.</span>
-                <span>Crafted with <i class="fas fa-heart" style="color:var(--gold)"></i> and passion · by #mimsanii</span>
-            </div>
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="container">
+    <div class="faq-header">
+      <span style="display:inline-flex;align-items:center;gap:.75rem;font-family:var(--font-display);font-size:.7rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem"><span style="display:block;width:30px;height:1px;background:var(--gold);opacity:.6"></span>Got Questions?<span style="display:block;width:30px;height:1px;background:var(--gold);opacity:.6"></span></span>
+      <h2>Frequently Asked</h2>
+    </div>
+    <div class="faq-grid" id="faqGrid">
+      <div class="faq-item"><div class="faq-question"><h3>How do I book an appointment?</h3><div class="faq-toggle"><i class="fas fa-plus"></i></div></div><div class="faq-answer"><p>Via WhatsApp (fastest), call/text, email, or the form above. I'll confirm your appointment and discuss location, timing, and requirements.</p></div></div>
+      <div class="faq-item"><div class="faq-question"><h3>Do I need to provide my own hair?</h3><div class="faq-toggle"><i class="fas fa-plus"></i></div></div><div class="faq-answer"><p>Yes, clients typically provide their own hair/extensions. I can recommend brands and quantities based on your chosen style — just ask during booking.</p></div></div>
+      <div class="faq-item"><div class="faq-question"><h3>What's your cancellation policy?</h3><div class="faq-toggle"><i class="fas fa-plus"></i></div></div><div class="faq-answer"><p>Please give at least 24 hours notice. Deposits are non-refundable but can be applied to a rescheduled appointment within 30 days.</p></div></div>
+      <div class="faq-item"><div class="faq-question"><h3>How long do appointments take?</h3><div class="faq-toggle"><i class="fas fa-plus"></i></div></div><div class="faq-answer"><p>It varies! Small box braids take 8–10 hours, simple cornrows 2–3 hours. Check the pricing page for estimates — I'll give you an accurate timeframe when you book.</p></div></div>
+      <div class="faq-item"><div class="faq-question"><h3>Do you charge a travel fee?</h3><div class="faq-toggle"><i class="fas fa-plus"></i></div></div><div class="faq-answer"><p>Travel within the main service areas (Nairobi, Thika, Machakos, Limuru) is generally included. Locations further out may incur a small charge — discussed at booking.</p></div></div>
+      <div class="faq-item"><div class="faq-question"><h3>What payment methods do you accept?</h3><div class="faq-toggle"><i class="fas fa-plus"></i></div></div><div class="faq-answer"><p>Cash or M-Pesa. A deposit is required to secure your slot, with the balance due on completion of service.</p></div></div>
+      <div class="faq-item"><div class="faq-question"><h3>Do you style children's hair?</h3><div class="faq-toggle"><i class="fas fa-plus"></i></div></div><div class="faq-answer"><p>Absolutely! I love working with kids and use gentle techniques to make the experience fun and comfortable. Kids' styles are typically quicker too.</p></div></div>
+      <div class="faq-item"><div class="faq-question"><h3>How should I prepare before you arrive?</h3><div class="faq-toggle"><i class="fas fa-plus"></i></div></div><div class="faq-answer"><p>Have your hair clean and detangled. Set up a comfortable space with good lighting, a chair, mirror, and access to a power outlet. Have your hair/extensions ready to go.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="assets/images/logo.jpeg" alt="Hair by Akose">
+        <p>Professional mobile hair styling and handmade accessories, bringing beauty to your doorstep.</p>
+        <div class="socials">
+          <a href="https://www.instagram.com/hairbyakose?igsh=YW1pdTc0ZzBua2p4&utm_source=qr" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://web.facebook.com/vivienne.akose" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="https://www.tiktok.com/@hairbyakose?_r=1&_t=ZS-93RrembQpYD" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          <a href="http://www.youtube.com/@vivienneakose8306" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
         </div>
-    </footer>
+      </div>
+      <div class="footer-col"><h4>Navigate</h4><ul><li><a href="index.html#story">My Story</a></li><li><a href="portfolio.html">Portfolio</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="index.html#about">About</a></li></ul></div>
+      <div class="footer-col"><h4>Services</h4><ul><li><a href="index.html#services">Box Braids</a></li><li><a href="index.html#services">Cornrows</a></li><li><a href="index.html#services">Twists &amp; Locs</a></li><li><a href="index.html#services">Natural Hair</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><i class="fas fa-phone"></i> +(254) 725-351-803</li><li><i class="fas fa-envelope"></i> <a href="mailto:vivienneakose22@gmail.com">vivienneakose22@gmail.com</a></li><li><i class="fas fa-map-marker-alt"></i> @ your place of comfort</li><li><i class="fas fa-clock"></i> Mon–Sat: 9AM – 8PM</li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Hair by Akose. All rights reserved.</span>
+      <span>Crafted with <i class="fas fa-heart" style="color:var(--gold)"></i> and passion &middot; by #mimsanii</span>
+    </div>
+  </div>
+</footer>
 
-    <!-- MOBILE NAV -->
-    <nav class="mobile-nav">
-        <a href="index.html"><i class="fas fa-home"></i><span>Home</span></a>
-        <a href="index.html#services"><i class="fas fa-scissors"></i><span>Services</span></a>
-        <a href="pricing.html"><i class="fas fa-tags"></i><span>Pricing</span></a>
-        <a href="contact.html" class="active"><i class="fas fa-calendar-check"></i><span>Book</span></a>
-    </nav>
+<!-- MOBILE BOTTOM NAV -->
+<nav class="mob-bottom-nav">
+  <a href="index.html"><i class="fas fa-home"></i><span>Home</span></a>
+  <a href="index.html#services"><i class="fas fa-scissors"></i><span>Services</span></a>
+  <a href="pricing.html"><i class="fas fa-tags"></i><span>Pricing</span></a>
+  <a href="contact.html" class="active"><i class="fas fa-calendar-check"></i><span>Book</span></a>
+</nav>
 
-    <script>
-        // Sticky nav
-        const nav = document.getElementById('mainNav');
-        window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
+<script>
+/* scroll progress */
+var bar = document.getElementById('scroll-progress');
+if(bar) window.addEventListener('scroll',function(){var p=window.scrollY/(document.body.scrollHeight-window.innerHeight)*100;bar.style.width=Math.min(p,100)+'%';},{passive:true});
 
-        // FAQ accordion
-        document.querySelectorAll('.faq-question').forEach(q => {
-            q.addEventListener('click', () => {
-                const item = q.closest('.faq-item');
-                const answer = item.querySelector('.faq-answer');
-                const isOpen = item.classList.contains('open');
+/* nav scrolled */
+var nav = document.getElementById('mainNav');
+if(nav) window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>60);},{passive:true});
 
-                // Close all
-                document.querySelectorAll('.faq-item').forEach(i => {
-                    i.classList.remove('open');
-                    i.querySelector('.faq-answer').style.maxHeight = null;
-                });
+/* hamburger */
+var hb=document.getElementById('hamburger'),mm=document.getElementById('mobMenu'),bd=document.getElementById('mobBackdrop');
+function openMenu(){if(!mm||!hb)return;mm.classList.add('open');if(bd)bd.classList.add('open');hb.classList.add('open');document.body.style.overflow='hidden';document.body.style.position='fixed';document.body.style.width='100%';}
+function cM(){if(!mm||!hb)return;mm.classList.remove('open');if(bd)bd.classList.remove('open');hb.classList.remove('open');document.body.style.overflow='';document.body.style.position='';document.body.style.width='';}
+if(hb) hb.addEventListener('click',function(e){e.stopPropagation();mm&&mm.classList.contains('open')?cM():openMenu();});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')cM();});
 
-                // Open clicked if it was closed
-                if (!isOpen) {
-                    item.classList.add('open');
-                    answer.style.maxHeight = answer.scrollHeight + 'px';
-                }
-            });
-        });
+/* FAQ accordion */
+document.querySelectorAll('.faq-question').forEach(function(q){
+  q.addEventListener('click',function(){
+    var item = q.closest('.faq-item');
+    var answer = item.querySelector('.faq-answer');
+    var isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(function(i){
+      i.classList.remove('open');
+      i.querySelector('.faq-answer').style.maxHeight=null;
+    });
+    if(!isOpen){item.classList.add('open');answer.style.maxHeight=answer.scrollHeight+'px';}
+  });
+});
 
-        // Form submission via Formspree (AJAX)
-        const form = document.getElementById('contactForm');
-        const successDiv = document.getElementById('formSuccess');
-        const submitBtn = document.getElementById('submitBtn');
+/* form submission */
+var form = document.getElementById('contactForm');
+var successDiv = document.getElementById('formSuccess');
+var submitBtn = document.getElementById('submitBtn');
+if(form){
+  form.addEventListener('submit',async function(e){
+    e.preventDefault();
+    submitBtn.disabled=true;
+    submitBtn.innerHTML='<i class="fas fa-spinner fa-spin"></i> Sending...';
+    try{
+      var res = await fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}});
+      if(res.ok){
+        form.style.display='none';
+        successDiv.classList.add('show');
+        successDiv.scrollIntoView({behavior:'smooth',block:'center'});
+      } else { throw new Error('Failed'); }
+    } catch(err){
+      submitBtn.disabled=false;
+      submitBtn.innerHTML='<i class="fas fa-paper-plane"></i> Send Booking Request';
+      alert('Something went wrong. Please try WhatsApp instead.');
+    }
+  });
+}
 
-        form.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+/* checkbox visual */
+document.querySelectorAll('.checkbox-wrap').forEach(function(wrap){
+  wrap.addEventListener('click',function(){
+    var input = wrap.querySelector('input[type="checkbox"]');
+    if(input) input.checked=!input.checked;
+  });
+});
 
-            try {
-                const res = await fetch(form.action, {
-                    method: 'POST',
-                    body: new FormData(form),
-                    headers: { 'Accept': 'application/json' }
-                });
+/* fade in on scroll */
+var fadeEls = document.querySelectorAll('.method-card,.info-card,.note-card,.faq-item');
+fadeEls.forEach(function(el){el.style.opacity='0';el.style.transform='translateY(14px)';el.style.transition='opacity .5s ease,transform .5s ease';});
+var io = new IntersectionObserver(function(entries){
+  entries.forEach(function(e,i){
+    if(e.isIntersecting){setTimeout(function(){e.target.style.opacity='1';e.target.style.transform='translateY(0)';},i*45);io.unobserve(e.target);}
+  });
+},{threshold:.1});
+fadeEls.forEach(function(el){io.observe(el);});
 
-                if (res.ok) {
-                    form.style.display = 'none';
-                    successDiv.classList.add('show');
-                } else {
-                    throw new Error('Failed');
-                }
-            } catch {
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Booking Request';
-                alert('Something went wrong. Please try WhatsApp instead.');
-            }
-        });
-
-        // Custom checkbox visual sync
-        document.querySelectorAll('.checkbox-wrap').forEach(wrap => {
-            const input = wrap.querySelector('input[type="checkbox"]');
-            const box = wrap.querySelector('.checkbox-box');
-            wrap.addEventListener('click', () => {
-                input.checked = !input.checked;
-            });
-        });
-
-        console.log('Contact page initialized ✨');
-    </script>
+/* page fade in */
+document.body.style.opacity='0';
+setTimeout(function(){document.body.style.transition='opacity .4s ease';document.body.style.opacity='1';},60);
+console.log('Contact page ready \u2728');
+</script>
 </body>
 </html>
