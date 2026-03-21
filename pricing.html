@@ -1,754 +1,901 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Hair by Akose pricing - Affordable, transparent pricing for all hair styling services.">
-    <title>Pricing | Hair by Akose</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Hair by Akose pricing - Affordable, transparent pricing for all hair styling services.">
+<title>Pricing | Hair by Akose</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+/* ── TOKENS ── */
+:root{
+  --teal:#0F3D3E;--teal-light:#1A6466;
+  --black:#071E1E;--black-soft:#0A2828;--black-card:#0D3030;--black-edge:#113838;
+  --gold:#D4A96A;--gold-light:#E2C08A;--gold-dark:#B8894E;
+  --white:#F5EDD8;--white-dim:rgba(245,237,216,0.6);
+  --grad-gold:linear-gradient(135deg,#B8894E 0%,#D4A96A 40%,#E2C08A 60%,#D4A96A 100%);
+  --font-display:'Syne',sans-serif;--font-body:'Cormorant Garamond',serif;
+  --ease:cubic-bezier(0.16,1,0.3,1);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--font-body);background:var(--black);color:var(--white);line-height:1.75;overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+a{text-decoration:none;color:inherit;transition:all .3s ease}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;opacity:.22}
+.container{width:100%;max-width:1400px;margin:0 auto;padding:0 2rem}
+#scroll-progress{position:fixed;top:0;left:0;height:3px;background:var(--grad-gold);z-index:10000;width:0;transition:width .08s linear;pointer-events:none}
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+/* ── NAV ── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.5rem 0;transition:all .4s ease}
+.nav.scrolled{background:rgba(7,30,30,.97);backdrop-filter:blur(20px);border-bottom:1px solid rgba(212,169,106,.2);padding:1rem 0}
+.nav-inner{max-width:1400px;margin:0 auto;padding:0 2rem;display:flex;justify-content:space-between;align-items:center}
+.nav-logo img{height:55px;width:auto;object-fit:contain}
+.nav-links{display:flex;list-style:none;gap:2.5rem;align-items:center}
+.nav-links a{font-family:var(--font-display);font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--white-dim)}
+.nav-links a:hover,.nav-links a.active-link{color:var(--gold)}
+.nav-links .nav-cta{padding:.6rem 1.5rem;border:1px solid var(--gold);color:var(--gold);border-radius:100px}
+.nav-links .nav-cta:hover{background:var(--gold);color:var(--black)}
+.hamburger{
+  display:none;flex-direction:column;gap:6px;cursor:pointer;z-index:1100;
+  padding:.55rem .7rem;background:rgba(245,237,216,.06);
+  border:1px solid rgba(212,169,106,.25);border-radius:10px;
+  backdrop-filter:blur(8px);transition:background .25s,border-color .25s;
+}
+.hamburger:hover{background:rgba(212,169,106,.12);border-color:rgba(212,169,106,.5)}
+.hamburger span{display:block;height:1.5px;background:var(--white);border-radius:2px;transition:all .38s var(--ease)}
+.hamburger span:nth-child(1){width:22px}
+.hamburger span:nth-child(2){width:16px;margin-left:auto;background:var(--gold)}
+.hamburger span:nth-child(3){width:22px}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(0,5.5px);width:20px}
+.hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(0,-5.5px);width:20px}
 
-    <style>
-        :root {
-            --teal-deep:  #0B3535;
-            --teal:       #0F3D3E;
-            --teal-mid:   #145254;
-            --teal-light: #1A6466;
-            --black:      #071E1E;
-            --black-soft: #0A2828;
-            --black-card: #0D3030;
-            --black-edge: #113838;
-            --gold:       #D4A96A;
-            --gold-light: #E2C08A;
-            --gold-dark:  #B8894E;
-            --white:      #F5EDD8;
-            --white-dim:  rgba(245,237,216,0.6);
-            --grad-gold:  linear-gradient(135deg, #B8894E 0%, #D4A96A 40%, #E2C08A 60%, #D4A96A 100%);
-            --font-display: 'Syne', sans-serif;
-            --font-body:    'Cormorant Garamond', serif;
-            --ease: cubic-bezier(0.16, 1, 0.3, 1);
-        }
+/* ── SLIDE PANEL ── */
+.mob-menu-backdrop{display:none;position:fixed;inset:0;background:rgba(7,30,30,.55);backdrop-filter:blur(3px);z-index:1070;opacity:0;transition:opacity .35s ease}
+.mob-menu-backdrop.open{display:block;opacity:1}
+.mob-menu{
+  display:flex;flex-direction:column;justify-content:center;
+  position:fixed;top:0;right:0;bottom:0;width:68%;max-width:300px;
+  background:rgba(7,30,30,.72);backdrop-filter:blur(22px) saturate(1.6);
+  -webkit-backdrop-filter:blur(22px) saturate(1.6);
+  border-left:1px solid rgba(212,169,106,.22);z-index:1080;
+  padding:5.5rem 1.6rem 4rem 1.5rem;
+  transform:translateX(100%);transition:transform .4s var(--ease);
+  pointer-events:none;overflow-y:auto;
+}
+.mob-menu.open{transform:translateX(0);pointer-events:auto}
+.mob-menu-close{position:absolute;top:1rem;right:1rem;width:34px;height:34px;background:rgba(212,169,106,.08);border:1px solid rgba(212,169,106,.22);border-radius:6px;display:flex;align-items:center;justify-content:center;color:rgba(212,169,106,.7);font-size:.85rem;cursor:pointer;transition:all .2s}
+.mob-menu-close:hover{background:rgba(212,169,106,.2);color:var(--gold)}
+.mob-menu-brand{font-family:var(--font-body);font-size:1.1rem;font-weight:600;font-style:italic;color:var(--gold);margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid rgba(212,169,106,.25)}
+.mob-menu-links{display:flex;flex-direction:column;width:100%}
+.mob-menu-links::before{content:'';display:block;height:1px;background:linear-gradient(90deg,rgba(212,169,106,.35),rgba(212,169,106,.08))}
+.mob-menu-links a{font-family:var(--font-body);font-size:1.6rem;font-weight:600;color:rgba(245,237,216,.78);padding:.75rem 0;border-bottom:1px solid;border-image:linear-gradient(90deg,rgba(212,169,106,.35),rgba(212,169,106,.06)) 1;display:flex;align-items:center;justify-content:space-between;transition:color .22s,letter-spacing .22s}
+.mob-menu-links a.active-link{color:var(--gold)}
+.mob-menu-links a::after{content:'↗';font-family:var(--font-display);font-size:.7rem;font-style:normal;color:rgba(212,169,106,.3);transition:color .22s,transform .22s;flex-shrink:0;margin-left:.5rem}
+.mob-menu-links a:hover::after{color:var(--gold);transform:translate(3px,-3px)}
+.mob-menu-links a:hover{color:#F5EDD8;letter-spacing:.04em}
+.mob-menu-cta{margin-top:1.75rem;display:flex;align-items:center;justify-content:center;gap:.5rem;padding:.85rem 1.2rem;background:var(--grad-gold);color:#071E1E;font-family:var(--font-display);font-size:.68rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+.mob-menu-socials{display:flex;gap:.6rem;margin-top:1.5rem}
+.mob-menu-socials a{width:32px;height:32px;background:rgba(245,237,216,.04);border:1px solid rgba(212,169,106,.18);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:.82rem;color:rgba(245,237,216,.4);transition:all .2s}
+.mob-menu-socials a:hover{background:rgba(212,169,106,.12);color:var(--gold);border-color:rgba(212,169,106,.5)}
+.mob-menu-meta{margin-top:1.1rem;font-family:var(--font-body);font-style:italic;font-size:.82rem;color:rgba(245,237,216,.25);line-height:1.8}
 
-        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-        html { scroll-behavior: smooth; }
-        body { font-family: var(--font-body); background: var(--black); color: var(--white); line-height: 1.75; overflow-x: hidden; }
-        img { max-width:100%; height:auto; display:block; }
-        a { text-decoration:none; color:inherit; transition: all 0.3s ease; }
+/* ── PAGE HERO ── */
+.page-hero{
+  min-height:60vh;display:grid;grid-template-columns:1fr 1fr;
+  gap:4rem;align-items:center;
+  padding:10rem 2rem 6rem;max-width:1400px;margin:0 auto;position:relative;
+}
+.hero-lines{position:fixed;inset:0;pointer-events:none;z-index:0}
+.hero-lines span{position:absolute;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,rgba(212,169,106,.08),transparent)}
+.hero-lines span:nth-child(1){left:20%}.hero-lines span:nth-child(2){left:40%}
+.hero-lines span:nth-child(3){left:60%}.hero-lines span:nth-child(4){left:80%}
+.hero-text{position:relative;z-index:2;animation:fadeUp 1s var(--ease) both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:.75rem;font-family:var(--font-display);font-size:.7rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem}
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';width:30px;height:1px;background:var(--gold);opacity:.5}
+.page-title{font-family:var(--font-display);font-size:clamp(3rem,8vw,7rem);font-weight:800;line-height:.95;letter-spacing:-.03em;margin-bottom:1.5rem}
+.page-title .gold{background:var(--grad-gold);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-style:italic}
+.page-subtitle{font-size:1.25rem;color:var(--white-dim);font-style:italic;line-height:1.7;margin-bottom:2.5rem}
+.hero-chips{display:flex;gap:.75rem;flex-wrap:wrap}
+.chip{display:inline-flex;align-items:center;gap:.5rem;padding:.5rem 1.1rem;background:var(--black-card);border:1px solid rgba(212,169,106,.2);border-radius:100px;font-family:var(--font-display);font-size:.72rem;font-weight:600;letter-spacing:.08em;color:var(--white-dim)}
+.chip i{color:var(--gold)}
 
-        body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events:none; z-index:9999; opacity:0.25; }
+/* ── CALCULATOR (desktop hero right) ── */
+.calculator-wrap{position:relative;z-index:2;animation:fadeUp 1s var(--ease) .2s both}
+.calculator-card{background:var(--black-card);border:1px solid rgba(212,169,106,.2);border-radius:20px;padding:2.5rem;box-shadow:0 40px 80px rgba(0,0,0,.5);position:relative;overflow:hidden}
+.calculator-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad-gold)}
+.calculator-card h2{font-family:var(--font-display);font-size:1.6rem;font-weight:800;color:var(--white);margin-bottom:.4rem}
+.calculator-card>p{font-size:1rem;color:var(--white-dim);margin-bottom:2rem;font-style:italic}
+.calc-label{display:block;font-family:var(--font-display);font-size:.72rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem}
+.calc-select{
+  width:100%;padding:1rem 1.25rem;background:var(--black-soft);
+  border:1px solid rgba(212,169,106,.2);border-radius:10px;
+  color:var(--white);font-family:var(--font-body);font-size:1.05rem;
+  cursor:pointer;transition:border-color .3s;appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23D4A96A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 1.25rem center;
+}
+.calc-select:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(212,169,106,.1)}
+.calc-select option{background:var(--black-card);color:var(--white)}
+.quote-result{display:none;margin-top:1.5rem;padding:1.5rem;background:var(--black-soft);border:1px solid rgba(212,169,106,.25);border-radius:12px}
+.quote-result.show{display:block;animation:fadeUp .4s var(--ease) both}
+.quote-name{font-family:var(--font-display);font-size:1.3rem;font-weight:700;color:var(--white);margin-bottom:1rem}
+.quote-stats{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem}
+.q-stat{background:var(--black-card);border-radius:10px;padding:1rem;text-align:center;border:1px solid rgba(212,169,106,.1)}
+.q-val{display:block;font-family:var(--font-display);font-size:1.3rem;font-weight:800;background:var(--grad-gold);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.q-lbl{font-family:var(--font-display);font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--white-dim);margin-top:.2rem;display:block}
+.btn-wa{display:flex;align-items:center;justify-content:center;gap:.75rem;width:100%;padding:1rem;background:#25D366;color:white;font-family:var(--font-display);font-size:.8rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;border:none;border-radius:10px;cursor:pointer;transition:all .3s}
+.btn-wa:hover{background:#1DAD52;transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,211,102,.3)}
 
-        .container { width:100%; max-width:1400px; margin:0 auto; padding:0 2rem; }
-        .section-label { display:inline-flex; align-items:center; gap:0.75rem; font-family:var(--font-display); font-size:0.7rem; font-weight:700; letter-spacing:0.25em; text-transform:uppercase; color:var(--gold); margin-bottom:1.5rem; }
-        .section-label::before, .section-label::after { content:''; display:block; width:30px; height:1px; background:var(--gold); opacity:0.6; }
+/* ── PRICING SECTION ── */
+.pricing-section{padding:7rem 0;background:var(--black-soft)}
+.cat-tabs{display:flex;gap:.75rem;flex-wrap:wrap;justify-content:center;margin-bottom:3.5rem}
+.cat-tab{padding:.65rem 1.5rem;font-family:var(--font-display);font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:transparent;color:var(--white-dim);border:1px solid rgba(212,169,106,.2);border-radius:100px;cursor:pointer;transition:all .3s}
+.cat-tab:hover{border-color:var(--gold);color:var(--gold)}
+.cat-tab.active{background:var(--grad-gold);color:var(--black);border-color:transparent;box-shadow:0 4px 20px rgba(212,169,106,.3)}
+.pricing-panel{display:none;animation:fadeUp .4s var(--ease) both}
+.pricing-panel.active{display:block}
+.panel-header{display:flex;align-items:center;gap:1.5rem;margin-bottom:2.5rem;padding-bottom:2rem;border-bottom:1px solid rgba(212,169,106,.15)}
+.panel-icon{width:64px;height:64px;border-radius:14px;background:rgba(212,169,106,.1);border:1px solid rgba(212,169,106,.2);display:flex;align-items:center;justify-content:center;font-size:1.75rem;color:var(--gold)}
+.panel-header h2{font-family:var(--font-display);font-size:2.5rem;font-weight:800;color:var(--white)}
+.panel-header p{font-size:1.05rem;color:var(--white-dim);font-style:italic}
+.price-rows{display:grid;gap:1px;background:rgba(212,169,106,.08);border-radius:16px;overflow:hidden;border:1px solid rgba(212,169,106,.1)}
+.price-row{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:2rem;padding:1.5rem 2rem;background:var(--black-card);transition:all .3s;cursor:pointer}
+.price-row:hover{background:var(--black-edge);padding-left:2.5rem}
+.price-row:hover .pr-name{color:var(--gold-light)}
+.pr-name{font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:var(--white);transition:color .3s}
+.pr-duration{font-family:var(--font-display);font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--white-dim);display:flex;align-items:center;gap:.4rem}
+.pr-duration i{color:var(--gold);opacity:.7}
+.pr-price{font-family:var(--font-display);font-size:1.2rem;font-weight:800;background:var(--grad-gold);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;white-space:nowrap}
+.book-row-btn{display:none;padding:.4rem 1rem;background:transparent;border:1px solid rgba(212,169,106,.3);border-radius:100px;color:var(--gold);font-family:var(--font-display);font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:all .3s;white-space:nowrap}
+.price-row:hover .book-row-btn{display:block}
+.book-row-btn:hover{background:var(--grad-gold);color:var(--black);border-color:transparent}
 
-        /* NAV */
-        .nav { position:fixed; top:0; left:0; right:0; z-index:1000; padding:1.5rem 0; transition:all 0.4s ease; }
-        .nav.scrolled { background:rgba(7,30,30,0.97); backdrop-filter:blur(20px); border-bottom:1px solid rgba(212,169,106,0.2); padding:1rem 0; }
-        .nav-inner { max-width:1400px; margin:0 auto; padding:0 2rem; display:flex; justify-content:space-between; align-items:center; }
-        .nav-logo img { height:55px; width:auto; object-fit:contain; }
-        .nav-links { display:flex; list-style:none; gap:2.5rem; align-items:center; }
-        .nav-links a { font-family:var(--font-display); font-size:0.78rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--white-dim); }
-        .nav-links a:hover, .nav-links a.active-link { color:var(--gold); }
-        .nav-links .nav-cta { padding:0.6rem 1.5rem; border:1px solid var(--gold); color:var(--gold); border-radius:100px; }
-        .nav-links .nav-cta:hover { background:var(--gold); color:var(--black); }
-        .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; }
-        .hamburger span { width:24px; height:2px; background:var(--white); border-radius:2px; }
+/* ── NOTES ── */
+.notes-section{padding:6rem 0;background:var(--black)}
+.notes-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:3.5rem}
+.note-card{padding:2rem;background:var(--black-card);border:1px solid rgba(212,169,106,.1);border-radius:16px;transition:all .3s}
+.note-card:hover{border-color:rgba(212,169,106,.3);transform:translateY(-4px)}
+.note-icon{width:48px;height:48px;border-radius:10px;background:rgba(212,169,106,.1);border:1px solid rgba(212,169,106,.2);display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:var(--gold);margin-bottom:1.25rem}
+.note-card h4{font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--white);margin-bottom:.5rem}
+.note-card p{font-size:1rem;color:var(--white-dim);line-height:1.7}
 
-        /* ── PAGE HERO ── */
-        .page-hero {
-            min-height: 60vh;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-            padding: 10rem 2rem 6rem;
-            max-width: 1400px;
-            margin: 0 auto;
-            position: relative;
-        }
-        .page-hero::before { content:''; position:fixed; top:0; left:0; right:0; bottom:0; background:radial-gradient(ellipse at 70% 40%, rgba(212,169,106,0.07) 0%, transparent 60%); pointer-events:none; z-index:0; }
+/* ── CTA ── */
+.cta{padding:8rem 0;background:var(--black-soft);position:relative;overflow:hidden}
+.cta::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:60vw;height:60vw;background:radial-gradient(ellipse,rgba(212,169,106,.08) 0%,transparent 65%);pointer-events:none}
+.cta-inner{text-align:center;max-width:700px;margin:0 auto;position:relative;z-index:2}
+.cta-title{font-family:var(--font-display);font-size:clamp(2rem,5vw,4rem);font-weight:800;color:var(--white);margin-bottom:1rem}
+.cta-text{font-size:1.2rem;color:var(--white-dim);font-style:italic;margin-bottom:3rem}
+.cta-btns{display:flex;gap:1.25rem;justify-content:center;flex-wrap:wrap}
+.btn-gold{display:inline-flex;align-items:center;gap:.5rem;padding:1rem 2.5rem;background:var(--grad-gold);color:var(--black);font-family:var(--font-display);font-size:.8rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;border-radius:100px;transition:all .3s;box-shadow:0 0 30px rgba(212,169,106,.25);border:none;cursor:pointer}
+.btn-gold:hover{transform:translateY(-3px);box-shadow:0 10px 40px rgba(212,169,106,.4)}
+.btn-ghost{display:inline-flex;align-items:center;gap:.5rem;padding:1rem 2.5rem;background:transparent;color:var(--white);font-family:var(--font-display);font-size:.8rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;border-radius:100px;border:1px solid rgba(245,237,216,.25);transition:all .3s}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-3px)}
 
-        /* Vertical lines */
-        .hero-lines { position:fixed; inset:0; pointer-events:none; z-index:0; }
-        .hero-lines span { position:absolute; top:0; bottom:0; width:1px; background:linear-gradient(to bottom, transparent, rgba(212,169,106,0.08), transparent); }
-        .hero-lines span:nth-child(1){left:20%} .hero-lines span:nth-child(2){left:40%}
-        .hero-lines span:nth-child(3){left:60%} .hero-lines span:nth-child(4){left:80%}
+/* ── FOOTER ── */
+.footer{background:var(--black-soft);border-top:1px solid rgba(212,169,106,.18);padding:5rem 0 2.5rem}
+.footer-grid{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:3rem;margin-bottom:4rem}
+.footer-brand img{height:70px;width:auto;object-fit:contain;margin-bottom:1.25rem}
+.footer-brand p{font-size:1rem;color:var(--white-dim);line-height:1.7;margin-bottom:1.5rem}
+.socials{display:flex;gap:.75rem}
+.socials a{width:42px;height:42px;border-radius:50%;background:var(--black-card);border:1px solid rgba(212,169,106,.15);display:flex;align-items:center;justify-content:center;font-size:1rem;color:var(--white-dim);transition:all .3s}
+.socials a:hover{background:var(--gold);color:var(--black);border-color:var(--gold);transform:translateY(-3px)}
+.footer-col h4{font-family:var(--font-display);font-size:.75rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem}
+.footer-col ul{list-style:none}
+.footer-col ul li{margin-bottom:.7rem;font-size:.95rem;color:var(--white-dim)}
+.footer-col ul li i{color:var(--gold);width:16px;margin-right:.5rem}
+.footer-col ul li a{color:inherit}
+.footer-col ul li a:hover{color:var(--gold)}
+.footer-bottom{border-top:1px solid rgba(212,169,106,.1);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:.85rem;color:rgba(245,237,216,.3);font-family:var(--font-display)}
 
-        .hero-text { position:relative; z-index:2; animation: fadeUp 1s var(--ease) both; }
-        @keyframes fadeUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+/* ── TABLET ≤ 1024px ── */
+@media(max-width:1024px){
+  .page-hero{grid-template-columns:1fr;gap:3rem;padding-top:9rem}
+  .notes-grid{grid-template-columns:repeat(2,1fr)}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:2.5rem}
+  .footer-brand{grid-column:span 2}
+}
 
-        .hero-eyebrow { display:inline-flex; align-items:center; gap:0.75rem; font-family:var(--font-display); font-size:0.7rem; font-weight:700; letter-spacing:0.3em; text-transform:uppercase; color:var(--gold); margin-bottom:1.5rem; }
-        .hero-eyebrow::before, .hero-eyebrow::after { content:''; width:30px; height:1px; background:var(--gold); opacity:0.5; }
+/* ════════════════════════════════════════
+   MOBILE ≤ 767px  —  BOLD SPLIT STYLE
+════════════════════════════════════════ */
+@media(max-width:767px){
+  html{font-size:15px}
+  body{padding-bottom:4.75rem}
+  .container{padding:0 1rem}
 
-        .page-title { font-family:var(--font-display); font-size:clamp(3rem,8vw,7rem); font-weight:800; line-height:0.95; letter-spacing:-0.03em; margin-bottom:1.5rem; }
-        .page-title .gold { background:var(--grad-gold); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; font-style:italic; }
-        .page-subtitle { font-size:1.25rem; color:var(--white-dim); font-style:italic; line-height:1.7; margin-bottom:2.5rem; }
+  /* NAV */
+  .nav{padding:.85rem 0;background:rgba(7,30,30,.97);backdrop-filter:blur(16px);border-bottom:1px solid rgba(212,169,106,.14)}
+  .nav-inner{padding:0 1rem}
+  .nav-logo img{height:40px}
+  .nav-links{display:none!important}
+  .hamburger{display:flex}
+  .hero-lines{display:none}
 
-        /* Quick stats in hero */
-        .hero-chips { display:flex; gap:1rem; flex-wrap:wrap; }
-        .chip { display:inline-flex; align-items:center; gap:0.5rem; padding:0.5rem 1.1rem; background:var(--black-card); border:1px solid rgba(212,169,106,0.2); border-radius:100px; font-family:var(--font-display); font-size:0.72rem; font-weight:600; letter-spacing:0.08em; color:var(--white-dim); }
-        .chip i { color:var(--gold); }
+  /* ── MOBILE HERO — bold split ── */
+  .page-hero{
+    display:grid;grid-template-columns:38% 62%;
+    min-height:auto;padding:0;gap:0;
+    max-width:100%;margin:0;
+    align-items:stretch;
+  }
 
-        /* ── CALCULATOR (right side of hero) ── */
-        .calculator-wrap { position:relative; z-index:2; animation: fadeUp 1s var(--ease) 0.2s both; }
-        .calculator-card {
-            background: var(--black-card);
-            border: 1px solid rgba(212,169,106,0.2);
-            border-radius: 20px;
-            padding: 2.5rem;
-            box-shadow: 0 40px 80px rgba(0,0,0,0.5);
-            position: relative;
-            overflow: hidden;
-        }
-        .calculator-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:var(--grad-gold); }
-        .calculator-card h2 { font-family:var(--font-display); font-size:1.6rem; font-weight:800; color:var(--white); margin-bottom:0.4rem; }
-        .calculator-card > p { font-size:1rem; color:var(--white-dim); margin-bottom:2rem; font-style:italic; }
+  /* gold left panel */
+  .hero-gold-panel{
+    background:var(--gold);
+    display:flex;flex-direction:column;align-items:center;
+    justify-content:space-between;
+    padding:5.5rem .65rem 1.5rem;
+    position:relative;overflow:hidden;
+    grid-row:1;
+  }
+  .hero-gold-panel::before{
+    content:'₭';position:absolute;bottom:-1rem;left:50%;
+    transform:translateX(-50%);
+    font-family:var(--font-display);font-size:11rem;font-weight:800;
+    color:rgba(7,30,30,.1);line-height:1;pointer-events:none;
+  }
+  .hero-gold-panel .brand-vert{
+    font-family:var(--font-display);font-size:.48rem;font-weight:800;
+    letter-spacing:.18em;text-transform:uppercase;color:var(--black);
+    writing-mode:vertical-rl;text-orientation:mixed;transform:rotate(180deg);opacity:.7;
+  }
+  .hero-gold-panel .price-tag{
+    background:var(--black);color:var(--gold);
+    font-family:var(--font-display);font-size:.48rem;font-weight:700;
+    letter-spacing:.12em;text-transform:uppercase;
+    padding:.4rem .5rem;width:100%;text-align:center;
+  }
 
-        .calc-label { display:block; font-family:var(--font-display); font-size:0.72rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:var(--gold); margin-bottom:0.6rem; }
-        .calc-select {
-            width:100%;
-            padding: 1rem 1.25rem;
-            background: var(--black-soft);
-            border: 1px solid rgba(212,169,106,0.2);
-            border-radius: 10px;
-            color: var(--white);
-            font-family: var(--font-body);
-            font-size: 1.05rem;
-            cursor: pointer;
-            transition: border-color 0.3s ease;
-            appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23D4A96A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 1.25rem center;
-        }
-        .calc-select:focus { outline:none; border-color:var(--gold); box-shadow:0 0 0 3px rgba(212,169,106,0.1); }
-        .calc-select option { background: var(--black-card); color: var(--white); }
+  /* dark right panel */
+  .hero-text{
+    background:var(--black-soft);
+    display:flex;flex-direction:column;justify-content:flex-end;
+    padding:5.5rem 1rem 1.5rem;
+    grid-row:1;animation:none;
+  }
+  .hero-eyebrow{font-size:.54rem;letter-spacing:.16em;margin-bottom:.7rem;justify-content:flex-start}
+  .hero-eyebrow::before{width:12px}
+  .hero-eyebrow::after{display:none}
+  .page-title{font-size:clamp(1.9rem,9vw,3rem);line-height:.92;letter-spacing:-.04em;margin-bottom:.75rem}
+  .page-title .gold{font-size:clamp(1.75rem,8.5vw,2.8rem)}
+  .page-subtitle{font-size:.82rem;line-height:1.55;margin-bottom:1rem}
+  .hero-chips{gap:.45rem;margin-bottom:0}
+  .chip{font-size:.58rem;padding:.38rem .75rem;letter-spacing:.06em}
 
-        /* Quote result */
-        .quote-result {
-            display: none;
-            margin-top: 1.5rem;
-            padding: 1.5rem;
-            background: var(--black-soft);
-            border: 1px solid rgba(212,169,106,0.25);
-            border-radius: 12px;
-            animation: fadeUp 0.4s var(--ease) both;
-        }
-        .quote-result.show { display:block; }
-        .quote-name { font-family:var(--font-display); font-size:1.3rem; font-weight:700; color:var(--white); margin-bottom:1rem; }
-        .quote-stats { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1.5rem; }
-        .q-stat { background:var(--black-card); border-radius:10px; padding:1rem; text-align:center; border:1px solid rgba(212,169,106,0.1); }
-        .q-stat .q-val { display:block; font-family:var(--font-display); font-size:1.3rem; font-weight:800; background:var(--grad-gold); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
-        .q-stat .q-lbl { font-family:var(--font-display); font-size:0.65rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--white-dim); margin-top:0.2rem; display:block; }
-        .btn-wa { display:flex; align-items:center; justify-content:center; gap:0.75rem; width:100%; padding:1rem; background:#25D366; color:white; font-family:var(--font-display); font-size:0.8rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; border:none; border-radius:10px; cursor:pointer; transition:all 0.3s ease; }
-        .btn-wa:hover { background:#1DAD52; transform:translateY(-2px); box-shadow:0 8px 24px rgba(37,211,102,0.3); }
+  /* hide desktop calculator in hero on mobile */
+  .calculator-wrap{display:none}
 
-        /* ── PRICING SECTION ── */
-        .pricing-section { padding:7rem 0; background:var(--black-soft); }
+  /* ── MOBILE QUICK QUOTE — full card below hero ── */
+  .mobile-calc{
+    display:block;
+    background:var(--black-card);
+    border-bottom:1px solid rgba(212,169,106,.18);
+    padding:1.5rem 1rem;
+  }
+  .mobile-calc-top{
+    display:flex;align-items:center;justify-content:space-between;
+    margin-bottom:1.1rem;
+  }
+  .mobile-calc-top h3{
+    font-family:var(--font-display);font-size:1rem;font-weight:800;color:var(--white);
+  }
+  .mobile-calc-top span{
+    font-family:var(--font-body);font-size:.82rem;font-style:italic;color:var(--white-dim);
+  }
+  /* gold top line */
+  .mobile-calc::before{
+    content:'';display:block;height:2px;
+    background:var(--grad-gold);margin:-1.5rem -1rem 1.25rem;
+  }
+  .mobile-calc .calc-select{font-size:.92rem;padding:.82rem 1rem;border-radius:0}
+  .mobile-calc .quote-result{border-radius:0;margin-top:1rem}
+  .mobile-calc .quote-stats{grid-template-columns:1fr 1fr;gap:.6rem}
+  .mobile-calc .q-stat{padding:.75rem;border-radius:0}
+  .mobile-calc .q-val{font-size:1.1rem}
+  .mobile-calc .q-lbl{font-size:.56rem}
+  .mobile-calc .btn-wa{border-radius:0;padding:.85rem 1rem;font-size:.72rem}
 
-        /* Category tabs */
-        .cat-tabs { display:flex; gap:0.75rem; flex-wrap:wrap; justify-content:center; margin-bottom:3.5rem; }
-        .cat-tab { padding:0.65rem 1.5rem; font-family:var(--font-display); font-size:0.75rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; background:transparent; color:var(--white-dim); border:1px solid rgba(212,169,106,0.2); border-radius:100px; cursor:pointer; transition:all 0.3s ease; }
-        .cat-tab:hover { border-color:var(--gold); color:var(--gold); }
-        .cat-tab.active { background:var(--grad-gold); color:var(--black); border-color:transparent; box-shadow:0 4px 20px rgba(212,169,106,0.3); }
+  /* ── PRICING SECTION ── */
+  .pricing-section{padding:2.5rem 0}
 
-        /* Pricing panel */
-        .pricing-panel { display:none; animation: fadeUp 0.4s var(--ease) both; }
-        .pricing-panel.active { display:block; }
+  /* swipeable category tabs */
+  .cat-tabs{
+    flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    scrollbar-width:none;justify-content:flex-start;
+    padding:0 1rem 0;gap:.45rem;margin-bottom:1.5rem;
+  }
+  .cat-tabs::-webkit-scrollbar{display:none}
+  .cat-tab{
+    flex-shrink:0;padding:.48rem 1rem;
+    font-size:.64rem;border-radius:0;
+    letter-spacing:.08em;white-space:nowrap;
+  }
+  .cat-tab.active{border-radius:0}
 
-        .panel-header { display:flex; align-items:center; gap:1.5rem; margin-bottom:2.5rem; padding-bottom:2rem; border-bottom:1px solid rgba(212,169,106,0.15); }
-        .panel-icon { width:64px; height:64px; border-radius:14px; background:rgba(212,169,106,0.1); border:1px solid rgba(212,169,106,0.2); display:flex; align-items:center; justify-content:center; font-size:1.75rem; color:var(--gold); }
-        .panel-header h2 { font-family:var(--font-display); font-size:2.5rem; font-weight:800; color:var(--white); }
-        .panel-header p { font-size:1.05rem; color:var(--white-dim); font-style:italic; }
+  /* pricing panel */
+  .panel-header{
+    flex-direction:row;align-items:center;gap:.85rem;
+    margin-bottom:1.25rem;padding-bottom:1rem;
+  }
+  .panel-icon{width:44px;height:44px;border-radius:0;font-size:1.2rem;flex-shrink:0}
+  .panel-header h2{font-size:1.35rem}
+  .panel-header p{font-size:.88rem}
 
-        /* Price rows */
-        .price-rows { display:grid; gap:1px; background:rgba(212,169,106,0.08); border-radius:16px; overflow:hidden; border:1px solid rgba(212,169,106,0.1); }
-        .price-row {
-            display: grid;
-            grid-template-columns: 1fr auto auto;
-            align-items: center;
-            gap: 2rem;
-            padding: 1.5rem 2rem;
-            background: var(--black-card);
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-        .price-row:hover { background:var(--black-edge); padding-left:2.5rem; }
-        .price-row:hover .pr-name { color:var(--gold-light); }
+  /* price rows — editorial list style */
+  .price-rows{border-radius:0;border-left:none;border-right:none;gap:0;background:transparent}
+  .price-row{
+    grid-template-columns:1fr auto;
+    gap:.5rem .75rem;
+    padding:1rem 1rem;
+    border-bottom:1px solid rgba(212,169,106,.1);
+    border-radius:0;
+    /* show gold left bar accent */
+    border-left:3px solid transparent;
+    transition:border-left-color .22s,background .22s,padding-left .22s;
+  }
+  .price-row:last-child{border-bottom:none}
+  .price-row:hover{
+    background:rgba(212,169,106,.04);
+    border-left-color:var(--gold);
+    padding-left:1.25rem;
+  }
+  .pr-name{font-size:.95rem;grid-column:1;grid-row:1}
+  .pr-duration{font-size:.62rem;grid-column:1;grid-row:2;margin-top:.1rem}
+  .pr-price{
+    font-size:1rem;
+    grid-column:2;grid-row:1 / span 2;
+    align-self:center;text-align:right;
+  }
+  /* show book btn always on mobile (not hover-only) */
+  .book-row-btn{
+    display:block!important;
+    padding:.32rem .7rem;font-size:.58rem;
+    border-radius:0;
+    grid-column:2;grid-row:3;
+    align-self:center;
+  }
+  /* tap row → WhatsApp directly on mobile */
+  .price-row{cursor:pointer}
 
-        .pr-name { font-family:var(--font-display); font-size:1.1rem; font-weight:700; color:var(--white); transition:color 0.3s ease; }
-        .pr-duration { font-family:var(--font-display); font-size:0.72rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--white-dim); display:flex; align-items:center; gap:0.4rem; }
-        .pr-duration i { color:var(--gold); opacity:0.7; }
-        .pr-price { font-family:var(--font-display); font-size:1.2rem; font-weight:800; background:var(--grad-gold); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; white-space:nowrap; }
+  /* ── NOTES — 2-col grid ── */
+  .notes-section{padding:3rem 0}
+  .notes-grid{grid-template-columns:1fr 1fr;gap:.75rem;margin-top:1.5rem}
+  .note-card{padding:1.25rem;border-radius:0;transform:none!important}
+  .note-icon{width:38px;height:38px;border-radius:0;font-size:.95rem;margin-bottom:.85rem}
+  .note-card h4{font-size:.9rem;margin-bottom:.35rem}
+  .note-card p{font-size:.85rem;line-height:1.6}
 
-        .book-row-btn {
-            display: none;
-            padding: 0.4rem 1rem;
-            background: transparent;
-            border: 1px solid rgba(212,169,106,0.3);
-            border-radius: 100px;
-            color: var(--gold);
-            font-family: var(--font-display);
-            font-size: 0.65rem;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-        }
-        .price-row:hover .book-row-btn { display:block; }
-        .book-row-btn:hover { background:var(--grad-gold); color:var(--black); border-color:transparent; }
+  /* ── CTA ── */
+  .cta{padding:4rem 0}
+  .cta-inner{text-align:left;padding:0 1rem}
+  .cta-title{font-size:clamp(1.55rem,8vw,2.4rem);margin-bottom:.85rem}
+  .cta-text{font-size:.97rem;margin-bottom:1.75rem}
+  .cta-btns{flex-direction:column;gap:.65rem;align-items:stretch}
+  .btn-gold,.btn-ghost{padding:.9rem 1.25rem;font-size:.74rem;border-radius:0;justify-content:center}
 
-        /* ── NOTES ── */
-        .notes-section { padding:6rem 0; background:var(--black); }
-        .notes-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1.5rem; margin-top:3.5rem; }
-        .note-card { padding:2rem; background:var(--black-card); border:1px solid rgba(212,169,106,0.1); border-radius:16px; transition:all 0.3s ease; }
-        .note-card:hover { border-color:rgba(212,169,106,0.3); transform:translateY(-4px); }
-        .note-icon { width:48px; height:48px; border-radius:10px; background:rgba(212,169,106,0.1); border:1px solid rgba(212,169,106,0.2); display:flex; align-items:center; justify-content:center; font-size:1.1rem; color:var(--gold); margin-bottom:1.25rem; }
-        .note-card h4 { font-family:var(--font-display); font-size:1rem; font-weight:700; color:var(--white); margin-bottom:0.5rem; }
-        .note-card p { font-size:1rem; color:var(--white-dim); line-height:1.7; }
+  /* ── FOOTER ── */
+  .footer{padding:2.5rem 0 1rem}
+  .footer-grid{grid-template-columns:1fr;gap:1.75rem;margin-bottom:2rem}
+  .footer-brand{grid-column:unset}
+  .footer-brand img{height:48px;margin-bottom:.85rem}
+  .footer-brand p{font-size:.86rem;margin-bottom:1rem}
+  .socials a{width:36px;height:36px;font-size:.85rem;border-radius:0}
+  .footer-col h4{font-size:.6rem;margin-bottom:.8rem}
+  .footer-col ul li{font-size:.85rem;margin-bottom:.42rem}
+  .footer-bottom{flex-direction:column;text-align:center;gap:.3rem;font-size:.7rem}
 
-        /* ── CTA ── */
-        .cta { padding:8rem 0; background:var(--black-soft); position:relative; overflow:hidden; }
-        .cta::before { content:''; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:60vw; height:60vw; background:radial-gradient(ellipse, rgba(212,169,106,0.08) 0%, transparent 65%); pointer-events:none; }
-        .cta-inner { text-align:center; max-width:700px; margin:0 auto; position:relative; z-index:2; }
-        .cta-title { font-family:var(--font-display); font-size:clamp(2rem,5vw,4rem); font-weight:800; color:var(--white); margin-bottom:1rem; }
-        .cta-text { font-size:1.2rem; color:var(--white-dim); font-style:italic; margin-bottom:3rem; }
-        .cta-btns { display:flex; gap:1.25rem; justify-content:center; flex-wrap:wrap; }
-        .btn-gold { display:inline-flex; align-items:center; gap:0.5rem; padding:1rem 2.5rem; background:var(--grad-gold); color:var(--black); font-family:var(--font-display); font-size:0.8rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; border-radius:100px; transition:all 0.3s ease; box-shadow:0 0 30px rgba(212,169,106,0.25); border:none; cursor:pointer; }
-        .btn-gold:hover { transform:translateY(-3px); box-shadow:0 10px 40px rgba(212,169,106,0.4); }
-        .btn-ghost { display:inline-flex; align-items:center; gap:0.5rem; padding:1rem 2.5rem; background:transparent; color:var(--white); font-family:var(--font-display); font-size:0.8rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; border-radius:100px; border:1px solid rgba(245,237,216,0.25); transition:all 0.3s ease; }
-        .btn-ghost:hover { border-color:var(--gold); color:var(--gold); transform:translateY(-3px); }
+  /* ── BOTTOM NAV ── */
+  .mob-bottom-nav{
+    display:grid!important;grid-template-columns:repeat(4,1fr);
+    position:fixed;bottom:0;left:0;right:0;height:4.25rem;
+    padding-bottom:env(safe-area-inset-bottom,0);
+    background:rgba(7,30,30,.99);backdrop-filter:blur(20px);
+    border-top:1px solid rgba(212,169,106,.18);z-index:1000;
+  }
+  .mob-bottom-nav a{
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:.25rem;font-family:var(--font-display);font-size:.52rem;
+    letter-spacing:.1em;text-transform:uppercase;color:rgba(245,237,216,.38);
+    position:relative;transition:color .22s;
+  }
+  .mob-bottom-nav a i{font-size:1.12rem;transition:transform .22s}
+  .mob-bottom-nav a.active,.mob-bottom-nav a:hover{color:var(--gold)}
+  .mob-bottom-nav a.active i{transform:translateY(-2px)}
+  .mob-bottom-nav a.active::before{
+    content:'';position:absolute;top:0;left:10%;right:10%;
+    height:2.5px;background:var(--grad-gold);
+  }
+  .mob-bottom-nav a:last-child{
+    background:var(--grad-gold);color:#071E1E;font-weight:800;
+  }
+  .mob-bottom-nav a:last-child i{color:#071E1E}
+  .mob-bottom-nav a:last-child.active::before{display:none}
 
-        /* ── FOOTER ── */
-        .footer { background:var(--black-soft); border-top:1px solid rgba(212,169,106,0.18); padding:5rem 0 2.5rem; }
-        .footer-grid { display:grid; grid-template-columns:1.5fr repeat(3,1fr); gap:3rem; margin-bottom:4rem; }
-        .footer-brand img { height:70px; width:auto; object-fit:contain; margin-bottom:1.25rem; }
-        .footer-brand p { font-size:1rem; color:var(--white-dim); line-height:1.7; margin-bottom:1.5rem; }
-        .socials { display:flex; gap:0.75rem; }
-        .socials a { width:42px; height:42px; border-radius:50%; background:var(--black-card); border:1px solid rgba(212,169,106,0.15); display:flex; align-items:center; justify-content:center; font-size:1rem; color:var(--white-dim); transition:all 0.3s ease; }
-        .socials a:hover { background:var(--gold); color:var(--black); border-color:var(--gold); transform:translateY(-3px); }
-        .footer-col h4 { font-family:var(--font-display); font-size:0.75rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:1.5rem; }
-        .footer-col ul { list-style:none; }
-        .footer-col ul li { margin-bottom:0.7rem; font-size:0.95rem; color:var(--white-dim); transition:color 0.3s ease; }
-        .footer-col ul li:hover { color:var(--white); }
-        .footer-col ul li i { color:var(--gold); width:16px; margin-right:0.5rem; }
-        .footer-col ul li a { color:inherit; }
-        .footer-col ul li a:hover { color:var(--gold); }
-        .footer-bottom { border-top:1px solid rgba(212,169,106,0.1); padding-top:2rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; font-size:0.85rem; color:rgba(245,237,216,0.3); font-family:var(--font-display); }
+  /* ── FLOATING WHATSAPP CTA ── */
+  .float-wa{
+    display:flex;
+    position:fixed;bottom:5rem;right:1rem;z-index:900;
+    align-items:center;gap:.5rem;
+    padding:.7rem 1.1rem;
+    background:#25D366;color:white;
+    font-family:var(--font-display);font-size:.65rem;font-weight:800;
+    letter-spacing:.1em;text-transform:uppercase;
+    border-radius:100px;
+    box-shadow:0 6px 24px rgba(37,211,102,.4);
+    animation:floatPulse 2.5s ease-in-out infinite;
+  }
+  @keyframes floatPulse{
+    0%,100%{box-shadow:0 6px 24px rgba(37,211,102,.4)}
+    50%{box-shadow:0 6px 32px rgba(37,211,102,.65)}
+  }
+  .float-wa i{font-size:1rem}
+}
 
-        /* MOBILE NAV */
-        .mobile-nav { display:none; }
-
-        /* RESPONSIVE */
-        @media (max-width: 1024px) {
-            .page-hero { grid-template-columns:1fr; gap:3rem; padding-top:9rem; }
-            .notes-grid { grid-template-columns:repeat(2,1fr); }
-            .footer-grid { grid-template-columns:1fr 1fr; gap:2.5rem; }
-        }
-        @media (max-width: 768px) {
-            .nav-links { display:none; }
-            .hamburger { display:flex; }
-            .price-row { grid-template-columns:1fr; gap:0.5rem; }
-            .pr-price { font-size:1rem; }
-            .notes-grid { grid-template-columns:1fr; }
-            .footer-grid { grid-template-columns:1fr; }
-            .footer-bottom { flex-direction:column; text-align:center; }
-            .mobile-nav { display:flex; position:fixed; bottom:0; left:0; right:0; background:rgba(7,30,30,0.99); border-top:1px solid rgba(212,169,106,0.15); backdrop-filter:blur(20px); z-index:1000; padding:0.75rem 0 1rem; }
-            .mobile-nav a { flex:1; display:flex; flex-direction:column; align-items:center; gap:0.3rem; font-family:var(--font-display); font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--white-dim); }
-            .mobile-nav a.active, .mobile-nav a:hover { color:var(--gold); }
-            .mobile-nav a i { font-size:1.2rem; }
-            body { padding-bottom:4.5rem; }
-            .quote-stats { grid-template-columns:1fr; }
-        }
-    </style>
+@media(max-width:380px){
+  .page-title{font-size:clamp(1.7rem,8.5vw,2.4rem)}
+  .page-title .gold{font-size:clamp(1.55rem,8vw,2.2rem)}
+  .notes-grid{grid-template-columns:1fr}
+}
+</style>
 </head>
 <body>
 
-    <!-- NAV -->
-    <nav class="nav" id="mainNav">
-        <div class="nav-inner">
-            <div class="nav-logo">
-                <a href="index.html"><img src="assets/images/logo.jpeg" alt="Hair by Akose"></a>
-            </div>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="index.html#story">Story</a></li>
-                <li><a href="portfolio.html">Portfolio</a></li>
-                <li><a href="pricing.html" class="active-link">Pricing</a></li>
-                <li><a href="index.html#about">About</a></li>
-                <li><a href="contact.html" class="nav-cta">Book Now</a></li>
-            </ul>
-            <div class="hamburger" id="hamburger">
-                <span></span><span></span><span></span>
-            </div>
-        </div>
-    </nav>
+<div id="scroll-progress"></div>
 
-    <!-- HERO + CALCULATOR -->
-    <div style="background:var(--black); padding-bottom:0;">
-        <div class="hero-lines"><span></span><span></span><span></span><span></span></div>
-        <div class="page-hero">
-            <!-- Left: text -->
-            <div class="hero-text">
-                <div class="hero-eyebrow">Transparent Pricing</div>
-                <h1 class="page-title">
-                    Fair Prices,<br>
-                    <span class="gold">Beautiful Hair</span>
-                </h1>
-                <p class="page-subtitle">No hidden fees. No surprises. Just honest pricing for gorgeous results at your doorstep.</p>
-                <div class="hero-chips">
-                    <span class="chip"><i class="fas fa-check-circle"></i> No hidden fees</span>
-                    <span class="chip"><i class="fas fa-map-marker-alt"></i> Mobile service</span>
-                    <span class="chip"><i class="fas fa-whatsapp fab"></i> WhatsApp booking</span>
-                    <span class="chip"><i class="fas fa-clock"></i> Flexible hours</span>
-                </div>
-            </div>
+<!-- NAV -->
+<nav class="nav" id="mainNav">
+  <div class="nav-inner">
+    <div class="nav-logo"><a href="index.html"><img src="assets/images/logo.jpeg" alt="Hair by Akose"></a></div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#story">Story</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="pricing.html" class="active-link">Pricing</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="contact.html" class="nav-cta">Book Now</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </div>
+</nav>
 
-            <!-- Right: calculator -->
-            <div class="calculator-wrap">
-                <div class="calculator-card">
-                    <h2>Quick Quote</h2>
-                    <p>Select a service for instant pricing</p>
+<!-- SLIDE PANEL -->
+<div class="mob-menu-backdrop" id="mobBackdrop" onclick="cM()"></div>
+<div class="mob-menu" id="mobMenu">
+  <button class="mob-menu-close" onclick="cM()"><i class="fas fa-times"></i></button>
+  <div class="mob-menu-brand">Hair by Akose</div>
+  <div class="mob-menu-links">
+    <a href="index.html"       onclick="cM()">Home</a>
+    <a href="index.html#story" onclick="cM()">Story</a>
+    <a href="portfolio.html"   onclick="cM()">Portfolio</a>
+    <a href="pricing.html"     onclick="cM()" class="active-link">Pricing</a>
+    <a href="index.html#about" onclick="cM()">About</a>
+  </div>
+  <a href="contact.html" class="mob-menu-cta"><i class="fas fa-calendar-check"></i> Book Appointment</a>
+  <div class="mob-menu-socials">
+    <a href="https://www.instagram.com/hairbyakose" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://web.facebook.com/vivienne.akose" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+    <a href="https://www.tiktok.com/@hairbyakose" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+    <a href="https://wa.me/+254725351803" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+  </div>
+  <p class="mob-menu-meta">Nairobi &middot; +(254) 725-351-803<br>Mon–Sat: 9AM – 8PM</p>
+</div>
 
-                    <label class="calc-label" for="serviceSelect">Choose Service</label>
-                    <select class="calc-select" id="serviceSelect">
-                        <option value="">— Select a service —</option>
-                        <optgroup label="✦ Braids">
-                            <option value="box-braids-small">Box Braids — Small</option>
-                            <option value="box-braids-medium">Box Braids — Medium</option>
-                            <option value="box-braids-jumbo">Box Braids — Jumbo</option>
-                            <option value="cornrows-simple">Cornrows — Simple</option>
-                            <option value="cornrows-complex">Cornrows — Complex</option>
-                            <option value="knotless-braids">Knotless Braids</option>
-                            <option value="micro-braiding">Micro Braiding</option>
-                        </optgroup>
-                        <optgroup label="✦ Twists">
-                            <option value="senegalese-twists">Senegalese Twists</option>
-                            <option value="marley-twists">Marley Twists</option>
-                            <option value="passion-twists">Passion Twists</option>
-                            <option value="kinky-twists">Kinky Twists</option>
-                            <option value="twist-out">Twist Out</option>
-                        </optgroup>
-                        <optgroup label="✦ Weaves & Natural">
-                            <option value="weave-install">Weave Install</option>
-                            <option value="wig-lines">Wig Lines</option>
-                            <option value="natural-styling">Natural Hair Styling</option>
-                            <option value="bridal-styling">Bridal Styling</option>
-                        </optgroup>
-                        <optgroup label="✦ Children's">
-                            <option value="kids-braids">Kids Braids</option>
-                            <option value="kids-twists">Kids Twists</option>
-                            <option value="kids-cornrows">Kids Cornrows</option>
-                        </optgroup>
-                        <optgroup label="✦ Locs">
-                            <option value="micro-locs">Micro Locs</option>
-                            <option value="micro-locs-retie">Micro Locs Retie</option>
-                            <option value="locs-retouch">Locs Retouch</option>
-                        </optgroup>
-                    </select>
+<!-- HERO + DESKTOP CALCULATOR -->
+<div style="background:var(--black);padding-bottom:0">
+  <div class="hero-lines"><span></span><span></span><span></span><span></span></div>
+  <div class="page-hero">
 
-                    <div class="quote-result" id="quoteResult">
-                        <div class="quote-name" id="quoteName"></div>
-                        <div class="quote-stats">
-                            <div class="q-stat">
-                                <span class="q-val" id="quotePrice"></span>
-                                <span class="q-lbl">KES Price</span>
-                            </div>
-                            <div class="q-stat">
-                                <span class="q-val" id="quoteTime"></span>
-                                <span class="q-lbl">Hours</span>
-                            </div>
-                        </div>
-                        <button class="btn-wa" id="whatsappBookBtn">
-                            <i class="fab fa-whatsapp"></i> Book via WhatsApp
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <!-- MOBILE: gold left panel (hidden on desktop via CSS) -->
+    <div class="hero-gold-panel">
+      <span class="brand-vert">Hair by Akose</span>
+      <span class="price-tag">Fair Prices</span>
     </div>
 
-    <!-- PRICING TABLES (tabbed) -->
-    <section class="pricing-section" id="pricing">
-        <div class="container">
-            <div style="text-align:center; margin-bottom:1rem;">
-                <span class="section-label">Full Price List</span>
-                <h2 style="font-family:var(--font-display); font-size:clamp(2rem,4vw,3.5rem); font-weight:800; color:var(--white); margin-bottom:2rem;">All Services</h2>
-            </div>
+    <!-- hero text (right panel on mobile, left on desktop) -->
+    <div class="hero-text">
+      <div class="hero-eyebrow">Transparent Pricing</div>
+      <h1 class="page-title">Fair Prices,<br><span class="gold">Beautiful Hair</span></h1>
+      <p class="page-subtitle">No hidden fees. No surprises. Just honest pricing for gorgeous results at your doorstep.</p>
+      <div class="hero-chips">
+        <span class="chip"><i class="fas fa-check-circle"></i> No hidden fees</span>
+        <span class="chip"><i class="fas fa-map-marker-alt"></i> Mobile service</span>
+        <span class="chip"><i class="fab fa-whatsapp"></i> WhatsApp booking</span>
+        <span class="chip"><i class="fas fa-clock"></i> Flexible hours</span>
+      </div>
+    </div>
 
-            <!-- Category tabs -->
-            <div class="cat-tabs">
-                <button class="cat-tab active" data-tab="braids"><i class="fas fa-sparkles"></i> Braids</button>
-                <button class="cat-tab" data-tab="twists"><i class="fas fa-leaf"></i> Twists</button>
-                <button class="cat-tab" data-tab="weaves"><i class="fas fa-gem"></i> Weaves & Natural</button>
-                <button class="cat-tab" data-tab="kids"><i class="fas fa-child"></i> Children's</button>
-                <button class="cat-tab" data-tab="locs"><i class="fas fa-spa"></i> Locs</button>
-            </div>
-
-            <!-- Braids Panel -->
-            <div class="pricing-panel active" id="panel-braids">
-                <div class="panel-header">
-                    <div class="panel-icon"><i class="fas fa-sparkles"></i></div>
-                    <div>
-                        <h2>Braids</h2>
-                        <p>Classic & knotless braiding styles for every occasion</p>
-                    </div>
-                </div>
-                <div class="price-rows">
-                    <div class="price-row" data-service="box-braids-small">
-                        <div><div class="pr-name">Box Braids — Small</div></div>
-                        <div class="pr-duration"><i class="fas fa-clock"></i> 8–10 hrs</div>
-                        <div style="display:flex;align-items:center;gap:1rem;"><div class="pr-price">KES 2,000</div><button class="book-row-btn">Book</button></div>
-                    </div>
-                    <div class="price-row" data-service="box-braids-medium">
-                        <div><div class="pr-name">Box Braids — Medium</div></div>
-                        <div class="pr-duration"><i class="fas fa-clock"></i> 6–8 hrs</div>
-                        <div style="display:flex;align-items:center;gap:1rem;"><div class="pr-price">KES 1,500</div><button class="book-row-btn">Book</button></div>
-                    </div>
-                    <div class="price-row" data-service="box-braids-jumbo">
-                        <div><div class="pr-name">Box Braids — Jumbo</div></div>
-                        <div class="pr-duration"><i class="fas fa-clock"></i> 4–6 hrs</div>
-                        <div style="display:flex;align-items:center;gap:1rem;"><div class="pr-price">KES 1,200</div><button class="book-row-btn">Book</button></div>
-                    </div>
-                    <div class="price-row" data-service="cornrows-simple">
-                        <div><div class="pr-name">Cornrows — Simple</div></div>
-                        <div class="pr-duration"><i class="fas fa-clock"></i> 2–3 hrs</div>
-                        <div style="display:flex;align-items:center;gap:1rem;"><div class="pr-price">KES 1,300</div><button class="book-row-btn">Book</button></div>
-                    </div>
-                    <div class="price-row" data-service="cornrows-complex">
-                        <div><div class="pr-name">Cornrows — Complex Pattern</div></div>
-                        <div class="pr-duration"><i class="fas fa-clock"></i> 3–5 hrs</div>
-                        <div style="display:flex;align-items:center;gap:1rem;"><div class="pr-price">KES 1,500</div><button class="book-row-btn">Book</button></div>
-                    </div>
-                    <div class="price-row" data-service="knotless-braids">
-                        <div><div class="pr-name">Knotless Braids</div></div>
-                        <div class="pr-duration"><i class="fas fa-clock"></i> 6–8 hrs</div>
-                        <div style="display:flex;align-items:center;gap:1rem;"><div class="pr-price">KES 1,200–2,000</div><button class="book-row-btn">Book</button></div>
-                    </div>
-                    <div class="price-row" data-service="micro-braiding">
-                        <div><div class="pr-name">Micro Braiding</div></div>
-                        <div class="pr-duration"><i class="fas fa-clock"></i> 10–14 hrs</div>
-                        <div style="display:flex;align-items:center;gap:1rem;"><div class="pr-price">KES 5,000–8,000</div><button class="book-row-btn">Book</button></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Twists Panel -->
-            <div class="pricing-panel" id="panel-twists">
-                <div class="panel-header">
-                    <div class="panel-icon"><i class="fas fa-leaf"></i></div>
-                    <div>
-                        <h2>Twists</h2>
-                        <p>Natural, elegant twist styles for healthy hair</p>
-                    </div>
-                </div>
-                <div class="price-rows">
-                    <div class="price-row" data-service="senegalese-twists">
-                        <div><div class="pr-name">Senegalese Twists</div></div>
-                        <div class="pr-duration"><i class="fas fa-clock"></i> 5–7 hrs</div>
-                        <div style="display:flex;align-items:center;gap:1rem;"><div class="pr-price">KES 1,500–2,000</div><button class="book-row-btn">Book</button></div>
-                    </div>
-                    <div class="price-row" data-service="marley-twists">
-                        <div><div class="pr-name">Marley Twists</div></div>
-                        <div class="pr-duration"><i class="fas fa-clock"></i> 5–7 hrs</div>
-                        <div style="display:flex;align-items:center;gap:1rem;"><div class="pr-price">KES 1,500–2,000</div><button class="book-row-btn">Book</button></div>
-                    </div>
-                    <div class="price-row" data-service="passion-twists">
-                        <div><div class="pr-name">Passion Twists</div></div>
-                        <div class="pr-duration"><i class="fas fa-clock"></i> 6–8 hrs</div>
-                        <div style="display:flex;align-items:center;gap:1rem;"><div class="pr-price">KES 1,500–2,000</div><button class="book-row-btn">Book</button></div>
-                    </div>
-                    <div class="price-row" data-service="kinky-twists">
-                        <div><div class="pr-name">Kinky Twists</div></div>
-                        <div class="pr-duration"><i class="fas fa-clock"></i> 5–7 hrs</div>
-                        <div style="display:flex;align-items:center;gap:1rem;"><div class="pr-price">KES 1,500–2,000</div><button class="book-row-btn">Book</button></div>
-                    </div>
-                    <div class="price-row" data-service="twist-out">
-                        <div><div class="pr-name">Twist Out</div></div>
-                        <div class="pr-duration"><i class="fas fa-clock"></i> 1.5–2 hrs</div>
-                        <div style="display:flex;align-items:center;gap:1rem;"><div class="pr-price">KES 1,000–1,500</div><button class="book-row-btn">Book</button></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Weaves & Natural Panel -->
-            <div class="pricing-panel" id="panel-weaves">
-                <div class="panel-header">
-                    <div class="panel-icon"><i class="fas fa-gem"></i></div>
-                    <div>
-                        <h2>Weaves & Natural Hair</h2>
-                        <p>Extensions, installs, and natural hair care</p>
-                    </div>
-                </div>
-                <div class="price-rows">
-                    <div class="price-row" data-service="weave-install">
-                        <div><div class="pr-name">Weave Install</div></div>
-                        <div class="pr-duration"><i class="fas fa-clock"></i> 4–6 hrs</div>
-                        <div style="display:flex;align-items:center;gap:1rem;"><div class="pr-price">KES 1,500–2,000</div><button class="book-row-btn">Book</button></div>
-                    </div>
-                    <div class="price-row" data-service="wig-lines">
-                        <div><div class="pr-name">Wig Lines</div></div>
-                        <div class="pr-duration"><i class="fas fa-clock"></i> 1–2 hrs</div>
-                        <div style="display:flex;align-items:center;gap:1rem;"><div class="pr-price">KES 500–1,000</div><button class="book-row-btn">Book</button></div>
-                    </div>
-                    <div class="price-row" data-service="natural-styling">
-                        <div><div class="pr-name">Natural Hair Styling</div></div>
-                        <div class="pr-duration"><i class="fas fa-clock"></i> 2–4 hrs</div>
-                        <div style="display:flex;align-items:center;gap:1rem;"><div class="pr-price">KES 1,000–1,800</div><button class="book-row-btn">Book</button></div>
-                    </div>
-                    <div class="price-row" data-service="bridal-styling">
-                        <div><div class="pr-name">Bridal Styling</div></div>
-                        <div class="pr-duration"><i class="fas fa-clock"></i> 3–5 hrs</div>
-                        <div style="display:flex;align-items:center;gap:1rem;"><div class="pr-price">KES 1,800–2,000</div><button class="book-row-btn">Book</button></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Kids Panel -->
-            <div class="pricing-panel" id="panel-kids">
-                <div class="panel-header">
-                    <div class="panel-icon"><i class="fas fa-child"></i></div>
-                    <div>
-                        <h2>Children's Styles</h2>
-                        <p>Gentle, fun styles for little ones</p>
-                    </div>
-                </div>
-                <div class="price-rows">
-                    <div class="price-row" data-service="kids-braids">
-                        <div><div class="pr-name">Kids Braids</div></div>
-                        <div class="pr-duration"><i class="fas fa-clock"></i> 2–4 hrs</div>
-                        <div style="display:flex;align-items:center;gap:1rem;"><div class="pr-price">KES 1,000</div><button class="book-row-btn">Book</button></div>
-                    </div>
-                    <div class="price-row" data-service="kids-twists">
-                        <div><div class="pr-name">Kids Twists</div></div>
-                        <div class="pr-duration"><i class="fas fa-clock"></i> 2–3 hrs</div>
-                        <div style="display:flex;align-items:center;gap:1rem;"><div class="pr-price">KES 1,000</div><button class="book-row-btn">Book</button></div>
-                    </div>
-                    <div class="price-row" data-service="kids-cornrows">
-                        <div><div class="pr-name">Kids Cornrows</div></div>
-                        <div class="pr-duration"><i class="fas fa-clock"></i> 1–2 hrs</div>
-                        <div style="display:flex;align-items:center;gap:1rem;"><div class="pr-price">KES 800</div><button class="book-row-btn">Book</button></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Locs Panel -->
-            <div class="pricing-panel" id="panel-locs">
-                <div class="panel-header">
-                    <div class="panel-icon"><i class="fas fa-spa"></i></div>
-                    <div>
-                        <h2>Locs Maintenance</h2>
-                        <p>Professional loc care & maintenance services</p>
-                    </div>
-                </div>
-                <div class="price-rows">
-                    <div class="price-row" data-service="micro-locs">
-                        <div><div class="pr-name">Micro Locs</div></div>
-                        <div class="pr-duration"><i class="fas fa-clock"></i> 12–16 hrs</div>
-                        <div style="display:flex;align-items:center;gap:1rem;"><div class="pr-price">KES 6,000</div><button class="book-row-btn">Book</button></div>
-                    </div>
-                    <div class="price-row" data-service="micro-locs-retie">
-                        <div><div class="pr-name">Micro Locs Retie</div></div>
-                        <div class="pr-duration"><i class="fas fa-clock"></i> 6–8 hrs</div>
-                        <div style="display:flex;align-items:center;gap:1rem;"><div class="pr-price">KES 2,500–3,500</div><button class="book-row-btn">Book</button></div>
-                    </div>
-                    <div class="price-row" data-service="locs-retouch">
-                        <div><div class="pr-name">Locs Retouch</div></div>
-                        <div class="pr-duration"><i class="fas fa-clock"></i> 2–3 hrs</div>
-                        <div style="display:flex;align-items:center;gap:1rem;"><div class="pr-price">KES 1,200–1,500</div><button class="book-row-btn">Book</button></div>
-                    </div>
-                </div>
-            </div>
+    <!-- DESKTOP ONLY calculator -->
+    <div class="calculator-wrap">
+      <div class="calculator-card">
+        <h2>Quick Quote</h2>
+        <p>Select a service for instant pricing</p>
+        <label class="calc-label" for="serviceSelectDesktop">Choose Service</label>
+        <select class="calc-select" id="serviceSelectDesktop">
+          <option value="">— Select a service —</option>
+          <optgroup label="✦ Braids">
+            <option value="box-braids-small">Box Braids — Small</option>
+            <option value="box-braids-medium">Box Braids — Medium</option>
+            <option value="box-braids-jumbo">Box Braids — Jumbo</option>
+            <option value="cornrows-simple">Cornrows — Simple</option>
+            <option value="cornrows-complex">Cornrows — Complex</option>
+            <option value="knotless-braids">Knotless Braids</option>
+            <option value="micro-braiding">Micro Braiding</option>
+          </optgroup>
+          <optgroup label="✦ Twists">
+            <option value="senegalese-twists">Senegalese Twists</option>
+            <option value="marley-twists">Marley Twists</option>
+            <option value="passion-twists">Passion Twists</option>
+            <option value="kinky-twists">Kinky Twists</option>
+            <option value="twist-out">Twist Out</option>
+          </optgroup>
+          <optgroup label="✦ Weaves & Natural">
+            <option value="weave-install">Weave Install</option>
+            <option value="wig-lines">Wig Lines</option>
+            <option value="natural-styling">Natural Hair Styling</option>
+            <option value="bridal-styling">Bridal Styling</option>
+          </optgroup>
+          <optgroup label="✦ Children's">
+            <option value="kids-braids">Kids Braids</option>
+            <option value="kids-twists">Kids Twists</option>
+            <option value="kids-cornrows">Kids Cornrows</option>
+          </optgroup>
+          <optgroup label="✦ Locs">
+            <option value="micro-locs">Micro Locs</option>
+            <option value="micro-locs-retie">Micro Locs Retie</option>
+            <option value="locs-retouch">Locs Retouch</option>
+          </optgroup>
+        </select>
+        <div class="quote-result" id="quoteResultDesktop">
+          <div class="quote-name" id="quoteNameDesktop"></div>
+          <div class="quote-stats">
+            <div class="q-stat"><span class="q-val" id="quotePriceDesktop"></span><span class="q-lbl">KES Price</span></div>
+            <div class="q-stat"><span class="q-val" id="quoteTimeDesktop"></span><span class="q-lbl">Hours</span></div>
+          </div>
+          <button class="btn-wa" id="waBookDesktop"><i class="fab fa-whatsapp"></i> Book via WhatsApp</button>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</div>
 
-    <!-- NOTES -->
-    <section class="notes-section">
-        <div class="container">
-            <div style="text-align:center;">
-                <span class="section-label">Good to Know</span>
-                <h2 style="font-family:var(--font-display); font-size:clamp(2rem,4vw,3.5rem); font-weight:800; color:var(--white);">Pricing Notes</h2>
-            </div>
-            <div class="notes-grid">
-                <div class="note-card">
-                    <div class="note-icon"><i class="fas fa-info-circle"></i></div>
-                    <h4>Price Variations</h4>
-                    <p>Final price depends on hair length, thickness, and style complexity.</p>
-                </div>
-                <div class="note-card">
-                    <div class="note-icon"><i class="fas fa-shopping-bag"></i></div>
-                    <h4>Hair & Materials</h4>
-                    <p>Client provides hair unless otherwise arranged. Additional cost may apply.</p>
-                </div>
-                <div class="note-card">
-                    <div class="note-icon"><i class="fas fa-map-marker-alt"></i></div>
-                    <h4>Travel Fee</h4>
-                    <p>May apply for locations outside service area — discussed during booking.</p>
-                </div>
-                <div class="note-card">
-                    <div class="note-icon"><i class="fas fa-calendar-check"></i></div>
-                    <h4>Deposit Required</h4>
-                    <p>A deposit is required to secure your appointment (non-refundable).</p>
-                </div>
-            </div>
+<!-- MOBILE QUICK QUOTE (below hero, mobile only) -->
+<div class="mobile-calc" id="mobileCalc">
+  <div class="mobile-calc-top">
+    <h3>Quick Quote</h3>
+    <span>Pick a service below</span>
+  </div>
+  <label class="calc-label" for="serviceSelectMob">Choose Service</label>
+  <select class="calc-select" id="serviceSelectMob">
+    <option value="">— Select a service —</option>
+    <optgroup label="✦ Braids">
+      <option value="box-braids-small">Box Braids — Small</option>
+      <option value="box-braids-medium">Box Braids — Medium</option>
+      <option value="box-braids-jumbo">Box Braids — Jumbo</option>
+      <option value="cornrows-simple">Cornrows — Simple</option>
+      <option value="cornrows-complex">Cornrows — Complex</option>
+      <option value="knotless-braids">Knotless Braids</option>
+      <option value="micro-braiding">Micro Braiding</option>
+    </optgroup>
+    <optgroup label="✦ Twists">
+      <option value="senegalese-twists">Senegalese Twists</option>
+      <option value="marley-twists">Marley Twists</option>
+      <option value="passion-twists">Passion Twists</option>
+      <option value="kinky-twists">Kinky Twists</option>
+      <option value="twist-out">Twist Out</option>
+    </optgroup>
+    <optgroup label="✦ Weaves & Natural">
+      <option value="weave-install">Weave Install</option>
+      <option value="wig-lines">Wig Lines</option>
+      <option value="natural-styling">Natural Hair Styling</option>
+      <option value="bridal-styling">Bridal Styling</option>
+    </optgroup>
+    <optgroup label="✦ Children's">
+      <option value="kids-braids">Kids Braids</option>
+      <option value="kids-twists">Kids Twists</option>
+      <option value="kids-cornrows">Kids Cornrows</option>
+    </optgroup>
+    <optgroup label="✦ Locs">
+      <option value="micro-locs">Micro Locs</option>
+      <option value="micro-locs-retie">Micro Locs Retie</option>
+      <option value="locs-retouch">Locs Retouch</option>
+    </optgroup>
+  </select>
+  <div class="quote-result" id="quoteResultMob">
+    <div class="quote-name" id="quoteNameMob"></div>
+    <div class="quote-stats">
+      <div class="q-stat"><span class="q-val" id="quotePriceMob"></span><span class="q-lbl">KES Price</span></div>
+      <div class="q-stat"><span class="q-val" id="quoteTimeMob"></span><span class="q-lbl">Hours</span></div>
+    </div>
+    <button class="btn-wa" id="waBookMob"><i class="fab fa-whatsapp"></i> Book via WhatsApp</button>
+  </div>
+</div>
+
+<!-- PRICING TABLES -->
+<section class="pricing-section" id="pricing">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:1rem">
+      <span style="display:inline-flex;align-items:center;gap:.75rem;font-family:var(--font-display);font-size:.7rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem">
+        <span style="display:block;width:30px;height:1px;background:var(--gold);opacity:.6"></span>Full Price List<span style="display:block;width:30px;height:1px;background:var(--gold);opacity:.6"></span>
+      </span>
+      <h2 style="font-family:var(--font-display);font-size:clamp(2rem,4vw,3.5rem);font-weight:800;color:var(--white);margin-bottom:2rem">All Services</h2>
+    </div>
+    <div class="cat-tabs">
+      <button class="cat-tab active" data-tab="braids"><i class="fas fa-magic"></i> Braids</button>
+      <button class="cat-tab" data-tab="twists"><i class="fas fa-leaf"></i> Twists</button>
+      <button class="cat-tab" data-tab="weaves"><i class="fas fa-gem"></i> Weaves</button>
+      <button class="cat-tab" data-tab="kids"><i class="fas fa-child"></i> Kids</button>
+      <button class="cat-tab" data-tab="locs"><i class="fas fa-spa"></i> Locs</button>
+    </div>
+
+    <!-- BRAIDS -->
+    <div class="pricing-panel active" id="panel-braids">
+      <div class="panel-header">
+        <div class="panel-icon"><i class="fas fa-magic"></i></div>
+        <div><h2>Braids</h2><p>Classic &amp; knotless braiding styles for every occasion</p></div>
+      </div>
+      <div class="price-rows">
+        <div class="price-row" data-service="box-braids-small"><div><div class="pr-name">Box Braids — Small</div></div><div class="pr-duration"><i class="fas fa-clock"></i> 8–10 hrs</div><div style="display:flex;align-items:center;gap:1rem"><div class="pr-price">KES 2,000</div><button class="book-row-btn">Book</button></div></div>
+        <div class="price-row" data-service="box-braids-medium"><div><div class="pr-name">Box Braids — Medium</div></div><div class="pr-duration"><i class="fas fa-clock"></i> 6–8 hrs</div><div style="display:flex;align-items:center;gap:1rem"><div class="pr-price">KES 1,500</div><button class="book-row-btn">Book</button></div></div>
+        <div class="price-row" data-service="box-braids-jumbo"><div><div class="pr-name">Box Braids — Jumbo</div></div><div class="pr-duration"><i class="fas fa-clock"></i> 4–6 hrs</div><div style="display:flex;align-items:center;gap:1rem"><div class="pr-price">KES 1,200</div><button class="book-row-btn">Book</button></div></div>
+        <div class="price-row" data-service="cornrows-simple"><div><div class="pr-name">Cornrows — Simple</div></div><div class="pr-duration"><i class="fas fa-clock"></i> 2–3 hrs</div><div style="display:flex;align-items:center;gap:1rem"><div class="pr-price">KES 1,300</div><button class="book-row-btn">Book</button></div></div>
+        <div class="price-row" data-service="cornrows-complex"><div><div class="pr-name">Cornrows — Complex</div></div><div class="pr-duration"><i class="fas fa-clock"></i> 3–5 hrs</div><div style="display:flex;align-items:center;gap:1rem"><div class="pr-price">KES 1,500</div><button class="book-row-btn">Book</button></div></div>
+        <div class="price-row" data-service="knotless-braids"><div><div class="pr-name">Knotless Braids</div></div><div class="pr-duration"><i class="fas fa-clock"></i> 6–8 hrs</div><div style="display:flex;align-items:center;gap:1rem"><div class="pr-price">KES 1,200–2,000</div><button class="book-row-btn">Book</button></div></div>
+        <div class="price-row" data-service="micro-braiding"><div><div class="pr-name">Micro Braiding</div></div><div class="pr-duration"><i class="fas fa-clock"></i> 10–14 hrs</div><div style="display:flex;align-items:center;gap:1rem"><div class="pr-price">KES 5,000–8,000</div><button class="book-row-btn">Book</button></div></div>
+      </div>
+    </div>
+
+    <!-- TWISTS -->
+    <div class="pricing-panel" id="panel-twists">
+      <div class="panel-header">
+        <div class="panel-icon"><i class="fas fa-leaf"></i></div>
+        <div><h2>Twists</h2><p>Natural, elegant twist styles for healthy hair</p></div>
+      </div>
+      <div class="price-rows">
+        <div class="price-row" data-service="senegalese-twists"><div><div class="pr-name">Senegalese Twists</div></div><div class="pr-duration"><i class="fas fa-clock"></i> 5–7 hrs</div><div style="display:flex;align-items:center;gap:1rem"><div class="pr-price">KES 1,500–2,000</div><button class="book-row-btn">Book</button></div></div>
+        <div class="price-row" data-service="marley-twists"><div><div class="pr-name">Marley Twists</div></div><div class="pr-duration"><i class="fas fa-clock"></i> 5–7 hrs</div><div style="display:flex;align-items:center;gap:1rem"><div class="pr-price">KES 1,500–2,000</div><button class="book-row-btn">Book</button></div></div>
+        <div class="price-row" data-service="passion-twists"><div><div class="pr-name">Passion Twists</div></div><div class="pr-duration"><i class="fas fa-clock"></i> 6–8 hrs</div><div style="display:flex;align-items:center;gap:1rem"><div class="pr-price">KES 1,500–2,000</div><button class="book-row-btn">Book</button></div></div>
+        <div class="price-row" data-service="kinky-twists"><div><div class="pr-name">Kinky Twists</div></div><div class="pr-duration"><i class="fas fa-clock"></i> 5–7 hrs</div><div style="display:flex;align-items:center;gap:1rem"><div class="pr-price">KES 1,500–2,000</div><button class="book-row-btn">Book</button></div></div>
+        <div class="price-row" data-service="twist-out"><div><div class="pr-name">Twist Out</div></div><div class="pr-duration"><i class="fas fa-clock"></i> 1.5–2 hrs</div><div style="display:flex;align-items:center;gap:1rem"><div class="pr-price">KES 1,000–1,500</div><button class="book-row-btn">Book</button></div></div>
+      </div>
+    </div>
+
+    <!-- WEAVES -->
+    <div class="pricing-panel" id="panel-weaves">
+      <div class="panel-header">
+        <div class="panel-icon"><i class="fas fa-gem"></i></div>
+        <div><h2>Weaves &amp; Natural Hair</h2><p>Extensions, installs, and natural hair care</p></div>
+      </div>
+      <div class="price-rows">
+        <div class="price-row" data-service="weave-install"><div><div class="pr-name">Weave Install</div></div><div class="pr-duration"><i class="fas fa-clock"></i> 4–6 hrs</div><div style="display:flex;align-items:center;gap:1rem"><div class="pr-price">KES 1,500–2,000</div><button class="book-row-btn">Book</button></div></div>
+        <div class="price-row" data-service="wig-lines"><div><div class="pr-name">Wig Lines</div></div><div class="pr-duration"><i class="fas fa-clock"></i> 1–2 hrs</div><div style="display:flex;align-items:center;gap:1rem"><div class="pr-price">KES 500–1,000</div><button class="book-row-btn">Book</button></div></div>
+        <div class="price-row" data-service="natural-styling"><div><div class="pr-name">Natural Hair Styling</div></div><div class="pr-duration"><i class="fas fa-clock"></i> 2–4 hrs</div><div style="display:flex;align-items:center;gap:1rem"><div class="pr-price">KES 1,000–1,800</div><button class="book-row-btn">Book</button></div></div>
+        <div class="price-row" data-service="bridal-styling"><div><div class="pr-name">Bridal Styling</div></div><div class="pr-duration"><i class="fas fa-clock"></i> 3–5 hrs</div><div style="display:flex;align-items:center;gap:1rem"><div class="pr-price">KES 1,800–2,000</div><button class="book-row-btn">Book</button></div></div>
+      </div>
+    </div>
+
+    <!-- KIDS -->
+    <div class="pricing-panel" id="panel-kids">
+      <div class="panel-header">
+        <div class="panel-icon"><i class="fas fa-child"></i></div>
+        <div><h2>Children's Styles</h2><p>Gentle, fun styles for little ones</p></div>
+      </div>
+      <div class="price-rows">
+        <div class="price-row" data-service="kids-braids"><div><div class="pr-name">Kids Braids</div></div><div class="pr-duration"><i class="fas fa-clock"></i> 2–4 hrs</div><div style="display:flex;align-items:center;gap:1rem"><div class="pr-price">KES 1,000</div><button class="book-row-btn">Book</button></div></div>
+        <div class="price-row" data-service="kids-twists"><div><div class="pr-name">Kids Twists</div></div><div class="pr-duration"><i class="fas fa-clock"></i> 2–3 hrs</div><div style="display:flex;align-items:center;gap:1rem"><div class="pr-price">KES 1,000</div><button class="book-row-btn">Book</button></div></div>
+        <div class="price-row" data-service="kids-cornrows"><div><div class="pr-name">Kids Cornrows</div></div><div class="pr-duration"><i class="fas fa-clock"></i> 1–2 hrs</div><div style="display:flex;align-items:center;gap:1rem"><div class="pr-price">KES 800</div><button class="book-row-btn">Book</button></div></div>
+      </div>
+    </div>
+
+    <!-- LOCS -->
+    <div class="pricing-panel" id="panel-locs">
+      <div class="panel-header">
+        <div class="panel-icon"><i class="fas fa-spa"></i></div>
+        <div><h2>Locs Maintenance</h2><p>Professional loc care &amp; maintenance</p></div>
+      </div>
+      <div class="price-rows">
+        <div class="price-row" data-service="micro-locs"><div><div class="pr-name">Micro Locs</div></div><div class="pr-duration"><i class="fas fa-clock"></i> 12–16 hrs</div><div style="display:flex;align-items:center;gap:1rem"><div class="pr-price">KES 6,000</div><button class="book-row-btn">Book</button></div></div>
+        <div class="price-row" data-service="micro-locs-retie"><div><div class="pr-name">Micro Locs Retie</div></div><div class="pr-duration"><i class="fas fa-clock"></i> 6–8 hrs</div><div style="display:flex;align-items:center;gap:1rem"><div class="pr-price">KES 2,500–3,500</div><button class="book-row-btn">Book</button></div></div>
+        <div class="price-row" data-service="locs-retouch"><div><div class="pr-name">Locs Retouch</div></div><div class="pr-duration"><i class="fas fa-clock"></i> 2–3 hrs</div><div style="display:flex;align-items:center;gap:1rem"><div class="pr-price">KES 1,200–1,500</div><button class="book-row-btn">Book</button></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NOTES -->
+<section class="notes-section">
+  <div class="container">
+    <div style="text-align:center">
+      <span style="display:inline-flex;align-items:center;gap:.75rem;font-family:var(--font-display);font-size:.7rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem">
+        <span style="display:block;width:30px;height:1px;background:var(--gold);opacity:.6"></span>Good to Know<span style="display:block;width:30px;height:1px;background:var(--gold);opacity:.6"></span>
+      </span>
+      <h2 style="font-family:var(--font-display);font-size:clamp(2rem,4vw,3.5rem);font-weight:800;color:var(--white)">Pricing Notes</h2>
+    </div>
+    <div class="notes-grid">
+      <div class="note-card"><div class="note-icon"><i class="fas fa-info-circle"></i></div><h4>Price Variations</h4><p>Final price depends on hair length, thickness, and style complexity.</p></div>
+      <div class="note-card"><div class="note-icon"><i class="fas fa-shopping-bag"></i></div><h4>Hair &amp; Materials</h4><p>Client provides hair unless otherwise arranged. Additional cost may apply.</p></div>
+      <div class="note-card"><div class="note-icon"><i class="fas fa-map-marker-alt"></i></div><h4>Travel Fee</h4><p>May apply for locations outside service area — discussed during booking.</p></div>
+      <div class="note-card"><div class="note-icon"><i class="fas fa-calendar-check"></i></div><h4>Deposit Required</h4><p>A deposit is required to secure your appointment (non-refundable).</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="container">
+    <div class="cta-inner">
+      <h2 class="cta-title">Ready to Book Your Appointment?</h2>
+      <p class="cta-text">Contact via WhatsApp for instant booking and personalised pricing.</p>
+      <div class="cta-btns">
+        <a href="https://wa.me/+254725351803?text=Hi%20Akose!%20I'd%20like%20to%20book%20an%20appointment." class="btn-gold" target="_blank"><i class="fab fa-whatsapp"></i> Book via WhatsApp</a>
+        <a href="contact.html" class="btn-ghost">Other Contact Options</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="assets/images/logo.jpeg" alt="Hair by Akose">
+        <p>Professional mobile hair styling and handmade accessories, bringing beauty to your doorstep.</p>
+        <div class="socials">
+          <a href="https://www.instagram.com/hairbyakose?igsh=YW1pdTc0ZzBua2p4&utm_source=qr" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://web.facebook.com/vivienne.akose" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="https://www.tiktok.com/@hairbyakose?_r=1&_t=ZS-93RrembQpYD" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          <a href="http://www.youtube.com/@vivienneakose8306" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
         </div>
-    </section>
+      </div>
+      <div class="footer-col"><h4>Navigate</h4><ul><li><a href="index.html#story">My Story</a></li><li><a href="portfolio.html">Portfolio</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="index.html#about">About</a></li></ul></div>
+      <div class="footer-col"><h4>Services</h4><ul><li><a href="index.html#services">Box Braids</a></li><li><a href="index.html#services">Cornrows</a></li><li><a href="index.html#services">Twists &amp; Locs</a></li><li><a href="index.html#services">Natural Hair</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><i class="fas fa-phone"></i> +(254) 725-351-803</li><li><i class="fas fa-envelope"></i> <a href="mailto:vivienneakose22@gmail.com">vivienneakose22@gmail.com</a></li><li><i class="fas fa-map-marker-alt"></i> @ your place of comfort</li><li><i class="fas fa-clock"></i> Mon–Sat: 9AM – 8PM</li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Hair by Akose. All rights reserved.</span>
+      <span>Crafted with <i class="fas fa-heart" style="color:var(--gold)"></i> and passion &middot; by #mimsanii</span>
+    </div>
+  </div>
+</footer>
 
-    <!-- CTA -->
-    <section class="cta">
-        <div class="container">
-            <div class="cta-inner">
-                <span class="section-label">Let's Go</span>
-                <h2 class="cta-title">Ready to Book Your Appointment?</h2>
-                <p class="cta-text">Contact via WhatsApp for instant booking and personalised pricing.</p>
-                <div class="cta-btns">
-                    <a href="https://wa.me/+254725351803?text=Hi%20Akose!%20I'd%20like%20to%20book%20an%20appointment." class="btn-gold" target="_blank"><i class="fab fa-whatsapp"></i> Book via WhatsApp</a>
-                    <a href="contact.html" class="btn-ghost">Other Contact Options</a>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- FLOATING WHATSAPP (mobile only) -->
+<a href="https://wa.me/+254725351803" class="float-wa" target="_blank"><i class="fab fa-whatsapp"></i> Book Now</a>
 
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <img src="assets/images/logo.jpeg" alt="Hair by Akose">
-                    <p>Professional mobile hair styling and handmade accessories, bringing beauty to your doorstep.</p>
-                    <div class="socials">
-                        <a href="https://www.instagram.com/hairbyakose?igsh=YW1pdTc0ZzBua2p4&utm_source=qr" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://web.facebook.com/vivienne.akose" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                        <a href="https://www.tiktok.com/@hairbyakose?_r=1&_t=ZS-93RrembQpYD" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-                        <a href="http://www.youtube.com/@vivienneakose8306" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-                <div class="footer-col">
-                    <h4>Navigate</h4>
-                    <ul>
-                        <li><a href="index.html#story">My Story</a></li>
-                        <li><a href="portfolio.html">Portfolio</a></li>
-                        <li><a href="pricing.html">Pricing</a></li>
-                        <li><a href="index.html#about">About</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Services</h4>
-                    <ul>
-                        <li><a href="index.html#services">Box Braids</a></li>
-                        <li><a href="index.html#services">Cornrows</a></li>
-                        <li><a href="index.html#services">Twists & Locs</a></li>
-                        <li><a href="index.html#services">Natural Hair</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Contact</h4>
-                    <ul>
-                        <li><i class="fas fa-phone"></i> +(254) 725-351-803</li>
-                        <li><i class="fas fa-envelope"></i><a href="mailto:vivienneakose22@gmail.com"> vivienneakose22@gmail.com</a></li>
-                        <li><i class="fas fa-map-marker-alt"></i> @ your place of comfort</li>
-                        <li><i class="fas fa-clock"></i> Mon–Sat: 9AM – 8PM</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <span>&copy; 2026 Hair by Akose. All rights reserved.</span>
-                <span>Crafted with <i class="fas fa-heart" style="color:var(--gold)"></i> and passion · by #mimsanii</span>
-            </div>
-        </div>
-    </footer>
+<!-- MOBILE BOTTOM NAV -->
+<nav class="mob-bottom-nav">
+  <a href="index.html"><i class="fas fa-home"></i><span>Home</span></a>
+  <a href="index.html#services"><i class="fas fa-scissors"></i><span>Services</span></a>
+  <a href="pricing.html" class="active"><i class="fas fa-tags"></i><span>Pricing</span></a>
+  <a href="contact.html"><i class="fas fa-calendar-check"></i><span>Book</span></a>
+</nav>
 
-    <!-- MOBILE NAV -->
-    <nav class="mobile-nav">
-        <a href="index.html"><i class="fas fa-home"></i><span>Home</span></a>
-        <a href="index.html#services"><i class="fas fa-scissors"></i><span>Services</span></a>
-        <a href="pricing.html" class="active"><i class="fas fa-tags"></i><span>Pricing</span></a>
-        <a href="contact.html"><i class="fas fa-calendar"></i><span>Book</span></a>
-    </nav>
+<script>
+var WHATSAPP = '+254725351803';
+var services = {
+  'box-braids-small':  {name:'Box Braids — Small',        price:'2,000',       time:'8–10'},
+  'box-braids-medium': {name:'Box Braids — Medium',       price:'1,500',       time:'6–8'},
+  'box-braids-jumbo':  {name:'Box Braids — Jumbo',        price:'1,200',       time:'4–6'},
+  'cornrows-simple':   {name:'Cornrows — Simple',         price:'1,300',       time:'2–3'},
+  'cornrows-complex':  {name:'Cornrows — Complex',        price:'1,500',       time:'3–5'},
+  'knotless-braids':   {name:'Knotless Braids',           price:'1,200–2,000', time:'6–8'},
+  'micro-braiding':    {name:'Micro Braiding',            price:'5,000–8,000', time:'10–14'},
+  'senegalese-twists': {name:'Senegalese Twists',         price:'1,500–2,000', time:'5–7'},
+  'marley-twists':     {name:'Marley Twists',             price:'1,500–2,000', time:'5–7'},
+  'passion-twists':    {name:'Passion Twists',            price:'1,500–2,000', time:'6–8'},
+  'kinky-twists':      {name:'Kinky Twists',              price:'1,500–2,000', time:'5–7'},
+  'twist-out':         {name:'Twist Out',                 price:'1,000–1,500', time:'1.5–2'},
+  'weave-install':     {name:'Weave Install',             price:'1,500–2,000', time:'4–6'},
+  'wig-lines':         {name:'Wig Lines',                 price:'500–1,000',   time:'1–2'},
+  'natural-styling':   {name:'Natural Hair Styling',      price:'1,000–1,800', time:'2–4'},
+  'bridal-styling':    {name:'Bridal Styling',            price:'1,800–2,000', time:'3–5'},
+  'kids-braids':       {name:'Kids Braids',               price:'1,000',       time:'2–4'},
+  'kids-twists':       {name:'Kids Twists',               price:'1,000',       time:'2–3'},
+  'kids-cornrows':     {name:'Kids Cornrows',             price:'800',         time:'1–2'},
+  'micro-locs':        {name:'Micro Locs',                price:'6,000',       time:'12–16'},
+  'micro-locs-retie':  {name:'Micro Locs Retie',          price:'2,500–3,500', time:'6–8'},
+  'locs-retouch':      {name:'Locs Retouch',              price:'1,200–1,500', time:'2–3'},
+};
 
-    <script>
-        // Sticky nav
-        const nav = document.getElementById('mainNav');
-        window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
+function bookWA(svc){
+  var s = services[svc]; if(!s) return;
+  var msg = 'Hi Akose! \u{1F44B}\n\nI\'d like to book:\n\n\uD83D\uDCCC Service: '+s.name+'\n\uD83D\uDCB0 Price: KES '+s.price+'\n\u23F1\uFE0F Duration: '+s.time+' hours\n\nPlease let me know your available dates. Thank you!';
+  window.open('https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent(msg),'_blank');
+}
 
-        // Service data
-        const WHATSAPP = '+254725351803';
-        const services = {
-            'box-braids-small':   { name:'Box Braids — Small',          price:'2,000',       time:'8–10' },
-            'box-braids-medium':  { name:'Box Braids — Medium',         price:'1,500',       time:'6–8'  },
-            'box-braids-jumbo':   { name:'Box Braids — Jumbo',          price:'1,200',       time:'4–6'  },
-            'cornrows-simple':    { name:'Cornrows — Simple',           price:'1,300',       time:'2–3'  },
-            'cornrows-complex':   { name:'Cornrows — Complex',          price:'1,500',       time:'3–5'  },
-            'knotless-braids':    { name:'Knotless Braids',             price:'1,200–2,000', time:'6–8'  },
-            'micro-braiding':     { name:'Micro Braiding',              price:'5,000–8,000', time:'10–14'},
-            'senegalese-twists':  { name:'Senegalese Twists',           price:'1,500–2,000', time:'5–7'  },
-            'marley-twists':      { name:'Marley Twists',               price:'1,500–2,000', time:'5–7'  },
-            'passion-twists':     { name:'Passion Twists',              price:'1,500–2,000', time:'6–8'  },
-            'kinky-twists':       { name:'Kinky Twists',                price:'1,500–2,000', time:'5–7'  },
-            'twist-out':          { name:'Twist Out',                   price:'1,000–1,500', time:'1.5–2'},
-            'weave-install':      { name:'Weave Install',               price:'1,500–2,000', time:'4–6'  },
-            'wig-lines':          { name:'Wig Lines',                   price:'500–1,000',   time:'1–2'  },
-            'natural-styling':    { name:'Natural Hair Styling',        price:'1,000–1,800', time:'2–4'  },
-            'bridal-styling':     { name:'Bridal Styling',              price:'1,800–2,000', time:'3–5'  },
-            'kids-braids':        { name:'Kids Braids',                 price:'1,000',       time:'2–4'  },
-            'kids-twists':        { name:'Kids Twists',                 price:'1,000',       time:'2–3'  },
-            'kids-cornrows':      { name:'Kids Cornrows',               price:'800',         time:'1–2'  },
-            'micro-locs':         { name:'Micro Locs',                  price:'6,000',       time:'12–16'},
-            'micro-locs-retie':   { name:'Micro Locs Retie',            price:'2,500–3,500', time:'6–8'  },
-            'locs-retouch':       { name:'Locs Retouch',                price:'1,200–1,500', time:'2–3'  },
-        };
+/* ── scroll progress ── */
+var bar = document.getElementById('scroll-progress');
+if(bar) window.addEventListener('scroll',function(){var p=window.scrollY/(document.body.scrollHeight-window.innerHeight)*100;bar.style.width=Math.min(p,100)+'%';},{passive:true});
 
-        function bookWhatsApp(svc) {
-            const s = services[svc];
-            if (!s) return;
-            const msg = `Hi Akose! 👋\n\nI'd like to book an appointment for:\n\n📌 Service: ${s.name}\n💰 Price: KES ${s.price}\n⏱️ Duration: ${s.time} hours\n\nPlease let me know your available dates. Thank you!`;
-            window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`, '_blank');
-        }
+/* ── nav scrolled ── */
+var nav = document.getElementById('mainNav');
+if(nav) window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>60);},{passive:true});
 
-        // Calculator
-        const sel = document.getElementById('serviceSelect');
-        const res = document.getElementById('quoteResult');
-        sel.addEventListener('change', function() {
-            const s = services[this.value];
-            if (!s) { res.classList.remove('show'); return; }
-            document.getElementById('quoteName').textContent  = s.name;
-            document.getElementById('quotePrice').textContent = s.price;
-            document.getElementById('quoteTime').textContent  = s.time;
-            res.classList.add('show');
-            document.getElementById('whatsappBookBtn').onclick = () => bookWhatsApp(this.value);
-        });
+/* ── hamburger ── */
+var hb=document.getElementById('hamburger'),mm=document.getElementById('mobMenu'),bd=document.getElementById('mobBackdrop');
+function openMenu(){if(!mm||!hb)return;mm.classList.add('open');if(bd)bd.classList.add('open');hb.classList.add('open');document.body.style.overflow='hidden';document.body.style.position='fixed';document.body.style.width='100%';}
+function cM(){if(!mm||!hb)return;mm.classList.remove('open');if(bd)bd.classList.remove('open');hb.classList.remove('open');document.body.style.overflow='';document.body.style.position='';document.body.style.width='';}
+if(hb) hb.addEventListener('click',function(e){e.stopPropagation();mm&&mm.classList.contains('open')?cM():openMenu();});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')cM();});
 
-        // Tab switching
-        document.querySelectorAll('.cat-tab').forEach(tab => {
-            tab.addEventListener('click', function() {
-                document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
-                document.querySelectorAll('.pricing-panel').forEach(p => p.classList.remove('active'));
-                this.classList.add('active');
-                document.getElementById('panel-' + this.dataset.tab).classList.add('active');
-            });
-        });
+/* ── calculator helper ── */
+function initCalc(selId, nameId, priceId, timeId, resultId, waBtnId){
+  var sel = document.getElementById(selId);
+  var res = document.getElementById(resultId);
+  if(!sel) return;
+  sel.addEventListener('change', function(){
+    var s = services[this.value];
+    if(!s){res.classList.remove('show');return;}
+    document.getElementById(nameId).textContent  = s.name;
+    document.getElementById(priceId).textContent = s.price;
+    document.getElementById(timeId).textContent  = s.time;
+    res.classList.add('show');
+    var waBtn = document.getElementById(waBtnId);
+    if(waBtn)(function(v){waBtn.onclick=function(){bookWA(v);};})(this.value);
+  });
+}
+initCalc('serviceSelectDesktop','quoteNameDesktop','quotePriceDesktop','quoteTimeDesktop','quoteResultDesktop','waBookDesktop');
+initCalc('serviceSelectMob','quoteNameMob','quotePriceMob','quoteTimeMob','quoteResultMob','waBookMob');
 
-        // Row book buttons
-        document.querySelectorAll('.price-row').forEach(row => {
-            const btn = row.querySelector('.book-row-btn');
-            if (btn) btn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                bookWhatsApp(row.dataset.service);
-            });
-            // Click row → scroll to calculator & pre-select
-            row.addEventListener('click', () => {
-                sel.value = row.dataset.service;
-                sel.dispatchEvent(new Event('change'));
-                document.querySelector('.calculator-card').scrollIntoView({ behavior:'smooth', block:'center' });
-            });
-        });
+/* ── category tabs ── */
+document.querySelectorAll('.cat-tab').forEach(function(tab){
+  tab.addEventListener('click',function(){
+    document.querySelectorAll('.cat-tab').forEach(function(t){t.classList.remove('active');});
+    document.querySelectorAll('.pricing-panel').forEach(function(p){p.classList.remove('active');});
+    this.classList.add('active');
+    var panel = document.getElementById('panel-'+this.dataset.tab);
+    if(panel) panel.classList.add('active');
+  });
+});
 
-        console.log('Pricing page initialized ✨');
-    </script>
+/* ── price rows — click to book or pre-select calculator ── */
+document.querySelectorAll('.price-row').forEach(function(row){
+  /* book btn */
+  var btn = row.querySelector('.book-row-btn');
+  if(btn) btn.addEventListener('click',function(e){e.stopPropagation();bookWA(row.dataset.service);});
+
+  /* row click — on mobile book directly, on desktop scroll to calc */
+  row.addEventListener('click',function(){
+    if(window.innerWidth <= 767){
+      bookWA(row.dataset.service);
+    } else {
+      var sel = document.getElementById('serviceSelectDesktop');
+      if(sel){ sel.value = row.dataset.service; sel.dispatchEvent(new Event('change')); }
+      var card = document.querySelector('.calculator-card');
+      if(card) card.scrollIntoView({behavior:'smooth',block:'center'});
+    }
+  });
+});
+
+/* ── hide float-wa when near bottom nav to avoid overlap ── */
+var floatWa = document.querySelector('.float-wa');
+if(floatWa){
+  window.addEventListener('scroll',function(){
+    var nearBottom = window.scrollY + window.innerHeight >= document.body.scrollHeight - 200;
+    floatWa.style.opacity = nearBottom ? '0' : '1';
+    floatWa.style.pointerEvents = nearBottom ? 'none' : 'auto';
+  },{passive:true});
+}
+
+/* ── fade-in on scroll ── */
+var fadeEls = document.querySelectorAll('.note-card,.price-row,.chip');
+fadeEls.forEach(function(el){el.style.opacity='0';el.style.transform='translateY(14px)';el.style.transition='opacity .45s ease,transform .45s ease';});
+var io = new IntersectionObserver(function(entries){
+  entries.forEach(function(e,i){
+    if(e.isIntersecting){setTimeout(function(){e.target.style.opacity='1';e.target.style.transform='translateY(0)';},i*38);io.unobserve(e.target);}
+  });
+},{threshold:.08});
+fadeEls.forEach(function(el){io.observe(el);});
+
+/* page fade in */
+document.body.style.opacity='0';
+setTimeout(function(){document.body.style.transition='opacity .4s ease';document.body.style.opacity='1';},60);
+console.log('Pricing page ready \u2728');
+</script>
 </body>
 </html>
