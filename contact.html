@@ -198,6 +198,9 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
   .methods-grid{grid-template-columns:1fr 1fr}
 }
 
+/* hide mob-chat-page on desktop */
+.mob-chat-page{display:none}
+
 /* ══════════════════════════════════════════
    MOBILE ≤ 767px — TEAL/GOLD CHAT UI
 ══════════════════════════════════════════ */
@@ -455,9 +458,6 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
   .footer{display:none}
 }
 
-/* hide mob-chat-page on desktop */
-.mob-chat-page{display:none}
-
 @media(max-width:380px){
   .page-title{font-size:clamp(2.2rem,11vw,3rem)}
 }
@@ -531,9 +531,9 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
         <h3>Call / Text</h3><p>+254 725 351 803</p>
         <span class="method-action">Call Now →</span>
       </a>
-      <a href="mailto:vivienneakose22@gmail.com" class="method-card">
+      <a href="/cdn-cgi/l/email-protection#790f100f101c17171c1812160a1c4b4b391e14181015571a1614" class="method-card">
         <div class="method-icon"><i class="fas fa-envelope"></i></div>
-        <h3>Email</h3><p>vivienneakose22@gmail.com</p>
+        <h3>Email</h3><p><span class="__cf_email__" data-cfemail="4f392639262a21212a2e24203c2a7d7d0f28222e2623612c2022">[email&#160;protected]</span></p>
         <span class="method-action">Send Email →</span>
       </a>
       <a href="#booking-form" class="method-card">
@@ -670,7 +670,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
       </div>
       <div class="footer-col"><h4>Navigate</h4><ul><li><a href="index.html#story">My Story</a></li><li><a href="portfolio.html">Portfolio</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="index.html#about">About</a></li></ul></div>
       <div class="footer-col"><h4>Services</h4><ul><li><a href="index.html#services">Box Braids</a></li><li><a href="index.html#services">Cornrows</a></li><li><a href="index.html#services">Twists &amp; Locs</a></li><li><a href="index.html#services">Natural Hair</a></li></ul></div>
-      <div class="footer-col"><h4>Contact</h4><ul><li><i class="fas fa-phone"></i> +(254) 725-351-803</li><li><i class="fas fa-envelope"></i> <a href="mailto:vivienneakose22@gmail.com">vivienneakose22@gmail.com</a></li><li><i class="fas fa-map-marker-alt"></i> @ your place of comfort</li><li><i class="fas fa-clock"></i> Mon–Sat: 9AM – 8PM</li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><i class="fas fa-phone"></i> +(254) 725-351-803</li><li><i class="fas fa-envelope"></i> <a href="/cdn-cgi/l/email-protection#b6c0dfc0dfd3d8d8d3d7ddd9c5d38484f6d1dbd7dfda98d5d9db"><span class="__cf_email__" data-cfemail="8bfde2fde2eee5e5eeeae0e4f8eeb9b9cbece6eae2e7a5e8e4e6">[email&#160;protected]</span></a></li><li><i class="fas fa-map-marker-alt"></i> @ your place of comfort</li><li><i class="fas fa-clock"></i> Mon–Sat: 9AM – 8PM</li></ul></div>
     </div>
     <div class="footer-bottom">
       <span>&copy; 2026 Hair by Akose. All rights reserved.</span>
@@ -752,7 +752,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
   <a href="contact.html" class="active"><i class="fas fa-calendar-check"></i><span>Book</span></a>
 </nav>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 /* ── NAV ── */
 var bar=document.getElementById('scroll-progress');
 if(bar)window.addEventListener('scroll',function(){var p=window.scrollY/(document.body.scrollHeight-window.innerHeight)*100;bar.style.width=Math.min(p,100)+'%';},{passive:true});
@@ -799,7 +799,7 @@ if(dForm){
 /* ════════════════════════════════════════
    MOBILE CHAT CONVERSATION ENGINE
 ════════════════════════════════════════ */
-if(window.innerWidth <= 767){
+if(window.matchMedia('(max-width:767px)').matches){
 
 var WHATSAPP = '+254725351803';
 var chatBody = document.getElementById('chatBody');
@@ -998,7 +998,6 @@ waSendBtn.addEventListener('click', function(){
   window.open('https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent(msg), '_blank');
   setTimeout(function(){
     waSendBtn.style.display = 'none';
-    chatSuccess.classList.add('show');
     scrollBottom();
   }, 600);
 });
