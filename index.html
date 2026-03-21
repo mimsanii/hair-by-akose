@@ -890,41 +890,90 @@ body{padding-bottom:5rem}
   <a href="contact.html"><i class="fas fa-calendar-check"></i><span>Book</span></a>
 </nav>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-const bar=document.getElementById('scroll-progress');
-window.addEventListener('scroll',()=>{if(bar){const p=window.scrollY/(document.body.scrollHeight-window.innerHeight)*100;bar.style.width=Math.min(p,100)+'%'}},{passive:true});
-const nav=document.getElementById('mainNav');
-window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>60),{passive:true});
+
+<script>
+/* ── SCROLL PROGRESS ── */
+var bar = document.getElementById('scroll-progress');
+if(bar){
+  window.addEventListener('scroll', function(){
+    var p = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+    bar.style.width = Math.min(p,100) + '%';
+  }, {passive:true});
+}
+
+/* ── NAV SCROLLED CLASS ── */
+var nav = document.getElementById('mainNav');
+if(nav){
+  window.addEventListener('scroll', function(){
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  }, {passive:true});
+}
 
 /* ── SLIDE PANEL MENU ── */
-const hb=document.getElementById('hamburger');
-const mm=document.getElementById('mobMenu');
-const bd=document.getElementById('mobBackdrop');
+var hb = document.getElementById('hamburger');
+var mm = document.getElementById('mobMenu');
+var bd = document.getElementById('mobBackdrop');
 
 function openMenu(){
+  if(!mm || !hb) return;
   mm.classList.add('open');
-  bd.classList.add('open');
+  if(bd) bd.classList.add('open');
   hb.classList.add('open');
-  document.body.style.overflow='hidden';
-  document.body.style.position='fixed';
-  document.body.style.width='100%';
-}
-function cM(){
-  mm.classList.remove('open');
-  bd.classList.remove('open');
-  hb.classList.remove('open');
-  document.body.style.overflow='';
-  document.body.style.position='';
-  document.body.style.width='';
+  document.body.style.overflow = 'hidden';
+  document.body.style.position = 'fixed';
+  document.body.style.width = '100%';
 }
 
-hb.addEventListener('click',function(e){
-  e.stopPropagation();
-  mm.classList.contains('open')?cM():openMenu();
+function cM(){
+  if(!mm || !hb) return;
+  mm.classList.remove('open');
+  if(bd) bd.classList.remove('open');
+  hb.classList.remove('open');
+  document.body.style.overflow = '';
+  document.body.style.position = '';
+  document.body.style.width = '';
+}
+
+if(hb){
+  hb.addEventListener('click', function(e){
+    e.stopPropagation();
+    mm && mm.classList.contains('open') ? cM() : openMenu();
+  });
+}
+
+if(bd){
+  bd.addEventListener('click', cM);
+}
+
+document.addEventListener('keydown', function(e){
+  if(e.key === 'Escape') cM();
 });
-document.addEventListener('keydown',function(e){if(e.key==='Escape')cM();});
-const secs=document.querySelectorAll('section[id]'),nls=document.querySelectorAll('.mob-bottom-nav a');
-window.addEventListener('scroll',()=>{let c='';secs.forEach(s=>{if(window.scrollY>=s.offsetTop-140)c=s.id});nls.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+c))},{passive:true});
-const els=document.querySelectorAll('.svc-card,.why-card,.testi-card,.val-chip,.skill-row,.s-badge,.g-item');
-els.forEach(el=>{el.style.opacity='0';el.style.transform='translateY(14px)';el.style.transition='opacity .5s ease,transform .5s ease'});
-const ob=new IntersectionObser
+
+/* ── MOBILE BOTTOM NAV ACTIVE ── */
+var secs = document.querySelectorAll('section[id]');
+var nls  = document.querySelectorAll('.mob-bottom-nav a');
+window.addEventListener('scroll', function(){
+  var c = '';
+  secs.forEach(function(s){ if(window.scrollY >= s.offsetTop - 140) c = s.id; });
+  nls.forEach(function(a){ a.classList.toggle('active', a.getAttribute('href') === '#' + c); });
+}, {passive:true});
+
+/* ── FADE IN ON SCROLL ── */
+var els = document.querySelectorAll('.svc-card,.why-card,.testi-card,.val-chip,.skill-row,.s-badge,.g-item');
+els.forEach(function(el){
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(14px)';
+  el.style.transition = 'opacity .5s ease, transform .5s ease';
+});
+var ob = new IntersectionObserver(function(entries){
+  entries.forEach(function(e, i){
+    if(e.isIntersecting){
+      setTimeout(function(){ e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; }, i * 45);
+      ob.unobserve(e.target);
+    }
+  });
+}, {threshold: 0.1});
+els.forEach(function(el){ ob.observe(el); });
+</script>
+</body>
+</html>
