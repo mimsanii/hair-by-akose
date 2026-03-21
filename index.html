@@ -228,15 +228,51 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .gallery{padding:8rem 0;background:var(--black)}
 .gallery-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;flex-wrap:wrap;gap:1.5rem}
 .gallery-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:1rem}
-.g-item{position:relative;border-radius:12px;overflow:hidden;cursor:pointer;background:var(--black-card)}
+.g-item{position:relative;border-radius:12px;overflow:hidden;cursor:pointer;background:var(--black-card);border:1px solid rgba(212,169,106,.07);transition:border-color .4s}
+.g-item:hover{border-color:rgba(212,169,106,.28);box-shadow:0 20px 60px rgba(0,0,0,.45)}
 .g-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease);display:block}
 .g-item:hover img{transform:scale(1.06)}
-.g-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(7,30,30,.88) 0%,transparent 55%);opacity:0;transition:opacity .4s ease;display:flex;flex-direction:column;justify-content:flex-end;padding:1.5rem}
+/* category tag — borrowed from portfolio */
+.g-tag{
+  position:absolute;top:.9rem;left:.9rem;z-index:2;
+  background:rgba(7,30,30,.8);border:1px solid rgba(212,169,106,.3);
+  border-radius:100px;padding:.25rem .75rem;
+  font-family:var(--font-display);font-size:.62rem;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--gold);
+  backdrop-filter:blur(8px);
+}
+.g-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(7,30,30,.92) 0%,rgba(7,30,30,.2) 55%,transparent 100%);
+  opacity:0;transition:opacity .4s ease;
+  display:flex;flex-direction:column;justify-content:flex-end;padding:1.5rem;
+}
 .g-item:hover .g-overlay{opacity:1}
-.g-overlay h3{font-family:var(--font-display);font-size:1.1rem;color:var(--white);font-weight:700}
-.g-overlay p{font-size:.85rem;color:var(--gold-light);font-family:var(--font-display)}
+.g-overlay h3{font-family:var(--font-display);font-size:1.1rem;color:var(--white);font-weight:700;margin-bottom:.25rem}
+.g-overlay p{font-size:.75rem;color:var(--gold-light);font-family:var(--font-display);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.9rem}
+/* zoom button */
+.g-zoom{
+  width:36px;height:36px;border-radius:50%;
+  background:var(--grad-gold);border:none;
+  color:var(--black);display:flex;align-items:center;justify-content:center;
+  font-size:.8rem;cursor:pointer;transition:transform .3s;align-self:flex-start;
+}
+.g-zoom:hover{transform:scale(1.15)}
 .g-s3{grid-column:span 3;aspect-ratio:3/4}.g-s4{grid-column:span 4;aspect-ratio:4/5}
 .g-s6{grid-column:span 6;aspect-ratio:3/4}.g-s8{grid-column:span 8;aspect-ratio:16/9}
+/* lightbox (home page) */
+.g-lightbox{position:fixed;inset:0;background:rgba(7,30,30,.97);backdrop-filter:blur(20px);z-index:2000;display:none;align-items:center;justify-content:center;padding:2rem}
+.g-lightbox.open{display:flex;animation:lbIn .3s ease}
+@keyframes lbIn{from{opacity:0}to{opacity:1}}
+.g-lb-inner{position:relative;max-width:860px;width:100%}
+.g-lb-inner img{width:100%;border-radius:14px;border:1px solid rgba(212,169,106,.2);box-shadow:0 40px 100px rgba(0,0,0,.8);max-height:85vh;object-fit:contain}
+.g-lb-close{position:absolute;top:-.9rem;right:-.9rem;width:42px;height:42px;border-radius:50%;background:var(--grad-gold);border:none;color:var(--black);font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.g-lb-nav{position:absolute;top:50%;transform:translateY(-50%);width:42px;height:42px;border-radius:50%;background:rgba(7,30,30,.8);border:1px solid rgba(212,169,106,.3);color:var(--gold);font-size:.95rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s}
+.g-lb-nav:hover{background:var(--grad-gold);color:var(--black);border-color:transparent}
+.g-lb-prev{left:-3.5rem}.g-lb-next{right:-3.5rem}
+.g-lb-caption{text-align:center;margin-top:1.1rem}
+.g-lb-caption h3{font-family:var(--font-display);font-size:1.2rem;color:var(--white)}
+.g-lb-caption p{font-family:var(--font-display);font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-top:.25rem}
 
 /* SERVICES */
 .services{padding:8rem 0;background:var(--black-soft)}
@@ -436,9 +472,24 @@ body{padding-bottom:5rem}
 .g-item:nth-child(7){grid-column:span 2;aspect-ratio:16/7}
 .g-item:nth-child(8){grid-column:span 2;aspect-ratio:16/9}
 .g-item{border-radius:0}
-.g-overlay{opacity:1;background:linear-gradient(to top,rgba(7,30,30,.88) 0%,transparent 50%);padding:.65rem .75rem}
-.g-overlay h3{font-size:.8rem;margin-bottom:.05rem}
-.g-overlay p{font-size:.64rem}
+/* always-visible overlay on mobile */
+.g-overlay{opacity:1;background:linear-gradient(to top,rgba(7,30,30,.9) 0%,transparent 52%);padding:.65rem .75rem}
+.g-overlay h3{font-size:.8rem;margin-bottom:.04rem}
+.g-overlay p{font-size:.62rem;margin-bottom:.4rem}
+.g-zoom{width:26px;height:26px;font-size:.65rem}
+/* category tag always visible */
+.g-tag{font-size:.56rem;padding:.2rem .6rem;top:.6rem;left:.6rem}
+/* portfolio CTA strip — stack on mobile */
+.gallery .container>div:last-child{flex-direction:column;align-items:flex-start;padding:1.25rem 1rem;gap:.85rem;margin-top:1.5rem}
+.gallery .container>div:last-child p:last-of-type{font-size:.95rem}
+.gallery .container>div:last-child .btn-gold{width:100%;justify-content:center;border-radius:0;padding:.85rem 1.25rem;font-size:.72rem}
+/* lightbox mobile */
+.g-lightbox{padding:.75rem}
+.g-lb-inner img{border-radius:8px;max-height:72vh}
+.g-lb-close{top:-.5rem;right:-.5rem;width:36px;height:36px;font-size:.9rem}
+.g-lb-prev{left:0}.g-lb-next{right:0}
+.g-lb-caption h3{font-size:1rem}
+.g-lb-caption p{font-size:.62rem}
 
 /* SERVICES - editorial numbered list */
 .services{padding:3.5rem 0}
@@ -717,17 +768,68 @@ body{padding-bottom:5rem}
       <a href="portfolio.html" class="btn-ghost">View Full Portfolio &rarr;</a>
     </div>
     <div class="gallery-grid">
-      <div class="g-item g-s6"><img src="assets/images/kb.jpeg" alt="Knotless Braids"><div class="g-overlay"><h3>Knotless Braids</h3><p>7 hrs &middot; Pain-free</p></div></div>
-      <div class="g-item g-s3"><img src="assets/images/senegal.jfif" alt="Senegalese Twists"><div class="g-overlay"><h3>Senegalese Twists</h3><p>6 hrs &middot; Medium length</p></div></div>
-      <div class="g-item g-s3"><img src="assets/images/natural.jfif" alt="Natural Styling"><div class="g-overlay"><h3>Natural Twist-Out</h3><p>2 hrs &middot; Defined curls</p></div></div>
-      <div class="g-item g-s4"><img src="assets/images/passion.jfif" alt="Passion Twists"><div class="g-overlay"><h3>Passion Twists</h3><p>8 hrs &middot; Bohemian</p></div></div>
-      <div class="g-item g-s4"><img src="assets/images/marley.jfif" alt="Marley Twists"><div class="g-overlay"><h3>Marley Twists</h3><p>6 hrs &middot; Textured beauty</p></div></div>
-      <div class="g-item g-s4"><img src="assets/images/bridal.jfif" alt="Bridal Updo"><div class="g-overlay"><h3>Bridal Updo</h3><p>4 hrs &middot; Special occasion</p></div></div>
-      <div class="g-item g-s8"><img src="assets/images/bbj.jpeg" alt="Jumbo Box Braids"><div class="g-overlay"><h3>Jumbo Box Braids</h3><p>7 hrs &middot; Pain-free</p></div></div>
-      <div class="g-item g-s4"><img src="assets/images/micro.jfif" alt="Micro Locs"><div class="g-overlay"><h3>Micro Locs</h3><p>14 hrs &middot; Detailed</p></div></div>
+      <div class="g-item g-s6">
+        <span class="g-tag">Braids</span>
+        <img src="assets/images/kb.jpeg" alt="Knotless Braids">
+        <div class="g-overlay"><h3>Knotless Braids</h3><p>7 hrs &middot; Pain-free</p><button class="g-zoom"><i class="fas fa-expand"></i></button></div>
+      </div>
+      <div class="g-item g-s3">
+        <span class="g-tag">Twists</span>
+        <img src="assets/images/senegal.jfif" alt="Senegalese Twists">
+        <div class="g-overlay"><h3>Senegalese Twists</h3><p>6 hrs &middot; Medium</p><button class="g-zoom"><i class="fas fa-expand"></i></button></div>
+      </div>
+      <div class="g-item g-s3">
+        <span class="g-tag">Natural</span>
+        <img src="assets/images/natural.jfif" alt="Natural Styling">
+        <div class="g-overlay"><h3>Natural Twist-Out</h3><p>2 hrs &middot; Defined curls</p><button class="g-zoom"><i class="fas fa-expand"></i></button></div>
+      </div>
+      <div class="g-item g-s4">
+        <span class="g-tag">Twists</span>
+        <img src="assets/images/passion.jfif" alt="Passion Twists">
+        <div class="g-overlay"><h3>Passion Twists</h3><p>8 hrs &middot; Bohemian</p><button class="g-zoom"><i class="fas fa-expand"></i></button></div>
+      </div>
+      <div class="g-item g-s4">
+        <span class="g-tag">Twists</span>
+        <img src="assets/images/marley.jfif" alt="Marley Twists">
+        <div class="g-overlay"><h3>Marley Twists</h3><p>6 hrs &middot; Textured</p><button class="g-zoom"><i class="fas fa-expand"></i></button></div>
+      </div>
+      <div class="g-item g-s4">
+        <span class="g-tag">Special</span>
+        <img src="assets/images/bridal.jfif" alt="Bridal Updo">
+        <div class="g-overlay"><h3>Bridal Updo</h3><p>4 hrs &middot; Special occasion</p><button class="g-zoom"><i class="fas fa-expand"></i></button></div>
+      </div>
+      <div class="g-item g-s8">
+        <span class="g-tag">Braids</span>
+        <img src="assets/images/bbj.jpeg" alt="Jumbo Box Braids">
+        <div class="g-overlay"><h3>Jumbo Box Braids</h3><p>7 hrs &middot; Pain-free</p><button class="g-zoom"><i class="fas fa-expand"></i></button></div>
+      </div>
+      <div class="g-item g-s4">
+        <span class="g-tag">Locs</span>
+        <img src="assets/images/micro.jfif" alt="Micro Locs">
+        <div class="g-overlay"><h3>Micro Locs</h3><p>14 hrs &middot; Detailed</p><button class="g-zoom"><i class="fas fa-expand"></i></button></div>
+      </div>
+    </div>
+    <!-- portfolio CTA strip -->
+    <div style="margin-top:2.5rem;padding:1.75rem 2rem;background:var(--black-card);border:1px solid rgba(212,169,106,.12);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+      <div>
+        <p style="font-family:var(--font-display);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.25rem">12+ Styles</p>
+        <p style="font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:var(--white)">See every transformation in the full portfolio</p>
+      </div>
+      <a href="portfolio.html" class="btn-gold" style="flex-shrink:0"><i class="fas fa-images"></i> Full Portfolio</a>
     </div>
   </div>
 </section>
+
+<!-- HOME LIGHTBOX -->
+<div class="g-lightbox" id="gLightbox">
+  <div class="g-lb-inner">
+    <button class="g-lb-close" id="gLbClose"><i class="fas fa-times"></i></button>
+    <button class="g-lb-nav g-lb-prev" id="gLbPrev"><i class="fas fa-chevron-left"></i></button>
+    <button class="g-lb-nav g-lb-next" id="gLbNext"><i class="fas fa-chevron-right"></i></button>
+    <img src="" alt="" id="gLbImg">
+    <div class="g-lb-caption"><h3 id="gLbTitle"></h3><p id="gLbMeta"></p></div>
+  </div>
+</div>
 
 <!-- SERVICES -->
 <section class="services" id="services">
@@ -958,7 +1060,51 @@ window.addEventListener('scroll', function(){
   nls.forEach(function(a){ a.classList.toggle('active', a.getAttribute('href') === '#' + c); });
 }, {passive:true});
 
-/* ── FADE IN ON SCROLL ── */
+/* ── HOME GALLERY LIGHTBOX ── */
+var gLightbox = document.getElementById('gLightbox');
+var gLbImg    = document.getElementById('gLbImg');
+var gLbTitle  = document.getElementById('gLbTitle');
+var gLbMeta   = document.getElementById('gLbMeta');
+var gLbIdx    = 0;
+var gItems    = document.querySelectorAll('.gallery .g-item');
+
+function gOpen(item){
+  var img = item.querySelector('img');
+  var h3  = item.querySelector('.g-overlay h3');
+  var p   = item.querySelector('.g-overlay p');
+  gLbImg.src = img ? img.src : '';
+  gLbImg.alt = img ? img.alt : '';
+  gLbTitle.textContent = h3 ? h3.textContent : '';
+  gLbMeta.textContent  = p  ? p.textContent  : '';
+  gLbIdx = Array.from(gItems).indexOf(item);
+  gLightbox.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function gClose(){
+  gLightbox.classList.remove('open');
+  document.body.style.overflow = '';
+}
+function gNav(dir){
+  gLbIdx = (gLbIdx + dir + gItems.length) % gItems.length;
+  gOpen(gItems[gLbIdx]);
+}
+
+gItems.forEach(function(item){
+  item.addEventListener('click', function(){ gOpen(item); });
+});
+var gCloseBtn = document.getElementById('gLbClose');
+var gPrevBtn  = document.getElementById('gLbPrev');
+var gNextBtn  = document.getElementById('gLbNext');
+if(gCloseBtn) gCloseBtn.addEventListener('click', gClose);
+if(gPrevBtn)  gPrevBtn.addEventListener('click',  function(e){ e.stopPropagation(); gNav(-1); });
+if(gNextBtn)  gNextBtn.addEventListener('click',  function(e){ e.stopPropagation(); gNav(1); });
+if(gLightbox) gLightbox.addEventListener('click', function(e){ if(e.target===gLightbox) gClose(); });
+document.addEventListener('keydown', function(e){
+  if(!gLightbox || !gLightbox.classList.contains('open')) return;
+  if(e.key==='Escape')      gClose();
+  if(e.key==='ArrowLeft')   gNav(-1);
+  if(e.key==='ArrowRight')  gNav(1);
+});
 var els = document.querySelectorAll('.svc-card,.why-card,.testi-card,.val-chip,.skill-row,.s-badge,.g-item');
 els.forEach(function(el){
   el.style.opacity = '0';
