@@ -125,7 +125,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .svc-card p{font-size:1.05rem;color:var(--white-dim);line-height:1.7;margin-bottom:1.5rem}
 .svc-features{list-style:none;margin-bottom:1.75rem}
 .svc-features li{font-size:.95rem;color:rgba(247,243,236,.5);padding:.3rem 0 .3rem 1.25rem;position:relative}
-.svc-features li::before{content:'&#8212;';position:absolute;left:0;color:var(--gold);font-size:.7rem}
+.svc-features li::before{content:'—';position:absolute;left:0;color:var(--gold);font-size:.7rem}
 .svc-link{font-family:var(--font-display);font-size:.75rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:.5rem;transition:gap .3s ease}
 .svc-link:hover{gap:1rem}
 
@@ -266,7 +266,7 @@ body{padding-bottom:5rem}
   background:#071E1E;display:flex;flex-direction:column;
   justify-content:space-between;padding:5.5rem 1.1rem 2rem;min-height:100svh;
 }
-.hero-dark h1{font-family:'Syne',sans-serif;font-size:clamp(2.6rem,10.5vw,4.2rem);font-weight:800;line-height:.9;letter-spacing:-.04em;margin-bottom:.7rem}
+.hero-dark h1{font-family:'Syne',sans-serif;font-size:clamp(2rem,8.5vw,3.2rem);font-weight:800;line-height:.92;letter-spacing:-.035em;margin-bottom:.7rem}
 .hero-dark h1 .l1{display:block;color:#F5EDD8}
 .hero-dark h1 .l2{display:block;background:linear-gradient(135deg,#B8894E 0%,#D4A96A 40%,#E2C08A 60%,#D4A96A 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-style:italic}
 .hero-dark .sub{font-family:'Cormorant Garamond',serif;font-size:.9rem;color:rgba(245,237,216,.6);font-style:italic;line-height:1.6;margin-bottom:1.25rem}
@@ -414,7 +414,7 @@ body{padding-bottom:5rem}
 /* CTA */
 .cta{padding:4rem 0}
 .cta-inner{text-align:left;max-width:100%}
-.cta-inner .section-title{font-size:clamp(1.85rem,10vw,3rem);margin-bottom:.9rem}
+.cta-inner .section-title{font-size:clamp(1.55rem,8vw,2.4rem);margin-bottom:.9rem}
 .cta-inner p{font-size:.97rem;margin-bottom:1.75rem}
 .cta-btns{flex-direction:column;gap:.65rem;align-items:stretch}
 .btn-gold,.btn-whatsapp{padding:.9rem 1.25rem;font-size:.75rem;border-radius:0;justify-content:center}
@@ -460,7 +460,9 @@ body{padding-bottom:5rem}
 }
 
 @media(max-width:380px){
-.hero-dark h1{font-size:clamp(2.2rem,12vw,3rem)}
+.hero-dark h1{font-size:clamp(1.75rem,8vw,2.4rem)}
+.hero-dark .sub{font-size:.78rem}
+.cta-inner .section-title{font-size:clamp(1.4rem,7.5vw,2rem)}
 }
 </style>
 </head>
@@ -599,7 +601,7 @@ body{padding-bottom:5rem}
       <p style="color:var(--white-dim);font-size:1.15rem;font-style:italic;margin-bottom:0">From intricate braids to stunning accessories, we bring artistry to every strand</p>
     </div>
     <div class="services-grid">
-      <div class="svc-card" data-num="01"><div class="svc-icon"><i class="fas fa-sparkles"></i></div><h3>Box Braids</h3><p>Classic protective styling with endless customization. Perfect for all occasions.</p><ul class="svc-features"><li>Jumbo, medium, or small sizes</li><li>Color options available</li><li>4&ndash;10 hours &middot; Lasts 6&ndash;8 weeks</li></ul><a href="pricing.html" class="svc-link">View Pricing <i class="fas fa-arrow-right"></i></a></div>
+      <div class="svc-card" data-num="01"><div class="svc-icon"><i class="fas fa-magic"></i></div><h3>Box Braids</h3><p>Classic protective styling with endless customization. Perfect for all occasions.</p><ul class="svc-features"><li>Jumbo, medium, or small sizes</li><li>Color options available</li><li>4&ndash;10 hours &middot; Lasts 6&ndash;8 weeks</li></ul><a href="pricing.html" class="svc-link">View Pricing <i class="fas fa-arrow-right"></i></a></div>
       <div class="svc-card" data-num="02"><div class="svc-icon"><i class="fas fa-crown"></i></div><h3>Cornrows</h3><p>Intricate designs and beautiful patterns that showcase your unique style.</p><ul class="svc-features"><li>Custom patterns &amp; designs</li><li>Feed-in technique</li><li>2&ndash;5 hours</li></ul><a href="pricing.html" class="svc-link">View Pricing <i class="fas fa-arrow-right"></i></a></div>
       <div class="svc-card" data-num="03"><div class="svc-icon"><i class="fas fa-leaf"></i></div><h3>Twists</h3><p>Natural, elegant styles that promote healthy hair growth and versatility.</p><ul class="svc-features"><li>Senegalese, Marley, Passion twists</li><li>3&ndash;7 hours</li></ul><a href="pricing.html" class="svc-link">View Pricing <i class="fas fa-arrow-right"></i></a></div>
       <div class="svc-card" data-num="04"><div class="svc-icon"><i class="fas fa-gem"></i></div><h3>Weaves &amp; Extensions</h3><p>Premium quality extensions for volume, length, and endless styling possibilities.</p><ul class="svc-features"><li>Human hair &amp; synthetic options</li><li>Sew-in, quick weaves, frontal installs</li><li>3&ndash;6 hours</li></ul><a href="pricing.html" class="svc-link">View Pricing <i class="fas fa-arrow-right"></i></a></div>
@@ -735,7 +737,7 @@ body{padding-bottom:5rem}
       </div>
       <div class="footer-col"><h4>Navigate</h4><ul><li><a href="#story">My Story</a></li><li><a href="#gallery">Portfolio</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="#about">About</a></li></ul></div>
       <div class="footer-col"><h4>Services</h4><ul><li><a href="#services">Box Braids</a></li><li><a href="#services">Cornrows</a></li><li><a href="#services">Twists &amp; Locs</a></li><li><a href="#services">Natural Hair</a></li></ul></div>
-      <div class="footer-col"><h4>Contact</h4><ul><li><i class="fas fa-phone"></i> +(254) 725-351-803</li><li><i class="fas fa-envelope"></i> <a href="mailto:hairbyakose@gmail.com">hairbyakose@gmail.com</a></li><li><i class="fas fa-map-marker-alt"></i> @ your place of comfort</li><li><i class="fas fa-clock"></i> Mon&ndash;Sat: 9AM &ndash; 8PM</li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><i class="fas fa-phone"></i> +(254) 725-351-803</li><li><i class="fas fa-envelope"></i> <a href="/cdn-cgi/l/email-protection#b6ded7dfc4d4cfd7ddd9c5d3f6d1dbd7dfda98d5d9db"><span class="__cf_email__" data-cfemail="fc949d958e9e859d97938f99bc9b919d9590d29f9391">[email&#160;protected]</span></a></li><li><i class="fas fa-map-marker-alt"></i> @ your place of comfort</li><li><i class="fas fa-clock"></i> Mon&ndash;Sat: 9AM &ndash; 8PM</li></ul></div>
     </div>
     <div class="footer-bottom">
       <span>&copy; 2026 Hair by Akose. All rights reserved.</span>
@@ -751,7 +753,7 @@ body{padding-bottom:5rem}
   <a href="contact.html"><i class="fas fa-calendar-check"></i><span>Book</span></a>
 </nav>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 const bar=document.getElementById('scroll-progress');
 window.addEventListener('scroll',()=>{if(bar){const p=window.scrollY/(document.body.scrollHeight-window.innerHeight)*100;bar.style.width=Math.min(p,100)+'%'}},{passive:true});
 const nav=document.getElementById('mainNav');
@@ -764,8 +766,4 @@ const secs=document.querySelectorAll('section[id]'),nls=document.querySelectorAl
 window.addEventListener('scroll',()=>{let c='';secs.forEach(s=>{if(window.scrollY>=s.offsetTop-140)c=s.id});nls.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+c))},{passive:true});
 const els=document.querySelectorAll('.svc-card,.why-card,.testi-card,.val-chip,.skill-row,.s-badge,.g-item');
 els.forEach(el=>{el.style.opacity='0';el.style.transform='translateY(14px)';el.style.transition='opacity .5s ease,transform .5s ease'});
-const ob=new IntersectionObserver(ents=>{ents.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>{e.target.style.opacity='1';e.target.style.transform='translateY(0)'},i*40);ob.unobserve(e.target)}})},{threshold:0.1});
-els.forEach(el=>ob.observe(el));
-</script>
-</body>
-</html>
+const ob=new IntersectionObser
