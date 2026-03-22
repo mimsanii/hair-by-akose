@@ -10,925 +10,699 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
 :root{
-  --black:#071E1E;--black-soft:#0A2828;--black-card:#0D3030;--black-edge:#113838;
-  --teal:#0F3D3E;--teal-light:#1A6466;
-  --gold:#D4A96A;--gold-light:#E2C08A;--gold-dark:#B8894E;
-  --white:#F5EDD8;--white-dim:rgba(245,237,216,0.6);
-  --grad-gold:linear-gradient(135deg,#B8894E 0%,#D4A96A 40%,#E2C08A 60%,#D4A96A 100%);
-  --font-display:'Syne',sans-serif;--font-body:'Cormorant Garamond',serif;
+  --blk:#071E1E;--blk2:#0A2828;--blk3:#0D3030;--blk4:#113838;
+  --teal:#0F3D3E;
+  --gold:#D4A96A;--goldl:#E2C08A;--goldd:#B8894E;
+  --wh:#F5EDD8;--whd:rgba(245,237,216,0.6);
+  --gg:linear-gradient(135deg,#B8894E 0%,#D4A96A 40%,#E2C08A 60%,#D4A96A 100%);
+  --fd:"Syne",sans-serif;--fb:"Cormorant Garamond",serif;
   --ease:cubic-bezier(0.16,1,0.3,1);
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;font-size:16px}
-body{font-family:var(--font-body);background:var(--black);color:var(--white);line-height:1.75;overflow-x:hidden}
-a{text-decoration:none;color:inherit;transition:all .3s ease}
-body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none!important;z-index:9999;opacity:.22}
+html{scroll-behavior:smooth}
+body{font-family:var(--fb);background:var(--blk);color:var(--wh);overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+button{cursor:pointer;border:none;background:none;font-family:inherit}
+body::before{content:"";position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;opacity:.2}
+#prog{position:fixed;top:0;left:0;height:2px;background:var(--gg);z-index:10000;width:0;pointer-events:none}
 
 /* NAV */
-.nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.5rem 0;transition:all .4s ease}
-.nav.scrolled{background:rgba(7,30,30,.97);backdrop-filter:blur(20px);border-bottom:1px solid rgba(212,169,106,.2);padding:1rem 0}
-.nav-inner{max-width:1400px;margin:0 auto;padding:0 2rem;display:flex;justify-content:space-between;align-items:center}
-.nav-logo img{height:55px;width:auto;object-fit:contain}
-.nav-links{display:flex;list-style:none;gap:2.5rem;align-items:center}
-.nav-links a{font-family:var(--font-display);font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--white-dim)}
-.nav-links a:hover{color:var(--gold)}
-.nav-links .nav-cta{padding:.6rem 1.5rem;border:1px solid var(--gold);color:var(--gold)!important;border-radius:100px;background:rgba(212,169,106,.1)}
-.nav-links .nav-cta:hover{background:var(--gold);color:var(--black)!important}
-.hamburger{display:none;flex-direction:column;gap:6px;cursor:pointer;z-index:1100;padding:.55rem .7rem;background:rgba(245,237,216,.06);border:1px solid rgba(212,169,106,.25);border-radius:10px;backdrop-filter:blur(8px);transition:background .25s,border-color .25s}
-.hamburger:hover{background:rgba(212,169,106,.12);border-color:rgba(212,169,106,.5)}
-.hamburger span{display:block;height:1.5px;background:var(--white);border-radius:2px;transition:all .38s var(--ease)}
-.hamburger span:nth-child(1){width:22px}
-.hamburger span:nth-child(2){width:16px;margin-left:auto;background:var(--gold)}
-.hamburger span:nth-child(3){width:22px}
-.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(0,5.5px);width:20px}
-.hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
-.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(0,-5.5px);width:20px}
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.5rem 0;transition:all .4s}
+.nav.s{background:rgba(7,30,30,.97);backdrop-filter:blur(20px);border-bottom:1px solid rgba(212,169,106,.18);padding:1rem 0}
+.ni{max-width:1400px;margin:0 auto;padding:0 2rem;display:flex;justify-content:space-between;align-items:center}
+.nav-logo img{height:55px;object-fit:contain}
+.nl{display:flex;list-style:none;gap:2.5rem;align-items:center}
+.nl a{font-family:var(--fd);font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--whd);transition:color .3s}
+.nl a:hover{color:var(--gold)}
+.nl .nc{padding:.6rem 1.5rem;border:1px solid var(--gold);color:var(--gold)!important;border-radius:100px;background:rgba(212,169,106,.08)}
+.nl .nc:hover{background:var(--gold);color:var(--blk)!important}
+.hb{display:none;flex-direction:column;gap:6px;cursor:pointer;z-index:1100;padding:.55rem .7rem;background:rgba(245,237,216,.06);border:1px solid rgba(212,169,106,.25);border-radius:10px}
+.hb span{display:block;height:1.5px;background:var(--wh);border-radius:2px;transition:all .38s var(--ease)}
+.hb span:nth-child(1){width:22px}
+.hb span:nth-child(2){width:16px;margin-left:auto;background:var(--gold)}
+.hb span:nth-child(3){width:22px}
+.hb.open span:nth-child(1){transform:rotate(45deg) translate(0,5.5px);width:20px}
+.hb.open span:nth-child(2){opacity:0}
+.hb.open span:nth-child(3){transform:rotate(-45deg) translate(0,-5.5px);width:20px}
 
 /* SLIDE PANEL */
-.mob-menu-backdrop{display:none;position:fixed;inset:0;background:rgba(7,30,30,.55);backdrop-filter:blur(3px);z-index:1070;opacity:0;transition:opacity .35s ease}
-.mob-menu-backdrop.open{display:block;opacity:1}
-.mob-menu{display:flex;flex-direction:column;justify-content:center;position:fixed;top:0;right:0;bottom:0;width:68%;max-width:300px;background:rgba(7,30,30,.72);backdrop-filter:blur(22px) saturate(1.6);-webkit-backdrop-filter:blur(22px) saturate(1.6);border-left:1px solid rgba(212,169,106,.22);z-index:1080;padding:5.5rem 1.6rem 4rem 1.5rem;transform:translateX(100%);transition:transform .4s var(--ease);pointer-events:none;overflow-y:auto}
-.mob-menu.open{transform:translateX(0);pointer-events:auto}
-.mob-menu-close{position:absolute;top:1rem;right:1rem;width:34px;height:34px;background:rgba(212,169,106,.08);border:1px solid rgba(212,169,106,.22);border-radius:6px;display:flex;align-items:center;justify-content:center;color:rgba(212,169,106,.7);font-size:.85rem;cursor:pointer;transition:all .2s}
-.mob-menu-close:hover{background:rgba(212,169,106,.2);color:var(--gold)}
-.mob-menu-brand{font-family:var(--font-body);font-size:1.1rem;font-weight:600;font-style:italic;color:var(--gold);margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid rgba(212,169,106,.25)}
-.mob-menu-links{display:flex;flex-direction:column;width:100%}
-.mob-menu-links::before{content:'';display:block;height:1px;background:linear-gradient(90deg,rgba(212,169,106,.35),rgba(212,169,106,.08))}
-.mob-menu-links a{font-family:var(--font-body);font-size:1.6rem;font-weight:600;color:rgba(245,237,216,.78);padding:.75rem 0;border-bottom:1px solid;border-image:linear-gradient(90deg,rgba(212,169,106,.35),rgba(212,169,106,.06)) 1;display:flex;align-items:center;justify-content:space-between;transition:color .22s,letter-spacing .22s}
-.mob-menu-links a::after{content:'↗';font-family:var(--font-display);font-size:.7rem;color:rgba(212,169,106,.3);transition:color .22s,transform .22s;flex-shrink:0;margin-left:.5rem}
-.mob-menu-links a:hover::after{color:var(--gold);transform:translate(3px,-3px)}
-.mob-menu-links a:hover{color:#F5EDD8;letter-spacing:.04em}
-.mob-menu-cta{margin-top:1.75rem;display:flex;align-items:center;justify-content:center;gap:.5rem;padding:.85rem 1.2rem;background:var(--grad-gold);color:#071E1E;font-family:var(--font-display);font-size:.68rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
-.mob-menu-socials{display:flex;gap:.6rem;margin-top:1.5rem}
-.mob-menu-socials a{width:32px;height:32px;background:rgba(245,237,216,.04);border:1px solid rgba(212,169,106,.18);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:.82rem;color:rgba(245,237,216,.4);transition:all .2s}
-.mob-menu-socials a:hover{background:rgba(212,169,106,.12);color:var(--gold);border-color:rgba(212,169,106,.5)}
-.mob-menu-meta{margin-top:1.1rem;font-family:var(--font-body);font-style:italic;font-size:.82rem;color:rgba(245,237,216,.25);line-height:1.8}
+.mbd{display:none;position:fixed;inset:0;background:rgba(7,30,30,.55);backdrop-filter:blur(3px);z-index:1070;opacity:0;transition:opacity .35s}
+.mbd.open{display:block;opacity:1}
+.mm{display:flex;flex-direction:column;justify-content:center;position:fixed;top:0;right:0;bottom:0;width:68%;max-width:300px;background:rgba(7,30,30,.75);backdrop-filter:blur(22px);border-left:1px solid rgba(212,169,106,.22);z-index:1080;padding:5.5rem 1.6rem 4rem 1.5rem;transform:translateX(100%);transition:transform .4s var(--ease);pointer-events:none;overflow-y:auto}
+.mm.open{transform:translateX(0);pointer-events:auto}
+.mmc{position:absolute;top:1rem;right:1rem;width:34px;height:34px;background:rgba(212,169,106,.08);border:1px solid rgba(212,169,106,.22);border-radius:6px;display:flex;align-items:center;justify-content:center;color:rgba(212,169,106,.7);font-size:.85rem}
+.mmb{font-family:var(--fb);font-size:1.1rem;font-weight:600;font-style:italic;color:var(--gold);margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid rgba(212,169,106,.25)}
+.mml{display:flex;flex-direction:column}
+.mml a{font-family:var(--fb);font-size:1.6rem;font-weight:600;color:rgba(245,237,216,.78);padding:.75rem 0;border-bottom:1px solid rgba(212,169,106,.12);transition:color .2s}
+.mml a:hover{color:var(--wh)}
+.mmcta{margin-top:1.75rem;display:flex;align-items:center;justify-content:center;gap:.5rem;padding:.85rem 1.2rem;background:var(--gg);color:#071E1E;font-family:var(--fd);font-size:.68rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+.mms{display:flex;gap:.6rem;margin-top:1.5rem}
+.mms a{width:32px;height:32px;background:rgba(245,237,216,.04);border:1px solid rgba(212,169,106,.18);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:.82rem;color:rgba(245,237,216,.4);transition:all .2s}
+.mms a:hover{background:rgba(212,169,106,.12);color:var(--gold)}
+.mmm{margin-top:1.1rem;font-family:var(--fb);font-style:italic;font-size:.82rem;color:rgba(245,237,216,.25);line-height:1.8}
 
-/* DESKTOP HERO — Bold Split */
-.page-hero{display:grid;grid-template-columns:38% 62%;min-height:55vh;padding-top:80px}
-.hero-left{background:var(--gold);position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:3rem 2.5rem}
-.hero-left-mono{position:absolute;top:-20px;left:-15px;font-family:var(--font-display);font-size:18rem;font-weight:900;color:rgba(7,30,30,.08);line-height:1;pointer-events:none;user-select:none}
-.hero-left-tag{font-family:var(--font-display);font-size:.65rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:rgba(7,30,30,.5);margin-bottom:1.5rem}
-.hero-left-brand{font-family:var(--font-body);font-size:2rem;font-weight:700;font-style:italic;color:var(--black);line-height:1.1}
-.hero-left-loc{margin-top:1.5rem;display:flex;align-items:center;gap:.5rem;font-family:var(--font-display);font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(7,30,30,.45)}
-.hero-left-loc::before{content:'';width:20px;height:1px;background:rgba(7,30,30,.3)}
-.hero-right{background:var(--black);display:flex;flex-direction:column;justify-content:center;padding:4rem 3.5rem;position:relative;overflow:hidden}
-.hero-right::before{content:'';position:absolute;top:0;right:0;width:300px;height:300px;border-radius:50%;border:1px solid rgba(212,169,106,.06);transform:translate(50%,-50%)}
-.hero-right::after{content:'';position:absolute;bottom:0;right:0;width:200px;height:200px;border-radius:50%;border:1px solid rgba(212,169,106,.04);transform:translate(30%,30%)}
-.hero-eyebrow{display:inline-flex;align-items:center;gap:.75rem;font-family:var(--font-display);font-size:.68rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;opacity:.8}
-.page-title{font-family:var(--font-display);font-size:clamp(2.5rem,5vw,5rem);font-weight:800;line-height:.95;letter-spacing:-.03em;margin-bottom:1.5rem;color:var(--white)}
-.page-title em{display:block;font-family:var(--font-body);font-style:italic;font-weight:300;font-size:clamp(2rem,4vw,4rem);background:var(--grad-gold);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero-sub{font-size:1.1rem;color:var(--white-dim);font-style:italic;margin-bottom:2rem;max-width:380px;line-height:1.6}
-.response-badge{display:inline-flex;align-items:center;gap:.6rem;padding:.55rem 1.2rem;background:rgba(212,169,106,.08);border:1px solid rgba(212,169,106,.2);font-family:var(--font-display);font-size:.65rem;font-weight:700;letter-spacing:.1em;color:var(--gold)}
-.response-badge::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--gold);animation:blink 1.5s ease-in-out infinite;flex-shrink:0}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+/* HERO */
+.hero{display:grid;grid-template-columns:38% 62%;min-height:100vh;padding-top:80px;overflow:hidden}
+.hl{background:var(--gold);position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:3rem 2.5rem}
+.hlm{position:absolute;top:-20px;left:-10px;font-family:var(--fd);font-size:clamp(12rem,22vw,22rem);font-weight:800;color:rgba(7,30,30,.1);line-height:1;pointer-events:none;user-select:none}
+.hlc{position:relative;z-index:1}
+.hlb{font-family:var(--fd);font-size:.7rem;font-weight:800;letter-spacing:.3em;text-transform:uppercase;color:rgba(7,30,30,.55);margin-bottom:2rem;writing-mode:vertical-rl;transform:rotate(180deg)}
+.hll{display:flex;align-items:center;gap:.5rem;font-family:var(--fd);font-size:.65rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(7,30,30,.5)}
+.hr{background:var(--blk);display:flex;flex-direction:column;justify-content:center;padding:4rem 4rem 4rem 5rem;position:relative;overflow:hidden}
+.hr::before{content:"";position:absolute;top:50%;right:-200px;width:500px;height:500px;border-radius:50%;border:1px solid rgba(212,169,106,.06);transform:translateY(-50%)}
+.hre{display:flex;align-items:center;gap:.75rem;font-family:var(--fd);font-size:.65rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;opacity:.8}
+.hre::before{content:"";width:30px;height:1px;background:var(--gold);opacity:.6}
+.hrt{font-family:var(--fd);font-size:clamp(3rem,6vw,5.5rem);font-weight:800;line-height:.95;letter-spacing:-.03em;color:var(--wh);margin-bottom:1.5rem}
+.hrt em{display:block;background:var(--gg);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-style:italic}
+.hrs{font-size:1.15rem;color:var(--whd);font-style:italic;line-height:1.6;max-width:420px;margin-bottom:2.5rem}
+.hrow{display:flex;gap:1rem;align-items:center;flex-wrap:wrap}
+.bg{display:inline-flex;align-items:center;gap:.6rem;padding:1rem 2.25rem;background:var(--gg);color:var(--blk);font-family:var(--fd);font-size:.78rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;border-radius:100px;transition:all .3s;box-shadow:0 8px 30px rgba(212,169,106,.25)}
+.bg:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(212,169,106,.4)}
+.bo{display:inline-flex;align-items:center;gap:.6rem;padding:1rem 2rem;background:transparent;color:var(--whd);font-family:var(--fd);font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(245,237,216,.2);border-radius:100px;transition:all .3s}
+.bo:hover{border-color:var(--gold);color:var(--gold)}
+.hst{display:flex;gap:3rem;margin-top:3.5rem;padding-top:2rem;border-top:1px solid rgba(212,169,106,.12)}
+.sn{font-family:var(--fd);font-size:2rem;font-weight:800;color:var(--wh);display:block}
+.sl{font-family:var(--fd);font-size:.6rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(245,237,216,.4)}
 
-/* DESKTOP BODY */
-.desktop-body{background:var(--black-soft);padding:6rem 0}
-.container{max-width:1200px;margin:0 auto;padding:0 2rem}
-.desktop-grid{display:grid;grid-template-columns:1fr 400px;gap:5rem;align-items:start}
+/* CONTACT SECTION */
+.cs{padding:7rem 0;background:var(--blk2)}
+.ct{width:100%;max-width:1400px;margin:0 auto;padding:0 2rem}
+.cg{display:grid;grid-template-columns:1fr 420px;gap:5rem;align-items:start}
+.cl h2{font-family:var(--fd);font-size:clamp(2rem,3.5vw,3rem);font-weight:800;color:var(--wh);margin-bottom:.4rem}
+.cl>p{font-size:1.1rem;color:var(--whd);font-style:italic;margin-bottom:3rem}
+.ey{display:inline-flex;align-items:center;gap:.75rem;font-family:var(--fd);font-size:.65rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem;opacity:.85}
+.ey::before,.ey::after{content:"";display:block;width:24px;height:1px;background:var(--gold);opacity:.55}
 
-/* EDITORIAL CONTACT ROWS */
-.editorial-block{margin-bottom:4rem}
-.section-label{display:flex;align-items:center;gap:.75rem;font-family:var(--font-display);font-size:.65rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:2rem}
-.section-label::after{content:'';flex:1;height:1px;background:rgba(212,169,106,.2)}
-.contact-rows{border-top:1px solid rgba(212,169,106,.1)}
-.contact-row{display:flex;align-items:center;gap:1.5rem;padding:1.4rem 0;border-bottom:1px solid rgba(212,169,106,.1);transition:all .3s;cursor:pointer;text-decoration:none;color:inherit}
-.contact-row:hover{padding-left:.75rem}
-.contact-row:hover .row-arrow{opacity:1;transform:translateX(0)}
-.row-icon{width:48px;height:48px;border-radius:10px;background:rgba(212,169,106,.06);border:1px solid rgba(212,169,106,.12);display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:var(--gold);flex-shrink:0;transition:all .3s}
-.contact-row:hover .row-icon{background:rgba(212,169,106,.12);border-color:rgba(212,169,106,.3)}
-.row-info{flex:1}
-.row-name{font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--white);margin-bottom:.15rem}
-.row-sub{font-size:.9rem;color:var(--white-dim)}
-.row-badge{font-family:var(--font-display);font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.25rem .7rem;background:rgba(37,211,102,.1);color:#25D366;border:1px solid rgba(37,211,102,.25)}
-.row-arrow{color:var(--gold);opacity:.3;transition:all .3s;transform:translateX(-6px)}
+/* editorial rows */
+.cms{margin-bottom:3.5rem}
+.cm{display:flex;align-items:center;gap:1.25rem;padding:1.35rem 0;border-bottom:1px solid rgba(212,169,106,.1);cursor:pointer;transition:all .3s;color:inherit;position:relative}
+.cm:first-child{border-top:1px solid rgba(212,169,106,.1)}
+.cm::after{content:"\2197";font-family:var(--fd);font-size:.85rem;color:rgba(212,169,106,.3);transition:all .3s;margin-left:auto;flex-shrink:0}
+.cm:hover::after{color:var(--gold);transform:translate(3px,-3px)}
+.cm:hover .cmn{color:var(--wh)}
+.cm:hover .cmi{background:rgba(212,169,106,.18);border-color:rgba(212,169,106,.5)}
+.cmi{width:52px;height:52px;border-radius:14px;background:rgba(212,169,106,.07);border:1px solid rgba(212,169,106,.15);display:flex;align-items:center;justify-content:center;font-size:1.25rem;color:var(--gold);flex-shrink:0;transition:all .3s}
+.cmin{flex:1}
+.cmn{font-family:var(--fd);font-size:1.1rem;font-weight:700;color:var(--whd);transition:color .3s;margin-bottom:.15rem}
+.cmd{font-size:.95rem;color:rgba(245,237,216,.35);font-style:italic}
+.cm.wa{background:rgba(37,211,102,.04);border:1px solid rgba(37,211,102,.18)!important;border-radius:12px;padding:1.35rem 1rem;margin-bottom:.25rem}
+.cm.wa .cmi{background:rgba(37,211,102,.1);border-color:rgba(37,211,102,.3);color:#25D366}
+.cm.wa .cmn{color:var(--wh)}
+.cm.wa::after{color:rgba(37,211,102,.45)}
+.cm.wa:hover::after{color:#25D366}
+.cm.wa:hover{background:rgba(37,211,102,.08)}
+.wab{display:inline-flex;align-items:center;gap:.35rem;padding:.2rem .65rem;background:rgba(37,211,102,.12);border:1px solid rgba(37,211,102,.25);border-radius:100px;font-family:var(--fd);font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#25D366;margin-top:.2rem}
+.wab::before{content:"";width:5px;height:5px;border-radius:50%;background:#25D366;animation:blink 1.5s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
 
-/* WA ROW special */
-.wa-contact-row{background:rgba(37,211,102,.05);border:1px solid rgba(37,211,102,.2) !important;border-bottom:1px solid rgba(37,211,102,.2)!important;border-radius:0;padding:1.4rem 1rem;margin:0 -1rem;cursor:pointer}
-.wa-contact-row .row-icon{background:rgba(37,211,102,.1);border-color:rgba(37,211,102,.25);color:#25D366}
-.wa-contact-row:hover{background:rgba(37,211,102,.08);padding-left:1.75rem}
-.wa-contact-row .row-arrow{color:#25D366}
+/* form */
+.fw{padding:2.5rem;background:var(--blk3);border:1px solid rgba(212,169,106,.1);border-radius:20px}
+.fw h3{font-family:var(--fd);font-size:1.4rem;font-weight:800;color:var(--wh);margin-bottom:.35rem}
+.fw>p{font-size:.95rem;color:var(--whd);font-style:italic;margin-bottom:2rem}
+.fg2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.fg{margin-bottom:1rem}
+.fg label{display:block;font-family:var(--fd);font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem;opacity:.85}
+.fi,.fs,.fta{width:100%;padding:.9rem 1.1rem;background:var(--blk2);border:1px solid rgba(212,169,106,.13);border-radius:10px;color:var(--wh);font-family:var(--fb);font-size:1rem;transition:all .3s;outline:none}
+.fi::placeholder,.fta::placeholder{color:rgba(245,237,216,.25)}
+.fi:focus,.fs:focus,.fta:focus{border-color:var(--gold);background:var(--blk4);box-shadow:0 0 0 3px rgba(212,169,106,.08)}
+.fs{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23D4A96A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;background-color:var(--blk2);cursor:pointer}
+.fs option{background:var(--blk3)}
+.fta{resize:vertical;min-height:100px;line-height:1.6}
+.bws{width:100%;padding:1.1rem;background:#25D366;color:white;font-family:var(--fd);font-size:.8rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;border-radius:12px;display:flex;align-items:center;justify-content:center;gap:.65rem;transition:all .3s;box-shadow:0 8px 25px rgba(37,211,102,.2);margin-top:.5rem}
+.bws:hover{background:#1DAD52;transform:translateY(-2px);box-shadow:0 14px 35px rgba(37,211,102,.35)}
+.fn{font-family:var(--fd);font-size:.62rem;letter-spacing:.08em;color:rgba(245,237,216,.25);text-align:center;margin-top:.75rem}
 
-/* COMPACT FORM */
-.form-block h2{font-family:var(--font-display);font-size:1.6rem;font-weight:800;color:var(--white);margin-bottom:.4rem}
-.form-block>p{font-size:1rem;color:var(--white-dim);font-style:italic;margin-bottom:2rem}
-.form-group{margin-bottom:1rem}
-.form-group label{display:block;font-family:var(--font-display);font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem}
-.form-input,.form-select,.form-textarea{width:100%;padding:.85rem 1rem;background:var(--black-card);border:1px solid rgba(212,169,106,.12);color:var(--white);font-family:var(--font-body);font-size:1rem;transition:all .3s;outline:none}
-.form-input::placeholder,.form-textarea::placeholder{color:rgba(245,237,216,.25)}
-.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--gold);background:var(--black-edge)}
-.form-select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23D4A96A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;background-color:var(--black-card);cursor:pointer}
-.form-select option{background:var(--black-card);color:var(--white)}
-.form-textarea{resize:vertical;min-height:90px;line-height:1.6}
-.form-row-2{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
-.btn-wa-submit{width:100%;padding:1.1rem;margin-top:.75rem;background:#25D366;color:white;font-family:var(--font-display);font-size:.8rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:.65rem;transition:all .3s}
-.btn-wa-submit:hover{background:#1DAD52;transform:translateY(-2px)}
-.btn-wa-submit:disabled{opacity:.5;cursor:not-allowed;transform:none}
-.form-note{font-family:var(--font-display);font-size:.6rem;letter-spacing:.08em;color:rgba(245,237,216,.25);text-align:center;margin-top:.75rem}
-
-/* SIDEBAR */
-.sidebar{display:flex;flex-direction:column;gap:1.25rem;position:sticky;top:100px}
-.info-card{padding:1.75rem;background:var(--black-card);border:1px solid rgba(212,169,106,.1)}
-.info-card-hd{display:flex;align-items:center;gap:.85rem;margin-bottom:1.25rem}
-.info-icon{width:38px;height:38px;background:rgba(212,169,106,.08);border:1px solid rgba(212,169,106,.15);display:flex;align-items:center;justify-content:center;font-size:.9rem;color:var(--gold);flex-shrink:0}
-.info-card h4{font-family:var(--font-display);font-size:.85rem;font-weight:700;color:var(--white)}
-.info-card ul{list-style:none}
-.info-card ul li{font-size:.9rem;color:var(--white-dim);padding:.35rem 0;border-bottom:1px solid rgba(212,169,106,.06);display:flex;gap:.5rem;align-items:baseline}
-.info-card ul li:last-child{border-bottom:none}
-.info-card ul li strong{color:var(--white);font-weight:600;min-width:80px;font-size:.85rem}
-.social-mini{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
-.social-btn{display:flex;align-items:center;gap:.5rem;padding:.65rem .9rem;background:var(--black-soft);border:1px solid rgba(212,169,106,.1);font-family:var(--font-display);font-size:.65rem;font-weight:700;letter-spacing:.06em;color:var(--white-dim);transition:all .3s}
-.social-btn:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px)}
+/* sidebar */
+.csb{display:flex;flex-direction:column;gap:1.5rem;position:sticky;top:100px}
+.ic{padding:1.75rem;background:var(--blk3);border:1px solid rgba(212,169,106,.1);border-radius:16px}
+.ich{display:flex;align-items:center;gap:.85rem;margin-bottom:1.35rem}
+.ii{width:40px;height:40px;border-radius:10px;background:rgba(212,169,106,.07);border:1px solid rgba(212,169,106,.14);display:flex;align-items:center;justify-content:center;font-size:.95rem;color:var(--gold);flex-shrink:0}
+.ic h4{font-family:var(--fd);font-size:.95rem;font-weight:700;color:var(--wh)}
+.ic ul{list-style:none}
+.ic ul li{font-size:.88rem;color:var(--whd);padding:.4rem 0;border-bottom:1px solid rgba(212,169,106,.06);display:flex;gap:.5rem;align-items:baseline}
+.ic ul li:last-child{border-bottom:none}
+.ic ul li strong{color:var(--wh);font-weight:600;min-width:80px}
+.sm{display:grid;grid-template-columns:1fr 1fr;gap:.65rem}
+.sb{display:flex;align-items:center;gap:.5rem;padding:.7rem .9rem;background:var(--blk2);border:1px solid rgba(212,169,106,.1);border-radius:9px;font-family:var(--fd);font-size:.65rem;font-weight:700;letter-spacing:.07em;color:var(--whd);transition:all .3s}
+.sb:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px)}
+.sb i{font-size:1rem}
 
 /* FAQ */
-.faq-section{padding:6rem 0;background:var(--black)}
-.faq-header{text-align:center;margin-bottom:3.5rem}
-.faq-header h2{font-family:var(--font-display);font-size:clamp(2rem,4vw,3rem);font-weight:800;color:var(--white)}
-.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(212,169,106,.08);border:1px solid rgba(212,169,106,.1);max-width:1000px;margin:0 auto}
-.faq-item{background:var(--black-card)}
-.faq-item.open{background:var(--black-edge)}
-.faq-question{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.5rem 1.75rem;cursor:pointer}
-.faq-question h3{font-family:var(--font-display);font-size:.95rem;font-weight:700;color:var(--white);line-height:1.4}
-.faq-item.open .faq-question h3{color:var(--gold-light)}
-.faq-toggle{width:28px;height:28px;min-width:28px;border-radius:50%;background:rgba(212,169,106,.08);border:1px solid rgba(212,169,106,.15);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:.7rem;transition:all .4s}
-.faq-item.open .faq-toggle{background:var(--grad-gold);color:var(--black);border-color:transparent;transform:rotate(45deg)}
-.faq-answer{max-height:0;overflow:hidden;transition:max-height .4s var(--ease)}
-.faq-answer p{padding:0 1.75rem 1.5rem;font-size:.95rem;color:var(--white-dim);line-height:1.8}
+.fqs{padding:7rem 0;background:var(--blk)}
+.fqh{text-align:center;margin-bottom:4rem}
+.fqh h2{font-family:var(--fd);font-size:clamp(2rem,4vw,3.5rem);font-weight:800;color:var(--wh)}
+.fqg{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(212,169,106,.07);border-radius:18px;overflow:hidden;border:1px solid rgba(212,169,106,.1);max-width:1100px;margin:0 auto}
+.fqi{background:var(--blk3);transition:background .3s}
+.fqi.open{background:var(--blk4)}
+.fqq{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.6rem 1.75rem;cursor:pointer}
+.fqq h3{font-family:var(--fd);font-size:.95rem;font-weight:700;color:var(--wh);line-height:1.4;transition:color .3s}
+.fqi.open .fqq h3{color:var(--goldl)}
+.fqt{width:30px;height:30px;min-width:30px;border-radius:50%;background:rgba(212,169,106,.07);border:1px solid rgba(212,169,106,.14);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:.7rem;transition:all .4s}
+.fqi.open .fqt{background:var(--gg);color:var(--blk);border-color:transparent;transform:rotate(45deg)}
+.fqa{max-height:0;overflow:hidden;transition:max-height .4s var(--ease)}
+.fqa p{padding:0 1.75rem 1.6rem;font-size:1rem;color:var(--whd);line-height:1.8}
 
 /* FOOTER */
-.footer{background:var(--black-soft);border-top:1px solid rgba(212,169,106,.15);padding:5rem 0 2.5rem}
-.footer-grid{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:3rem;margin-bottom:4rem}
-.footer-brand img{height:65px;width:auto;object-fit:contain;margin-bottom:1.25rem}
-.footer-brand p{font-size:.95rem;color:var(--white-dim);line-height:1.7;margin-bottom:1.5rem}
-.socials{display:flex;gap:.65rem}
-.socials a{width:40px;height:40px;border-radius:50%;background:var(--black-card);border:1px solid rgba(212,169,106,.15);display:flex;align-items:center;justify-content:center;font-size:.95rem;color:var(--white-dim);transition:all .3s}
-.socials a:hover{background:var(--gold);color:var(--black);border-color:var(--gold);transform:translateY(-3px)}
-.footer-col h4{font-family:var(--font-display);font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem}
-.footer-col ul{list-style:none}
-.footer-col ul li{margin-bottom:.65rem;font-size:.9rem;color:var(--white-dim)}
-.footer-col ul li i{color:var(--gold);width:14px;margin-right:.4rem;font-size:.8rem}
-.footer-col ul li a:hover{color:var(--gold)}
-.footer-bottom{border-top:1px solid rgba(212,169,106,.1);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:.8rem;color:rgba(245,237,216,.25);font-family:var(--font-display)}
+.ft{background:var(--blk2);border-top:1px solid rgba(212,169,106,.15);padding:5rem 0 2.5rem}
+.ftg{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:3rem;margin-bottom:4rem}
+.ftb img{height:65px;object-fit:contain;margin-bottom:1.2rem}
+.ftb p{font-size:.95rem;color:var(--whd);line-height:1.7;margin-bottom:1.4rem}
+.soc{display:flex;gap:.65rem}
+.soc a{width:40px;height:40px;border-radius:50%;background:var(--blk3);border:1px solid rgba(212,169,106,.13);display:flex;align-items:center;justify-content:center;font-size:.95rem;color:var(--whd);transition:all .3s}
+.soc a:hover{background:var(--gold);color:var(--blk);transform:translateY(-3px)}
+.fc h4{font-family:var(--fd);font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.35rem}
+.fc ul{list-style:none}
+.fc ul li{margin-bottom:.65rem;font-size:.9rem;color:var(--whd)}
+.fc ul li i{color:var(--gold);width:15px;margin-right:.45rem}
+.fc ul li a:hover{color:var(--gold)}
+.fbot{border-top:1px solid rgba(212,169,106,.1);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:.82rem;color:rgba(245,237,216,.3);font-family:var(--fd)}
 
-/* TABLET */
-@media(max-width:1024px){
-  .desktop-grid{grid-template-columns:1fr;gap:3rem}
-  .sidebar{position:static}
-  .faq-grid{grid-template-columns:1fr}
-  .footer-grid{grid-template-columns:1fr 1fr;gap:2rem}
-  .footer-brand{grid-column:span 2}
-  .page-hero{grid-template-columns:35% 65%}
+/* BOTTOM NAV */
+.bn{display:none;grid-template-columns:repeat(4,1fr);position:fixed;bottom:0;left:0;right:0;height:4.25rem;padding-bottom:env(safe-area-inset-bottom,0);background:rgba(7,30,30,.99);backdrop-filter:blur(20px);border-top:1px solid rgba(212,169,106,.18);z-index:1000}
+.bn a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.25rem;font-family:var(--fd);font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,237,216,.38);position:relative;transition:color .22s}
+.bn a i{font-size:1.1rem}
+.bn a.active,.bn a:hover{color:var(--gold)}
+.bn a.active::before{content:"";position:absolute;top:0;left:10%;right:10%;height:2.5px;background:var(--gg)}
+.bn a:last-child{background:var(--gg);color:#071E1E;font-weight:800}
+.bn a:last-child i{color:#071E1E}
+.bn a:last-child.active::before{display:none}
+
+/* CHAT SHEET */
+.cbd{display:none;position:fixed;inset:0;background:rgba(7,30,30,.65);backdrop-filter:blur(4px);z-index:2000;opacity:0;transition:opacity .35s}
+.cbd.open{display:block;opacity:1}
+.csh{position:fixed;bottom:0;left:0;right:0;height:92svh;background:var(--blk2);border-radius:22px 22px 0 0;z-index:2001;display:flex;flex-direction:column;transform:translateY(100%);transition:transform .45s var(--ease);overflow:hidden;box-shadow:0 -20px 60px rgba(0,0,0,.5)}
+.csh.open{transform:translateY(0)}
+.csh-handle{width:40px;height:4px;background:rgba(212,169,106,.25);border-radius:2px;margin:.75rem auto .25rem;flex-shrink:0}
+.chd{display:flex;align-items:center;gap:.75rem;padding:.75rem 1rem;background:var(--teal);border-bottom:1px solid rgba(212,169,106,.15);flex-shrink:0}
+.cha{width:40px;height:40px;border-radius:50%;background:var(--gg);display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:1rem;font-weight:800;color:var(--blk);border:2px solid rgba(212,169,106,.35);flex-shrink:0}
+.chdi{flex:1}
+.chdn{font-family:var(--fd);font-size:.88rem;font-weight:800;color:var(--wh)}
+.chds{font-family:var(--fd);font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:.3rem}
+.chds::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold);animation:blink 1.5s infinite}
+.chcl{width:32px;height:32px;border-radius:50%;background:rgba(212,169,106,.1);border:1px solid rgba(212,169,106,.2);display:flex;align-items:center;justify-content:center;font-size:.8rem;color:var(--gold);flex-shrink:0}
+.cbody{flex:1;overflow-y:auto;padding:.85rem 1rem 1rem;display:flex;flex-direction:column;gap:.6rem;background:var(--blk2);background-image:radial-gradient(rgba(26,100,102,.12) 1px,transparent 1px);background-size:20px 20px}
+.cbody::-webkit-scrollbar{width:3px}
+.cbody::-webkit-scrollbar-thumb{background:rgba(212,169,106,.2);border-radius:2px}
+.cdate{align-self:center;background:rgba(7,30,30,.75);border:1px solid rgba(212,169,106,.14);border-radius:100px;padding:.25rem .85rem;font-family:var(--fd);font-size:.55rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(212,169,106,.55)}
+.ba{display:flex;align-items:flex-end;gap:.45rem;max-width:88%;align-self:flex-start}
+.bav{width:26px;height:26px;border-radius:50%;background:var(--gg);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:.65rem;font-weight:800;color:var(--blk)}
+.ba .bb{background:var(--teal);border:1px solid rgba(212,169,106,.18);border-radius:16px 16px 16px 4px;padding:.65rem .9rem}
+.ba p,.bu p{font-family:var(--fb);font-size:.92rem;color:var(--wh);line-height:1.5}
+.bt{font-family:var(--fd);font-size:.5rem;color:rgba(212,169,106,.38);margin-top:.25rem;letter-spacing:.07em}
+.bu{max-width:80%;align-self:flex-end}
+.bu .bb{background:var(--blk3);border:1px solid rgba(212,169,106,.22);border-radius:16px 16px 4px 16px;padding:.65rem .9rem}
+.bu .bt{display:flex;align-items:center;justify-content:flex-end;gap:.2rem}
+.btk{color:var(--gold);font-size:.5rem}
+.tyw{display:flex;align-items:flex-end;gap:.45rem;align-self:flex-start}
+.tyd{display:flex;gap:4px;align-items:center;height:12px;padding:.65rem .9rem;background:var(--teal);border:1px solid rgba(212,169,106,.18);border-radius:16px 16px 16px 4px}
+.tyd span{width:5px;height:5px;border-radius:50%;background:rgba(212,169,106,.5);animation:td 1.2s ease-in-out infinite}
+.tyd span:nth-child(2){animation-delay:.2s}
+.tyd span:nth-child(3){animation-delay:.4s}
+@keyframes td{0%,80%,100%{transform:scale(1);opacity:.5}40%{transform:scale(1.3);opacity:1}}
+.chips{display:flex;flex-wrap:wrap;gap:.4rem;align-self:flex-start;max-width:92%}
+.chip{padding:.45rem .85rem;background:rgba(212,169,106,.07);border:1px solid rgba(212,169,106,.32);border-radius:100px;font-family:var(--fd);font-size:.65rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);cursor:pointer;transition:all .2s;user-select:none}
+.chip.sel{background:var(--gold);color:var(--blk);border-color:var(--gold);pointer-events:none}
+.sumc{background:var(--blk3);border:1px solid rgba(212,169,106,.2);border-radius:14px;padding:1rem;width:100%;align-self:flex-start}
+.sumc h4{font-family:var(--fd);font-size:.58rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem}
+.sr{display:flex;justify-content:space-between;align-items:baseline;padding:.3rem 0;border-bottom:1px solid rgba(212,169,106,.07)}
+.sr:last-child{border-bottom:none}
+.srl{color:rgba(245,237,216,.4);font-family:var(--fd);font-size:.57rem;letter-spacing:.1em;text-transform:uppercase}
+.srv{color:var(--wh);font-family:var(--fb);font-style:italic;font-size:.88rem}
+.cir{display:flex;align-items:center;gap:.55rem;padding:.7rem .9rem;background:var(--teal);border-top:1px solid rgba(212,169,106,.14);flex-shrink:0}
+.cinp{flex:1;padding:.65rem .95rem;background:var(--blk3);border:1px solid rgba(212,169,106,.18);border-radius:100px;color:var(--wh);font-family:var(--fb);font-size:.92rem;outline:none;transition:border-color .2s}
+.cinp:focus{border-color:var(--gold)}
+.cinp::placeholder{color:rgba(245,237,216,.28)}
+.cinp:disabled{opacity:.4}
+.csnd{width:38px;height:38px;border-radius:50%;background:var(--gg);color:var(--blk);font-size:.85rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .2s}
+.csnd:hover{transform:scale(1.08)}
+.csnd:disabled{opacity:.4;cursor:not-allowed;transform:none}
+.wafb{display:flex;align-items:center;justify-content:center;gap:.65rem;padding:1rem;background:#25D366;color:white;font-family:var(--fd);font-size:.75rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;flex-shrink:0;transition:background .2s}
+.wafb:hover{background:#1DAD52}
+.wafb:disabled{opacity:.5;cursor:not-allowed}
+.wafb i{font-size:1rem}
+.csucc{display:none;flex-direction:column;align-items:center;justify-content:center;flex:1;padding:2rem 1.5rem;text-align:center;gap:.85rem}
+.csucc.show{display:flex}
+.csucc .si{width:68px;height:68px;border-radius:50%;background:rgba(212,169,106,.1);border:1px solid rgba(212,169,106,.28);display:flex;align-items:center;justify-content:center;font-size:1.65rem;color:var(--gold)}
+.csucc h3{font-family:var(--fd);font-size:1.4rem;font-weight:800;color:var(--wh)}
+.csucc p{font-size:.92rem;color:var(--whd);font-style:italic;line-height:1.6}
+.wol{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 1.65rem;background:#25D366;color:white;font-family:var(--fd);font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;border-radius:100px;margin-top:.25rem}
+@keyframes fu{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.fu{animation:fu .5s var(--ease) both}
+
+/* RESPONSIVE */
+@media(max-width:1100px){
+  .cg{grid-template-columns:1fr;gap:4rem}
+  .csb{position:static}
+  .fqg{grid-template-columns:1fr}
+  .ftg{grid-template-columns:1fr 1fr;gap:2.5rem}
+  .ftb{grid-column:span 2}
 }
-
-/* ════════════════════════════════════
-   MOBILE ≤ 767px
-════════════════════════════════════ */
-.mob-page{display:none}
-
+@media(max-width:900px){
+  .hero{grid-template-columns:42% 58%}
+  .hr{padding:3rem 2.5rem}
+  .hst{gap:2rem}
+}
 @media(max-width:767px){
   html{font-size:15px}
-  body{background:var(--black-soft);overflow-x:hidden}
-
-  /* hide desktop */
-  .page-hero,.desktop-body,.faq-section,.footer{display:none!important}
-
-  /* show mobile */
-  .mob-page{display:block;min-height:100svh;padding-bottom:4.5rem}
-
-  /* NAV */
-  .nav{padding:.8rem 0;background:rgba(7,30,30,.97);backdrop-filter:blur(16px);border-bottom:1px solid rgba(212,169,106,.14)}
-  .nav-inner{padding:0 1rem}
+  body{padding-bottom:4.75rem}
+  .nav{padding:.85rem 0;background:rgba(7,30,30,.97);backdrop-filter:blur(16px);border-bottom:1px solid rgba(212,169,106,.14)}
+  .ni{padding:0 1rem}
   .nav-logo img{height:40px}
-  .nav-links{display:none!important}
-  .hamburger{display:flex}
-
-  /* BOLD SPLIT HERO — mobile */
-  .mob-hero{display:grid;grid-template-columns:38% 62%;height:170px;margin-top:56px}
-  .mob-hero-l{background:var(--gold);position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:.85rem .85rem}
-  .mob-hero-l-mono{position:absolute;top:-12px;left:-8px;font-family:var(--font-display);font-size:8rem;font-weight:900;color:rgba(7,30,30,.1);line-height:1;pointer-events:none}
-  .mob-hero-l-tag{font-family:var(--font-display);font-size:.45rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(7,30,30,.45);margin-bottom:.5rem;z-index:1;position:relative}
-  .mob-hero-l-brand{font-family:var(--font-body);font-size:1.1rem;font-weight:700;font-style:italic;color:var(--black);z-index:1;position:relative;line-height:1.1}
-  .mob-hero-r{background:var(--black);display:flex;flex-direction:column;justify-content:center;padding:.85rem 1rem;position:relative;overflow:hidden}
-  .mob-hero-r::after{content:'';position:absolute;top:-20px;right:-20px;width:80px;height:80px;border-radius:50%;border:1px solid rgba(212,169,106,.07)}
-  .mob-hero-title{font-family:var(--font-display);font-size:1.25rem;font-weight:800;color:var(--white);line-height:1.1;margin-bottom:.4rem}
-  .mob-hero-title em{display:block;font-family:var(--font-body);font-style:italic;font-weight:300;font-size:1.05rem;background:var(--grad-gold);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-  .mob-hero-badge{display:inline-flex;align-items:center;gap:.35rem;font-family:var(--font-display);font-size:.5rem;font-weight:700;letter-spacing:.08em;color:var(--gold);padding:.3rem .6rem;background:rgba(212,169,106,.08);border:1px solid rgba(212,169,106,.2)}
-  .mob-hero-badge::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--gold);animation:blink 1.5s ease-in-out infinite;flex-shrink:0}
-
-  /* EDITORIAL CONTACT SECTION */
-  .mob-contact-section{padding:1.25rem 1rem}
-  .mob-section-label{display:flex;align-items:center;gap:.6rem;font-family:var(--font-display);font-size:.58rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
-  .mob-section-label::after{content:'';flex:1;height:1px;background:rgba(212,169,106,.2)}
-
-  /* WA trigger row */
-  .mob-wa-trigger{display:flex;align-items:center;gap:.85rem;padding:1rem 1rem;background:rgba(37,211,102,.06);border:1px solid rgba(37,211,102,.25);margin-bottom:.75rem;cursor:pointer;transition:all .25s;-webkit-tap-highlight-color:transparent}
-  .mob-wa-trigger:active{background:rgba(37,211,102,.12)}
-  .mob-wa-icon{width:42px;height:42px;border-radius:10px;background:rgba(37,211,102,.12);border:1px solid rgba(37,211,102,.3);display:flex;align-items:center;justify-content:center;font-size:1.15rem;color:#25D366;flex-shrink:0}
-  .mob-wa-info{flex:1}
-  .mob-wa-name{font-family:var(--font-display);font-size:.82rem;font-weight:800;color:#25D366;margin-bottom:.1rem}
-  .mob-wa-sub{font-size:.78rem;color:rgba(245,237,216,.45)}
-  .mob-wa-pill{font-family:var(--font-display);font-size:.55rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.22rem .6rem;background:rgba(37,211,102,.12);color:#25D366;border:1px solid rgba(37,211,102,.25);white-space:nowrap}
-  .mob-wa-arrow{font-size:.85rem;color:rgba(37,211,102,.5)}
-
-  /* other rows */
-  .mob-other-rows{border-top:1px solid rgba(212,169,106,.1)}
-  .mob-contact-row{display:flex;align-items:center;gap:.85rem;padding:.9rem 0;border-bottom:1px solid rgba(212,169,106,.08);text-decoration:none;color:inherit;-webkit-tap-highlight-color:transparent}
-  .mob-row-icon{width:36px;height:36px;border-radius:8px;background:rgba(212,169,106,.06);border:1px solid rgba(212,169,106,.12);display:flex;align-items:center;justify-content:center;font-size:.9rem;color:var(--gold);flex-shrink:0}
-  .mob-row-name{font-family:var(--font-display);font-size:.8rem;font-weight:700;color:var(--white)}
-  .mob-row-sub{font-size:.75rem;color:var(--white-dim)}
-  .mob-row-arrow{font-size:.8rem;color:rgba(212,169,106,.35);margin-left:auto}
-
-  /* COMPACT FORM */
-  .mob-form-section{padding:1.25rem 1rem;background:var(--black)}
-  .mob-form-section h3{font-family:var(--font-display);font-size:1rem;font-weight:800;color:var(--white);margin-bottom:.25rem}
-  .mob-form-section>p{font-size:.88rem;color:var(--white-dim);font-style:italic;margin-bottom:1.25rem}
-  .mob-form-group{margin-bottom:.85rem}
-  .mob-form-group label{display:block;font-family:var(--font-display);font-size:.58rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem}
-  .mob-input,.mob-select,.mob-textarea{width:100%;padding:.75rem .9rem;background:var(--black-card);border:1px solid rgba(212,169,106,.12);color:var(--white);font-family:var(--font-body);font-size:.95rem;transition:border-color .25s;outline:none}
-  .mob-input::placeholder,.mob-textarea::placeholder{color:rgba(245,237,216,.25)}
-  .mob-input:focus,.mob-select:focus,.mob-textarea:focus{border-color:var(--gold)}
-  .mob-select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23D4A96A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;background-color:var(--black-card);cursor:pointer}
-  .mob-select option{background:var(--black-card);color:var(--white)}
-  .mob-textarea{resize:vertical;min-height:80px;line-height:1.6}
-  .mob-form-row{display:grid;grid-template-columns:1fr 1fr;gap:.65rem}
-  .mob-submit{width:100%;padding:1rem;margin-top:.5rem;background:#25D366;color:white;font-family:var(--font-display);font-size:.78rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:.6rem;transition:background .25s}
-  .mob-submit:active{background:#1DAD52}
-  .mob-form-note{font-family:var(--font-display);font-size:.58rem;letter-spacing:.06em;color:rgba(245,237,216,.2);text-align:center;margin-top:.65rem}
-
-  /* BOTTOM NAV */
-  .mob-bottom-nav{display:grid!important;grid-template-columns:repeat(4,1fr);position:fixed;bottom:0;left:0;right:0;height:4rem;padding-bottom:env(safe-area-inset-bottom,0);background:rgba(7,30,30,.99);backdrop-filter:blur(20px);border-top:1px solid rgba(212,169,106,.18);z-index:1000}
-  .mob-bottom-nav a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.2rem;font-family:var(--font-display);font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,237,216,.35);position:relative;transition:color .2s}
-  .mob-bottom-nav a i{font-size:1.05rem}
-  .mob-bottom-nav a.active,.mob-bottom-nav a:hover{color:var(--gold)}
-  .mob-bottom-nav a.active::before{content:'';position:absolute;top:0;left:10%;right:10%;height:2px;background:var(--grad-gold)}
-  .mob-bottom-nav a:last-child{background:var(--grad-gold);color:#071E1E;font-weight:800}
-  .mob-bottom-nav a:last-child i{color:#071E1E}
-
-  /* ── CHAT SHEET OVERLAY ── */
-  .chat-overlay{position:fixed;inset:0;z-index:2000;pointer-events:none;display:flex;flex-direction:column;justify-content:flex-end}
-  .chat-backdrop{position:absolute;inset:0;background:rgba(7,30,30,.6);backdrop-filter:blur(4px);opacity:0;transition:opacity .35s var(--ease);pointer-events:none}
-  .chat-sheet{position:relative;height:91svh;background:var(--black-soft);border-radius:20px 20px 0 0;border-top:1px solid rgba(212,169,106,.25);display:flex;flex-direction:column;transform:translateY(100%);transition:transform .45s var(--ease);will-change:transform}
-  /* open state */
-  .chat-overlay.open{pointer-events:auto}
-  .chat-overlay.open .chat-backdrop{opacity:1;pointer-events:auto}
-  .chat-overlay.open .chat-sheet{transform:translateY(0)}
-
-  .sheet-drag{display:flex;justify-content:center;padding:.65rem 0 .35rem;cursor:grab;flex-shrink:0}
-  .sheet-drag-bar{width:36px;height:4px;background:rgba(212,169,106,.3);border-radius:2px}
-
-  /* chat header */
-  .chat-head{display:flex;align-items:center;gap:.75rem;padding:.7rem 1rem .8rem;border-bottom:1px solid rgba(212,169,106,.12);background:var(--teal);flex-shrink:0}
-  .chat-ava{width:38px;height:38px;border-radius:50%;background:var(--grad-gold);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:.95rem;font-weight:800;color:var(--black);flex-shrink:0;border:2px solid rgba(212,169,106,.3)}
-  .chat-head-info{flex:1}
-  .chat-head-name{font-family:var(--font-display);font-size:.88rem;font-weight:800;color:var(--white)}
-  .chat-head-status{display:flex;align-items:center;gap:.35rem;font-family:var(--font-display);font-size:.55rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-top:.1rem}
-  .chat-head-status::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--gold);animation:blink 1.5s ease-in-out infinite}
-  .chat-close{width:30px;height:30px;border-radius:50%;background:rgba(212,169,106,.1);border:1px solid rgba(212,169,106,.2);display:flex;align-items:center;justify-content:center;font-size:.75rem;color:var(--gold);cursor:pointer;flex-shrink:0;transition:all .2s}
-  .chat-close:active{background:rgba(212,169,106,.2)}
-
-  /* chat body */
-  .chat-body{flex:1;overflow-y:auto;padding:.85rem 1rem;display:flex;flex-direction:column;gap:.6rem;background:var(--black-soft);background-image:radial-gradient(rgba(26,100,102,.12) 1px,transparent 1px);background-size:22px 22px}
-  .chat-body::-webkit-scrollbar{width:2px}
-  .chat-body::-webkit-scrollbar-thumb{background:rgba(212,169,106,.15)}
-
-  .chat-date{align-self:center;background:rgba(7,30,30,.8);backdrop-filter:blur(6px);border:1px solid rgba(212,169,106,.12);padding:.22rem .8rem;font-family:var(--font-display);font-size:.55rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(212,169,106,.5)}
-
-  /* akose bubble */
-  .b-akose{display:flex;align-items:flex-end;gap:.45rem;max-width:86%;align-self:flex-start}
-  .b-akose-ava{width:26px;height:26px;border-radius:50%;background:var(--grad-gold);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:.65rem;font-weight:800;color:var(--black)}
-  .b-akose-wrap .b-content{background:var(--teal);border:1px solid rgba(212,169,106,.15);border-radius:16px 16px 16px 3px;padding:.65rem .9rem}
-  .b-akose-wrap .b-content p{font-family:var(--font-body);font-size:.92rem;color:var(--white);line-height:1.5}
-  .b-time{font-family:var(--font-display);font-size:.5rem;color:rgba(212,169,106,.35);margin-top:.25rem;letter-spacing:.06em}
-
-  /* user bubble */
-  .b-user{max-width:80%;align-self:flex-end}
-  .b-user .b-content{background:var(--black-card);border:1px solid rgba(212,169,106,.22);border-radius:16px 16px 3px 16px;padding:.65rem .9rem}
-  .b-user .b-content p{font-family:var(--font-body);font-size:.92rem;color:var(--white);line-height:1.5}
-  .b-user .b-time{display:flex;align-items:center;justify-content:flex-end;gap:.2rem}
-  .b-tick{color:var(--gold);font-size:.5rem}
-
-  /* typing */
-  .b-typing .b-content{padding:.55rem .9rem}
-  .typing-dots{display:flex;gap:4px;align-items:center;height:14px}
-  .typing-dots span{width:5px;height:5px;border-radius:50%;background:rgba(212,169,106,.45);animation:tdot 1.2s ease-in-out infinite}
-  .typing-dots span:nth-child(2){animation-delay:.2s}
-  .typing-dots span:nth-child(3){animation-delay:.4s}
-  @keyframes tdot{0%,80%,100%{transform:scale(1);opacity:.45}40%{transform:scale(1.35);opacity:1}}
-
-  /* chips */
-  .qr-chips{display:flex;flex-wrap:wrap;gap:.4rem;align-self:flex-start;max-width:92%;padding:.1rem 0}
-  .qr-chip{padding:.45rem .85rem;background:rgba(212,169,106,.07);border:1px solid rgba(212,169,106,.32);font-family:var(--font-display);font-size:.62rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--gold);cursor:pointer;transition:all .18s;white-space:nowrap;-webkit-tap-highlight-color:transparent}
-  .qr-chip:active,.qr-chip.sel{background:var(--gold);color:var(--black);border-color:var(--gold)}
-  .qr-chip.sel{pointer-events:none}
-
-  /* summary card */
-  .summary-card{background:var(--black-card);border:1px solid rgba(212,169,106,.18);padding:1rem;width:100%}
-  .summary-card h4{font-family:var(--font-display);font-size:.58rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem}
-  .s-row{display:flex;justify-content:space-between;align-items:baseline;padding:.3rem 0;border-bottom:1px solid rgba(212,169,106,.07);font-size:.85rem}
-  .s-row:last-child{border-bottom:none}
-  .s-label{color:rgba(245,237,216,.4);font-family:var(--font-display);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase}
-  .s-val{color:var(--white);font-family:var(--font-body);font-style:italic}
-
-  /* chat input */
-  .chat-input-row{display:flex;align-items:center;gap:.55rem;padding:.65rem .85rem;background:var(--teal);border-top:1px solid rgba(212,169,106,.12);flex-shrink:0}
-  .chat-inp{flex:1;padding:.6rem .9rem;background:var(--black-card);border:1px solid rgba(212,169,106,.18);color:var(--white);font-family:var(--font-body);font-size:.9rem;outline:none;border-radius:100px;transition:border-color .2s}
-  .chat-inp:focus{border-color:var(--gold)}
-  .chat-inp::placeholder{color:rgba(245,237,216,.25)}
-  .chat-send-btn{width:38px;height:38px;border-radius:50%;background:var(--grad-gold);border:none;color:var(--black);font-size:.85rem;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .2s}
-  .chat-send-btn:active{transform:scale(.93)}
-  .chat-send-btn:disabled{opacity:.4;pointer-events:none}
-
-  /* WA send button */
-  .wa-send-btn{width:100%;padding:.95rem;background:#25D366;color:white;font-family:var(--font-display);font-size:.75rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;border:none;cursor:pointer;display:none;align-items:center;justify-content:center;gap:.6rem;flex-shrink:0;transition:background .2s}
-  .wa-send-btn.show{display:flex}
-  .wa-send-btn:active{background:#1DAD52}
-  .wa-send-btn:disabled{opacity:.5;pointer-events:none}
-
-  /* success */
-  .chat-success{display:none;flex-direction:column;align-items:center;justify-content:center;flex:1;padding:2rem 1.5rem;text-align:center;gap:.85rem}
-  .chat-success.show{display:flex}
-  .s-icon{width:64px;height:64px;border-radius:50%;background:rgba(212,169,106,.1);border:1px solid rgba(212,169,106,.25);display:flex;align-items:center;justify-content:center;font-size:1.6rem;color:var(--gold)}
-  .chat-success h3{font-family:var(--font-display);font-size:1.35rem;font-weight:800;color:var(--white)}
-  .chat-success p{font-size:.9rem;color:var(--white-dim);font-style:italic;line-height:1.6}
-  .wa-open-link{display:inline-flex;align-items:center;gap:.5rem;padding:.8rem 1.6rem;background:#25D366;color:white;font-family:var(--font-display);font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-top:.25rem}
+  .nl{display:none!important}
+  .hb{display:flex}
+  .hero{min-height:auto;padding-top:70px}
+  .hl{padding:1.5rem 1.1rem}
+  .hlm{font-size:9rem}
+  .hlb{font-size:.55rem;margin-bottom:1rem}
+  .hr{padding:2rem 1.25rem 1.75rem 1.5rem}
+  .hr::before{display:none}
+  .hre{font-size:.55rem;margin-bottom:.75rem}
+  .hrt{font-size:clamp(1.65rem,6.5vw,2.4rem);margin-bottom:.75rem}
+  .hrs{font-size:.92rem;margin-bottom:1.25rem}
+  .bg{padding:.7rem 1.2rem;font-size:.65rem}
+  .bo{padding:.7rem 1rem;font-size:.65rem}
+  .hst{gap:1.5rem;margin-top:1.5rem;padding-top:1.25rem}
+  .sn{font-size:1.4rem}
+  .sl{font-size:.52rem}
+  .cs{padding:2.5rem 0 1.5rem}
+  .ct{padding:0 1rem}
+  .cg{grid-template-columns:1fr;gap:2rem}
+  .cl h2{font-size:1.6rem}
+  .cl>p{font-size:.95rem;margin-bottom:1.75rem}
+  .ey{font-size:.58rem;margin-bottom:.85rem}
+  .cms{margin-bottom:2rem}
+  .cmi{width:44px;height:44px;font-size:1.1rem;border-radius:11px}
+  .cmn{font-size:1rem}
+  .cmd{font-size:.85rem}
+  .fw{padding:1.5rem;border-radius:14px}
+  .fw h3{font-size:1.2rem}
+  .fg2{grid-template-columns:1fr}
+  .csb{display:none}
+  .fqs{padding:3rem 0}
+  .fqh{margin-bottom:2rem}
+  .fqh h2{font-size:1.75rem}
+  .fqg{grid-template-columns:1fr}
+  .fqq{padding:1.2rem 1.25rem}
+  .fqq h3{font-size:.88rem}
+  .fqa p{padding:0 1.25rem 1.2rem;font-size:.92rem}
+  .ft{display:none}
+  .bn{display:grid}
 }
-
-.mob-bottom-nav{display:none}
-.mob-contact-section{display:none}
-.mob-form-section{display:none}
 </style>
 </head>
 <body>
+<div id="prog"></div>
 
-<div id="scroll-progress" style="position:fixed;top:0;left:0;height:3px;background:linear-gradient(135deg,#B8894E,#D4A96A,#E2C08A);z-index:10000;width:0;transition:width .08s linear;pointer-events:none"></div>
-
-<!-- NAV -->
 <nav class="nav" id="mainNav">
-  <div class="nav-inner">
+  <div class="ni">
     <div class="nav-logo"><a href="index.html"><img src="assets/images/logo.jpeg" alt="Hair by Akose"></a></div>
-    <ul class="nav-links">
+    <ul class="nl">
       <li><a href="index.html">Home</a></li>
       <li><a href="index.html#story">Story</a></li>
       <li><a href="portfolio.html">Portfolio</a></li>
       <li><a href="pricing.html">Pricing</a></li>
       <li><a href="index.html#about">About</a></li>
-      <li><a href="contact.html" class="nav-cta">Book Now</a></li>
+      <li><a href="contact.html" class="nc">Book Now</a></li>
     </ul>
-    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    <div class="hb" id="hb"><span></span><span></span><span></span></div>
   </div>
 </nav>
 
-<!-- SLIDE PANEL -->
-<div class="mob-menu-backdrop" id="mobBackdrop" onclick="cM()"></div>
-<div class="mob-menu" id="mobMenu">
-  <button class="mob-menu-close" onclick="cM()"><i class="fas fa-times"></i></button>
-  <div class="mob-menu-brand">Hair by Akose</div>
-  <div class="mob-menu-links">
+<div class="mbd" id="mbd" onclick="cM()"></div>
+<div class="mm" id="mm">
+  <button class="mmc" onclick="cM()"><i class="fas fa-times"></i></button>
+  <div class="mmb">Hair by Akose</div>
+  <div class="mml">
     <a href="index.html" onclick="cM()">Home</a>
     <a href="index.html#story" onclick="cM()">Story</a>
     <a href="portfolio.html" onclick="cM()">Portfolio</a>
     <a href="pricing.html" onclick="cM()">Pricing</a>
     <a href="index.html#about" onclick="cM()">About</a>
   </div>
-  <a href="contact.html" class="mob-menu-cta"><i class="fas fa-calendar-check"></i> Book Appointment</a>
-  <div class="mob-menu-socials">
-    <a href="https://www.instagram.com/hairbyakose" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-    <a href="https://web.facebook.com/vivienne.akose" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-    <a href="https://www.tiktok.com/@hairbyakose" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-    <a href="https://wa.me/+254725351803" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+  <a href="contact.html" class="mmcta"><i class="fas fa-calendar-check"></i> Book Appointment</a>
+  <div class="mms">
+    <a href="https://www.instagram.com/hairbyakose" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://web.facebook.com/vivienne.akose" target="_blank"><i class="fab fa-facebook"></i></a>
+    <a href="https://www.tiktok.com/@hairbyakose" target="_blank"><i class="fab fa-tiktok"></i></a>
+    <a href="https://wa.me/+254725351803" target="_blank"><i class="fab fa-whatsapp"></i></a>
   </div>
-  <p class="mob-menu-meta">Nairobi &middot; +(254) 725-351-803<br>Mon&ndash;Sat: 9AM &ndash; 8PM</p>
+  <p class="mmm">Nairobi &middot; +(254) 725-351-803<br>Mon&ndash;Sat: 9AM &ndash; 8PM</p>
 </div>
 
-<!-- ══ DESKTOP ══ -->
-<section class="page-hero">
-  <div class="hero-left">
-    <div class="hero-left-mono">A</div>
-    <div class="hero-left-tag">Mobile Stylist</div>
-    <div class="hero-left-brand">Hair<br>by Akose</div>
-    <div class="hero-left-loc">Nairobi, Kenya</div>
+<section class="hero">
+  <div class="hl">
+    <div class="hlm">A</div>
+    <div class="hlc">
+      <div class="hlb">Hair by Akose</div>
+      <div class="hll"><i class="fas fa-map-marker-alt"></i>&nbsp; Nairobi, Kenya</div>
+    </div>
   </div>
-  <div class="hero-right">
-    <div class="hero-eyebrow">Get In Touch</div>
-    <h1 class="page-title">Let's Make<br><em>Something Beautiful</em></h1>
-    <p class="hero-sub">Choose how you'd like to reach me — I respond as fast as I can.</p>
-    <div class="response-badge">Usually responds within 1 hour</div>
+  <div class="hr">
+    <div class="hre">Book an Appointment</div>
+    <h1 class="hrt">Let's Make<br><em>Something Beautiful</em></h1>
+    <p class="hrs">Choose how you'd like to reach me &mdash; I respond fast and love what I do.</p>
+    <div class="hrow">
+      <a href="#contact" class="bg"><i class="fas fa-calendar-check"></i> Book Now</a>
+      <a href="portfolio.html" class="bo"><i class="fas fa-images"></i> View Work</a>
+    </div>
+    <div class="hst">
+      <div><span class="sn">500+</span><span class="sl">Happy Clients</span></div>
+      <div><span class="sn">8+</span><span class="sl">Years Exp</span></div>
+      <div><span class="sn">1hr</span><span class="sl">Avg Response</span></div>
+    </div>
   </div>
 </section>
 
-<section class="desktop-body">
-  <div class="container">
-    <div class="desktop-grid">
-      <div>
-        <!-- EDITORIAL ROWS -->
-        <div class="editorial-block">
-          <div class="section-label">Contact Methods</div>
-          <div class="contact-rows">
-            <a href="https://wa.me/+254725351803?text=Hi%20Akose!%20I'd%20like%20to%20book%20an%20appointment." class="contact-row wa-contact-row" target="_blank">
-              <div class="row-icon"><i class="fab fa-whatsapp"></i></div>
-              <div class="row-info">
-                <div class="row-name" style="color:#25D366">WhatsApp</div>
-                <div class="row-sub">Tap to message me directly — fastest way to book</div>
-              </div>
-              <div class="row-badge">Fastest</div>
-              <div class="row-arrow"><i class="fas fa-arrow-right" style="color:#25D366;opacity:.6"></i></div>
-            </a>
-            <a href="tel:+254725351803" class="contact-row">
-              <div class="row-icon"><i class="fas fa-phone"></i></div>
-              <div class="row-info">
-                <div class="row-name">Call / Text</div>
-                <div class="row-sub">+254 725 351 803</div>
-              </div>
-              <div class="row-arrow"><i class="fas fa-arrow-right"></i></div>
-            </a>
-            <a href="mailto:vivienneakose22@gmail.com" class="contact-row">
-              <div class="row-icon"><i class="fas fa-envelope"></i></div>
-              <div class="row-info">
-                <div class="row-name">Email</div>
-                <div class="row-sub">vivienneakose22@gmail.com</div>
-              </div>
-              <div class="row-arrow"><i class="fas fa-arrow-right"></i></div>
-            </a>
+<section class="cs" id="contact">
+  <div class="ct">
+    <div class="cg">
+      <div class="cl">
+        <span class="ey">Get in Touch</span>
+        <h2>Reach Out, Let's Talk</h2>
+        <p>Pick the method that works best for you &mdash; WhatsApp is fastest.</p>
+        <div class="cms">
+          <div class="cm wa" id="waRow" role="button" tabindex="0" aria-label="Open WhatsApp booking">
+            <div class="cmi"><i class="fab fa-whatsapp"></i></div>
+            <div class="cmin">
+              <div class="cmn">WhatsApp</div>
+              <div class="wab">Available now</div>
+            </div>
           </div>
+          <a href="tel:+254725351803" class="cm">
+            <div class="cmi"><i class="fas fa-phone"></i></div>
+            <div class="cmin"><div class="cmn">Call / Text</div><div class="cmd">+254 725 351 803</div></div>
+          </a>
+          <a href="mailto:vivienneakose22@gmail.com" class="cm">
+            <div class="cmi"><i class="fas fa-envelope"></i></div>
+            <div class="cmin"><div class="cmn">Email</div><div class="cmd">vivienneakose22@gmail.com</div></div>
+          </a>
+          <a href="https://www.instagram.com/hairbyakose" target="_blank" class="cm">
+            <div class="cmi"><i class="fab fa-instagram"></i></div>
+            <div class="cmin"><div class="cmn">Instagram DM</div><div class="cmd">@hairbyakose</div></div>
+          </a>
         </div>
-
-        <!-- COMPACT FORM -->
-        <div class="editorial-block">
-          <div class="section-label">Or Send a Booking Request</div>
-          <div class="form-block">
-            <p>Fill in the details below and I'll confirm via WhatsApp or phone within 24 hours.</p>
-            <div class="form-row-2">
-              <div class="form-group"><label>Full Name *</label><input type="text" class="form-input" id="d-name" placeholder="Your name" required></div>
-              <div class="form-group"><label>Phone Number *</label><input type="tel" class="form-input" id="d-phone" placeholder="0712 345 678" required></div>
-            </div>
-            <div class="form-group"><label>Service *</label>
-              <select class="form-select" id="d-service" required>
-                <option value="">— Select a service —</option>
-                <option>Box Braids</option><option>Cornrows</option><option>Knotless Braids</option>
-                <option>Twists</option><option>Weaves &amp; Extensions</option><option>Natural Hair Care</option>
-                <option>Kids Styling</option><option>Locs Maintenance</option><option>Bridal Styling</option><option>Other</option>
-              </select>
-            </div>
-            <div class="form-row-2">
-              <div class="form-group"><label>Preferred Date</label><input type="date" class="form-input" id="d-date"></div>
-              <div class="form-group"><label>Preferred Time</label>
-                <select class="form-select" id="d-time">
-                  <option value="">— Select time —</option>
-                  <option>Morning (9AM&ndash;12PM)</option><option>Afternoon (12PM&ndash;5PM)</option><option>Evening (5PM&ndash;8PM)</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-group"><label>Your Location *</label><input type="text" class="form-input" id="d-location" placeholder="e.g. Westlands, Nairobi" required></div>
-            <div class="form-group"><label>Additional Details</label><textarea class="form-textarea" id="d-message" placeholder="Hair type, desired style, length, any special requests..."></textarea></div>
-            <button class="btn-wa-submit" id="deskSubmit" onclick="submitDesktopForm()">
-              <i class="fab fa-whatsapp"></i> Send Booking via WhatsApp
-            </button>
-            <p class="form-note">* Required fields &nbsp;&middot;&nbsp; Your details will open in WhatsApp</p>
+        <div class="fw">
+          <h3>Send a Booking Request</h3>
+          <p>Fill in your details and I'll confirm your slot via WhatsApp.</p>
+          <div class="fg2">
+            <div class="fg"><label>Full Name *</label><input type="text" id="fname" class="fi" placeholder="Your name"></div>
+            <div class="fg"><label>Phone *</label><input type="tel" id="fphone" class="fi" placeholder="0712 345 678"></div>
           </div>
+          <div class="fg">
+            <label>Service *</label>
+            <select id="fservice" class="fs">
+              <option value="">&#8212; Select a service &#8212;</option>
+              <option>Box Braids</option><option>Cornrows</option><option>Knotless Braids</option>
+              <option>Twists (Senegalese / Marley / Passion)</option><option>Weaves &amp; Extensions</option>
+              <option>Natural Hair Care</option><option>Kids Styling</option>
+              <option>Locs Maintenance</option><option>Bridal Styling</option><option>Other</option>
+            </select>
+          </div>
+          <div class="fg"><label>Your Location *</label><input type="text" id="floc" class="fi" placeholder="e.g. Westlands, Nairobi"></div>
+          <div class="fg"><label>Additional Details</label><textarea id="fdet" class="fta" placeholder="Hair type, desired style, preferred date/time..."></textarea></div>
+          <button class="bws" id="formBtn"><i class="fab fa-whatsapp"></i> Send via WhatsApp</button>
+          <p class="fn">* Required &nbsp;&middot;&nbsp; Opens WhatsApp with your details pre-filled</p>
         </div>
       </div>
-
-      <!-- SIDEBAR -->
-      <aside class="sidebar">
-        <div class="info-card">
-          <div class="info-card-hd"><div class="info-icon"><i class="fas fa-clock"></i></div><h4>Business Hours</h4></div>
-          <ul>
-            <li><strong>Mon &ndash; Fri</strong> 9:00 AM &ndash; 8:00 PM</li>
-            <li><strong>Saturday</strong> 9:00 AM &ndash; 8:00 PM</li>
-            <li><strong>Sunday</strong> By appointment only</li>
-          </ul>
-        </div>
-        <div class="info-card">
-          <div class="info-card-hd"><div class="info-icon"><i class="fas fa-map-marker-alt"></i></div><h4>Service Areas</h4></div>
-          <ul>
-            <li><strong>Nairobi</strong> All areas</li>
-            <li><strong>Thika</strong> Town &amp; surroundings</li>
-            <li><strong>Machakos</strong> Town &amp; environs</li>
-            <li><strong>Limuru</strong> And nearby areas</li>
-            <li><strong>Mobile</strong> I come to you ✨</li>
-          </ul>
-        </div>
-        <div class="info-card">
-          <div class="info-card-hd"><div class="info-icon"><i class="fas fa-info-circle"></i></div><h4>Booking Policy</h4></div>
-          <ul>
-            <li><strong>Deposit</strong> Required to secure slot</li>
-            <li><strong>Cancel</strong> 24hr notice needed</li>
-            <li><strong>Hair prep</strong> Clean &amp; detangled</li>
-            <li><strong>Extensions</strong> Client provides own</li>
-            <li><strong>Payment</strong> Cash or M-Pesa</li>
-          </ul>
-        </div>
-        <div class="info-card">
-          <div class="info-card-hd"><div class="info-icon"><i class="fas fa-heart"></i></div><h4>Follow My Work</h4></div>
-          <div class="social-mini">
-            <a href="https://www.instagram.com/hairbyakose" class="social-btn" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
-            <a href="https://www.tiktok.com/@hairbyakose" class="social-btn" target="_blank"><i class="fab fa-tiktok"></i> TikTok</a>
-            <a href="https://web.facebook.com/vivienne.akose" class="social-btn" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
-            <a href="http://www.youtube.com/@vivienneakose8306" class="social-btn" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
-          </div>
-        </div>
+      <aside class="csb">
+        <div class="ic"><div class="ich"><div class="ii"><i class="fas fa-clock"></i></div><h4>Business Hours</h4></div><ul><li><strong>Mon &ndash; Fri</strong> 9:00 AM &ndash; 8:00 PM</li><li><strong>Saturday</strong> 9:00 AM &ndash; 8:00 PM</li><li><strong>Sunday</strong> By appointment only</li></ul></div>
+        <div class="ic"><div class="ich"><div class="ii"><i class="fas fa-map-marker-alt"></i></div><h4>Service Areas</h4></div><ul><li><strong>Nairobi</strong> All areas</li><li><strong>Thika</strong> Town &amp; surroundings</li><li><strong>Machakos</strong> Town &amp; environs</li><li><strong>Limuru</strong> And nearby areas</li><li><strong>Mobile &#10024;</strong> I come to you!</li></ul></div>
+        <div class="ic"><div class="ich"><div class="ii"><i class="fas fa-info-circle"></i></div><h4>Booking Policy</h4></div><ul><li><strong>Deposit</strong> Required to secure slot</li><li><strong>Cancellation</strong> 24hr notice needed</li><li><strong>Hair prep</strong> Clean &amp; detangled</li><li><strong>Extensions</strong> Client provides own</li><li><strong>Payment</strong> Cash or M-Pesa</li></ul></div>
+        <div class="ic"><div class="ich"><div class="ii"><i class="fas fa-heart"></i></div><h4>Follow My Work</h4></div><div class="sm"><a href="https://www.instagram.com/hairbyakose" target="_blank" class="sb"><i class="fab fa-instagram"></i> Instagram</a><a href="https://www.tiktok.com/@hairbyakose" target="_blank" class="sb"><i class="fab fa-tiktok"></i> TikTok</a><a href="https://web.facebook.com/vivienne.akose" target="_blank" class="sb"><i class="fab fa-facebook"></i> Facebook</a><a href="http://www.youtube.com/@vivienneakose8306" target="_blank" class="sb"><i class="fab fa-youtube"></i> YouTube</a></div></div>
       </aside>
     </div>
   </div>
 </section>
 
-<section class="faq-section">
-  <div class="container">
-    <div class="faq-header"><div class="section-label" style="justify-content:center;margin-bottom:1rem">FAQ</div><h2>Common Questions</h2></div>
-    <div class="faq-grid" id="faqGrid">
-      <div class="faq-item"><div class="faq-question"><h3>How do I book an appointment?</h3><div class="faq-toggle"><i class="fas fa-plus"></i></div></div><div class="faq-answer"><p>Via WhatsApp (fastest), call/text, email, or the form above. I'll confirm your appointment and discuss location, timing, and requirements.</p></div></div>
-      <div class="faq-item"><div class="faq-question"><h3>Do I need to provide my own hair?</h3><div class="faq-toggle"><i class="fas fa-plus"></i></div></div><div class="faq-answer"><p>Yes, clients typically provide their own hair extensions. I can recommend brands and quantities based on your chosen style — just ask during booking.</p></div></div>
-      <div class="faq-item"><div class="faq-question"><h3>What's your cancellation policy?</h3><div class="faq-toggle"><i class="fas fa-plus"></i></div></div><div class="faq-answer"><p>Please give at least 24 hours notice. Deposits are non-refundable but can be applied to a rescheduled appointment within 30 days.</p></div></div>
-      <div class="faq-item"><div class="faq-question"><h3>How long do appointments take?</h3><div class="faq-toggle"><i class="fas fa-plus"></i></div></div><div class="faq-answer"><p>It varies by style — small box braids take 8–10 hours, simple cornrows 2–3 hours. Check the pricing page for full estimates.</p></div></div>
-      <div class="faq-item"><div class="faq-question"><h3>Do you charge a travel fee?</h3><div class="faq-toggle"><i class="fas fa-plus"></i></div></div><div class="faq-answer"><p>Travel within the main service areas is generally included. Locations further out may incur a small charge, discussed at booking.</p></div></div>
-      <div class="faq-item"><div class="faq-question"><h3>What payment methods do you accept?</h3><div class="faq-toggle"><i class="fas fa-plus"></i></div></div><div class="faq-answer"><p>Cash or M-Pesa. A deposit is required to secure your slot, with the balance due on completion of the service.</p></div></div>
+<section class="fqs">
+  <div class="ct">
+    <div class="fqh"><span class="ey">Got Questions?</span><h2>Frequently Asked</h2></div>
+    <div class="fqg">
+      <div class="fqi"><div class="fqq"><h3>How do I book an appointment?</h3><div class="fqt"><i class="fas fa-plus"></i></div></div><div class="fqa"><p>Via WhatsApp (fastest), call/text, email, or the form above. I'll confirm your appointment and discuss location, timing, and requirements.</p></div></div>
+      <div class="fqi"><div class="fqq"><h3>Do I need to provide my own hair?</h3><div class="fqt"><i class="fas fa-plus"></i></div></div><div class="fqa"><p>Yes, clients typically provide their own hair/extensions. I can recommend brands and quantities based on your chosen style &mdash; just ask during booking.</p></div></div>
+      <div class="fqi"><div class="fqq"><h3>What's your cancellation policy?</h3><div class="fqt"><i class="fas fa-plus"></i></div></div><div class="fqa"><p>Please give at least 24 hours notice. Deposits are non-refundable but can be applied to a rescheduled appointment within 30 days.</p></div></div>
+      <div class="fqi"><div class="fqq"><h3>How long do appointments take?</h3><div class="fqt"><i class="fas fa-plus"></i></div></div><div class="fqa"><p>It varies! Small box braids take 8&ndash;10 hours, simple cornrows 2&ndash;3 hours. Check the pricing page for estimates per style.</p></div></div>
+      <div class="fqi"><div class="fqq"><h3>Do you charge a travel fee?</h3><div class="fqt"><i class="fas fa-plus"></i></div></div><div class="fqa"><p>Travel within the main service areas is generally included. Locations further out may incur a small charge &mdash; discussed at booking.</p></div></div>
+      <div class="fqi"><div class="fqq"><h3>What payment methods do you accept?</h3><div class="fqt"><i class="fas fa-plus"></i></div></div><div class="fqa"><p>Cash or M-Pesa. A deposit is required to secure your slot, with the balance due on completion of service.</p></div></div>
     </div>
   </div>
 </section>
 
-<footer class="footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <img src="assets/images/logo.jpeg" alt="Hair by Akose">
-        <p>Professional mobile hair styling, bringing beauty to your doorstep across Nairobi and beyond.</p>
-        <div class="socials">
-          <a href="https://www.instagram.com/hairbyakose" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-          <a href="https://web.facebook.com/vivienne.akose" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-          <a href="https://www.tiktok.com/@hairbyakose" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-          <a href="http://www.youtube.com/@vivienneakose8306" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-        </div>
-      </div>
-      <div class="footer-col"><h4>Navigate</h4><ul><li><a href="index.html#story">My Story</a></li><li><a href="portfolio.html">Portfolio</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="index.html#about">About</a></li></ul></div>
-      <div class="footer-col"><h4>Services</h4><ul><li><a href="index.html#services">Box Braids</a></li><li><a href="index.html#services">Cornrows</a></li><li><a href="index.html#services">Twists &amp; Locs</a></li><li><a href="index.html#services">Natural Hair</a></li></ul></div>
-      <div class="footer-col"><h4>Contact</h4><ul>
-        <li><i class="fas fa-phone"></i> +(254) 725-351-803</li>
-        <li><i class="fas fa-envelope"></i> <a href="mailto:vivienneakose22@gmail.com">vivienneakose22@gmail.com</a></li>
-        <li><i class="fas fa-map-marker-alt"></i> @ your place of comfort</li>
-        <li><i class="fas fa-clock"></i> Mon&ndash;Sat: 9AM &ndash; 8PM</li>
-      </ul></div>
+<footer class="ft">
+  <div class="ct">
+    <div class="ftg">
+      <div class="ftb"><img src="assets/images/logo.jpeg" alt="Hair by Akose"><p>Professional mobile hair styling and handmade accessories, bringing beauty to your doorstep.</p><div class="soc"><a href="https://www.instagram.com/hairbyakose" target="_blank"><i class="fab fa-instagram"></i></a><a href="https://web.facebook.com/vivienne.akose" target="_blank"><i class="fab fa-facebook"></i></a><a href="https://www.tiktok.com/@hairbyakose" target="_blank"><i class="fab fa-tiktok"></i></a><a href="http://www.youtube.com/@vivienneakose8306" target="_blank"><i class="fab fa-youtube"></i></a></div></div>
+      <div class="fc"><h4>Navigate</h4><ul><li><a href="index.html#story">My Story</a></li><li><a href="portfolio.html">Portfolio</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="index.html#about">About</a></li></ul></div>
+      <div class="fc"><h4>Services</h4><ul><li><a href="index.html#services">Box Braids</a></li><li><a href="index.html#services">Cornrows</a></li><li><a href="index.html#services">Twists &amp; Locs</a></li><li><a href="index.html#services">Natural Hair</a></li></ul></div>
+      <div class="fc"><h4>Contact</h4><ul><li><i class="fas fa-phone"></i> +(254) 725-351-803</li><li><i class="fas fa-envelope"></i> <a href="mailto:vivienneakose22@gmail.com">vivienneakose22@gmail.com</a></li><li><i class="fas fa-map-marker-alt"></i> @ your place of comfort</li><li><i class="fas fa-clock"></i> Mon&ndash;Sat: 9AM &ndash; 8PM</li></ul></div>
     </div>
-    <div class="footer-bottom">
-      <span>&copy; 2026 Hair by Akose. All rights reserved.</span>
-      <span>Crafted with <i class="fas fa-heart" style="color:var(--gold)"></i> &middot; by #mimsanii</span>
-    </div>
+    <div class="fbot"><span>&copy; 2026 Hair by Akose. All rights reserved.</span><span>Crafted with <i class="fas fa-heart" style="color:var(--gold)"></i> and passion &middot; by #mimsanii</span></div>
   </div>
 </footer>
 
-<!-- ══ MOBILE PAGE ══ -->
-<div class="mob-page" id="mobPage">
-
-  <div class="mob-hero">
-    <div class="mob-hero-l">
-      <div class="mob-hero-l-mono">A</div>
-      <div class="mob-hero-l-tag">Mobile Stylist</div>
-      <div class="mob-hero-l-brand">Hair<br>by Akose</div>
-    </div>
-    <div class="mob-hero-r">
-      <div class="mob-hero-title">Let's Make<br><em>Something Beautiful</em></div>
-      <div class="mob-hero-badge">Responds within 1 hour</div>
-    </div>
-  </div>
-
-  <div class="mob-contact-section">
-    <div class="mob-section-label">Get In Touch</div>
-    <div class="mob-wa-trigger" id="waTrigger">
-      <div class="mob-wa-icon"><i class="fab fa-whatsapp"></i></div>
-      <div class="mob-wa-info">
-        <div class="mob-wa-name">WhatsApp Akose</div>
-        <div class="mob-wa-sub">Tap to start a booking conversation</div>
-      </div>
-      <div class="mob-wa-pill">Fastest</div>
-      <div class="mob-wa-arrow"><i class="fas fa-chevron-up"></i></div>
-    </div>
-    <div class="mob-other-rows">
-      <a href="tel:+254725351803" class="mob-contact-row">
-        <div class="mob-row-icon"><i class="fas fa-phone"></i></div>
-        <div><div class="mob-row-name">Call / Text</div><div class="mob-row-sub">+254 725 351 803</div></div>
-        <div class="mob-row-arrow"><i class="fas fa-chevron-right"></i></div>
-      </a>
-      <a href="mailto:vivienneakose22@gmail.com" class="mob-contact-row">
-        <div class="mob-row-icon"><i class="fas fa-envelope"></i></div>
-        <div><div class="mob-row-name">Email</div><div class="mob-row-sub">vivienneakose22@gmail.com</div></div>
-        <div class="mob-row-arrow"><i class="fas fa-chevron-right"></i></div>
-      </a>
-      <a href="https://www.instagram.com/hairbyakose" class="mob-contact-row" target="_blank">
-        <div class="mob-row-icon"><i class="fab fa-instagram"></i></div>
-        <div><div class="mob-row-name">Instagram</div><div class="mob-row-sub">@hairbyakose</div></div>
-        <div class="mob-row-arrow"><i class="fas fa-chevron-right"></i></div>
-      </a>
-    </div>
-  </div>
-
-  <div class="mob-form-section">
-    <div class="mob-section-label">Or Book via Form</div>
-    <h3>Send a Booking Request</h3>
-    <p>Fill in your details and I'll confirm via WhatsApp or call.</p>
-    <div class="mob-form-row">
-      <div class="mob-form-group"><label>Name *</label><input type="text" class="mob-input" id="m-name" placeholder="Your name"></div>
-      <div class="mob-form-group"><label>Phone *</label><input type="tel" class="mob-input" id="m-phone" placeholder="0712 345 678"></div>
-    </div>
-    <div class="mob-form-group"><label>Service *</label>
-      <select class="mob-select" id="m-service">
-        <option value="">— Select service —</option>
-        <option>Box Braids</option><option>Cornrows</option><option>Knotless Braids</option>
-        <option>Twists</option><option>Weaves &amp; Extensions</option><option>Natural Hair Care</option>
-        <option>Kids Styling</option><option>Locs Maintenance</option><option>Bridal Styling</option><option>Other</option>
-      </select>
-    </div>
-    <div class="mob-form-group"><label>Location *</label><input type="text" class="mob-input" id="m-location" placeholder="e.g. Westlands, Nairobi"></div>
-    <div class="mob-form-group"><label>Extra Details</label><textarea class="mob-textarea" id="m-message" placeholder="Hair type, style details, preferred date/time..."></textarea></div>
-    <button class="mob-submit" onclick="submitMobForm()"><i class="fab fa-whatsapp"></i> Send via WhatsApp</button>
-    <p class="mob-form-note">Your details will open directly in WhatsApp</p>
-  </div>
-
-</div>
-
-<!-- CHAT SHEET OVERLAY -->
-<div class="chat-overlay" id="chatOverlay">
-  <div class="chat-backdrop" id="chatBackdrop" onclick="closeChat()"></div>
-  <div class="chat-sheet" id="chatSheet">
-    <div class="sheet-drag" id="sheetDrag"><div class="sheet-drag-bar"></div></div>
-    <div class="chat-head">
-      <div class="chat-ava">A</div>
-      <div class="chat-head-info">
-        <div class="chat-head-name">Akose &mdash; Hair Stylist</div>
-        <div class="chat-head-status">Available now &middot; Nairobi</div>
-      </div>
-      <div class="chat-close" onclick="closeChat()"><i class="fas fa-times"></i></div>
-    </div>
-    <div class="chat-body" id="chatBody">
-      <div class="chat-date">Today</div>
-    </div>
-    <div class="chat-success" id="chatSuccess">
-      <div class="s-icon"><i class="fas fa-check"></i></div>
-      <h3>Booking Sent!</h3>
-      <p>Your details are on their way to Akose via WhatsApp. She'll reply shortly to confirm.</p>
-      <a href="https://wa.me/+254725351803" class="wa-open-link" target="_blank"><i class="fab fa-whatsapp"></i> Open WhatsApp</a>
-    </div>
-    <button class="wa-send-btn" id="waSendBtn" onclick="sendToWhatsApp()">
-      <i class="fab fa-whatsapp"></i> Send Booking to Akose
-    </button>
-    <div class="chat-input-row" id="chatInputRow">
-      <input type="text" class="chat-inp" id="chatInp" placeholder="Type your reply..." autocomplete="off">
-      <button class="chat-send-btn" id="chatSendBtn"><i class="fas fa-paper-plane"></i></button>
-    </div>
-  </div>
-</div>
-
-<nav class="mob-bottom-nav">
+<nav class="bn">
   <a href="index.html"><i class="fas fa-home"></i><span>Home</span></a>
   <a href="index.html#services"><i class="fas fa-scissors"></i><span>Services</span></a>
   <a href="pricing.html"><i class="fas fa-tags"></i><span>Pricing</span></a>
   <a href="contact.html" class="active"><i class="fas fa-calendar-check"></i><span>Book</span></a>
 </nav>
 
+<!-- CHAT SHEET -->
+<div class="cbd" id="cbd"></div>
+<div class="csh" id="csh">
+  <div class="csh-handle"></div>
+  <div class="chd">
+    <div class="cha">A</div>
+    <div class="chdi">
+      <div class="chdn">Akose &mdash; Hair Stylist</div>
+      <div class="chds">Available now &middot; Nairobi</div>
+    </div>
+    <button class="chcl" id="chcl" aria-label="Close"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="cbody" id="cbody"><div class="cdate">Today</div></div>
+  <div class="csucc" id="csucc">
+    <div class="si"><i class="fas fa-check"></i></div>
+    <h3>Booking Sent!</h3>
+    <p>Your details are on their way to Akose on WhatsApp. She'll confirm your appointment shortly.</p>
+    <a href="https://wa.me/+254725351803" class="wol" target="_blank"><i class="fab fa-whatsapp"></i> Open WhatsApp</a>
+  </div>
+  <button class="wafb" id="wafb" style="display:none" disabled><i class="fab fa-whatsapp"></i> Send Booking to Akose</button>
+  <div class="cir" id="cir">
+    <input type="text" class="cinp" id="cinp" placeholder="Type your reply..." autocomplete="off">
+    <button class="csnd" id="csnd" aria-label="Send"><i class="fas fa-paper-plane"></i></button>
+  </div>
+</div>
+
 <script>
-var WA = '+254725351803';
+var WA='+254725351803';
+var mob=function(){return window.matchMedia('(max-width:767px)').matches;};
+var esc=function(s){var d=document.createElement('div');d.textContent=s;return d.innerHTML;};
+var now=function(){return new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});};
 
-var bar = document.getElementById('scroll-progress');
-window.addEventListener('scroll', function(){
-  if(bar) bar.style.width = Math.min(window.scrollY/(document.body.scrollHeight-window.innerHeight)*100,100)+'%';
-},{passive:true});
-var nav = document.getElementById('mainNav');
-window.addEventListener('scroll', function(){
-  if(nav) nav.classList.toggle('scrolled', window.scrollY>60);
-},{passive:true});
+var pg=document.getElementById('prog');
+window.addEventListener('scroll',function(){if(pg){var p=window.scrollY/(document.body.scrollHeight-window.innerHeight)*100;pg.style.width=Math.min(p,100)+'%';}},{passive:true});
 
-var hb=document.getElementById('hamburger'),mm=document.getElementById('mobMenu'),bd=document.getElementById('mobBackdrop');
-function openMenu(){mm.classList.add('open');bd.classList.add('open');hb.classList.add('open');document.body.style.overflow='hidden';}
-function cM(){mm.classList.remove('open');bd.classList.remove('open');hb.classList.remove('open');document.body.style.overflow='';}
-if(hb) hb.addEventListener('click',function(e){e.stopPropagation();mm.classList.contains('open')?cM():openMenu();});
-document.addEventListener('keydown',function(e){if(e.key==='Escape'){cM();closeChat();}});
+var nav=document.getElementById('mainNav');
+window.addEventListener('scroll',function(){if(nav)nav.classList.toggle('s',window.scrollY>60);},{passive:true});
 
-document.querySelectorAll('.faq-question').forEach(function(q){
+var hb=document.getElementById('hb'),mm=document.getElementById('mm'),mbd=document.getElementById('mbd');
+function openMenu(){mm.classList.add('open');mbd.classList.add('open');hb.classList.add('open');document.body.style.overflow='hidden';}
+function cM(){mm.classList.remove('open');mbd.classList.remove('open');hb.classList.remove('open');document.body.style.overflow='';}
+hb.addEventListener('click',function(e){e.stopPropagation();mm.classList.contains('open')?cM():openMenu();});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){cM();closeSheet();}});
+
+document.querySelectorAll('.fqq').forEach(function(q){
   q.addEventListener('click',function(){
-    var item=q.closest('.faq-item'),ans=item.querySelector('.faq-answer'),isOpen=item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(function(i){i.classList.remove('open');i.querySelector('.faq-answer').style.maxHeight=null;});
-    if(!isOpen){item.classList.add('open');ans.style.maxHeight=ans.scrollHeight+'px';}
+    var it=q.closest('.fqi'),an=it.querySelector('.fqa'),op=it.classList.contains('open');
+    document.querySelectorAll('.fqi').forEach(function(i){i.classList.remove('open');i.querySelector('.fqa').style.maxHeight=null;});
+    if(!op){it.classList.add('open');an.style.maxHeight=an.scrollHeight+'px';}
   });
 });
 
-function submitDesktopForm(){
-  var name=document.getElementById('d-name').value.trim();
-  var phone=document.getElementById('d-phone').value.trim();
-  var service=document.getElementById('d-service').value;
-  var location=document.getElementById('d-location').value.trim();
-  var date=document.getElementById('d-date').value;
-  var time=document.getElementById('d-time').value;
-  var msg=document.getElementById('d-message').value.trim();
-  if(!name||!phone||!service||!location){alert('Please fill in all required fields.');return;}
-  var txt='Hi Akose! \uD83D\uDC4B\n\nI\'d like to book an appointment:\n\n'
-    +'\uD83D\uDCCC Service: '+service+'\n'
-    +'\uD83D\uDCCD Location: '+location+'\n'
-    +'\uD83D\uDC64 Name: '+name+'\n'
-    +'\uD83D\uDCF1 Phone: '+phone+'\n'
-    +(date?'\uD83D\uDCC5 Date: '+date+'\n':'')
-    +(time?'\u23F0 Time: '+time+'\n':'')
-    +(msg?'\uD83D\uDCAC Notes: '+msg+'\n':'')
-    +'\nPlease confirm my appointment. Thank you!';
-  window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(txt),'_blank');
-}
+document.getElementById('formBtn').addEventListener('click',function(){
+  var n=document.getElementById('fname').value.trim();
+  var p=document.getElementById('fphone').value.trim();
+  var s=document.getElementById('fservice').value;
+  var l=document.getElementById('floc').value.trim();
+  var d=document.getElementById('fdet').value.trim();
+  if(!n||!p||!s||!l){alert('Please fill in Name, Phone, Service and Location.');return;}
+  var msg='Hi Akose! 👋
 
-function submitMobForm(){
-  var name=document.getElementById('m-name').value.trim();
-  var phone=document.getElementById('m-phone').value.trim();
-  var service=document.getElementById('m-service').value;
-  var location=document.getElementById('m-location').value.trim();
-  var msg=document.getElementById('m-message').value.trim();
-  if(!name||!phone||!service||!location){alert('Please fill in all required fields.');return;}
-  var txt='Hi Akose! \uD83D\uDC4B\n\nBooking request:\n\n'
-    +'\uD83D\uDCCC Service: '+service+'\n'
-    +'\uD83D\uDCCD Location: '+location+'\n'
-    +'\uD83D\uDC64 Name: '+name+'\n'
-    +'\uD83D\uDCF1 Phone: '+phone+'\n'
-    +(msg?'\uD83D\uDCAC Notes: '+msg+'\n':'')
-    +'\nPlease confirm my appointment. Thank you!';
-  window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(txt),'_blank');
-}
+I'd like to book an appointment:
 
-var overlay=document.getElementById('chatOverlay');
-var chatBody=document.getElementById('chatBody');
-var chatInp=document.getElementById('chatInp');
-var chatSendBtn=document.getElementById('chatSendBtn');
-var waSendBtn=document.getElementById('waSendBtn');
-var chatSuccess=document.getElementById('chatSuccess');
-var chatInputRow=document.getElementById('chatInputRow');
-var chatStarted=false;
-var state={step:'service',service:'',location:'',name:'',phone:'',time:''};
+'
+    +'💆 Service: '+s+'
+'
+    +'📍 Location: '+l+'
+'
+    +'👤 Name: '+n+'
+'
+    +'📱 Phone: '+p+'
+'
+    +(d?'📝 Details: '+d+'
+':'')
+    +'
+Please confirm my appointment. Thank you!';
+  window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(msg),'_blank');
+});
 
-function openChat(){
-  overlay.classList.add('open');
-  document.body.style.overflow='hidden';
-  if(!chatStarted){chatStarted=true;startConversation();}
-}
-function closeChat(){
-  overlay.classList.remove('open');
-  document.body.style.overflow='';
-}
+var waRow=document.getElementById('waRow');
+waRow.addEventListener('click',function(){
+  if(mob()){openSheet();}
+  else{window.open('https://wa.me/'+WA+'?text=Hi%20Akose!%20I%27d%20like%20to%20book%20an%20appointment.','_blank');}
+});
+waRow.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();waRow.click();}});
 
-var waTrigger=document.getElementById('waTrigger');
-if(waTrigger) waTrigger.addEventListener('click',openChat);
+var cbd=document.getElementById('cbd');
+var csh=document.getElementById('csh');
+var cbody=document.getElementById('cbody');
+var cinp=document.getElementById('cinp');
+var csnd=document.getElementById('csnd');
+var wafb=document.getElementById('wafb');
+var cir=document.getElementById('cir');
+var csucc=document.getElementById('csucc');
+var chcl=document.getElementById('chcl');
+var started=false;
+var st={step:'service',service:'',location:'',name:'',phone:'',time:''};
 
-var dragEl=document.getElementById('sheetDrag');
-var sheet=document.getElementById('chatSheet');
-var dragStart=0,dragging=false;
-if(dragEl){
-  dragEl.addEventListener('touchstart',function(e){dragStart=e.touches[0].clientY;dragging=true;},{passive:true});
-  document.addEventListener('touchmove',function(e){
-    if(!dragging)return;
-    var dy=e.touches[0].clientY-dragStart;
-    if(dy>0) sheet.style.transform='translateY('+dy+'px)';
-  },{passive:true});
-  document.addEventListener('touchend',function(e){
-    if(!dragging)return;dragging=false;
-    var dy=e.changedTouches[0].clientY-dragStart;
-    sheet.style.transform='';
-    if(dy>80) closeChat();
-  });
-}
+function openSheet(){cbd.classList.add('open');csh.classList.add('open');document.body.style.overflow='hidden';if(!started){started=true;startChat();}}
+function closeSheet(){cbd.classList.remove('open');csh.classList.remove('open');document.body.style.overflow='';}
+cbd.addEventListener('click',closeSheet);
+chcl.addEventListener('click',closeSheet);
 
-function scrollBottom(){setTimeout(function(){chatBody.scrollTop=chatBody.scrollHeight;},80);}
+function scrollB(){setTimeout(function(){cbody.scrollTop=cbody.scrollHeight;},80);}
 
-function addBubble(type,html,delay){
-  delay=delay||0;
-  setTimeout(function(){
-    var el=document.createElement('div');
-    var t=new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
-    if(type==='akose'){
-      el.className='b-akose';
-      el.innerHTML='<div class="b-akose-ava">A</div><div class="b-akose-wrap"><div class="b-content"><p>'+html+'</p></div><div class="b-time">'+t+'</div></div>';
-    } else {
-      el.className='b-user';
-      el.innerHTML='<div class="b-content"><p>'+html+'</p></div><div class="b-time"><span class="b-tick">&#10003;&#10003;</span> '+t+'</div>';
-    }
-    chatBody.appendChild(el);scrollBottom();
-  },delay);
-}
-
-function addTyping(delay){
-  return new Promise(function(resolve){
+function addA(html,delay){
+  return new Promise(function(res){
     setTimeout(function(){
       var el=document.createElement('div');
-      el.className='b-akose b-typing';el.id='typingEl';
-      el.innerHTML='<div class="b-akose-ava">A</div><div class="b-akose-wrap"><div class="b-content"><div class="typing-dots"><span></span><span></span><span></span></div></div></div>';
-      chatBody.appendChild(el);scrollBottom();
-      setTimeout(function(){var t=document.getElementById('typingEl');if(t)t.remove();resolve();},1100);
+      el.className='ba fu';
+      el.innerHTML='<div class="bav">A</div><div><div class="bb"><p>'+html+'</p></div><div class="bt">'+now()+'</div></div>';
+      cbody.appendChild(el);scrollB();res();
     },delay||0);
   });
 }
 
-function addChips(chips,step,delay){
-  setTimeout(function(){
-    var el=document.createElement('div');el.className='qr-chips';el.id='chips-'+step;
-    chips.forEach(function(c){
-      var btn=document.createElement('div');btn.className='qr-chip';btn.textContent=c;
-      btn.dataset.step=step;btn.dataset.val=c;el.appendChild(btn);
-    });
-    chatBody.appendChild(el);bindChips(el);scrollBottom();
-  },delay||0);
+function addU(txt){
+  var el=document.createElement('div');
+  el.className='bu fu';
+  el.innerHTML='<div class="bb"><p>'+esc(txt)+'</p></div><div class="bt"><span class="btk">✓✓</span> '+now()+'</div>';
+  cbody.appendChild(el);scrollB();
 }
 
-function bindChips(container){
-  container.querySelectorAll('.qr-chip').forEach(function(chip){
-    chip.addEventListener('click',function(){
-      if(chip.classList.contains('sel'))return;
-      container.querySelectorAll('.qr-chip').forEach(function(c){c.classList.remove('sel');c.style.pointerEvents='none';});
-      chip.classList.add('sel');
-      onChip(chip.dataset.step,chip.dataset.val);
-    });
+function showTyping(){
+  return new Promise(function(res){
+    var el=document.createElement('div');
+    el.className='tyw';el.id='tye';
+    el.innerHTML='<div class="bav">A</div><div class="tyd"><span></span><span></span><span></span></div>';
+    cbody.appendChild(el);scrollB();
+    setTimeout(function(){var t=document.getElementById('tye');if(t)t.remove();res();},1100);
   });
 }
 
-function disableInput(){chatInp.disabled=true;chatInp.placeholder='Choose an option above...';chatSendBtn.disabled=true;}
-function enableInput(ph){chatInp.disabled=false;chatInp.placeholder=ph||'Type your reply...';chatSendBtn.disabled=false;setTimeout(function(){chatInp.focus();},300);}
+function addChips(list,step){
+  var el=document.createElement('div');
+  el.className='chips fu';
+  list.forEach(function(c){
+    var btn=document.createElement('div');
+    btn.className='chip';btn.textContent=c;
+    btn.setAttribute('role','button');btn.setAttribute('tabindex','0');
+    btn.addEventListener('click',function(){
+      if(btn.classList.contains('sel'))return;
+      el.querySelectorAll('.chip').forEach(function(x){x.style.pointerEvents='none';});
+      btn.classList.add('sel');onChip(step,c);
+    });
+    btn.addEventListener('keydown',function(e){if(e.key==='Enter')btn.click();});
+    el.appendChild(btn);
+  });
+  cbody.appendChild(el);scrollB();
+}
+
+function addSummary(){
+  var el=document.createElement('div');
+  el.className='sumc fu';
+  el.innerHTML='<h4>Your Booking Summary</h4>'
+    +'<div class="sr"><span class="srl">Service</span><span class="srv">'+esc(st.service)+'</span></div>'
+    +'<div class="sr"><span class="srl">Location</span><span class="srv">'+esc(st.location)+'</span></div>'
+    +'<div class="sr"><span class="srl">Name</span><span class="srv">'+esc(st.name)+'</span></div>'
+    +'<div class="sr"><span class="srl">Phone</span><span class="srv">'+esc(st.phone)+'</span></div>'
+    +'<div class="sr"><span class="srl">Time</span><span class="srv">'+esc(st.time)+'</span></div>';
+  cbody.appendChild(el);scrollB();
+}
+
+function disInp(ph){cinp.disabled=true;cinp.placeholder=ph||'Choose from options above…';csnd.disabled=true;}
+function enInp(ph){cinp.disabled=false;cinp.placeholder=ph||'Type your reply…';csnd.disabled=false;setTimeout(function(){cinp.focus();},300);}
 
 function onChip(step,val){
+  addU(val);disInp();
   if(step==='service'){
-    state.service=val;addBubble('user',val);disableInput();
-    addTyping(350).then(function(){
-      addBubble('akose','Love it! Where are you located? (e.g. Westlands, Thika, CBD)');
-      state.step='location';enableInput('e.g. Westlands, Nairobi...');
-    });
+    st.service=val;
+    showTyping().then(function(){addA('Great choice! 🌟 Where are you located? (e.g. Westlands, Thika, CBD)');st.step='location';enInp('e.g. Westlands, Nairobi…');});
   } else if(step==='time'){
-    state.time=val;addBubble('user',val);disableInput();
-    addTyping(350).then(function(){showSummary();});
+    st.time=val;
+    showTyping().then(function(){buildConfirm();});
   }
 }
 
-function onText(text){
-  if(!text.trim())return;chatInp.value='';
-  if(state.step==='location'){
-    state.location=text.trim();addBubble('user',text);disableInput();
-    addTyping(350).then(function(){
-      addBubble('akose','Got it! And your name?');
-      state.step='name';enableInput('Your full name...');
-    });
-  } else if(state.step==='name'){
-    state.name=text.trim();addBubble('user',text);disableInput();
-    addTyping(350).then(function(){
-      addBubble('akose','Nice to meet you, '+state.name+'! Your phone number?');
-      state.step='phone';enableInput('0712 345 678');
-    });
-  } else if(state.step==='phone'){
-    state.phone=text.trim();addBubble('user',text);disableInput();
-    addTyping(350).then(function(){
-      addBubble('akose','Almost done! What time works best?');
-      addChips(['Morning (9AM-12PM)','Afternoon (12PM-5PM)','Evening (5PM-8PM)'],'time',400);
-      state.step='time';
+function onText(txt){
+  txt=txt.trim();if(!txt)return;
+  cinp.value='';addU(txt);disInp();
+  if(st.step==='location'){
+    st.location=txt;
+    showTyping().then(function(){addA('Got it! 📍 What's your name?');st.step='name';enInp('Your full name…');});
+  } else if(st.step==='name'){
+    st.name=txt;
+    showTyping().then(function(){addA('Lovely to meet you, '+esc(st.name)+'! 😊 And your phone number?');st.step='phone';enInp('e.g. 0712 345 678');});
+  } else if(st.step==='phone'){
+    st.phone=txt;
+    showTyping().then(function(){
+      addA('Almost there! When works best for you?');
+      setTimeout(function(){addChips(['Morning (9AM–12PM)','Afternoon (12PM–5PM)','Evening (5PM–8PM)'],'time');},300);
+      st.step='time';
     });
   }
 }
 
-function showSummary(){
+function buildConfirm(){
+  addSummary();
   setTimeout(function(){
-    var el=document.createElement('div');el.className='b-akose';
-    el.innerHTML='<div class="b-akose-ava">A</div><div class="b-akose-wrap" style="width:100%"><div class="b-content" style="background:transparent;border:none;padding:.15rem 0"><div class="summary-card"><h4>Your Booking Summary</h4>'
-      +'<div class="s-row"><span class="s-label">Service</span><span class="s-val">'+state.service+'</span></div>'
-      +'<div class="s-row"><span class="s-label">Location</span><span class="s-val">'+state.location+'</span></div>'
-      +'<div class="s-row"><span class="s-label">Name</span><span class="s-val">'+state.name+'</span></div>'
-      +'<div class="s-row"><span class="s-label">Phone</span><span class="s-val">'+state.phone+'</span></div>'
-      +'<div class="s-row"><span class="s-label">Time</span><span class="s-val">'+state.time+'</span></div>'
-      +'</div></div></div></div>';
-    chatBody.appendChild(el);scrollBottom();
+    addA('Perfect! Tap the button below and your booking goes straight to me on WhatsApp 🥰',400);
+    setTimeout(function(){wafb.style.display='flex';wafb.disabled=false;cir.style.display='none';scrollB();},900);
   },200);
-  setTimeout(function(){
-    addBubble('akose','Perfect! Tap the button below and I will receive all your details.',600);
-    setTimeout(function(){
-      waSendBtn.classList.add('show');
-      chatInputRow.style.display='none';
-      scrollBottom();
-    },1100);
-  },300);
 }
 
-function sendToWhatsApp(){
-  waSendBtn.disabled=true;
-  waSendBtn.innerHTML='<i class="fas fa-spinner fa-spin"></i> Opening WhatsApp...';
-  var txt='Hi Akose!\n\nI would like to book an appointment:\n\n'
-    +'Service: '+state.service+'\n'
-    +'Location: '+state.location+'\n'
-    +'Name: '+state.name+'\n'
-    +'Phone: '+state.phone+'\n'
-    +'Time: '+state.time+'\n'
-    +'\nPlease confirm my appointment. Thank you!';
-  window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(txt),'_blank');
-  setTimeout(function(){
-    waSendBtn.classList.remove('show');
-    chatBody.style.display='none';
-    chatSuccess.classList.add('show');
-  },600);
-}
+wafb.addEventListener('click',function(){
+  wafb.disabled=true;wafb.innerHTML='<i class="fas fa-spinner fa-spin"></i> Opening WhatsApp…';
+  var msg='Hi Akose! 👋
 
-chatSendBtn.addEventListener('click',function(){onText(chatInp.value);});
-chatInp.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();onText(chatInp.value);}});
+I'd like to book an appointment:
 
-function startConversation(){
-  disableInput();
-  addTyping(500).then(function(){
-    addBubble('akose','Hi! I am Akose. Welcome to Hair by Akose! What style are you thinking of?');
-    addChips(['Box Braids','Cornrows','Knotless Braids','Twists','Natural Hair','Locs','Kids Styling','Bridal'],'service',350);
+'
+    +'💆 Service: '+st.service+'
+'
+    +'📍 Location: '+st.location+'
+'
+    +'👤 Name: '+st.name+'
+'
+    +'📱 Phone: '+st.phone+'
+'
+    +'⏰ Time: '+st.time+'
+'
+    +'
+Please confirm my appointment. Thank you!';
+  window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(msg),'_blank');
+  setTimeout(function(){wafb.style.display='none';csucc.classList.add('show');scrollB();},600);
+});
+
+csnd.addEventListener('click',function(){onText(cinp.value);});
+cinp.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();onText(cinp.value);}});
+
+function startChat(){
+  disInp('Choose a service above…');
+  showTyping().then(function(){
+    addA('Hi! I'm Akose 👋 I'd love to help you book. What style are you going for?').then(function(){
+      setTimeout(function(){addChips(['Box Braids','Cornrows','Knotless Braids','Twists','Natural Hair','Locs','Kids Styling','Bridal'],'service');},200);
+    });
   });
 }
 </script>
