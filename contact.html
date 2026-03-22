@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Book your appointment with Hair by Akose. Contact via WhatsApp, email, or phone for mobile hair styling.">
 <title>Book Now | Hair by Akose</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,13 +21,10 @@
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;font-size:16px}
 body{font-family:var(--font-body);background:var(--black);color:var(--white);line-height:1.75;overflow-x:hidden}
-img{max-width:100%;display:block}
 a{text-decoration:none;color:inherit;transition:all .3s ease}
 body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none!important;z-index:9999;opacity:.22}
-.container{width:100%;max-width:1400px;margin:0 auto;padding:0 2rem}
-#scroll-progress{position:fixed;top:0;left:0;height:3px;background:var(--grad-gold);z-index:10000;width:0;transition:width .08s linear;pointer-events:none}
 
-/* ── NAV ── */
+/* NAV */
 .nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.5rem 0;transition:all .4s ease}
 .nav.scrolled{background:rgba(7,30,30,.97);backdrop-filter:blur(20px);border-bottom:1px solid rgba(212,169,106,.2);padding:1rem 0}
 .nav-inner{max-width:1400px;margin:0 auto;padding:0 2rem;display:flex;justify-content:space-between;align-items:center}
@@ -48,7 +44,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
 .hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(0,-5.5px);width:20px}
 
-/* ── SLIDE PANEL ── */
+/* SLIDE PANEL */
 .mob-menu-backdrop{display:none;position:fixed;inset:0;background:rgba(7,30,30,.55);backdrop-filter:blur(3px);z-index:1070;opacity:0;transition:opacity .35s ease}
 .mob-menu-backdrop.open{display:block;opacity:1}
 .mob-menu{display:flex;flex-direction:column;justify-content:center;position:fixed;top:0;right:0;bottom:0;width:68%;max-width:300px;background:rgba(7,30,30,.72);backdrop-filter:blur(22px) saturate(1.6);-webkit-backdrop-filter:blur(22px) saturate(1.6);border-left:1px solid rgba(212,169,106,.22);z-index:1080;padding:5.5rem 1.6rem 4rem 1.5rem;transform:translateX(100%);transition:transform .4s var(--ease);pointer-events:none;overflow-y:auto}
@@ -68,404 +64,304 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .mob-menu-socials a:hover{background:rgba(212,169,106,.12);color:var(--gold);border-color:rgba(212,169,106,.5)}
 .mob-menu-meta{margin-top:1.1rem;font-family:var(--font-body);font-style:italic;font-size:.82rem;color:rgba(245,237,216,.25);line-height:1.8}
 
-/* ══════════════════════════════════════════
-   DESKTOP LAYOUT
-══════════════════════════════════════════ */
-.desktop-hero{padding:10rem 0 5rem;background:var(--black);text-align:center;position:relative;overflow:hidden}
-.desktop-hero::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;border-radius:50%;border:1px solid rgba(212,169,106,.07);animation:ringPulse 6s ease-in-out infinite}
-.desktop-hero::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:900px;height:900px;border-radius:50%;border:1px solid rgba(212,169,106,.04);animation:ringPulse 6s ease-in-out 2s infinite}
-@keyframes ringPulse{0%,100%{opacity:.5;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.04)}}
-.hero-lines{position:absolute;inset:0;pointer-events:none}
-.hero-lines span{position:absolute;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,rgba(212,169,106,.08),transparent)}
-.hero-lines span:nth-child(1){left:20%}.hero-lines span:nth-child(2){left:40%}
-.hero-lines span:nth-child(3){left:60%}.hero-lines span:nth-child(4){left:80%}
-.hero-inner{position:relative;z-index:2;animation:fadeUp 1s var(--ease) both}
-@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
-.hero-eyebrow{display:inline-flex;align-items:center;gap:.75rem;font-family:var(--font-display);font-size:.7rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem}
-.hero-eyebrow::before,.hero-eyebrow::after{content:'';width:40px;height:1px;background:var(--gold);opacity:.5}
-.page-title{font-family:var(--font-display);font-size:clamp(3rem,9vw,7.5rem);font-weight:800;line-height:.95;letter-spacing:-.03em;margin-bottom:1.5rem}
-.page-title .gold{display:block;background:var(--grad-gold);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-style:italic}
-.page-subtitle{font-size:1.2rem;color:var(--white-dim);font-style:italic;max-width:500px;margin:0 auto 2.5rem}
-.response-badge{display:inline-flex;align-items:center;gap:.6rem;padding:.6rem 1.4rem;background:rgba(212,169,106,.08);border:1px solid rgba(212,169,106,.25);border-radius:100px;font-family:var(--font-display);font-size:.72rem;font-weight:700;letter-spacing:.08em;color:var(--gold)}
-.response-badge::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--gold);animation:blink 1.5s ease-in-out infinite}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+/* DESKTOP HERO — Bold Split */
+.page-hero{display:grid;grid-template-columns:38% 62%;min-height:55vh;padding-top:80px}
+.hero-left{background:var(--gold);position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:3rem 2.5rem}
+.hero-left-mono{position:absolute;top:-20px;left:-15px;font-family:var(--font-display);font-size:18rem;font-weight:900;color:rgba(7,30,30,.08);line-height:1;pointer-events:none;user-select:none}
+.hero-left-tag{font-family:var(--font-display);font-size:.65rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:rgba(7,30,30,.5);margin-bottom:1.5rem}
+.hero-left-brand{font-family:var(--font-body);font-size:2rem;font-weight:700;font-style:italic;color:var(--black);line-height:1.1}
+.hero-left-loc{margin-top:1.5rem;display:flex;align-items:center;gap:.5rem;font-family:var(--font-display);font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(7,30,30,.45)}
+.hero-left-loc::before{content:'';width:20px;height:1px;background:rgba(7,30,30,.3)}
+.hero-right{background:var(--black);display:flex;flex-direction:column;justify-content:center;padding:4rem 3.5rem;position:relative;overflow:hidden}
+.hero-right::before{content:'';position:absolute;top:0;right:0;width:300px;height:300px;border-radius:50%;border:1px solid rgba(212,169,106,.06);transform:translate(50%,-50%)}
+.hero-right::after{content:'';position:absolute;bottom:0;right:0;width:200px;height:200px;border-radius:50%;border:1px solid rgba(212,169,106,.04);transform:translate(30%,30%)}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:.75rem;font-family:var(--font-display);font-size:.68rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;opacity:.8}
+.page-title{font-family:var(--font-display);font-size:clamp(2.5rem,5vw,5rem);font-weight:800;line-height:.95;letter-spacing:-.03em;margin-bottom:1.5rem;color:var(--white)}
+.page-title em{display:block;font-family:var(--font-body);font-style:italic;font-weight:300;font-size:clamp(2rem,4vw,4rem);background:var(--grad-gold);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:1.1rem;color:var(--white-dim);font-style:italic;margin-bottom:2rem;max-width:380px;line-height:1.6}
+.response-badge{display:inline-flex;align-items:center;gap:.6rem;padding:.55rem 1.2rem;background:rgba(212,169,106,.08);border:1px solid rgba(212,169,106,.2);font-family:var(--font-display);font-size:.65rem;font-weight:700;letter-spacing:.1em;color:var(--gold)}
+.response-badge::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--gold);animation:blink 1.5s ease-in-out infinite;flex-shrink:0}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
 
-/* Desktop contact methods */
-.contact-methods-section{padding:5rem 0;background:var(--black-soft)}
-.methods-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem}
-.method-card{padding:2.5rem 2rem;background:var(--black-card);border:1px solid rgba(212,169,106,.1);border-radius:18px;text-align:center;transition:all .4s var(--ease);position:relative;overflow:hidden}
-.method-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad-gold);transform:scaleX(0);transition:transform .4s ease;transform-origin:left}
-.method-card:hover{border-color:rgba(212,169,106,.3);transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,.4)}
-.method-card:hover::before{transform:scaleX(1)}
-.method-icon{width:64px;height:64px;border-radius:16px;background:rgba(212,169,106,.08);border:1px solid rgba(212,169,106,.15);display:flex;align-items:center;justify-content:center;font-size:1.6rem;color:var(--gold);margin:0 auto 1.5rem;transition:all .3s}
-.method-card:hover .method-icon{transform:scale(1.1)}
-.method-card h3{font-family:var(--font-display);font-size:1.15rem;font-weight:700;color:var(--white);margin-bottom:.5rem}
-.method-card p{font-size:1rem;color:var(--white-dim);margin-bottom:1.5rem;line-height:1.5}
-.method-action{font-family:var(--font-display);font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+/* DESKTOP BODY */
+.desktop-body{background:var(--black-soft);padding:6rem 0}
+.container{max-width:1200px;margin:0 auto;padding:0 2rem}
+.desktop-grid{display:grid;grid-template-columns:1fr 400px;gap:5rem;align-items:start}
 
-/* Desktop main section */
-.main-section{padding:7rem 0;background:var(--black)}
-.main-grid{display:grid;grid-template-columns:1fr 420px;gap:5rem;align-items:start}
-.form-block h2{font-family:var(--font-display);font-size:clamp(2rem,4vw,3rem);font-weight:800;color:var(--white);margin-bottom:.5rem}
-.form-block>p{font-size:1.1rem;color:var(--white-dim);font-style:italic;margin-bottom:3rem}
-.section-label{display:inline-flex;align-items:center;gap:.75rem;font-family:var(--font-display);font-size:.7rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem}
-.section-label::before,.section-label::after{content:'';display:block;width:30px;height:1px;background:var(--gold);opacity:.6}
-.form-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
-.form-group{margin-bottom:1.25rem}
-.form-group label{display:block;font-family:var(--font-display);font-size:.72rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem}
-.form-input,.form-select,.form-textarea{width:100%;padding:1rem 1.25rem;background:var(--black-card);border:1px solid rgba(212,169,106,.15);border-radius:10px;color:var(--white);font-family:var(--font-body);font-size:1.05rem;transition:all .3s}
-.form-input::placeholder,.form-textarea::placeholder{color:rgba(245,237,216,.3)}
-.form-input:focus,.form-select:focus,.form-textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(212,169,106,.1);background:var(--black-edge)}
-.form-select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23D4A96A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1.25rem center;background-color:var(--black-card);cursor:pointer}
+/* EDITORIAL CONTACT ROWS */
+.editorial-block{margin-bottom:4rem}
+.section-label{display:flex;align-items:center;gap:.75rem;font-family:var(--font-display);font-size:.65rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:2rem}
+.section-label::after{content:'';flex:1;height:1px;background:rgba(212,169,106,.2)}
+.contact-rows{border-top:1px solid rgba(212,169,106,.1)}
+.contact-row{display:flex;align-items:center;gap:1.5rem;padding:1.4rem 0;border-bottom:1px solid rgba(212,169,106,.1);transition:all .3s;cursor:pointer;text-decoration:none;color:inherit}
+.contact-row:hover{padding-left:.75rem}
+.contact-row:hover .row-arrow{opacity:1;transform:translateX(0)}
+.row-icon{width:48px;height:48px;border-radius:10px;background:rgba(212,169,106,.06);border:1px solid rgba(212,169,106,.12);display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:var(--gold);flex-shrink:0;transition:all .3s}
+.contact-row:hover .row-icon{background:rgba(212,169,106,.12);border-color:rgba(212,169,106,.3)}
+.row-info{flex:1}
+.row-name{font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--white);margin-bottom:.15rem}
+.row-sub{font-size:.9rem;color:var(--white-dim)}
+.row-badge{font-family:var(--font-display);font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.25rem .7rem;background:rgba(37,211,102,.1);color:#25D366;border:1px solid rgba(37,211,102,.25)}
+.row-arrow{color:var(--gold);opacity:.3;transition:all .3s;transform:translateX(-6px)}
+
+/* WA ROW special */
+.wa-contact-row{background:rgba(37,211,102,.05);border:1px solid rgba(37,211,102,.2) !important;border-bottom:1px solid rgba(37,211,102,.2)!important;border-radius:0;padding:1.4rem 1rem;margin:0 -1rem;cursor:pointer}
+.wa-contact-row .row-icon{background:rgba(37,211,102,.1);border-color:rgba(37,211,102,.25);color:#25D366}
+.wa-contact-row:hover{background:rgba(37,211,102,.08);padding-left:1.75rem}
+.wa-contact-row .row-arrow{color:#25D366}
+
+/* COMPACT FORM */
+.form-block h2{font-family:var(--font-display);font-size:1.6rem;font-weight:800;color:var(--white);margin-bottom:.4rem}
+.form-block>p{font-size:1rem;color:var(--white-dim);font-style:italic;margin-bottom:2rem}
+.form-group{margin-bottom:1rem}
+.form-group label{display:block;font-family:var(--font-display);font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem}
+.form-input,.form-select,.form-textarea{width:100%;padding:.85rem 1rem;background:var(--black-card);border:1px solid rgba(212,169,106,.12);color:var(--white);font-family:var(--font-body);font-size:1rem;transition:all .3s;outline:none}
+.form-input::placeholder,.form-textarea::placeholder{color:rgba(245,237,216,.25)}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--gold);background:var(--black-edge)}
+.form-select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23D4A96A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;background-color:var(--black-card);cursor:pointer}
 .form-select option{background:var(--black-card);color:var(--white)}
-.form-textarea{resize:vertical;min-height:130px;line-height:1.7}
-.checkbox-wrap{display:flex;align-items:flex-start;gap:.75rem;cursor:pointer}
-.checkbox-wrap input[type="checkbox"]{display:none}
-.checkbox-box{width:20px;height:20px;min-width:20px;border:1px solid rgba(212,169,106,.3);border-radius:5px;background:var(--black-card);display:flex;align-items:center;justify-content:center;transition:all .3s;margin-top:3px}
-.checkbox-wrap input:checked+.checkbox-box{background:var(--grad-gold);border-color:var(--gold)}
-.checkbox-wrap input:checked+.checkbox-box::after{content:'✓';font-size:.75rem;color:var(--black);font-weight:900}
-.checkbox-wrap span{font-size:.95rem;color:var(--white-dim);line-height:1.5}
-.btn-submit{width:100%;padding:1.2rem;margin-top:1rem;background:var(--grad-gold);color:var(--black);font-family:var(--font-display);font-size:.85rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase;border:none;border-radius:12px;cursor:pointer;transition:all .3s;box-shadow:0 0 30px rgba(212,169,106,.2);display:flex;align-items:center;justify-content:center;gap:.75rem}
-.btn-submit:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(212,169,106,.4)}
-.btn-submit:disabled{opacity:.6;cursor:not-allowed;transform:none}
-.form-note{font-family:var(--font-display);font-size:.68rem;letter-spacing:.08em;color:rgba(245,237,216,.3);text-align:center;margin-top:1rem}
-.form-success{display:none;text-align:center;padding:4rem 2rem;animation:fadeUp .5s var(--ease) both}
-.form-success.show{display:block}
-.success-icon{width:80px;height:80px;border-radius:50%;background:rgba(212,169,106,.1);border:1px solid rgba(212,169,106,.3);display:flex;align-items:center;justify-content:center;font-size:2rem;color:var(--gold);margin:0 auto 2rem}
-.form-success h3{font-family:var(--font-display);font-size:2rem;font-weight:800;color:var(--white);margin-bottom:1rem}
-.form-success p{font-size:1.1rem;color:var(--white-dim);font-style:italic;margin-bottom:2rem}
-.success-steps{background:var(--black-card);border:1px solid rgba(212,169,106,.15);border-radius:14px;padding:2rem;text-align:left;margin-bottom:2rem}
-.success-steps h4{font-family:var(--font-display);font-size:.8rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem}
-.success-step{display:flex;align-items:center;gap:.75rem;font-size:1rem;color:var(--white-dim);margin-bottom:.75rem}
-.success-step i{color:var(--gold);width:16px}
-.btn-wa-full{display:flex;align-items:center;justify-content:center;gap:.75rem;width:100%;padding:1rem;background:#25D366;color:white;font-family:var(--font-display);font-size:.8rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border-radius:12px;border:none;cursor:pointer;text-decoration:none;transition:all .3s;margin-bottom:1rem}
-.btn-wa-full:hover{background:#1DAD52;transform:translateY(-2px)}
-.btn-ghost-sm{display:inline-block;padding:.7rem 1.5rem;background:transparent;color:var(--white-dim);font-family:var(--font-display);font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(245,237,216,.15);border-radius:100px;cursor:pointer;transition:all .3s}
-.btn-ghost-sm:hover{border-color:var(--gold);color:var(--gold)}
-.sidebar{display:flex;flex-direction:column;gap:1.5rem;position:sticky;top:100px}
-.info-card{padding:2rem;background:var(--black-card);border:1px solid rgba(212,169,106,.1);border-radius:16px;transition:border-color .3s}
-.info-card:hover{border-color:rgba(212,169,106,.25)}
-.info-card-header{display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem}
-.info-icon{width:44px;height:44px;border-radius:10px;background:rgba(212,169,106,.08);border:1px solid rgba(212,169,106,.15);display:flex;align-items:center;justify-content:center;font-size:1rem;color:var(--gold);flex-shrink:0}
-.info-card h4{font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--white)}
+.form-textarea{resize:vertical;min-height:90px;line-height:1.6}
+.form-row-2{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+.btn-wa-submit{width:100%;padding:1.1rem;margin-top:.75rem;background:#25D366;color:white;font-family:var(--font-display);font-size:.8rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:.65rem;transition:all .3s}
+.btn-wa-submit:hover{background:#1DAD52;transform:translateY(-2px)}
+.btn-wa-submit:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.form-note{font-family:var(--font-display);font-size:.6rem;letter-spacing:.08em;color:rgba(245,237,216,.25);text-align:center;margin-top:.75rem}
+
+/* SIDEBAR */
+.sidebar{display:flex;flex-direction:column;gap:1.25rem;position:sticky;top:100px}
+.info-card{padding:1.75rem;background:var(--black-card);border:1px solid rgba(212,169,106,.1)}
+.info-card-hd{display:flex;align-items:center;gap:.85rem;margin-bottom:1.25rem}
+.info-icon{width:38px;height:38px;background:rgba(212,169,106,.08);border:1px solid rgba(212,169,106,.15);display:flex;align-items:center;justify-content:center;font-size:.9rem;color:var(--gold);flex-shrink:0}
+.info-card h4{font-family:var(--font-display);font-size:.85rem;font-weight:700;color:var(--white)}
 .info-card ul{list-style:none}
-.info-card ul li{font-size:.95rem;color:var(--white-dim);padding:.45rem 0;border-bottom:1px solid rgba(212,169,106,.06);display:flex;gap:.5rem;align-items:baseline}
+.info-card ul li{font-size:.9rem;color:var(--white-dim);padding:.35rem 0;border-bottom:1px solid rgba(212,169,106,.06);display:flex;gap:.5rem;align-items:baseline}
 .info-card ul li:last-child{border-bottom:none}
-.info-card ul li strong{color:var(--white);font-weight:600;min-width:90px}
-.social-mini{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
-.social-btn{display:flex;align-items:center;gap:.6rem;padding:.75rem 1rem;background:var(--black-soft);border:1px solid rgba(212,169,106,.1);border-radius:10px;font-family:var(--font-display);font-size:.7rem;font-weight:700;letter-spacing:.08em;color:var(--white-dim);transition:all .3s}
+.info-card ul li strong{color:var(--white);font-weight:600;min-width:80px;font-size:.85rem}
+.social-mini{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+.social-btn{display:flex;align-items:center;gap:.5rem;padding:.65rem .9rem;background:var(--black-soft);border:1px solid rgba(212,169,106,.1);font-family:var(--font-display);font-size:.65rem;font-weight:700;letter-spacing:.06em;color:var(--white-dim);transition:all .3s}
 .social-btn:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px)}
-.social-btn i{font-size:1.1rem}
 
 /* FAQ */
-.faq-section{padding:7rem 0;background:var(--black-soft)}
-.faq-header{text-align:center;margin-bottom:4rem}
-.faq-header h2{font-family:var(--font-display);font-size:clamp(2rem,4vw,3.5rem);font-weight:800;color:var(--white)}
-.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(212,169,106,.08);border-radius:18px;overflow:hidden;border:1px solid rgba(212,169,106,.1);max-width:1100px;margin:0 auto}
-.faq-item{background:var(--black-card);transition:background .3s}
+.faq-section{padding:6rem 0;background:var(--black)}
+.faq-header{text-align:center;margin-bottom:3.5rem}
+.faq-header h2{font-family:var(--font-display);font-size:clamp(2rem,4vw,3rem);font-weight:800;color:var(--white)}
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(212,169,106,.08);border:1px solid rgba(212,169,106,.1);max-width:1000px;margin:0 auto}
+.faq-item{background:var(--black-card)}
 .faq-item.open{background:var(--black-edge)}
-.faq-question{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.75rem 2rem;cursor:pointer}
-.faq-question h3{font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--white);line-height:1.4;transition:color .3s}
+.faq-question{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.5rem 1.75rem;cursor:pointer}
+.faq-question h3{font-family:var(--font-display);font-size:.95rem;font-weight:700;color:var(--white);line-height:1.4}
 .faq-item.open .faq-question h3{color:var(--gold-light)}
-.faq-toggle{width:32px;height:32px;min-width:32px;border-radius:50%;background:rgba(212,169,106,.08);border:1px solid rgba(212,169,106,.15);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:.75rem;transition:all .4s}
+.faq-toggle{width:28px;height:28px;min-width:28px;border-radius:50%;background:rgba(212,169,106,.08);border:1px solid rgba(212,169,106,.15);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:.7rem;transition:all .4s}
 .faq-item.open .faq-toggle{background:var(--grad-gold);color:var(--black);border-color:transparent;transform:rotate(45deg)}
-.faq-answer{max-height:0;overflow:hidden;transition:max-height .4s var(--ease),padding .3s}
-.faq-answer p{padding:0 2rem 1.75rem;font-size:1.05rem;color:var(--white-dim);line-height:1.8}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .4s var(--ease)}
+.faq-answer p{padding:0 1.75rem 1.5rem;font-size:.95rem;color:var(--white-dim);line-height:1.8}
 
-/* Footer */
-.footer{background:var(--black-soft);border-top:1px solid rgba(212,169,106,.18);padding:5rem 0 2.5rem}
+/* FOOTER */
+.footer{background:var(--black-soft);border-top:1px solid rgba(212,169,106,.15);padding:5rem 0 2.5rem}
 .footer-grid{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:3rem;margin-bottom:4rem}
-.footer-brand img{height:70px;width:auto;object-fit:contain;margin-bottom:1.25rem}
-.footer-brand p{font-size:1rem;color:var(--white-dim);line-height:1.7;margin-bottom:1.5rem}
-.socials{display:flex;gap:.75rem}
-.socials a{width:42px;height:42px;border-radius:50%;background:var(--black-card);border:1px solid rgba(212,169,106,.15);display:flex;align-items:center;justify-content:center;font-size:1rem;color:var(--white-dim);transition:all .3s}
+.footer-brand img{height:65px;width:auto;object-fit:contain;margin-bottom:1.25rem}
+.footer-brand p{font-size:.95rem;color:var(--white-dim);line-height:1.7;margin-bottom:1.5rem}
+.socials{display:flex;gap:.65rem}
+.socials a{width:40px;height:40px;border-radius:50%;background:var(--black-card);border:1px solid rgba(212,169,106,.15);display:flex;align-items:center;justify-content:center;font-size:.95rem;color:var(--white-dim);transition:all .3s}
 .socials a:hover{background:var(--gold);color:var(--black);border-color:var(--gold);transform:translateY(-3px)}
-.footer-col h4{font-family:var(--font-display);font-size:.75rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem}
+.footer-col h4{font-family:var(--font-display);font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem}
 .footer-col ul{list-style:none}
-.footer-col ul li{margin-bottom:.7rem;font-size:.95rem;color:var(--white-dim)}
-.footer-col ul li i{color:var(--gold);width:16px;margin-right:.5rem}
-.footer-col ul li a{color:inherit}
+.footer-col ul li{margin-bottom:.65rem;font-size:.9rem;color:var(--white-dim)}
+.footer-col ul li i{color:var(--gold);width:14px;margin-right:.4rem;font-size:.8rem}
 .footer-col ul li a:hover{color:var(--gold)}
-.footer-bottom{border-top:1px solid rgba(212,169,106,.1);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:.85rem;color:rgba(245,237,216,.3);font-family:var(--font-display)}
+.footer-bottom{border-top:1px solid rgba(212,169,106,.1);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:.8rem;color:rgba(245,237,216,.25);font-family:var(--font-display)}
 
-/* ── TABLET ── */
+/* TABLET */
 @media(max-width:1024px){
-  .main-grid{grid-template-columns:1fr;gap:4rem}
+  .desktop-grid{grid-template-columns:1fr;gap:3rem}
   .sidebar{position:static}
   .faq-grid{grid-template-columns:1fr}
-  .footer-grid{grid-template-columns:1fr 1fr;gap:2.5rem}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:2rem}
   .footer-brand{grid-column:span 2}
-  .methods-grid{grid-template-columns:1fr 1fr}
+  .page-hero{grid-template-columns:35% 65%}
 }
 
-/* hide mob-chat-page on desktop */
-.mob-chat-page{display:none}
+/* ════════════════════════════════════
+   MOBILE ≤ 767px
+════════════════════════════════════ */
+.mob-page{display:none}
 
-/* ══════════════════════════════════════════
-   MOBILE ≤ 767px — TEAL/GOLD CHAT UI
-══════════════════════════════════════════ */
 @media(max-width:767px){
   html{font-size:15px}
-  body{padding-bottom:4.75rem;background:var(--black-soft)}
-  .container{padding:0}
+  body{background:var(--black-soft);overflow-x:hidden}
 
-  /* hide desktop sections on mobile */
-  .desktop-hero,.contact-methods-section,.main-section,.faq-section{display:none}
+  /* hide desktop */
+  .page-hero,.desktop-body,.faq-section,.footer{display:none!important}
 
-  /* show mobile chat */
-  .mob-chat-page{display:flex;flex-direction:column;height:100svh;background:var(--black-soft)}
+  /* show mobile */
+  .mob-page{display:block;min-height:100svh;padding-bottom:4.5rem}
 
-  /* nav */
-  .nav{padding:.85rem 0;background:rgba(7,30,30,.97);backdrop-filter:blur(16px);border-bottom:1px solid rgba(212,169,106,.14)}
+  /* NAV */
+  .nav{padding:.8rem 0;background:rgba(7,30,30,.97);backdrop-filter:blur(16px);border-bottom:1px solid rgba(212,169,106,.14)}
   .nav-inner{padding:0 1rem}
   .nav-logo img{height:40px}
   .nav-links{display:none!important}
   .hamburger{display:flex}
 
-  /* ── CHAT HEADER (like a messenger header) ── */
-  .chat-header{
-    background:var(--teal);
-    padding:4.5rem 1rem .85rem;
-    display:flex;align-items:center;gap:.85rem;
-    border-bottom:1px solid rgba(212,169,106,.15);
-    flex-shrink:0;
-  }
-  .chat-avatar{
-    width:42px;height:42px;border-radius:50%;
-    background:var(--grad-gold);
-    display:flex;align-items:center;justify-content:center;
-    font-family:var(--font-display);font-size:1.1rem;font-weight:800;
-    color:var(--black);flex-shrink:0;
-    border:2px solid rgba(212,169,106,.4);
-  }
-  .chat-header-info{flex:1}
-  .chat-header-name{font-family:var(--font-display);font-size:.92rem;font-weight:800;color:var(--white);letter-spacing:.02em}
-  .chat-header-status{font-family:var(--font-display);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-top:.1rem;display:flex;align-items:center;gap:.35rem}
-  .chat-header-status::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold);animation:blink 1.5s ease-in-out infinite;flex-shrink:0}
-  .chat-header-actions{display:flex;gap:.5rem}
-  .chat-header-actions a{width:32px;height:32px;border-radius:50%;background:rgba(212,169,106,.1);border:1px solid rgba(212,169,106,.2);display:flex;align-items:center;justify-content:center;font-size:.8rem;color:var(--gold)}
+  /* BOLD SPLIT HERO — mobile */
+  .mob-hero{display:grid;grid-template-columns:38% 62%;height:170px;margin-top:56px}
+  .mob-hero-l{background:var(--gold);position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:.85rem .85rem}
+  .mob-hero-l-mono{position:absolute;top:-12px;left:-8px;font-family:var(--font-display);font-size:8rem;font-weight:900;color:rgba(7,30,30,.1);line-height:1;pointer-events:none}
+  .mob-hero-l-tag{font-family:var(--font-display);font-size:.45rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(7,30,30,.45);margin-bottom:.5rem;z-index:1;position:relative}
+  .mob-hero-l-brand{font-family:var(--font-body);font-size:1.1rem;font-weight:700;font-style:italic;color:var(--black);z-index:1;position:relative;line-height:1.1}
+  .mob-hero-r{background:var(--black);display:flex;flex-direction:column;justify-content:center;padding:.85rem 1rem;position:relative;overflow:hidden}
+  .mob-hero-r::after{content:'';position:absolute;top:-20px;right:-20px;width:80px;height:80px;border-radius:50%;border:1px solid rgba(212,169,106,.07)}
+  .mob-hero-title{font-family:var(--font-display);font-size:1.25rem;font-weight:800;color:var(--white);line-height:1.1;margin-bottom:.4rem}
+  .mob-hero-title em{display:block;font-family:var(--font-body);font-style:italic;font-weight:300;font-size:1.05rem;background:var(--grad-gold);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+  .mob-hero-badge{display:inline-flex;align-items:center;gap:.35rem;font-family:var(--font-display);font-size:.5rem;font-weight:700;letter-spacing:.08em;color:var(--gold);padding:.3rem .6rem;background:rgba(212,169,106,.08);border:1px solid rgba(212,169,106,.2)}
+  .mob-hero-badge::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--gold);animation:blink 1.5s ease-in-out infinite;flex-shrink:0}
 
-  /* ── CHAT BODY (scrollable messages) ── */
-  .chat-body{
-    flex:1;overflow-y:auto;
-    padding:.85rem 1rem 1rem;
-    display:flex;flex-direction:column;gap:.65rem;
-    background:var(--black-soft);
-    /* teal dot pattern */
-    background-image:radial-gradient(rgba(26,100,102,.15) 1px,transparent 1px);
-    background-size:20px 20px;
-  }
-  .chat-body::-webkit-scrollbar{width:3px}
-  .chat-body::-webkit-scrollbar-thumb{background:rgba(212,169,106,.2);border-radius:2px}
+  /* EDITORIAL CONTACT SECTION */
+  .mob-contact-section{padding:1.25rem 1rem}
+  .mob-section-label{display:flex;align-items:center;gap:.6rem;font-family:var(--font-display);font-size:.58rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
+  .mob-section-label::after{content:'';flex:1;height:1px;background:rgba(212,169,106,.2)}
 
-  /* date chip */
-  .chat-date{
-    align-self:center;
-    background:rgba(7,30,30,.7);backdrop-filter:blur(8px);
-    border:1px solid rgba(212,169,106,.15);border-radius:100px;
-    padding:.28rem .9rem;
-    font-family:var(--font-display);font-size:.58rem;font-weight:700;
-    letter-spacing:.15em;text-transform:uppercase;color:rgba(212,169,106,.6);
-  }
+  /* WA trigger row */
+  .mob-wa-trigger{display:flex;align-items:center;gap:.85rem;padding:1rem 1rem;background:rgba(37,211,102,.06);border:1px solid rgba(37,211,102,.25);margin-bottom:.75rem;cursor:pointer;transition:all .25s;-webkit-tap-highlight-color:transparent}
+  .mob-wa-trigger:active{background:rgba(37,211,102,.12)}
+  .mob-wa-icon{width:42px;height:42px;border-radius:10px;background:rgba(37,211,102,.12);border:1px solid rgba(37,211,102,.3);display:flex;align-items:center;justify-content:center;font-size:1.15rem;color:#25D366;flex-shrink:0}
+  .mob-wa-info{flex:1}
+  .mob-wa-name{font-family:var(--font-display);font-size:.82rem;font-weight:800;color:#25D366;margin-bottom:.1rem}
+  .mob-wa-sub{font-size:.78rem;color:rgba(245,237,216,.45)}
+  .mob-wa-pill{font-family:var(--font-display);font-size:.55rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.22rem .6rem;background:rgba(37,211,102,.12);color:#25D366;border:1px solid rgba(37,211,102,.25);white-space:nowrap}
+  .mob-wa-arrow{font-size:.85rem;color:rgba(37,211,102,.5)}
 
-  /* AKOSE bubble (left) */
-  .bubble-akose{
-    display:flex;align-items:flex-end;gap:.5rem;
-    max-width:85%;align-self:flex-start;
-  }
-  .bubble-akose .b-avatar{
-    width:28px;height:28px;border-radius:50%;
-    background:var(--grad-gold);flex-shrink:0;
-    display:flex;align-items:center;justify-content:center;
-    font-family:var(--font-display);font-size:.7rem;font-weight:800;color:var(--black);
-  }
-  .bubble-akose .b-content{
-    background:var(--teal);
-    border:1px solid rgba(212,169,106,.18);
-    border-radius:18px 18px 18px 4px;
-    padding:.75rem 1rem;
-    position:relative;
-  }
-  .bubble-akose .b-content p{
-    font-family:var(--font-body);font-size:.95rem;
-    color:var(--white);line-height:1.5;
-  }
-  .bubble-akose .b-time{
-    font-family:var(--font-display);font-size:.52rem;
-    color:rgba(212,169,106,.4);margin-top:.3rem;
-    text-align:right;letter-spacing:.08em;
-  }
+  /* other rows */
+  .mob-other-rows{border-top:1px solid rgba(212,169,106,.1)}
+  .mob-contact-row{display:flex;align-items:center;gap:.85rem;padding:.9rem 0;border-bottom:1px solid rgba(212,169,106,.08);text-decoration:none;color:inherit;-webkit-tap-highlight-color:transparent}
+  .mob-row-icon{width:36px;height:36px;border-radius:8px;background:rgba(212,169,106,.06);border:1px solid rgba(212,169,106,.12);display:flex;align-items:center;justify-content:center;font-size:.9rem;color:var(--gold);flex-shrink:0}
+  .mob-row-name{font-family:var(--font-display);font-size:.8rem;font-weight:700;color:var(--white)}
+  .mob-row-sub{font-size:.75rem;color:var(--white-dim)}
+  .mob-row-arrow{font-size:.8rem;color:rgba(212,169,106,.35);margin-left:auto}
 
-  /* USER bubble (right) */
-  .bubble-user{
-    max-width:80%;align-self:flex-end;
-  }
-  .bubble-user .b-content{
-    background:var(--black-card);
-    border:1px solid rgba(212,169,106,.25);
-    border-radius:18px 18px 4px 18px;
-    padding:.75rem 1rem;
-  }
-  .bubble-user .b-content p{
-    font-family:var(--font-body);font-size:.95rem;
-    color:var(--white);line-height:1.5;
-  }
-  .bubble-user .b-time{
-    font-family:var(--font-display);font-size:.52rem;
-    color:rgba(212,169,106,.4);margin-top:.3rem;
-    text-align:right;letter-spacing:.08em;display:flex;
-    align-items:center;justify-content:flex-end;gap:.25rem;
-  }
-  .b-tick{color:var(--gold);font-size:.55rem}
-
-  /* TYPING indicator */
-  .bubble-typing .b-content{padding:.65rem 1rem}
-  .typing-dots{display:flex;gap:4px;align-items:center;height:14px}
-  .typing-dots span{width:6px;height:6px;border-radius:50%;background:rgba(212,169,106,.5);animation:typingDot 1.2s ease-in-out infinite}
-  .typing-dots span:nth-child(2){animation-delay:.2s}
-  .typing-dots span:nth-child(3){animation-delay:.4s}
-  @keyframes typingDot{0%,80%,100%{transform:scale(1);opacity:.5}40%{transform:scale(1.3);opacity:1}}
-
-  /* QUICK REPLY CHIPS */
-  .quick-replies{
-    display:flex;flex-wrap:wrap;gap:.45rem;
-    padding:.25rem 0 .1rem;
-    align-self:flex-start;
-    max-width:92%;
-  }
-  .qr-chip{
-    padding:.5rem .95rem;
-    background:rgba(212,169,106,.08);
-    border:1px solid rgba(212,169,106,.35);
-    border-radius:100px;
-    font-family:var(--font-display);font-size:.68rem;font-weight:700;
-    letter-spacing:.06em;text-transform:uppercase;
-    color:var(--gold);cursor:pointer;
-    transition:all .2s;white-space:nowrap;
-  }
-  .qr-chip:hover,.qr-chip:active,.qr-chip.selected{
-    background:var(--gold);color:var(--black);border-color:var(--gold);
-  }
-  .qr-chip.selected{pointer-events:none}
-
-  /* INPUT FIELD */
-  .chat-input-row{
-    display:flex;align-items:center;gap:.6rem;
-    padding:.75rem 1rem;
-    background:var(--teal);
-    border-top:1px solid rgba(212,169,106,.15);
-    flex-shrink:0;
-  }
-  .chat-input{
-    flex:1;padding:.7rem 1rem;
-    background:var(--black-card);
-    border:1px solid rgba(212,169,106,.2);
-    border-radius:100px;
-    color:var(--white);
-    font-family:var(--font-body);font-size:.95rem;
-    outline:none;transition:border-color .2s;
-  }
-  .chat-input:focus{border-color:var(--gold)}
-  .chat-input::placeholder{color:rgba(245,237,216,.3)}
-  .chat-send{
-    width:40px;height:40px;border-radius:50%;flex-shrink:0;
-    background:var(--grad-gold);border:none;
-    color:var(--black);font-size:.9rem;cursor:pointer;
-    display:flex;align-items:center;justify-content:center;
-    transition:transform .2s;
-  }
-  .chat-send:hover{transform:scale(1.08)}
-  .chat-send:disabled{opacity:.45;cursor:not-allowed;transform:none}
-
-  /* BOOKING SUMMARY CARD */
-  .summary-card{
-    background:var(--black-card);
-    border:1px solid rgba(212,169,106,.2);
-    border-radius:16px;
-    padding:1.1rem;
-    width:100%;
-  }
-  .summary-card h4{
-    font-family:var(--font-display);font-size:.62rem;font-weight:800;
-    letter-spacing:.2em;text-transform:uppercase;color:var(--gold);
-    margin-bottom:.85rem;
-  }
-  .summary-row{
-    display:flex;justify-content:space-between;align-items:baseline;
-    padding:.35rem 0;border-bottom:1px solid rgba(212,169,106,.08);
-    font-size:.88rem;
-  }
-  .summary-row:last-child{border-bottom:none}
-  .summary-row .sr-label{color:rgba(245,237,216,.45);font-family:var(--font-display);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase}
-  .summary-row .sr-val{color:var(--white);font-family:var(--font-body);font-style:italic}
-  .summary-row .sr-val.empty{color:rgba(245,237,216,.25)}
-
-  /* SEND TO WHATSAPP button (appears at end) */
-  .wa-send-btn{
-    display:flex;align-items:center;justify-content:center;gap:.65rem;
-    width:100%;padding:1rem 1.25rem;
-    background:#25D366;color:white;
-    font-family:var(--font-display);font-size:.76rem;font-weight:800;
-    letter-spacing:.12em;text-transform:uppercase;
-    border:none;border-radius:0;cursor:pointer;
-    transition:background .2s;flex-shrink:0;
-  }
-  .wa-send-btn:hover{background:#1DAD52}
-  .wa-send-btn i{font-size:1.05rem}
-  .wa-send-btn:disabled{opacity:.5;cursor:not-allowed}
-
-  /* success screen */
-  .chat-success{
-    display:none;flex-direction:column;align-items:center;
-    justify-content:center;flex:1;padding:2rem 1.5rem;text-align:center;
-    gap:1rem;
-  }
-  .chat-success.show{display:flex}
-  .chat-success .s-icon{
-    width:72px;height:72px;border-radius:50%;
-    background:rgba(212,169,106,.1);border:1px solid rgba(212,169,106,.3);
-    display:flex;align-items:center;justify-content:center;
-    font-size:1.75rem;color:var(--gold);
-  }
-  .chat-success h3{font-family:var(--font-display);font-size:1.5rem;font-weight:800;color:var(--white)}
-  .chat-success p{font-size:.95rem;color:var(--white-dim);font-style:italic;line-height:1.6}
-  .chat-success .wa-link{
-    display:flex;align-items:center;gap:.5rem;
-    padding:.9rem 1.75rem;background:#25D366;color:white;
-    font-family:var(--font-display);font-size:.75rem;font-weight:800;
-    letter-spacing:.12em;text-transform:uppercase;
-    border-radius:100px;margin-top:.5rem;
-  }
+  /* COMPACT FORM */
+  .mob-form-section{padding:1.25rem 1rem;background:var(--black)}
+  .mob-form-section h3{font-family:var(--font-display);font-size:1rem;font-weight:800;color:var(--white);margin-bottom:.25rem}
+  .mob-form-section>p{font-size:.88rem;color:var(--white-dim);font-style:italic;margin-bottom:1.25rem}
+  .mob-form-group{margin-bottom:.85rem}
+  .mob-form-group label{display:block;font-family:var(--font-display);font-size:.58rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem}
+  .mob-input,.mob-select,.mob-textarea{width:100%;padding:.75rem .9rem;background:var(--black-card);border:1px solid rgba(212,169,106,.12);color:var(--white);font-family:var(--font-body);font-size:.95rem;transition:border-color .25s;outline:none}
+  .mob-input::placeholder,.mob-textarea::placeholder{color:rgba(245,237,216,.25)}
+  .mob-input:focus,.mob-select:focus,.mob-textarea:focus{border-color:var(--gold)}
+  .mob-select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23D4A96A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;background-color:var(--black-card);cursor:pointer}
+  .mob-select option{background:var(--black-card);color:var(--white)}
+  .mob-textarea{resize:vertical;min-height:80px;line-height:1.6}
+  .mob-form-row{display:grid;grid-template-columns:1fr 1fr;gap:.65rem}
+  .mob-submit{width:100%;padding:1rem;margin-top:.5rem;background:#25D366;color:white;font-family:var(--font-display);font-size:.78rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:.6rem;transition:background .25s}
+  .mob-submit:active{background:#1DAD52}
+  .mob-form-note{font-family:var(--font-display);font-size:.58rem;letter-spacing:.06em;color:rgba(245,237,216,.2);text-align:center;margin-top:.65rem}
 
   /* BOTTOM NAV */
-  .mob-bottom-nav{
-    display:grid!important;grid-template-columns:repeat(4,1fr);
-    position:fixed;bottom:0;left:0;right:0;height:4.25rem;
-    padding-bottom:env(safe-area-inset-bottom,0);
-    background:rgba(7,30,30,.99);backdrop-filter:blur(20px);
-    border-top:1px solid rgba(212,169,106,.18);z-index:1000;
-  }
-  .mob-bottom-nav a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.25rem;font-family:var(--font-display);font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,237,216,.38);position:relative;transition:color .22s}
-  .mob-bottom-nav a i{font-size:1.12rem;transition:transform .22s}
+  .mob-bottom-nav{display:grid!important;grid-template-columns:repeat(4,1fr);position:fixed;bottom:0;left:0;right:0;height:4rem;padding-bottom:env(safe-area-inset-bottom,0);background:rgba(7,30,30,.99);backdrop-filter:blur(20px);border-top:1px solid rgba(212,169,106,.18);z-index:1000}
+  .mob-bottom-nav a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.2rem;font-family:var(--font-display);font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,237,216,.35);position:relative;transition:color .2s}
+  .mob-bottom-nav a i{font-size:1.05rem}
   .mob-bottom-nav a.active,.mob-bottom-nav a:hover{color:var(--gold)}
-  .mob-bottom-nav a.active i{transform:translateY(-2px)}
-  .mob-bottom-nav a.active::before{content:'';position:absolute;top:0;left:10%;right:10%;height:2.5px;background:var(--grad-gold)}
+  .mob-bottom-nav a.active::before{content:'';position:absolute;top:0;left:10%;right:10%;height:2px;background:var(--grad-gold)}
   .mob-bottom-nav a:last-child{background:var(--grad-gold);color:#071E1E;font-weight:800}
   .mob-bottom-nav a:last-child i{color:#071E1E}
-  .mob-bottom-nav a:last-child.active::before{display:none}
 
-  /* hide desktop footer on mobile */
-  .footer{display:none}
+  /* ── CHAT SHEET OVERLAY ── */
+  .chat-overlay{position:fixed;inset:0;z-index:2000;pointer-events:none;display:flex;flex-direction:column;justify-content:flex-end}
+  .chat-backdrop{position:absolute;inset:0;background:rgba(7,30,30,.6);backdrop-filter:blur(4px);opacity:0;transition:opacity .35s var(--ease);pointer-events:none}
+  .chat-sheet{position:relative;height:91svh;background:var(--black-soft);border-radius:20px 20px 0 0;border-top:1px solid rgba(212,169,106,.25);display:flex;flex-direction:column;transform:translateY(100%);transition:transform .45s var(--ease);will-change:transform}
+  /* open state */
+  .chat-overlay.open{pointer-events:auto}
+  .chat-overlay.open .chat-backdrop{opacity:1;pointer-events:auto}
+  .chat-overlay.open .chat-sheet{transform:translateY(0)}
+
+  .sheet-drag{display:flex;justify-content:center;padding:.65rem 0 .35rem;cursor:grab;flex-shrink:0}
+  .sheet-drag-bar{width:36px;height:4px;background:rgba(212,169,106,.3);border-radius:2px}
+
+  /* chat header */
+  .chat-head{display:flex;align-items:center;gap:.75rem;padding:.7rem 1rem .8rem;border-bottom:1px solid rgba(212,169,106,.12);background:var(--teal);flex-shrink:0}
+  .chat-ava{width:38px;height:38px;border-radius:50%;background:var(--grad-gold);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:.95rem;font-weight:800;color:var(--black);flex-shrink:0;border:2px solid rgba(212,169,106,.3)}
+  .chat-head-info{flex:1}
+  .chat-head-name{font-family:var(--font-display);font-size:.88rem;font-weight:800;color:var(--white)}
+  .chat-head-status{display:flex;align-items:center;gap:.35rem;font-family:var(--font-display);font-size:.55rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-top:.1rem}
+  .chat-head-status::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--gold);animation:blink 1.5s ease-in-out infinite}
+  .chat-close{width:30px;height:30px;border-radius:50%;background:rgba(212,169,106,.1);border:1px solid rgba(212,169,106,.2);display:flex;align-items:center;justify-content:center;font-size:.75rem;color:var(--gold);cursor:pointer;flex-shrink:0;transition:all .2s}
+  .chat-close:active{background:rgba(212,169,106,.2)}
+
+  /* chat body */
+  .chat-body{flex:1;overflow-y:auto;padding:.85rem 1rem;display:flex;flex-direction:column;gap:.6rem;background:var(--black-soft);background-image:radial-gradient(rgba(26,100,102,.12) 1px,transparent 1px);background-size:22px 22px}
+  .chat-body::-webkit-scrollbar{width:2px}
+  .chat-body::-webkit-scrollbar-thumb{background:rgba(212,169,106,.15)}
+
+  .chat-date{align-self:center;background:rgba(7,30,30,.8);backdrop-filter:blur(6px);border:1px solid rgba(212,169,106,.12);padding:.22rem .8rem;font-family:var(--font-display);font-size:.55rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(212,169,106,.5)}
+
+  /* akose bubble */
+  .b-akose{display:flex;align-items:flex-end;gap:.45rem;max-width:86%;align-self:flex-start}
+  .b-akose-ava{width:26px;height:26px;border-radius:50%;background:var(--grad-gold);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:.65rem;font-weight:800;color:var(--black)}
+  .b-akose-wrap .b-content{background:var(--teal);border:1px solid rgba(212,169,106,.15);border-radius:16px 16px 16px 3px;padding:.65rem .9rem}
+  .b-akose-wrap .b-content p{font-family:var(--font-body);font-size:.92rem;color:var(--white);line-height:1.5}
+  .b-time{font-family:var(--font-display);font-size:.5rem;color:rgba(212,169,106,.35);margin-top:.25rem;letter-spacing:.06em}
+
+  /* user bubble */
+  .b-user{max-width:80%;align-self:flex-end}
+  .b-user .b-content{background:var(--black-card);border:1px solid rgba(212,169,106,.22);border-radius:16px 16px 3px 16px;padding:.65rem .9rem}
+  .b-user .b-content p{font-family:var(--font-body);font-size:.92rem;color:var(--white);line-height:1.5}
+  .b-user .b-time{display:flex;align-items:center;justify-content:flex-end;gap:.2rem}
+  .b-tick{color:var(--gold);font-size:.5rem}
+
+  /* typing */
+  .b-typing .b-content{padding:.55rem .9rem}
+  .typing-dots{display:flex;gap:4px;align-items:center;height:14px}
+  .typing-dots span{width:5px;height:5px;border-radius:50%;background:rgba(212,169,106,.45);animation:tdot 1.2s ease-in-out infinite}
+  .typing-dots span:nth-child(2){animation-delay:.2s}
+  .typing-dots span:nth-child(3){animation-delay:.4s}
+  @keyframes tdot{0%,80%,100%{transform:scale(1);opacity:.45}40%{transform:scale(1.35);opacity:1}}
+
+  /* chips */
+  .qr-chips{display:flex;flex-wrap:wrap;gap:.4rem;align-self:flex-start;max-width:92%;padding:.1rem 0}
+  .qr-chip{padding:.45rem .85rem;background:rgba(212,169,106,.07);border:1px solid rgba(212,169,106,.32);font-family:var(--font-display);font-size:.62rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--gold);cursor:pointer;transition:all .18s;white-space:nowrap;-webkit-tap-highlight-color:transparent}
+  .qr-chip:active,.qr-chip.sel{background:var(--gold);color:var(--black);border-color:var(--gold)}
+  .qr-chip.sel{pointer-events:none}
+
+  /* summary card */
+  .summary-card{background:var(--black-card);border:1px solid rgba(212,169,106,.18);padding:1rem;width:100%}
+  .summary-card h4{font-family:var(--font-display);font-size:.58rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem}
+  .s-row{display:flex;justify-content:space-between;align-items:baseline;padding:.3rem 0;border-bottom:1px solid rgba(212,169,106,.07);font-size:.85rem}
+  .s-row:last-child{border-bottom:none}
+  .s-label{color:rgba(245,237,216,.4);font-family:var(--font-display);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase}
+  .s-val{color:var(--white);font-family:var(--font-body);font-style:italic}
+
+  /* chat input */
+  .chat-input-row{display:flex;align-items:center;gap:.55rem;padding:.65rem .85rem;background:var(--teal);border-top:1px solid rgba(212,169,106,.12);flex-shrink:0}
+  .chat-inp{flex:1;padding:.6rem .9rem;background:var(--black-card);border:1px solid rgba(212,169,106,.18);color:var(--white);font-family:var(--font-body);font-size:.9rem;outline:none;border-radius:100px;transition:border-color .2s}
+  .chat-inp:focus{border-color:var(--gold)}
+  .chat-inp::placeholder{color:rgba(245,237,216,.25)}
+  .chat-send-btn{width:38px;height:38px;border-radius:50%;background:var(--grad-gold);border:none;color:var(--black);font-size:.85rem;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .2s}
+  .chat-send-btn:active{transform:scale(.93)}
+  .chat-send-btn:disabled{opacity:.4;pointer-events:none}
+
+  /* WA send button */
+  .wa-send-btn{width:100%;padding:.95rem;background:#25D366;color:white;font-family:var(--font-display);font-size:.75rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;border:none;cursor:pointer;display:none;align-items:center;justify-content:center;gap:.6rem;flex-shrink:0;transition:background .2s}
+  .wa-send-btn.show{display:flex}
+  .wa-send-btn:active{background:#1DAD52}
+  .wa-send-btn:disabled{opacity:.5;pointer-events:none}
+
+  /* success */
+  .chat-success{display:none;flex-direction:column;align-items:center;justify-content:center;flex:1;padding:2rem 1.5rem;text-align:center;gap:.85rem}
+  .chat-success.show{display:flex}
+  .s-icon{width:64px;height:64px;border-radius:50%;background:rgba(212,169,106,.1);border:1px solid rgba(212,169,106,.25);display:flex;align-items:center;justify-content:center;font-size:1.6rem;color:var(--gold)}
+  .chat-success h3{font-family:var(--font-display);font-size:1.35rem;font-weight:800;color:var(--white)}
+  .chat-success p{font-size:.9rem;color:var(--white-dim);font-style:italic;line-height:1.6}
+  .wa-open-link{display:inline-flex;align-items:center;gap:.5rem;padding:.8rem 1.6rem;background:#25D366;color:white;font-family:var(--font-display);font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-top:.25rem}
 }
 
-@media(max-width:380px){
-  .page-title{font-size:clamp(2.2rem,11vw,3rem)}
-}
+.mob-bottom-nav{display:none}
+.mob-contact-section{display:none}
+.mob-form-section{display:none}
 </style>
 </head>
 <body>
 
-<div id="scroll-progress"></div>
+<div id="scroll-progress" style="position:fixed;top:0;left:0;height:3px;background:linear-gradient(135deg,#B8894E,#D4A96A,#E2C08A);z-index:10000;width:0;transition:width .08s linear;pointer-events:none"></div>
 
 <!-- NAV -->
 <nav class="nav" id="mainNav">
@@ -502,133 +398,129 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
     <a href="https://www.tiktok.com/@hairbyakose" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
     <a href="https://wa.me/+254725351803" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
   </div>
-  <p class="mob-menu-meta">Nairobi &middot; +(254) 725-351-803<br>Mon–Sat: 9AM – 8PM</p>
+  <p class="mob-menu-meta">Nairobi &middot; +(254) 725-351-803<br>Mon&ndash;Sat: 9AM &ndash; 8PM</p>
 </div>
 
-<!-- ══ DESKTOP SECTIONS ══ -->
-<section class="desktop-hero">
-  <div class="hero-lines"><span></span><span></span><span></span><span></span></div>
-  <div class="container">
-    <div class="hero-inner">
-      <div class="hero-eyebrow">Hair by Akose</div>
-      <h1 class="page-title">Let's Make<br><span class="gold">Something Beautiful</span></h1>
-      <p class="page-subtitle">Choose how you'd like to get in touch — I'll respond as fast as possible.</p>
-      <div class="response-badge">Usually responds within 1 hour</div>
-    </div>
+<!-- ══ DESKTOP ══ -->
+<section class="page-hero">
+  <div class="hero-left">
+    <div class="hero-left-mono">A</div>
+    <div class="hero-left-tag">Mobile Stylist</div>
+    <div class="hero-left-brand">Hair<br>by Akose</div>
+    <div class="hero-left-loc">Nairobi, Kenya</div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-eyebrow">Get In Touch</div>
+    <h1 class="page-title">Let's Make<br><em>Something Beautiful</em></h1>
+    <p class="hero-sub">Choose how you'd like to reach me — I respond as fast as I can.</p>
+    <div class="response-badge">Usually responds within 1 hour</div>
   </div>
 </section>
 
-<section class="contact-methods-section">
+<section class="desktop-body">
   <div class="container">
-    <div class="methods-grid">
-      <a href="https://wa.me/+254725351803?text=Hi%20Akose!%20I'd%20like%20to%20book%20an%20appointment." class="method-card" target="_blank">
-        <div class="method-icon"><i class="fab fa-whatsapp"></i></div>
-        <h3>WhatsApp</h3><p>Fastest way to reach me. Get a quote instantly.</p>
-        <span class="method-action">Message Now →</span>
-      </a>
-      <a href="tel:+254725351803" class="method-card">
-        <div class="method-icon"><i class="fas fa-phone"></i></div>
-        <h3>Call / Text</h3><p>+254 725 351 803</p>
-        <span class="method-action">Call Now →</span>
-      </a>
-      <a href="/cdn-cgi/l/email-protection#790f100f101c17171c1812160a1c4b4b391e14181015571a1614" class="method-card">
-        <div class="method-icon"><i class="fas fa-envelope"></i></div>
-        <h3>Email</h3><p><span class="__cf_email__" data-cfemail="4f392639262a21212a2e24203c2a7d7d0f28222e2623612c2022">[email&#160;protected]</span></p>
-        <span class="method-action">Send Email →</span>
-      </a>
-      <a href="#booking-form" class="method-card">
-        <div class="method-icon"><i class="fas fa-paper-plane"></i></div>
-        <h3>Booking Form</h3><p>Fill in your details for a full booking request.</p>
-        <span class="method-action">Fill Form →</span>
-      </a>
-    </div>
-  </div>
-</section>
+    <div class="desktop-grid">
+      <div>
+        <!-- EDITORIAL ROWS -->
+        <div class="editorial-block">
+          <div class="section-label">Contact Methods</div>
+          <div class="contact-rows">
+            <a href="https://wa.me/+254725351803?text=Hi%20Akose!%20I'd%20like%20to%20book%20an%20appointment." class="contact-row wa-contact-row" target="_blank">
+              <div class="row-icon"><i class="fab fa-whatsapp"></i></div>
+              <div class="row-info">
+                <div class="row-name" style="color:#25D366">WhatsApp</div>
+                <div class="row-sub">Tap to message me directly — fastest way to book</div>
+              </div>
+              <div class="row-badge">Fastest</div>
+              <div class="row-arrow"><i class="fas fa-arrow-right" style="color:#25D366;opacity:.6"></i></div>
+            </a>
+            <a href="tel:+254725351803" class="contact-row">
+              <div class="row-icon"><i class="fas fa-phone"></i></div>
+              <div class="row-info">
+                <div class="row-name">Call / Text</div>
+                <div class="row-sub">+254 725 351 803</div>
+              </div>
+              <div class="row-arrow"><i class="fas fa-arrow-right"></i></div>
+            </a>
+            <a href="mailto:vivienneakose22@gmail.com" class="contact-row">
+              <div class="row-icon"><i class="fas fa-envelope"></i></div>
+              <div class="row-info">
+                <div class="row-name">Email</div>
+                <div class="row-sub">vivienneakose22@gmail.com</div>
+              </div>
+              <div class="row-arrow"><i class="fas fa-arrow-right"></i></div>
+            </a>
+          </div>
+        </div>
 
-<section class="main-section" id="booking-form">
-  <div class="container">
-    <div class="main-grid">
-      <div class="form-block">
-        <span class="section-label">Book Appointment</span>
-        <h2>Send a Booking Request</h2>
-        <p>Fill in the details below and I'll confirm your appointment within 24 hours.</p>
-        <form id="contactForm" action="https://formspree.io/f/xrelydra" method="POST">
-          <div class="form-grid-2">
-            <div class="form-group"><label for="name">Full Name *</label><input type="text" id="name" name="name" required class="form-input" placeholder="Your name"></div>
-            <div class="form-group"><label for="phone">Phone Number *</label><input type="tel" id="phone" name="phone" required class="form-input" placeholder="0712 345 678"></div>
-          </div>
-          <div class="form-group"><label for="email">Email Address (Optional)</label><input type="email" id="email" name="_replyto" class="form-input" placeholder="your.email@example.com"></div>
-          <div class="form-group"><label for="service">Service *</label>
-            <select id="service" name="service" required class="form-select">
-              <option value="">— Select a service —</option>
-              <option value="Box Braids">Box Braids</option>
-              <option value="Cornrows">Cornrows</option>
-              <option value="Knotless Braids">Knotless Braids</option>
-              <option value="Twists">Twists (Senegalese, Marley, Passion)</option>
-              <option value="Weaves">Weaves &amp; Extensions</option>
-              <option value="Natural Hair">Natural Hair Care</option>
-              <option value="Kids">Children's Styling</option>
-              <option value="Locs">Locs Maintenance</option>
-              <option value="Bridal">Bridal Styling</option>
-              <option value="Other">Other</option>
-            </select>
-          </div>
-          <div class="form-grid-2">
-            <div class="form-group"><label for="date">Preferred Date</label><input type="date" id="date" name="date" class="form-input"></div>
-            <div class="form-group"><label for="time">Preferred Time</label>
-              <select id="time" name="time" class="form-select">
-                <option value="">— Select time —</option>
-                <option value="Morning (9AM-12PM)">Morning (9AM–12PM)</option>
-                <option value="Afternoon (12PM-5PM)">Afternoon (12PM–5PM)</option>
-                <option value="Evening (5PM-8PM)">Evening (5PM–8PM)</option>
+        <!-- COMPACT FORM -->
+        <div class="editorial-block">
+          <div class="section-label">Or Send a Booking Request</div>
+          <div class="form-block">
+            <p>Fill in the details below and I'll confirm via WhatsApp or phone within 24 hours.</p>
+            <div class="form-row-2">
+              <div class="form-group"><label>Full Name *</label><input type="text" class="form-input" id="d-name" placeholder="Your name" required></div>
+              <div class="form-group"><label>Phone Number *</label><input type="tel" class="form-input" id="d-phone" placeholder="0712 345 678" required></div>
+            </div>
+            <div class="form-group"><label>Service *</label>
+              <select class="form-select" id="d-service" required>
+                <option value="">— Select a service —</option>
+                <option>Box Braids</option><option>Cornrows</option><option>Knotless Braids</option>
+                <option>Twists</option><option>Weaves &amp; Extensions</option><option>Natural Hair Care</option>
+                <option>Kids Styling</option><option>Locs Maintenance</option><option>Bridal Styling</option><option>Other</option>
               </select>
             </div>
+            <div class="form-row-2">
+              <div class="form-group"><label>Preferred Date</label><input type="date" class="form-input" id="d-date"></div>
+              <div class="form-group"><label>Preferred Time</label>
+                <select class="form-select" id="d-time">
+                  <option value="">— Select time —</option>
+                  <option>Morning (9AM&ndash;12PM)</option><option>Afternoon (12PM&ndash;5PM)</option><option>Evening (5PM&ndash;8PM)</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group"><label>Your Location *</label><input type="text" class="form-input" id="d-location" placeholder="e.g. Westlands, Nairobi" required></div>
+            <div class="form-group"><label>Additional Details</label><textarea class="form-textarea" id="d-message" placeholder="Hair type, desired style, length, any special requests..."></textarea></div>
+            <button class="btn-wa-submit" id="deskSubmit" onclick="submitDesktopForm()">
+              <i class="fab fa-whatsapp"></i> Send Booking via WhatsApp
+            </button>
+            <p class="form-note">* Required fields &nbsp;&middot;&nbsp; Your details will open in WhatsApp</p>
           </div>
-          <div class="form-group"><label for="location">Your Location *</label><input type="text" id="location" name="location" required class="form-input" placeholder="e.g. Nairobi CBD, Thika, Machakos"></div>
-          <div class="form-group"><label for="message">Additional Details</label><textarea id="message" name="message" class="form-textarea" placeholder="Hair type, desired style, length, any special requests..."></textarea></div>
-          <input type="hidden" name="_subject" value="New Booking Request - Hair by Akose">
-          <input type="hidden" name="_template" value="box">
-          <input type="text" name="_gotcha" style="display:none">
-          <div class="form-group">
-            <label class="checkbox-wrap">
-              <input type="checkbox" name="consent" required>
-              <span class="checkbox-box"></span>
-              <span>I consent to being contacted about my appointment *</span>
-            </label>
-          </div>
-          <button type="submit" class="btn-submit" id="submitBtn"><i class="fas fa-paper-plane"></i> Send Booking Request</button>
-          <p class="form-note">* Required fields &nbsp;·&nbsp; Response within 24 hours</p>
-        </form>
-        <div class="form-success" id="formSuccess">
-          <div class="success-icon"><i class="fas fa-check"></i></div>
-          <h3>Request Sent!</h3>
-          <p>Thank you for choosing Hair by Akose. Your booking request has been received.</p>
-          <div class="success-steps">
-            <h4>What happens next</h4>
-            <div class="success-step"><i class="fas fa-check-circle"></i> Akose receives your details</div>
-            <div class="success-step"><i class="fas fa-check-circle"></i> You'll get a response within 24 hours</div>
-            <div class="success-step"><i class="fas fa-check-circle"></i> Akose will reach you via WhatsApp or phone</div>
-            <div class="success-step"><i class="fas fa-check-circle"></i> Appointment confirmed with all details</div>
-          </div>
-          <a href="https://wa.me/+254725351803" class="btn-wa-full" target="_blank"><i class="fab fa-whatsapp"></i> Need immediate help? WhatsApp me</a>
-          <button onclick="location.reload()" class="btn-ghost-sm">Submit Another Booking</button>
         </div>
       </div>
+
+      <!-- SIDEBAR -->
       <aside class="sidebar">
         <div class="info-card">
-          <div class="info-card-header"><div class="info-icon"><i class="fas fa-clock"></i></div><h4>Business Hours</h4></div>
-          <ul><li><strong>Mon – Fri</strong> 9:00 AM – 8:00 PM</li><li><strong>Saturday</strong> 9:00 AM – 8:00 PM</li><li><strong>Sunday</strong> By appointment only</li></ul>
+          <div class="info-card-hd"><div class="info-icon"><i class="fas fa-clock"></i></div><h4>Business Hours</h4></div>
+          <ul>
+            <li><strong>Mon &ndash; Fri</strong> 9:00 AM &ndash; 8:00 PM</li>
+            <li><strong>Saturday</strong> 9:00 AM &ndash; 8:00 PM</li>
+            <li><strong>Sunday</strong> By appointment only</li>
+          </ul>
         </div>
         <div class="info-card">
-          <div class="info-card-header"><div class="info-icon"><i class="fas fa-map-marker-alt"></i></div><h4>Service Areas</h4></div>
-          <ul><li><strong>Nairobi</strong> All areas</li><li><strong>Thika</strong> Town &amp; surroundings</li><li><strong>Machakos</strong> Town &amp; environs</li><li><strong>Limuru</strong> And nearby areas</li><li><strong>Mobile</strong> I come to you! ✨</li></ul>
+          <div class="info-card-hd"><div class="info-icon"><i class="fas fa-map-marker-alt"></i></div><h4>Service Areas</h4></div>
+          <ul>
+            <li><strong>Nairobi</strong> All areas</li>
+            <li><strong>Thika</strong> Town &amp; surroundings</li>
+            <li><strong>Machakos</strong> Town &amp; environs</li>
+            <li><strong>Limuru</strong> And nearby areas</li>
+            <li><strong>Mobile</strong> I come to you ✨</li>
+          </ul>
         </div>
         <div class="info-card">
-          <div class="info-card-header"><div class="info-icon"><i class="fas fa-info-circle"></i></div><h4>Booking Policy</h4></div>
-          <ul><li><strong>Deposit</strong> Required to secure slot</li><li><strong>Cancellation</strong> 24hr notice needed</li><li><strong>Hair prep</strong> Clean &amp; detangled</li><li><strong>Extensions</strong> Client provides own</li><li><strong>Payment</strong> Cash or M-Pesa</li></ul>
+          <div class="info-card-hd"><div class="info-icon"><i class="fas fa-info-circle"></i></div><h4>Booking Policy</h4></div>
+          <ul>
+            <li><strong>Deposit</strong> Required to secure slot</li>
+            <li><strong>Cancel</strong> 24hr notice needed</li>
+            <li><strong>Hair prep</strong> Clean &amp; detangled</li>
+            <li><strong>Extensions</strong> Client provides own</li>
+            <li><strong>Payment</strong> Cash or M-Pesa</li>
+          </ul>
         </div>
         <div class="info-card">
-          <div class="info-card-header"><div class="info-icon"><i class="fas fa-heart"></i></div><h4>Follow My Work</h4></div>
+          <div class="info-card-hd"><div class="info-icon"><i class="fas fa-heart"></i></div><h4>Follow My Work</h4></div>
           <div class="social-mini">
             <a href="https://www.instagram.com/hairbyakose" class="social-btn" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
             <a href="https://www.tiktok.com/@hairbyakose" class="social-btn" target="_blank"><i class="fab fa-tiktok"></i> TikTok</a>
@@ -643,14 +535,14 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 
 <section class="faq-section">
   <div class="container">
-    <div class="faq-header"><span class="section-label">Got Questions?</span><h2>Frequently Asked</h2></div>
+    <div class="faq-header"><div class="section-label" style="justify-content:center;margin-bottom:1rem">FAQ</div><h2>Common Questions</h2></div>
     <div class="faq-grid" id="faqGrid">
       <div class="faq-item"><div class="faq-question"><h3>How do I book an appointment?</h3><div class="faq-toggle"><i class="fas fa-plus"></i></div></div><div class="faq-answer"><p>Via WhatsApp (fastest), call/text, email, or the form above. I'll confirm your appointment and discuss location, timing, and requirements.</p></div></div>
-      <div class="faq-item"><div class="faq-question"><h3>Do I need to provide my own hair?</h3><div class="faq-toggle"><i class="fas fa-plus"></i></div></div><div class="faq-answer"><p>Yes, clients typically provide their own hair/extensions. I can recommend brands and quantities based on your chosen style — just ask during booking.</p></div></div>
+      <div class="faq-item"><div class="faq-question"><h3>Do I need to provide my own hair?</h3><div class="faq-toggle"><i class="fas fa-plus"></i></div></div><div class="faq-answer"><p>Yes, clients typically provide their own hair extensions. I can recommend brands and quantities based on your chosen style — just ask during booking.</p></div></div>
       <div class="faq-item"><div class="faq-question"><h3>What's your cancellation policy?</h3><div class="faq-toggle"><i class="fas fa-plus"></i></div></div><div class="faq-answer"><p>Please give at least 24 hours notice. Deposits are non-refundable but can be applied to a rescheduled appointment within 30 days.</p></div></div>
-      <div class="faq-item"><div class="faq-question"><h3>How long do appointments take?</h3><div class="faq-toggle"><i class="fas fa-plus"></i></div></div><div class="faq-answer"><p>It varies! Small box braids take 8–10 hours, simple cornrows 2–3 hours. Check the pricing page for estimates.</p></div></div>
-      <div class="faq-item"><div class="faq-question"><h3>Do you charge a travel fee?</h3><div class="faq-toggle"><i class="fas fa-plus"></i></div></div><div class="faq-answer"><p>Travel within the main service areas is generally included. Locations further out may incur a small charge — discussed at booking.</p></div></div>
-      <div class="faq-item"><div class="faq-question"><h3>What payment methods do you accept?</h3><div class="faq-toggle"><i class="fas fa-plus"></i></div></div><div class="faq-answer"><p>Cash or M-Pesa. A deposit is required to secure your slot, with the balance due on completion of service.</p></div></div>
+      <div class="faq-item"><div class="faq-question"><h3>How long do appointments take?</h3><div class="faq-toggle"><i class="fas fa-plus"></i></div></div><div class="faq-answer"><p>It varies by style — small box braids take 8–10 hours, simple cornrows 2–3 hours. Check the pricing page for full estimates.</p></div></div>
+      <div class="faq-item"><div class="faq-question"><h3>Do you charge a travel fee?</h3><div class="faq-toggle"><i class="fas fa-plus"></i></div></div><div class="faq-answer"><p>Travel within the main service areas is generally included. Locations further out may incur a small charge, discussed at booking.</p></div></div>
+      <div class="faq-item"><div class="faq-question"><h3>What payment methods do you accept?</h3><div class="faq-toggle"><i class="fas fa-plus"></i></div></div><div class="faq-answer"><p>Cash or M-Pesa. A deposit is required to secure your slot, with the balance due on completion of the service.</p></div></div>
     </div>
   </div>
 </section>
@@ -660,7 +552,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
     <div class="footer-grid">
       <div class="footer-brand">
         <img src="assets/images/logo.jpeg" alt="Hair by Akose">
-        <p>Professional mobile hair styling and handmade accessories, bringing beauty to your doorstep.</p>
+        <p>Professional mobile hair styling, bringing beauty to your doorstep across Nairobi and beyond.</p>
         <div class="socials">
           <a href="https://www.instagram.com/hairbyakose" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
           <a href="https://web.facebook.com/vivienne.akose" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
@@ -670,81 +562,121 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
       </div>
       <div class="footer-col"><h4>Navigate</h4><ul><li><a href="index.html#story">My Story</a></li><li><a href="portfolio.html">Portfolio</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="index.html#about">About</a></li></ul></div>
       <div class="footer-col"><h4>Services</h4><ul><li><a href="index.html#services">Box Braids</a></li><li><a href="index.html#services">Cornrows</a></li><li><a href="index.html#services">Twists &amp; Locs</a></li><li><a href="index.html#services">Natural Hair</a></li></ul></div>
-      <div class="footer-col"><h4>Contact</h4><ul><li><i class="fas fa-phone"></i> +(254) 725-351-803</li><li><i class="fas fa-envelope"></i> <a href="/cdn-cgi/l/email-protection#b6c0dfc0dfd3d8d8d3d7ddd9c5d38484f6d1dbd7dfda98d5d9db"><span class="__cf_email__" data-cfemail="8bfde2fde2eee5e5eeeae0e4f8eeb9b9cbece6eae2e7a5e8e4e6">[email&#160;protected]</span></a></li><li><i class="fas fa-map-marker-alt"></i> @ your place of comfort</li><li><i class="fas fa-clock"></i> Mon–Sat: 9AM – 8PM</li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul>
+        <li><i class="fas fa-phone"></i> +(254) 725-351-803</li>
+        <li><i class="fas fa-envelope"></i> <a href="mailto:vivienneakose22@gmail.com">vivienneakose22@gmail.com</a></li>
+        <li><i class="fas fa-map-marker-alt"></i> @ your place of comfort</li>
+        <li><i class="fas fa-clock"></i> Mon&ndash;Sat: 9AM &ndash; 8PM</li>
+      </ul></div>
     </div>
     <div class="footer-bottom">
       <span>&copy; 2026 Hair by Akose. All rights reserved.</span>
-      <span>Crafted with <i class="fas fa-heart" style="color:var(--gold)"></i> and passion &middot; by #mimsanii</span>
+      <span>Crafted with <i class="fas fa-heart" style="color:var(--gold)"></i> &middot; by #mimsanii</span>
     </div>
   </div>
 </footer>
 
-<!-- ══ MOBILE CHAT UI (hidden on desktop) ══ -->
-<div class="mob-chat-page" id="mobChatPage">
+<!-- ══ MOBILE PAGE ══ -->
+<div class="mob-page" id="mobPage">
 
-  <!-- chat header -->
-  <div class="chat-header">
-    <div class="chat-avatar">A</div>
-    <div class="chat-header-info">
-      <div class="chat-header-name">Akose — Hair Stylist</div>
-      <div class="chat-header-status">Available now · Nairobi</div>
+  <div class="mob-hero">
+    <div class="mob-hero-l">
+      <div class="mob-hero-l-mono">A</div>
+      <div class="mob-hero-l-tag">Mobile Stylist</div>
+      <div class="mob-hero-l-brand">Hair<br>by Akose</div>
     </div>
-    <div class="chat-header-actions">
-      <a href="tel:+254725351803"><i class="fas fa-phone" style="font-size:.8rem;color:var(--gold)"></i></a>
+    <div class="mob-hero-r">
+      <div class="mob-hero-title">Let's Make<br><em>Something Beautiful</em></div>
+      <div class="mob-hero-badge">Responds within 1 hour</div>
     </div>
   </div>
 
-  <!-- chat body -->
-  <div class="chat-body" id="chatBody">
-    <div class="chat-date">Today</div>
-
-    <!-- greeting bubble -->
-    <div class="bubble-akose" id="bGreet" style="display:none">
-      <div class="b-avatar">A</div>
-      <div>
-        <div class="b-content">
-          <p>Hi! I'm Akose 👋 Welcome to Hair by Akose. I'd love to help you book an appointment. What style are you thinking of?</p>
-        </div>
-        <div class="b-time">Now</div>
+  <div class="mob-contact-section">
+    <div class="mob-section-label">Get In Touch</div>
+    <div class="mob-wa-trigger" id="waTrigger">
+      <div class="mob-wa-icon"><i class="fab fa-whatsapp"></i></div>
+      <div class="mob-wa-info">
+        <div class="mob-wa-name">WhatsApp Akose</div>
+        <div class="mob-wa-sub">Tap to start a booking conversation</div>
       </div>
+      <div class="mob-wa-pill">Fastest</div>
+      <div class="mob-wa-arrow"><i class="fas fa-chevron-up"></i></div>
     </div>
-
-    <!-- service chips -->
-    <div class="quick-replies" id="qrService" style="display:none">
-      <div class="qr-chip" data-step="service" data-val="Box Braids">Box Braids</div>
-      <div class="qr-chip" data-step="service" data-val="Cornrows">Cornrows</div>
-      <div class="qr-chip" data-step="service" data-val="Twists">Twists</div>
-      <div class="qr-chip" data-step="service" data-val="Knotless Braids">Knotless</div>
-      <div class="qr-chip" data-step="service" data-val="Natural Hair">Natural Hair</div>
-      <div class="qr-chip" data-step="service" data-val="Locs">Locs</div>
-      <div class="qr-chip" data-step="service" data-val="Kids Styling">Kids</div>
-      <div class="qr-chip" data-step="service" data-val="Bridal">Bridal</div>
+    <div class="mob-other-rows">
+      <a href="tel:+254725351803" class="mob-contact-row">
+        <div class="mob-row-icon"><i class="fas fa-phone"></i></div>
+        <div><div class="mob-row-name">Call / Text</div><div class="mob-row-sub">+254 725 351 803</div></div>
+        <div class="mob-row-arrow"><i class="fas fa-chevron-right"></i></div>
+      </a>
+      <a href="mailto:vivienneakose22@gmail.com" class="mob-contact-row">
+        <div class="mob-row-icon"><i class="fas fa-envelope"></i></div>
+        <div><div class="mob-row-name">Email</div><div class="mob-row-sub">vivienneakose22@gmail.com</div></div>
+        <div class="mob-row-arrow"><i class="fas fa-chevron-right"></i></div>
+      </a>
+      <a href="https://www.instagram.com/hairbyakose" class="mob-contact-row" target="_blank">
+        <div class="mob-row-icon"><i class="fab fa-instagram"></i></div>
+        <div><div class="mob-row-name">Instagram</div><div class="mob-row-sub">@hairbyakose</div></div>
+        <div class="mob-row-arrow"><i class="fas fa-chevron-right"></i></div>
+      </a>
     </div>
-
-  </div><!-- end chat-body -->
-
-  <!-- success screen (hidden until sent) -->
-  <div class="chat-success" id="chatSuccess">
-    <div class="s-icon"><i class="fas fa-check"></i></div>
-    <h3>Booking Sent!</h3>
-    <p>Your details have been sent to Akose via WhatsApp. She'll reply shortly to confirm your appointment.</p>
-    <a href="https://wa.me/+254725351803" class="wa-link" target="_blank"><i class="fab fa-whatsapp"></i> Open WhatsApp</a>
   </div>
 
-  <!-- WhatsApp send button (hidden until ready) -->
-  <button class="wa-send-btn" id="waSendBtn" style="display:none" disabled>
-    <i class="fab fa-whatsapp"></i> Send Booking to Akose
-  </button>
-
-  <!-- input row -->
-  <div class="chat-input-row" id="chatInputRow">
-    <input type="text" class="chat-input" id="chatInput" placeholder="Type your reply..." autocomplete="off">
-    <button class="chat-send" id="chatSendBtn"><i class="fas fa-paper-plane"></i></button>
+  <div class="mob-form-section">
+    <div class="mob-section-label">Or Book via Form</div>
+    <h3>Send a Booking Request</h3>
+    <p>Fill in your details and I'll confirm via WhatsApp or call.</p>
+    <div class="mob-form-row">
+      <div class="mob-form-group"><label>Name *</label><input type="text" class="mob-input" id="m-name" placeholder="Your name"></div>
+      <div class="mob-form-group"><label>Phone *</label><input type="tel" class="mob-input" id="m-phone" placeholder="0712 345 678"></div>
+    </div>
+    <div class="mob-form-group"><label>Service *</label>
+      <select class="mob-select" id="m-service">
+        <option value="">— Select service —</option>
+        <option>Box Braids</option><option>Cornrows</option><option>Knotless Braids</option>
+        <option>Twists</option><option>Weaves &amp; Extensions</option><option>Natural Hair Care</option>
+        <option>Kids Styling</option><option>Locs Maintenance</option><option>Bridal Styling</option><option>Other</option>
+      </select>
+    </div>
+    <div class="mob-form-group"><label>Location *</label><input type="text" class="mob-input" id="m-location" placeholder="e.g. Westlands, Nairobi"></div>
+    <div class="mob-form-group"><label>Extra Details</label><textarea class="mob-textarea" id="m-message" placeholder="Hair type, style details, preferred date/time..."></textarea></div>
+    <button class="mob-submit" onclick="submitMobForm()"><i class="fab fa-whatsapp"></i> Send via WhatsApp</button>
+    <p class="mob-form-note">Your details will open directly in WhatsApp</p>
   </div>
 
-</div><!-- end mob-chat-page -->
+</div>
 
-<!-- MOBILE BOTTOM NAV -->
+<!-- CHAT SHEET OVERLAY -->
+<div class="chat-overlay" id="chatOverlay">
+  <div class="chat-backdrop" id="chatBackdrop" onclick="closeChat()"></div>
+  <div class="chat-sheet" id="chatSheet">
+    <div class="sheet-drag" id="sheetDrag"><div class="sheet-drag-bar"></div></div>
+    <div class="chat-head">
+      <div class="chat-ava">A</div>
+      <div class="chat-head-info">
+        <div class="chat-head-name">Akose &mdash; Hair Stylist</div>
+        <div class="chat-head-status">Available now &middot; Nairobi</div>
+      </div>
+      <div class="chat-close" onclick="closeChat()"><i class="fas fa-times"></i></div>
+    </div>
+    <div class="chat-body" id="chatBody">
+      <div class="chat-date">Today</div>
+    </div>
+    <div class="chat-success" id="chatSuccess">
+      <div class="s-icon"><i class="fas fa-check"></i></div>
+      <h3>Booking Sent!</h3>
+      <p>Your details are on their way to Akose via WhatsApp. She'll reply shortly to confirm.</p>
+      <a href="https://wa.me/+254725351803" class="wa-open-link" target="_blank"><i class="fab fa-whatsapp"></i> Open WhatsApp</a>
+    </div>
+    <button class="wa-send-btn" id="waSendBtn" onclick="sendToWhatsApp()">
+      <i class="fab fa-whatsapp"></i> Send Booking to Akose
+    </button>
+    <div class="chat-input-row" id="chatInputRow">
+      <input type="text" class="chat-inp" id="chatInp" placeholder="Type your reply..." autocomplete="off">
+      <button class="chat-send-btn" id="chatSendBtn"><i class="fas fa-paper-plane"></i></button>
+    </div>
+  </div>
+</div>
+
 <nav class="mob-bottom-nav">
   <a href="index.html"><i class="fas fa-home"></i><span>Home</span></a>
   <a href="index.html#services"><i class="fas fa-scissors"></i><span>Services</span></a>
@@ -752,268 +684,253 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
   <a href="contact.html" class="active"><i class="fas fa-calendar-check"></i><span>Book</span></a>
 </nav>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-/* ── NAV ── */
-var bar=document.getElementById('scroll-progress');
-if(bar)window.addEventListener('scroll',function(){var p=window.scrollY/(document.body.scrollHeight-window.innerHeight)*100;bar.style.width=Math.min(p,100)+'%';},{passive:true});
-var nav=document.getElementById('mainNav');
-if(nav)window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>60);},{passive:true});
+<script>
+var WA = '+254725351803';
 
-/* ── HAMBURGER ── */
+var bar = document.getElementById('scroll-progress');
+window.addEventListener('scroll', function(){
+  if(bar) bar.style.width = Math.min(window.scrollY/(document.body.scrollHeight-window.innerHeight)*100,100)+'%';
+},{passive:true});
+var nav = document.getElementById('mainNav');
+window.addEventListener('scroll', function(){
+  if(nav) nav.classList.toggle('scrolled', window.scrollY>60);
+},{passive:true});
+
 var hb=document.getElementById('hamburger'),mm=document.getElementById('mobMenu'),bd=document.getElementById('mobBackdrop');
-function openMenu(){if(!mm||!hb)return;mm.classList.add('open');if(bd)bd.classList.add('open');hb.classList.add('open');document.body.style.overflow='hidden';document.body.style.position='fixed';document.body.style.width='100%';}
-function cM(){if(!mm||!hb)return;mm.classList.remove('open');if(bd)bd.classList.remove('open');hb.classList.remove('open');document.body.style.overflow='';document.body.style.position='';document.body.style.width='';}
-if(hb)hb.addEventListener('click',function(e){e.stopPropagation();mm&&mm.classList.contains('open')?cM():openMenu();});
-document.addEventListener('keydown',function(e){if(e.key==='Escape')cM();});
+function openMenu(){mm.classList.add('open');bd.classList.add('open');hb.classList.add('open');document.body.style.overflow='hidden';}
+function cM(){mm.classList.remove('open');bd.classList.remove('open');hb.classList.remove('open');document.body.style.overflow='';}
+if(hb) hb.addEventListener('click',function(e){e.stopPropagation();mm.classList.contains('open')?cM():openMenu();});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){cM();closeChat();}});
 
-/* ── DESKTOP FAQ ── */
 document.querySelectorAll('.faq-question').forEach(function(q){
   q.addEventListener('click',function(){
-    var item=q.closest('.faq-item');
-    var answer=item.querySelector('.faq-answer');
-    var isOpen=item.classList.contains('open');
+    var item=q.closest('.faq-item'),ans=item.querySelector('.faq-answer'),isOpen=item.classList.contains('open');
     document.querySelectorAll('.faq-item').forEach(function(i){i.classList.remove('open');i.querySelector('.faq-answer').style.maxHeight=null;});
-    if(!isOpen){item.classList.add('open');answer.style.maxHeight=answer.scrollHeight+'px';}
+    if(!isOpen){item.classList.add('open');ans.style.maxHeight=ans.scrollHeight+'px';}
   });
 });
 
-/* ── DESKTOP FORM ── */
-var dForm=document.getElementById('contactForm');
-var dSuccess=document.getElementById('formSuccess');
-var dBtn=document.getElementById('submitBtn');
-if(dForm){
-  dForm.addEventListener('submit',async function(e){
-    e.preventDefault();
-    dBtn.disabled=true;dBtn.innerHTML='<i class="fas fa-spinner fa-spin"></i> Sending...';
-    try{
-      var res=await fetch(dForm.action,{method:'POST',body:new FormData(dForm),headers:{'Accept':'application/json'}});
-      if(res.ok){dForm.style.display='none';dSuccess.classList.add('show');}
-      else throw new Error('fail');
-    }catch{
-      dBtn.disabled=false;dBtn.innerHTML='<i class="fas fa-paper-plane"></i> Send Booking Request';
-      alert('Something went wrong. Please try WhatsApp instead.');
-    }
+function submitDesktopForm(){
+  var name=document.getElementById('d-name').value.trim();
+  var phone=document.getElementById('d-phone').value.trim();
+  var service=document.getElementById('d-service').value;
+  var location=document.getElementById('d-location').value.trim();
+  var date=document.getElementById('d-date').value;
+  var time=document.getElementById('d-time').value;
+  var msg=document.getElementById('d-message').value.trim();
+  if(!name||!phone||!service||!location){alert('Please fill in all required fields.');return;}
+  var txt='Hi Akose! \uD83D\uDC4B\n\nI\'d like to book an appointment:\n\n'
+    +'\uD83D\uDCCC Service: '+service+'\n'
+    +'\uD83D\uDCCD Location: '+location+'\n'
+    +'\uD83D\uDC64 Name: '+name+'\n'
+    +'\uD83D\uDCF1 Phone: '+phone+'\n'
+    +(date?'\uD83D\uDCC5 Date: '+date+'\n':'')
+    +(time?'\u23F0 Time: '+time+'\n':'')
+    +(msg?'\uD83D\uDCAC Notes: '+msg+'\n':'')
+    +'\nPlease confirm my appointment. Thank you!';
+  window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(txt),'_blank');
+}
+
+function submitMobForm(){
+  var name=document.getElementById('m-name').value.trim();
+  var phone=document.getElementById('m-phone').value.trim();
+  var service=document.getElementById('m-service').value;
+  var location=document.getElementById('m-location').value.trim();
+  var msg=document.getElementById('m-message').value.trim();
+  if(!name||!phone||!service||!location){alert('Please fill in all required fields.');return;}
+  var txt='Hi Akose! \uD83D\uDC4B\n\nBooking request:\n\n'
+    +'\uD83D\uDCCC Service: '+service+'\n'
+    +'\uD83D\uDCCD Location: '+location+'\n'
+    +'\uD83D\uDC64 Name: '+name+'\n'
+    +'\uD83D\uDCF1 Phone: '+phone+'\n'
+    +(msg?'\uD83D\uDCAC Notes: '+msg+'\n':'')
+    +'\nPlease confirm my appointment. Thank you!';
+  window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(txt),'_blank');
+}
+
+var overlay=document.getElementById('chatOverlay');
+var chatBody=document.getElementById('chatBody');
+var chatInp=document.getElementById('chatInp');
+var chatSendBtn=document.getElementById('chatSendBtn');
+var waSendBtn=document.getElementById('waSendBtn');
+var chatSuccess=document.getElementById('chatSuccess');
+var chatInputRow=document.getElementById('chatInputRow');
+var chatStarted=false;
+var state={step:'service',service:'',location:'',name:'',phone:'',time:''};
+
+function openChat(){
+  overlay.classList.add('open');
+  document.body.style.overflow='hidden';
+  if(!chatStarted){chatStarted=true;startConversation();}
+}
+function closeChat(){
+  overlay.classList.remove('open');
+  document.body.style.overflow='';
+}
+
+var waTrigger=document.getElementById('waTrigger');
+if(waTrigger) waTrigger.addEventListener('click',openChat);
+
+var dragEl=document.getElementById('sheetDrag');
+var sheet=document.getElementById('chatSheet');
+var dragStart=0,dragging=false;
+if(dragEl){
+  dragEl.addEventListener('touchstart',function(e){dragStart=e.touches[0].clientY;dragging=true;},{passive:true});
+  document.addEventListener('touchmove',function(e){
+    if(!dragging)return;
+    var dy=e.touches[0].clientY-dragStart;
+    if(dy>0) sheet.style.transform='translateY('+dy+'px)';
+  },{passive:true});
+  document.addEventListener('touchend',function(e){
+    if(!dragging)return;dragging=false;
+    var dy=e.changedTouches[0].clientY-dragStart;
+    sheet.style.transform='';
+    if(dy>80) closeChat();
   });
 }
 
-/* ════════════════════════════════════════
-   MOBILE CHAT CONVERSATION ENGINE
-════════════════════════════════════════ */
-if(window.matchMedia('(max-width:767px)').matches){
+function scrollBottom(){setTimeout(function(){chatBody.scrollTop=chatBody.scrollHeight;},80);}
 
-var WHATSAPP = '+254725351803';
-var chatBody = document.getElementById('chatBody');
-var chatInput = document.getElementById('chatInput');
-var chatSendBtn = document.getElementById('chatSendBtn');
-var waSendBtn = document.getElementById('waSendBtn');
-var chatSuccess = document.getElementById('chatSuccess');
-var chatInputRow = document.getElementById('chatInputRow');
-
-/* conversation state */
-var state = {
-  step: 'service',  /* service → location → name → phone → confirm */
-  service: '', location: '', name: '', phone: ''
-};
-
-/* ── helpers ── */
-function scrollBottom(){
-  setTimeout(function(){ chatBody.scrollTop = chatBody.scrollHeight; }, 80);
-}
-
-function addBubble(type, html, delay){
-  delay = delay || 0;
+function addBubble(type,html,delay){
+  delay=delay||0;
   setTimeout(function(){
-    var el = document.createElement('div');
-    el.className = type === 'akose' ? 'bubble-akose' : 'bubble-user';
-    var time = new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
-    if(type === 'akose'){
-      el.innerHTML = '<div class="b-avatar">A</div><div><div class="b-content"><p>'+html+'</p></div><div class="b-time">'+time+'</div></div>';
+    var el=document.createElement('div');
+    var t=new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
+    if(type==='akose'){
+      el.className='b-akose';
+      el.innerHTML='<div class="b-akose-ava">A</div><div class="b-akose-wrap"><div class="b-content"><p>'+html+'</p></div><div class="b-time">'+t+'</div></div>';
     } else {
-      el.innerHTML = '<div class="b-content"><p>'+html+'</p></div><div class="b-time"><span class="b-tick">✓✓</span> '+time+'</div>';
+      el.className='b-user';
+      el.innerHTML='<div class="b-content"><p>'+html+'</p></div><div class="b-time"><span class="b-tick">&#10003;&#10003;</span> '+t+'</div>';
     }
-    chatBody.appendChild(el);
-    scrollBottom();
-  }, delay);
+    chatBody.appendChild(el);scrollBottom();
+  },delay);
 }
 
 function addTyping(delay){
   return new Promise(function(resolve){
     setTimeout(function(){
-      var el = document.createElement('div');
-      el.className = 'bubble-akose bubble-typing';
-      el.id = 'typingEl';
-      el.innerHTML = '<div class="b-avatar">A</div><div><div class="b-content"><div class="typing-dots"><span></span><span></span><span></span></div></div></div>';
-      chatBody.appendChild(el);
-      scrollBottom();
-      setTimeout(function(){
-        var t = document.getElementById('typingEl');
-        if(t) t.remove();
-        resolve();
-      }, 1200);
-    }, delay || 0);
+      var el=document.createElement('div');
+      el.className='b-akose b-typing';el.id='typingEl';
+      el.innerHTML='<div class="b-akose-ava">A</div><div class="b-akose-wrap"><div class="b-content"><div class="typing-dots"><span></span><span></span><span></span></div></div></div>';
+      chatBody.appendChild(el);scrollBottom();
+      setTimeout(function(){var t=document.getElementById('typingEl');if(t)t.remove();resolve();},1100);
+    },delay||0);
   });
 }
 
-function addChips(chips, step, delay){
-  delay = delay || 0;
+function addChips(chips,step,delay){
   setTimeout(function(){
-    var el = document.createElement('div');
-    el.className = 'quick-replies';
-    el.id = 'chips-'+step;
+    var el=document.createElement('div');el.className='qr-chips';el.id='chips-'+step;
     chips.forEach(function(c){
-      var btn = document.createElement('div');
-      btn.className = 'qr-chip';
-      btn.textContent = c;
-      btn.dataset.step = step;
-      btn.dataset.val = c;
-      el.appendChild(btn);
+      var btn=document.createElement('div');btn.className='qr-chip';btn.textContent=c;
+      btn.dataset.step=step;btn.dataset.val=c;el.appendChild(btn);
     });
-    chatBody.appendChild(el);
-    bindChips(el);
-    scrollBottom();
-  }, delay);
+    chatBody.appendChild(el);bindChips(el);scrollBottom();
+  },delay||0);
 }
-
-function addSummaryCard(delay){
-  delay = delay || 0;
-  setTimeout(function(){
-    var el = document.createElement('div');
-    el.className = 'bubble-akose';
-    el.innerHTML = '<div class="b-avatar">A</div><div style="width:100%"><div class="b-content" style="background:transparent;border:none;padding:.25rem 0"><div class="summary-card" id="summaryCard">'
-      +'<h4>Your Booking Summary</h4>'
-      +'<div class="summary-row"><span class="sr-label">Service</span><span class="sr-val">'+state.service+'</span></div>'
-      +'<div class="summary-row"><span class="sr-label">Location</span><span class="sr-val">'+state.location+'</span></div>'
-      +'<div class="summary-row"><span class="sr-label">Name</span><span class="sr-val">'+state.name+'</span></div>'
-      +'<div class="summary-row"><span class="sr-label">Phone</span><span class="sr-val">'+state.phone+'</span></div>'
-      +'</div></div></div></div>';
-    chatBody.appendChild(el);
-    scrollBottom();
-  }, delay);
-}
-
-function disableInput(){ chatInput.disabled=true; chatInput.placeholder='Choose from options above...'; chatSendBtn.disabled=true; }
-function enableInput(placeholder){ chatInput.disabled=false; chatInput.placeholder=placeholder||'Type your reply...'; chatSendBtn.disabled=false; setTimeout(function(){ chatInput.focus(); },300); }
 
 function bindChips(container){
   container.querySelectorAll('.qr-chip').forEach(function(chip){
-    chip.addEventListener('click', function(){
-      if(chip.classList.contains('selected')) return;
-      /* mark selected */
-      container.querySelectorAll('.qr-chip').forEach(function(c){ c.classList.remove('selected'); c.style.pointerEvents='none'; });
-      chip.classList.add('selected');
-      handleChipSelect(chip.dataset.step, chip.dataset.val);
+    chip.addEventListener('click',function(){
+      if(chip.classList.contains('sel'))return;
+      container.querySelectorAll('.qr-chip').forEach(function(c){c.classList.remove('sel');c.style.pointerEvents='none';});
+      chip.classList.add('sel');
+      onChip(chip.dataset.step,chip.dataset.val);
     });
   });
 }
 
-function handleChipSelect(step, val){
-  if(step === 'service'){
-    state.service = val;
-    addBubble('user', val);
-    disableInput();
-    addTyping(400).then(function(){
-      addBubble('akose', 'Great choice! 🌟 Where are you located? (e.g. Nairobi CBD, Thika, Westlands)');
-      state.step = 'location';
-      enableInput('e.g. Westlands, Nairobi...');
+function disableInput(){chatInp.disabled=true;chatInp.placeholder='Choose an option above...';chatSendBtn.disabled=true;}
+function enableInput(ph){chatInp.disabled=false;chatInp.placeholder=ph||'Type your reply...';chatSendBtn.disabled=false;setTimeout(function(){chatInp.focus();},300);}
+
+function onChip(step,val){
+  if(step==='service'){
+    state.service=val;addBubble('user',val);disableInput();
+    addTyping(350).then(function(){
+      addBubble('akose','Love it! Where are you located? (e.g. Westlands, Thika, CBD)');
+      state.step='location';enableInput('e.g. Westlands, Nairobi...');
     });
-  } else if(step === 'time'){
-    state.time = val;
-    addBubble('user', val);
-    disableInput();
-    proceedToConfirm();
+  } else if(step==='time'){
+    state.time=val;addBubble('user',val);disableInput();
+    addTyping(350).then(function(){showSummary();});
   }
 }
 
-function proceedToConfirm(){
-  addTyping(400).then(function(){
-    addSummaryCard();
+function onText(text){
+  if(!text.trim())return;chatInp.value='';
+  if(state.step==='location'){
+    state.location=text.trim();addBubble('user',text);disableInput();
+    addTyping(350).then(function(){
+      addBubble('akose','Got it! And your name?');
+      state.step='name';enableInput('Your full name...');
+    });
+  } else if(state.step==='name'){
+    state.name=text.trim();addBubble('user',text);disableInput();
+    addTyping(350).then(function(){
+      addBubble('akose','Nice to meet you, '+state.name+'! Your phone number?');
+      state.step='phone';enableInput('0712 345 678');
+    });
+  } else if(state.step==='phone'){
+    state.phone=text.trim();addBubble('user',text);disableInput();
+    addTyping(350).then(function(){
+      addBubble('akose','Almost done! What time works best?');
+      addChips(['Morning (9AM-12PM)','Afternoon (12PM-5PM)','Evening (5PM-8PM)'],'time',400);
+      state.step='time';
+    });
+  }
+}
+
+function showSummary(){
+  setTimeout(function(){
+    var el=document.createElement('div');el.className='b-akose';
+    el.innerHTML='<div class="b-akose-ava">A</div><div class="b-akose-wrap" style="width:100%"><div class="b-content" style="background:transparent;border:none;padding:.15rem 0"><div class="summary-card"><h4>Your Booking Summary</h4>'
+      +'<div class="s-row"><span class="s-label">Service</span><span class="s-val">'+state.service+'</span></div>'
+      +'<div class="s-row"><span class="s-label">Location</span><span class="s-val">'+state.location+'</span></div>'
+      +'<div class="s-row"><span class="s-label">Name</span><span class="s-val">'+state.name+'</span></div>'
+      +'<div class="s-row"><span class="s-label">Phone</span><span class="s-val">'+state.phone+'</span></div>'
+      +'<div class="s-row"><span class="s-label">Time</span><span class="s-val">'+state.time+'</span></div>'
+      +'</div></div></div></div>';
+    chatBody.appendChild(el);scrollBottom();
+  },200);
+  setTimeout(function(){
+    addBubble('akose','Perfect! Tap the button below and I will receive all your details.',600);
     setTimeout(function(){
-      addBubble('akose', 'Perfect! Tap the button below and I\'ll receive all your details on WhatsApp 🥰', 400);
-      setTimeout(function(){
-        waSendBtn.style.display = 'flex';
-        waSendBtn.disabled = false;
-        chatInputRow.style.display = 'none';
-        scrollBottom();
-      }, 900);
-    }, 200);
+      waSendBtn.classList.add('show');
+      chatInputRow.style.display='none';
+      scrollBottom();
+    },1100);
+  },300);
+}
+
+function sendToWhatsApp(){
+  waSendBtn.disabled=true;
+  waSendBtn.innerHTML='<i class="fas fa-spinner fa-spin"></i> Opening WhatsApp...';
+  var txt='Hi Akose!\n\nI would like to book an appointment:\n\n'
+    +'Service: '+state.service+'\n'
+    +'Location: '+state.location+'\n'
+    +'Name: '+state.name+'\n'
+    +'Phone: '+state.phone+'\n'
+    +'Time: '+state.time+'\n'
+    +'\nPlease confirm my appointment. Thank you!';
+  window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(txt),'_blank');
+  setTimeout(function(){
+    waSendBtn.classList.remove('show');
+    chatBody.style.display='none';
+    chatSuccess.classList.add('show');
+  },600);
+}
+
+chatSendBtn.addEventListener('click',function(){onText(chatInp.value);});
+chatInp.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();onText(chatInp.value);}});
+
+function startConversation(){
+  disableInput();
+  addTyping(500).then(function(){
+    addBubble('akose','Hi! I am Akose. Welcome to Hair by Akose! What style are you thinking of?');
+    addChips(['Box Braids','Cornrows','Knotless Braids','Twists','Natural Hair','Locs','Kids Styling','Bridal'],'service',350);
   });
 }
-
-function handleTextInput(text){
-  if(!text.trim()) return;
-  chatInput.value = '';
-
-  if(state.step === 'location'){
-    state.location = text.trim();
-    addBubble('user', text);
-    disableInput();
-    addTyping(400).then(function(){
-      addBubble('akose', 'Got it! What\'s your name?');
-      state.step = 'name';
-      enableInput('Your full name...');
-    });
-
-  } else if(state.step === 'name'){
-    state.name = text.trim();
-    addBubble('user', text);
-    disableInput();
-    addTyping(400).then(function(){
-      addBubble('akose', 'Nice to meet you, '+state.name+'! 😊 And your phone number?');
-      state.step = 'phone';
-      enableInput('0712 345 678');
-    });
-
-  } else if(state.step === 'phone'){
-    state.phone = text.trim();
-    addBubble('user', text);
-    disableInput();
-    addTyping(400).then(function(){
-      addBubble('akose', 'Last one — what time works best for you?');
-      addChips(['Morning (9AM–12PM)','Afternoon (12PM–5PM)','Evening (5PM–8PM)'], 'time', 500);
-      state.step = 'time';
-    });
-  }
-}
-
-/* send button */
-chatSendBtn.addEventListener('click', function(){
-  handleTextInput(chatInput.value);
-});
-chatInput.addEventListener('keydown', function(e){
-  if(e.key === 'Enter'){ e.preventDefault(); handleTextInput(chatInput.value); }
-});
-
-/* WhatsApp send */
-waSendBtn.addEventListener('click', function(){
-  waSendBtn.disabled = true;
-  waSendBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Opening WhatsApp...';
-  var msg = 'Hi Akose! \uD83D\uDC4B\n\n'
-    + 'I\'d like to book an appointment:\n\n'
-    + '\uD83D\uDCCC Service: ' + state.service + '\n'
-    + '\uD83D\uDCCD Location: ' + state.location + '\n'
-    + '\uD83D\uDC64 Name: ' + state.name + '\n'
-    + '\uD83D\uDCF1 Phone: ' + state.phone + '\n'
-    + (state.time ? '\u23F0 Time: ' + state.time + '\n' : '')
-    + '\nPlease confirm my appointment. Thank you!';
-  window.open('https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent(msg), '_blank');
-  setTimeout(function(){
-    waSendBtn.style.display = 'none';
-    scrollBottom();
-  }, 600);
-});
-
-/* start conversation */
-disableInput();
-addTyping(600).then(function(){
-  document.getElementById('bGreet').style.display = 'flex';
-  setTimeout(function(){
-    document.getElementById('qrService').style.display = 'flex';
-    bindChips(document.getElementById('qrService'));
-    scrollBottom();
-  }, 300);
-});
-
-} /* end mobile only block */
 </script>
 </body>
 </html>
