@@ -41,6 +41,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .nav-links a:hover{color:var(--gold)}
 .nav-links .nav-cta{padding:.6rem 1.5rem;border:1px solid var(--gold);color:var(--gold);border-radius:100px}
 .nav-links .nav-cta:hover{background:var(--gold);color:var(--black)}
+
 /* ── HAMBURGER BUTTON — transparent glass pill ── */
 .hamburger{
   display:none;flex-direction:column;gap:6px;cursor:pointer;
@@ -63,6 +64,392 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .hamburger.open span:nth-child(1){transform:rotate(45deg) translate(0,5.5px);width:20px;}
 .hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0);}
 .hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(0,-5.5px);width:20px;}
+
+/* ═══════════ HERO SLIDESHOW ═══════════ */
+.hero-slideshow{
+  position:absolute;inset:0;z-index:0;overflow:hidden;
+}
+/* Layer 1 — colour wash on each slide image */
+.hs-slide::after{
+  content:'';position:absolute;inset:0;z-index:1;
+  background:rgba(11,53,53,.82);
+  mix-blend-mode:multiply;
+}
+
+/* Layer 2 — gold accent glow on each slide image */
+.hs-slide::before{
+  content:'';position:absolute;inset:0;z-index:2;
+  background:
+    radial-gradient(ellipse 80% 60% at 60% 40%,
+      rgba(212,169,106,.18) 0%,
+      transparent 70%),
+    linear-gradient(180deg,
+      rgba(7,30,30,.5) 0%,
+      transparent 40%,
+      rgba(7,30,30,.7) 100%);
+  pointer-events:none;
+}
+
+/* Layer 3 — bottom vignette so hero text is always readable (single rule, replaces the two duplicate hero::after) */
+.hero::after{
+  content:'';position:absolute;inset:0;z-index:1;
+  background:linear-gradient(to top,
+    rgba(7,30,30,.80) 0%,
+    rgba(7,30,30,.20) 38%,
+    rgba(7,30,30,.45) 100%);
+  pointer-events:none;
+}
+
+/* Ensure slide image sits below both overlay layers */
+.hs-slide img{
+  position:relative;z-index:0;
+}
+.hs-slide{
+  position:absolute;inset:0;opacity:0;
+  transition:opacity 1.2s cubic-bezier(0.16,1,0.3,1);
+}
+.hs-slide.active{opacity:1;}
+.hs-slide img{
+  width:100%;height:100%;object-fit:cover;
+  transform:scale(1);
+  transition:transform 9s cubic-bezier(0.16,1,0.3,1);
+}
+.hs-slide.active img{transform:scale(1.08);}
+
+
+/* extra vignette from the bottom for text legibility */
+.hero::after{
+  content:'';position:absolute;inset:0;z-index:1;
+  background:linear-gradient(to top,
+    rgba(7,30,30,.7) 0%,
+    transparent 45%,
+    rgba(7,30,30,.25) 100%);
+  pointer-events:none;
+}
+
+/* ═══════════ ANIMATIONS & MICRO-INTERACTIONS ═══════════ */
+
+/* -- Floating particles on hero -- */
+.hero-particles{
+  position:absolute;inset:0;z-index:2;pointer-events:none;overflow:hidden;
+}
+.hp{
+  position:absolute;border-radius:50%;
+  background:radial-gradient(circle,rgba(212,169,106,.55),transparent 70%);
+  animation:hpFloat linear infinite;
+  will-change:transform,opacity;
+}
+@keyframes hpFloat{
+  0%  {transform:translateY(0) translateX(0) scale(1);   opacity:0;}
+  15% {opacity:1;}
+  85% {opacity:.6;}
+  100%{transform:translateY(-110vh) translateX(var(--dx)) scale(.4);opacity:0;}
+}
+
+/* -- Hero content reveal with stagger -- */
+.hero-eyebrow{animation:slideUp .8s var(--ease) .2s both;}
+.hero-headline .line-1{animation:slideUp .9s var(--ease) .38s both;}
+.hero-headline .line-2{animation:slideUp .9s var(--ease) .52s both;}
+.hero-sub{animation:slideUp .8s var(--ease) .68s both;}
+.hero-actions{animation:slideUp .8s var(--ease) .82s both;}
+.hero-stats{animation:fadeIn .8s ease .98s both;}
+@keyframes slideUp{
+  from{opacity:0;transform:translateY(32px);}
+  to{opacity:1;transform:translateY(0);}
+}
+@keyframes fadeIn{
+  from{opacity:0;}to{opacity:1;}
+}
+
+/* -- Scroll-reveal base -- */
+.reveal{
+  opacity:0;transform:translateY(28px);
+  transition:opacity .7s cubic-bezier(0.16,1,0.3,1),
+             transform .7s cubic-bezier(0.16,1,0.3,1);
+}
+.reveal.revealed{opacity:1;transform:translateY(0);}
+.reveal-left{
+  opacity:0;transform:translateX(-32px);
+  transition:opacity .75s cubic-bezier(0.16,1,0.3,1),
+             transform .75s cubic-bezier(0.16,1,0.3,1);
+}
+.reveal-left.revealed{opacity:1;transform:translateX(0);}
+.reveal-right{
+  opacity:0;transform:translateX(32px);
+  transition:opacity .75s cubic-bezier(0.16,1,0.3,1),
+             transform .75s cubic-bezier(0.16,1,0.3,1);
+}
+.reveal-right.revealed{opacity:1;transform:translateX(0);}
+
+/* stagger delay helpers */
+.d1{transition-delay:.08s;}.d2{transition-delay:.16s;}
+.d3{transition-delay:.24s;}.d4{transition-delay:.32s;}
+.d5{transition-delay:.40s;}.d6{transition-delay:.48s;}
+
+/* -- Gold shimmer on section labels -- */
+.section-label{
+  background:linear-gradient(90deg,var(--gold) 0%,var(--gold-pale) 40%,var(--gold) 60%,var(--gold-light) 100%);
+  background-size:200% auto;
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  animation:shimmer 4s linear infinite;
+}
+.section-label::before,.section-label::after{
+  background:var(--gold);opacity:.5;
+  /* fix: lines were clipped by background-clip */
+  background-clip:unset;-webkit-background-clip:unset;
+  -webkit-text-fill-color:unset;
+}
+@keyframes shimmer{
+  0%{background-position:200% center;}
+  100%{background-position:-200% center;}
+}
+
+/* -- Animated gold border pulse on hero stat cards -- */
+.hero-stat{
+  position:relative;transition:transform .4s var(--ease);
+}
+.hero-stat:hover{transform:translateY(-4px);}
+.hero-stat::before{
+  content:'';position:absolute;inset:0;
+  border:1px solid transparent;
+  background:linear-gradient(135deg,rgba(212,169,106,0),rgba(212,169,106,.4),rgba(212,169,106,0)) border-box;
+  -webkit-mask:linear-gradient(#fff 0 0) padding-box,linear-gradient(#fff 0 0);
+  -webkit-mask-composite:destination-out;mask-composite:exclude;
+  opacity:0;transition:opacity .4s ease;
+}
+.hero-stat:hover::before{opacity:1;}
+
+/* -- Glowing gold ring on btn-gold -- */
+.btn-gold{
+  position:relative;overflow:hidden;
+  box-shadow:0 0 0 0 rgba(212,169,106,0);
+  transition:transform .35s var(--ease),box-shadow .35s ease;
+}
+.btn-gold::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(255,255,255,.22),transparent 60%);
+  opacity:0;transition:opacity .3s ease;border-radius:inherit;
+}
+.btn-gold:hover{
+  transform:translateY(-4px) scale(1.03);
+  box-shadow:0 8px 32px rgba(212,169,106,.55), 0 0 0 3px rgba(212,169,106,.18);
+}
+.btn-gold:hover::before{opacity:1;}
+.btn-gold:active{transform:translateY(-1px) scale(.98);}
+
+/* -- Ghost button shimmer sweep -- */
+.btn-ghost{
+  position:relative;overflow:hidden;
+  transition:border-color .3s,color .3s,transform .35s var(--ease);
+}
+.btn-ghost::after{
+  content:'';position:absolute;
+  top:0;left:-100%;width:60%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(212,169,106,.18),transparent);
+  transition:left .55s ease;
+}
+.btn-ghost:hover::after{left:140%;}
+.btn-ghost:hover{transform:translateY(-3px);}
+
+/* -- WhatsApp button pulse -- */
+.btn-whatsapp{
+  animation:waPulse 3s ease-in-out infinite;
+  transition:transform .3s ease,background .3s ease;
+}
+.btn-whatsapp:hover{transform:translateY(-4px) scale(1.04);animation:none;}
+@keyframes waPulse{
+  0%,100%{box-shadow:0 0 0 0 rgba(37,211,102,.35);}
+  50%{box-shadow:0 0 0 10px rgba(37,211,102,0);}
+}
+
+/* -- Service cards: icon spin on hover -- */
+.svc-icon{transition:transform .5s var(--ease),background .4s ease,box-shadow .4s ease;}
+.svc-card:hover .svc-icon{
+  transform:rotate(8deg) scale(1.12);
+  background:rgba(212,169,106,.25);
+  box-shadow:0 0 20px rgba(212,169,106,.2);
+}
+
+/* -- Testimonial card tilt micro-interaction -- */
+.testi-card{transition:transform .4s var(--ease),border-color .4s ease,box-shadow .4s ease;}
+.testi-card:hover{transform:translateY(-6px) rotate(.4deg);}
+
+/* -- Why card left-bar grow -- */
+.why-card{
+  position:relative;overflow:hidden;
+  transition:transform .4s var(--ease),border-color .4s,background .4s;
+}
+.why-card::after{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:linear-gradient(180deg,#B8894E,#D4A96A,#E2C08A);
+  transform:scaleY(0);transform-origin:bottom;
+  transition:transform .45s var(--ease);
+}
+.why-card:hover::after{transform:scaleY(1);}
+
+/* -- Floating badge on story section -- */
+.story-badge{animation:badgeFloat 4s ease-in-out infinite;}
+@keyframes badgeFloat{
+  0%,100%{transform:translateY(0) rotate(-2deg);}
+  50%{transform:translateY(-10px) rotate(2deg);}
+}
+
+/* -- Meet section: photo parallax placeholder (JS handles actual) -- */
+.meet-photo img{
+  transition:transform .6s var(--ease);will-change:transform;
+}
+
+/* -- Nav link underline sweep -- */
+.nav-links a{
+  position:relative;
+}
+.nav-links a:not(.nav-cta)::after{
+  content:'';position:absolute;bottom:-3px;left:0;width:0;height:1px;
+  background:var(--gold);transition:width .35s var(--ease);
+}
+.nav-links a:not(.nav-cta):hover::after{width:100%;}
+
+/* -- Scroll-progress bar glow -- */
+#scroll-progress{
+  box-shadow:0 0 8px rgba(212,169,106,.5);
+}
+
+/* -- Section transition soft gradient dividers -- */
+.story,.services,.why,.testimonials{
+  position:relative;
+}
+.story::after,.services::after,.why::after,.testimonials::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(212,169,106,.2),transparent);
+}
+
+/* -- Value chips ripple -- */
+.val-chip{
+  position:relative;overflow:hidden;
+  transition:border-color .3s,color .3s,transform .3s;
+}
+.val-chip:hover{transform:translateY(-2px);}
+.val-chip::after{
+  content:'';position:absolute;
+  top:50%;left:50%;width:0;height:0;
+  background:rgba(212,169,106,.12);border-radius:50%;
+  transform:translate(-50%,-50%);
+  transition:width .5s ease,height .5s ease,opacity .5s ease;opacity:0;
+}
+.val-chip:active::after{width:200px;height:200px;opacity:1;}
+
+/* -- Skill rows slide-in indicator -- */
+.skill-row{
+  position:relative;overflow:hidden;
+  transition:border-color .3s,color .3s,transform .3s;
+}
+.skill-row:hover{transform:translateX(6px);}
+.skill-row::after{
+  content:'';position:absolute;right:1rem;top:50%;transform:translateY(-50%);
+  width:0;height:1px;background:var(--gold);
+  transition:width .4s var(--ease);
+}
+.skill-row:hover::after{width:32px;}
+
+/* -- Footer social bounce -- */
+.socials a{transition:background .3s,color .3s,border-color .3s,transform .35s var(--ease);}
+.socials a:hover{transform:translateY(-5px) scale(1.1);}
+
+/* -- Animated hero gradient overlay cycling hue -- */
+@keyframes hueShift{
+  0%  {filter:hue-rotate(0deg);}
+  50% {filter:hue-rotate(12deg);}
+  100%{filter:hue-rotate(0deg);}
+}
+.hero-slideshow{animation:hueShift 14s ease-in-out infinite;}
+
+/* -- Mobile: disable heavy animations for perf -- */
+@media(max-width:767px){
+  .hero-particles{display:none;}
+  .story-badge{animation-duration:6s;}
+  .btn-whatsapp{animation:none;}
+  .hero-slideshow{animation:none;}
+}
+
+/* -- Respect reduced motion -- */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms!important;
+    transition-duration:.01ms!important;
+  }
+}
+
+/* slide counter badge */
+.hs-counter{
+  position:absolute;top:7rem;right:2.5rem;z-index:3;
+  font-family:var(--font-display);font-size:.7rem;font-weight:700;
+  letter-spacing:.2em;color:rgba(212,169,106,.7);
+  display:flex;align-items:center;gap:.5rem;
+}
+.hs-counter span{color:rgba(245,237,216,.3);}
+
+/* slide caption (bottom-left) */
+.hs-caption{
+  position:absolute;bottom:10rem;left:50%;transform:translateX(-50%);
+  z-index:3;text-align:center;
+  opacity:0;transition:opacity .6s ease .4s;pointer-events:none;
+}
+.hs-caption.visible{opacity:1;}
+.hs-caption .cap-tag{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-family:var(--font-display);font-size:.62rem;font-weight:700;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--gold);
+  margin-bottom:.5rem;
+}
+.hs-caption .cap-tag::before,.hs-caption .cap-tag::after{
+  content:'';width:24px;height:1px;background:var(--gold);opacity:.5;
+}
+.hs-caption .cap-title{
+  font-family:var(--font-display);font-size:1rem;font-weight:700;
+  color:rgba(245,237,216,.75);letter-spacing:.08em;
+}
+
+/* dot + bar controls */
+.hs-controls{
+  position:absolute;bottom:3.5rem;left:50%;transform:translateX(-50%);
+  z-index:3;display:flex;align-items:center;gap:1rem;
+}
+.hs-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:rgba(212,169,106,.3);border:1px solid rgba(212,169,106,.4);
+  cursor:pointer;transition:all .4s ease;
+}
+.hs-dot.active{
+  background:var(--gold);width:28px;border-radius:3px;
+}
+
+/* progress strip */
+.hs-progress{
+  position:absolute;top:0;left:0;height:3px;z-index:4;
+  background:linear-gradient(90deg,#B8894E,#D4A96A,#E2C08A);
+  width:0%;transition:width .12s linear;
+}
+
+/* nav arrows */
+.hs-arrow{
+  position:absolute;top:50%;transform:translateY(-50%);z-index:3;
+  width:46px;height:46px;border-radius:50%;
+  background:rgba(7,30,30,.55);backdrop-filter:blur(8px);
+  border:1px solid rgba(212,169,106,.25);
+  color:var(--gold);font-size:.9rem;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:all .3s ease;
+}
+.hs-arrow:hover{background:rgba(212,169,106,.18);border-color:rgba(212,169,106,.5);}
+.hs-arrow-prev{left:2rem;}
+.hs-arrow-next{right:2rem;}
+
+/* hide arrows on mobile (bottom nav handles swipe) */
+@media(max-width:767px){
+  .hs-arrow,.hs-counter,.hs-caption{display:none;}
+  .hs-controls{bottom:2.5rem;}
+  .hero-slideshow{display:none;} /* mobile uses hero-mob layout */
+}
 
 /* ── SLIDE PANEL — right half only ── */
 /* dim overlay (left half) */
@@ -656,6 +1043,7 @@ body{padding-bottom:5rem}
       <li><a href="#services">Services</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="merchandise.html">Shop</a></li>
       <li><a href="contact.html" class="nav-cta">Book Now</a></li>
     </ul>
     <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
@@ -675,6 +1063,7 @@ body{padding-bottom:5rem}
     <a href="#gallery"  onclick="cM()">Portfolio</a>
     <a href="#services" onclick="cM()">Services</a>
     <a href="#about"    onclick="cM()">About</a>
+    <a href="merchandise.html">Shop</a>
     <a href="pricing.html" onclick="cM()">Pricing</a>
   </div>
   <a href="contact.html" class="mob-menu-cta"><i class="fas fa-calendar-check"></i> Book Appointment</a>
@@ -689,8 +1078,66 @@ body{padding-bottom:5rem}
 
 <!-- HERO -->
 <section class="hero" id="home">
+
+  <!-- ── HERO SLIDESHOW ── -->
+  <div class="hero-slideshow" id="heroSlideshow">
+    <div class="hs-progress" id="hsProgress"></div>
+
+    <div class="hs-slide active" data-label="Locs" data-title="Distressed Locs">
+      <img src="assets/images/Distressedlocs.jpeg" alt="Distressed locs">
+    </div>
+    <div class="hs-slide" data-label="Twists" data-title="Loose Kinky Twists">
+      <img src="assets/images/Loose-Kinky-Twist.jpeg" alt="Loose Kinky Twists">
+    </div>
+    <div class="hs-slide" data-label="Braids" data-title="Bohemian Braids">
+      <img src="assets/images/Bohemian-braids.jpeg" alt="Bohemian Braids">
+    </div>
+    <div class="hs-slide" data-label="Natural" data-title="Natural Twist-Out">
+      <img src="assets/images/Natural.jpeg" alt="Natural Styling">
+    </div>
+    <div class="hs-slide" data-label="Cornrows" data-title="Butterfly Cornrows">
+      <img src="assets/images/butterfly.jpeg" alt="Butterfly cornrow design">
+    </div>
+    <div class="hs-slide" data-label="Braids" data-title="Normal Braids">
+      <img src="assets/images/Normal-Braids.jpeg" alt="Normal Braids">
+    </div>
+    <div class="hs-slide" data-label="Locs" data-title="Daisy Braid Style">
+      <img src="assets/images/daisy.jpeg" alt="Daisy braid style">
+    </div>
+    <div class="hs-slide" data-label="Twists" data-title="Twistouts Natural Hair">
+      <img src="assets/images/Twistouts-natural-hair.jpeg" alt="Twistouts natural hair">
+    </div>
+
+    <!-- slide caption -->
+    <div class="hs-caption visible" id="hsCaption">
+      <div class="cap-tag" id="hsCaptionTag">Locs</div>
+      <div class="cap-title" id="hsCaptionTitle">Distressed Locs</div>
+    </div>
+
+    <!-- slide counter -->
+    <div class="hs-counter">
+      <span id="hsCurrent">01</span>
+      <span>/</span>
+      <span id="hsTotal">08</span>
+    </div>
+
+    <!-- nav arrows -->
+    <button class="hs-arrow hs-arrow-prev" id="hsArrowPrev" aria-label="Previous slide">
+      <i class="fas fa-chevron-left"></i>
+    </button>
+    <button class="hs-arrow hs-arrow-next" id="hsArrowNext" aria-label="Next slide">
+      <i class="fas fa-chevron-right"></i>
+    </button>
+
+    <!-- dot controls -->
+    <div class="hs-controls" id="hsControls"></div>
+  </div>
+  <!-- ── END SLIDESHOW ── -->
+
   <!-- DESKTOP -->
-  <div class="hero-lines"><span></span><span></span><span></span><span></span></div>
+  <div class="hero-lines">
+    <span></span><span></span><span></span><span></span>
+  </div>
   <div class="hero-content">
     <div class="hero-eyebrow">Mobile Hair Artistry &middot; Nairobi</div>
     <h1 class="hero-headline"><span class="line-1">Your Crown</span><span class="line-2">Our Passion</span></h1>
@@ -708,6 +1155,31 @@ body{padding-bottom:5rem}
   </div>
   <div class="scroll-cue"><span>Scroll</span><i class="fas fa-chevron-down"></i></div>
 
+  <!-- MOBILE BOLD SPLIT -->
+  <div class="hero-mob">
+    <div class="hero-gold">
+      <span class="bv">Hair by Akose</span>
+      <span class="ntag">Nairobi &middot; KE</span>
+    </div>
+    <div class="hero-dark">
+      <div>
+        <h1><span class="l1">Your Crown,</span><span class="l2">Our Passion.</span></h1>
+        <p class="sub">Professional braiding, styling &amp; handcrafted accessories &mdash; brought to your doorstep</p>
+        <div class="btns">
+          <a href="contact.html" class="bg"><i class="fas fa-calendar-check"></i> Book Appointment</a>
+          <a href="#gallery" class="bgh"><i class="fas fa-images"></i> View Portfolio</a>
+        </div>
+      </div>
+      <div class="sgrid">
+        <div class="sc"><span class="sn">200+</span><span class="sl">Clients</span></div>
+        <div class="sc"><span class="sn">500+</span><span class="sl">Styles</span></div>
+        <div class="sc"><span class="sn">5&#9733;</span><span class="sl">Rated</span></div>
+        <div class="sc"><span class="sn">6+</span><span class="sl">Years</span></div>
+      </div>
+    </div>
+  </div>
+
+</section>
   <!-- MOBILE BOLD SPLIT -->
   <div class="hero-mob">
     <div class="hero-gold">
@@ -769,84 +1241,44 @@ body{padding-bottom:5rem}
     </div>
     <div class="gallery-grid">
       <div class="g-item g-s6">
-<<<<<<< HEAD
-        <span class="g-tag">Braids</span>
-        <img src="assets/images/kb.jpeg" alt="Knotless Braids">
-        <div class="g-overlay"><h3>Knotless Braids</h3><p>7 hrs &middot; Pain-free</p><button class="g-zoom"><i class="fas fa-expand"></i></button></div>
-      </div>
-      <div class="g-item g-s3">
-        <span class="g-tag">Twists</span>
-        <img src="assets/images/senegal.jfif" alt="Senegalese Twists">
-        <div class="g-overlay"><h3>Senegalese Twists</h3><p>6 hrs &middot; Medium</p><button class="g-zoom"><i class="fas fa-expand"></i></button></div>
-      </div>
-      <div class="g-item g-s3">
-        <span class="g-tag">Natural</span>
-        <img src="assets/images/natural.jfif" alt="Natural Styling">
-=======
         <span class="g-tag">Locs</span>
         <img src="assets/images/Distressedlocs.jpeg" alt="Distressed locs">
-        <div class="g-overlay"><h3>Distressed locs</h3><p>7 hrs &middot; Pain-free</p><button class="g-zoom"><i class="fas fa-expand"></i></button></div>
+        <div class="g-overlay"><h3>Distressed locs</h3><p> Pain-free</p><button class="g-zoom"><i class="fas fa-expand"></i></button></div>
       </div>
       <div class="g-item g-s3">
         <span class="g-tag">Twists</span>
         <img src="assets/images/Twistouts-natural-hair.jpeg" alt="Twistouts natural hair">
-        <div class="g-overlay"><h3>Twistouts natural hair</h3><p>6 hrs &middot; Medium</p><button class="g-zoom"><i class="fas fa-expand"></i></button></div>
+        <div class="g-overlay"><h3>Twistouts natural hair</h3><p> Medium</p><button class="g-zoom"><i class="fas fa-expand"></i></button></div>
       </div>
       <div class="g-item g-s3">
         <span class="g-tag">Natural</span>
         <img src="assets/images/Natural.jpeg" alt="Natural Styling">
->>>>>>> 0c95502 (Add new portfolio photos)
-        <div class="g-overlay"><h3>Natural Twist-Out</h3><p>2 hrs &middot; Defined curls</p><button class="g-zoom"><i class="fas fa-expand"></i></button></div>
+        <div class="g-overlay"><h3>Natural Twist-Out</h3><p> Defined curls</p><button class="g-zoom"><i class="fas fa-expand"></i></button></div>
       </div>
       <div class="g-item g-s4">
         <span class="g-tag">Twists</span>
-<<<<<<< HEAD
-        <img src="assets/images/passion.jfif" alt="Passion Twists">
-        <div class="g-overlay"><h3>Passion Twists</h3><p>8 hrs &middot; Bohemian</p><button class="g-zoom"><i class="fas fa-expand"></i></button></div>
+        <img src="assets/images/Mini-Passion-Twist.jpeg" alt="Passion Twists">
+        <div class="g-overlay"><h3>Passion Twists</h3><p>Bohemian</p><button class="g-zoom"><i class="fas fa-expand"></i></button></div>
       </div>
       <div class="g-item g-s4">
-        <span class="g-tag">Twists</span>
-        <img src="assets/images/marley.jfif" alt="Marley Twists">
-        <div class="g-overlay"><h3>Marley Twists</h3><p>6 hrs &middot; Textured</p><button class="g-zoom"><i class="fas fa-expand"></i></button></div>
+        <span class="g-tag">Cornrow</span>
+        <img src="assets/images/butterfly.jpeg" alt="butterfly cornrow design">
+        <div class="g-overlay"><h3>butterfly cornrow design</h3><p>Textured</p><button class="g-zoom"><i class="fas fa-expand"></i></button></div>
       </div>
       <div class="g-item g-s4">
-        <span class="g-tag">Special</span>
-        <img src="assets/images/bridal.jfif" alt="Bridal Updo">
-        <div class="g-overlay"><h3>Bridal Updo</h3><p>4 hrs &middot; Special occasion</p><button class="g-zoom"><i class="fas fa-expand"></i></button></div>
+        <span class="g-tag">Braids</span>
+        <img src="assets/images/Normal-Braids.jpeg" alt="Normal Braids">
+        <div class="g-overlay"><h3>Normal Braids</h3><p>Special occasion</p><button class="g-zoom"><i class="fas fa-expand"></i></button></div>
       </div>
       <div class="g-item g-s8">
         <span class="g-tag">Braids</span>
-        <img src="assets/images/bbj.jpeg" alt="Jumbo Box Braids">
-        <div class="g-overlay"><h3>Jumbo Box Braids</h3><p>7 hrs &middot; Pain-free</p><button class="g-zoom"><i class="fas fa-expand"></i></button></div>
-      </div>
-      <div class="g-item g-s4">
-        <span class="g-tag">Locs</span>
-        <img src="assets/images/micro.jfif" alt="Micro Locs">
-        <div class="g-overlay"><h3>Micro Locs</h3><p>14 hrs &middot; Detailed</p><button class="g-zoom"><i class="fas fa-expand"></i></button></div>
-=======
-        <img src="assets/images/Mini-Passion-Twist.jpeg" alt="Passion Twists">
-        <div class="g-overlay"><h3>Passion Twists</h3><p>8 hrs &middot; Bohemian</p><button class="g-zoom"><i class="fas fa-expand"></i></button></div>
-      </div>
-      <div class="g-item g-s4">
-        <span class="gallery-tag">Cornrows</span>
-        <img src="assets/images/butterfly.jpeg" alt="butterfly cornrow design">
-        <div class="g-overlay"><h3>butterfly cornrow design</h3><p>6 hrs &middot; Textured</p><button class="g-zoom"><i class="fas fa-expand"></i></button></div>
-      </div>
-      <div class="g-item g-s4">
-        <span class="g-tag">Special</span>
-        <img src="assets/images/lamonade2.jpeg" alt="Lemonade Braids">
-        <div class="g-overlay"><h3>Lemonade Braids</h3><p>4 hrs &middot; Special occasion</p><button class="g-zoom"><i class="fas fa-expand"></i></button></div>
-      </div>
-      <div class="g-item g-s8">
-        <span class="g-tag">Cornrows</span>
-        <img src="assets/images/cs.jpeg" alt="Simple Cornrows">
-        <div class="g-overlay"><h3>Simple Cornrows</h3><p>7 hrs &middot; Pain-free</p><button class="g-zoom"><i class="fas fa-expand"></i></button></div>
+        <img src="assets/images/lamonade2.jpeg" alt="Lamonade Braids">
+        <div class="g-overlay"><h3>Lamonade Braids</h3><p>Pain-free</p><button class="g-zoom"><i class="fas fa-expand"></i></button></div>
       </div>
       <div class="g-item g-s4">
         <span class="g-tag">Locs</span>
         <img src="assets/images/daisy.jpeg" alt="daisy braid style">
-        <div class="g-overlay"><h3>daisy braid style</h3><p>14 hrs &middot; Detailed</p><button class="g-zoom"><i class="fas fa-expand"></i></button></div>
->>>>>>> 0c95502 (Add new portfolio photos)
+        <div class="g-overlay"><h3>daisy braid style</h3><p> Detailed</p><button class="g-zoom"><i class="fas fa-expand"></i></button></div>
       </div>
     </div>
     <!-- portfolio CTA strip -->
@@ -1160,6 +1592,233 @@ var ob = new IntersectionObserver(function(entries){
   });
 }, {threshold: 0.1});
 els.forEach(function(el){ ob.observe(el); });
+
+/* ═══ ANIMATIONS ENGINE ═══ */
+(function(){
+
+  /* -- Floating gold particles on hero -- */
+  var heroEl = document.querySelector('.hero');
+  if(heroEl){
+    var pWrap = document.createElement('div');
+    pWrap.className = 'hero-particles';
+    heroEl.appendChild(pWrap);
+    var sizes  = [4,6,8,5,7,4,9,5];
+    var delays = [0,1.5,3,4.5,6,2,7.5,5];
+    var dxVals = ['20px','-30px','15px','-20px','35px','-15px','10px','-25px'];
+    var durs   = [10,13,11,15,12,9,14,11];
+    var lefts  = [8,18,30,45,58,70,82,92];
+    sizes.forEach(function(s,i){
+      var p = document.createElement('div');
+      p.className = 'hp';
+      p.style.cssText = [
+        'width:'+s+'px','height:'+s+'px',
+        'left:'+lefts[i]+'%','bottom:-10px',
+        '--dx:'+dxVals[i],
+        'animation-duration:'+durs[i]+'s',
+        'animation-delay:'+delays[i]+'s'
+      ].join(';');
+      pWrap.appendChild(p);
+    });
+  }
+
+  /* -- Scroll-reveal observer -- */
+  var revealEls = document.querySelectorAll(
+    '.story-text-side,.story-media-side,' +
+    '.svc-card,.why-card,.testi-card,' +
+    '.meet-photo-wrap,.meet-text,' +
+    '.skill-row,.s-badge,' +
+    '.footer-brand,.footer-col,' +
+    '.cta-inner,.section-label,.section-title'
+  );
+  /* assign reveal classes */
+  revealEls.forEach(function(el){
+    if(el.classList.contains('story-text-side') ||
+       el.classList.contains('meet-text'))      { el.classList.add('reveal-left'); }
+    else if(el.classList.contains('story-media-side') ||
+            el.classList.contains('meet-photo-wrap')){ el.classList.add('reveal-right'); }
+    else { el.classList.add('reveal'); }
+  });
+  /* stagger grid children */
+  document.querySelectorAll('.services-grid .svc-card').forEach(function(el,i){
+    el.classList.add('d'+ Math.min(i%4+1,6));
+  });
+  document.querySelectorAll('.why-grid .why-card').forEach(function(el,i){
+    el.classList.add('d'+ Math.min(i%3+1,6));
+  });
+  document.querySelectorAll('.testi-grid .testi-card').forEach(function(el,i){
+    el.classList.add('d'+ Math.min(i+1,6));
+  });
+
+  var revObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.classList.add('revealed');
+        revObs.unobserve(e.target);
+      }
+    });
+  },{threshold:0.12});
+  revealEls.forEach(function(el){ revObs.observe(el); });
+
+  /* -- Subtle parallax on meet photo -- */
+  var meetImg = document.querySelector('.meet-photo img');
+  if(meetImg && window.innerWidth > 767){
+    window.addEventListener('scroll',function(){
+      var rect = meetImg.closest('.meet-photo').getBoundingClientRect();
+      var center = rect.top + rect.height/2 - window.innerHeight/2;
+      var shift  = Math.max(-18, Math.min(18, center * 0.045));
+      meetImg.style.transform = 'translateY('+ shift +'px) scale(1.06)';
+    },{passive:true});
+  }
+
+  /* -- Tilt on service cards (desktop) -- */
+  if(window.innerWidth > 767){
+    document.querySelectorAll('.svc-card').forEach(function(card){
+      card.addEventListener('mousemove',function(e){
+        var r   = card.getBoundingClientRect();
+        var x   = (e.clientX - r.left) / r.width  - 0.5;
+        var y   = (e.clientY - r.top)  / r.height - 0.5;
+        card.style.transform = 'translateY(-6px) rotateY('+(x*6)+'deg) rotateX('+(-y*5)+'deg)';
+        card.style.transition = 'transform .1s ease';
+      });
+      card.addEventListener('mouseleave',function(){
+        card.style.transform = '';
+        card.style.transition = 'transform .45s var(--ease),border-color .4s,background .4s,box-shadow .4s';
+      });
+    });
+  }
+
+  /* -- Magnetic effect on btn-gold -- */
+  document.querySelectorAll('.btn-gold').forEach(function(btn){
+    btn.addEventListener('mousemove',function(e){
+      var r  = btn.getBoundingClientRect();
+      var dx = (e.clientX - r.left - r.width/2)  * 0.2;
+      var dy = (e.clientY - r.top  - r.height/2) * 0.2;
+      btn.style.transform = 'translateY(-4px) scale(1.03) translate('+dx+'px,'+dy+'px)';
+    });
+    btn.addEventListener('mouseleave',function(){
+      btn.style.transform = '';
+    });
+  });
+
+  /* -- Hero stat counter animation -- */
+  function animCount(el, target, suffix){
+    var start = 0, dur = 1600, step = 16;
+    var timer = setInterval(function(){
+      start += Math.ceil(target / (dur/step));
+      if(start >= target){ start = target; clearInterval(timer); }
+      el.textContent = start + suffix;
+    }, step);
+  }
+  var statObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(!e.isIntersecting) return;
+      var el = e.target;
+      var txt = el.textContent.trim();
+      if(txt.includes('200')) animCount(el, 200, '+');
+      else if(txt.includes('500')) animCount(el, 500, '+');
+      else if(txt.includes('6+'))  animCount(el, 6,   '+');
+      statObs.unobserve(el);
+    });
+  },{threshold:0.5});
+  document.querySelectorAll('.hero-stat-num, .mini-stat .num').forEach(function(el){
+    statObs.observe(el);
+  });
+
+})();
+
+/* ── HERO SLIDESHOW ── */
+(function(){
+  var slides   = document.querySelectorAll('.hs-slide');
+  var progress = document.getElementById('hsProgress');
+  var caption  = document.getElementById('hsCaption');
+  var capTag   = document.getElementById('hsCaptionTag');
+  var capTitle = document.getElementById('hsCaptionTitle');
+  var current  = document.getElementById('hsCurrent');
+  var total    = document.getElementById('hsTotal');
+  var dotsWrap = document.getElementById('hsControls');
+  var btnPrev  = document.getElementById('hsArrowPrev');
+  var btnNext  = document.getElementById('hsArrowNext');
+
+  if(!slides.length) return;
+
+  var idx = 0;
+  var DURATION = 5500; // ms per slide
+  var timer, progStart, progRAF;
+  var dots = [];
+
+  /* build dots */
+  total.textContent = slides.length < 10 ? '0'+slides.length : slides.length;
+  slides.forEach(function(_,i){
+    var d = document.createElement('button');
+    d.className = 'hs-dot' + (i===0?' active':'');
+    d.setAttribute('aria-label','Go to slide '+(i+1));
+    d.addEventListener('click',function(){ jump(i); });
+    dotsWrap.appendChild(d);
+    dots.push(d);
+  });
+
+  function pad(n){ return n < 10 ? '0'+n : ''+n; }
+
+  function showSlide(n){
+    slides[idx].classList.remove('active');
+    dots[idx].classList.remove('active');
+    idx = (n + slides.length) % slides.length;
+    slides[idx].classList.add('active');
+    dots[idx].classList.add('active');
+    current.textContent = pad(idx+1);
+
+    /* caption crossfade */
+    caption.classList.remove('visible');
+    var sl = slides[idx];
+    setTimeout(function(){
+      capTag.textContent   = sl.dataset.label  || '';
+      capTitle.textContent = sl.dataset.title  || '';
+      caption.classList.add('visible');
+    }, 300);
+  }
+
+  /* progress bar animation */
+  function startProgress(){
+    cancelAnimationFrame(progRAF);
+    progress.style.transition = 'none';
+    progress.style.width = '0%';
+    progStart = performance.now();
+    function tick(now){
+      var pct = Math.min((now - progStart) / DURATION * 100, 100);
+      progress.style.width = pct + '%';
+      if(pct < 100) progRAF = requestAnimationFrame(tick);
+    }
+    progRAF = requestAnimationFrame(tick);
+  }
+
+  function next(){ showSlide(idx+1); startProgress(); }
+  function prev(){ showSlide(idx-1); startProgress(); }
+  function jump(n){ clearInterval(timer); showSlide(n); startProgress(); timer = setInterval(next, DURATION); }
+
+  if(btnNext) btnNext.addEventListener('click', function(){ jump(idx+1); });
+  if(btnPrev) btnPrev.addEventListener('click', function(){ jump(idx-1); });
+
+  /* keyboard */
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'ArrowLeft')  jump(idx-1);
+    if(e.key === 'ArrowRight') jump(idx+1);
+  });
+
+  /* touch swipe */
+  var tx = 0;
+  var slideshow = document.getElementById('heroSlideshow');
+  if(slideshow){
+    slideshow.addEventListener('touchstart', function(e){ tx = e.touches[0].clientX; }, {passive:true});
+    slideshow.addEventListener('touchend', function(e){
+      var dx = e.changedTouches[0].clientX - tx;
+      if(Math.abs(dx) > 50) jump(dx < 0 ? idx+1 : idx-1);
+    }, {passive:true});
+  }
+
+  /* start */
+  startProgress();
+  timer = setInterval(next, DURATION);
+})();
 </script>
 </body>
 </html>

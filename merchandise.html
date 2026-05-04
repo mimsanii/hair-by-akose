@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Hair by Akose Shop — Handmade hair accessories, bracelets, branded merch and hair care products. Order via WhatsApp or contact form.">
+<title>Shop | Hair by Akose</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root{
+--teal-deep:#0B3535;--teal:#0F3D3E;--teal-mid:#145254;--teal-light:#1A6466;
+--black:#071E1E;--black-soft:#0A2828;--black-card:#0D3030;--black-edge:#113838;
+--gold:#D4A96A;--gold-light:#E2C08A;--gold-pale:#F0DDB0;--gold-dark:#B8894E;
+--white:#F5EDD8;--white-dim:rgba(245,237,216,0.6);--white-faint:rgba(245,237,216,0.08);
+--grad-gold:linear-gradient(135deg,#B8894E 0%,#D4A96A 40%,#E2C08A 60%,#D4A96A 100%);
+--font-display:'Syne',sans-serif;--font-body:'Cormorant Garamond',serif;
+--ease:cubic-bezier(0.16,1,0.3,1);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--font-body);background:var(--black);color:var(--white);line-height:1.75;overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+a{text-decoration:none;color:inherit;transition:all .3s ease}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;opacity:.22}
+.container{width:100%;max-width:1400px;margin:0 auto;padding:0 2rem}
+.section-label{display:inline-flex;align-items:center;gap:.75rem;font-family:var(--font-display);font-size:.7rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem}
+.section-label::before,.section-label::after{content:'';display:block;width:30px;height:1px;background:var(--gold);opacity:.6}
+#scroll-progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,#B8894E,#D4A96A,#E2C08A);z-index:10000;width:0;transition:width .08s linear;pointer-events:none}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.5rem 0;transition:all .4s ease}
+.nav.scrolled{background:rgba(7,30,30,.97);backdrop-filter:blur(20px);border-bottom:1px solid rgba(212,169,106,.2);padding:1rem 0}
+.nav-inner{max-width:1400px;margin:0 auto;padding:0 2rem;display:flex;justify-content:space-between;align-items:center}
+.nav-logo img{height:55px;width:auto;object-fit:contain}
+.nav-links{display:flex;list-style:none;gap:2.5rem;align-items:center}
+.nav-links a{font-family:var(--font-display);font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--white-dim)}
+.nav-links a:hover,.nav-links a.active-page{color:var(--gold)}
+.nav-links .nav-cta{padding:.6rem 1.5rem;border:1px solid var(--gold);color:var(--gold);border-radius:100px}
+.nav-links .nav-cta:hover{background:var(--gold);color:var(--black)}
+.hamburger{display:none;flex-direction:column;gap:6px;cursor:pointer;z-index:1100;position:relative;padding:.55rem .7rem;background:rgba(245,237,216,.06);border:1px solid rgba(212,169,106,.25);border-radius:10px;backdrop-filter:blur(8px);transition:background .25s ease,border-color .25s ease}
+.hamburger:hover{background:rgba(212,169,106,.12);border-color:rgba(212,169,106,.5)}
+.hamburger span{display:block;height:1.5px;background:var(--white);border-radius:2px;transition:all .38s var(--ease);transform-origin:center}
+.hamburger span:nth-child(1){width:22px}.hamburger span:nth-child(2){width:16px;margin-left:auto;background:var(--gold)}.hamburger span:nth-child(3){width:22px}
+.hamburger.open{background:rgba(212,169,106,.15);border-color:rgba(212,169,106,.5)}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(0,5.5px);width:20px}
+.hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(0,-5.5px);width:20px}
+.mob-menu-backdrop{display:none;position:fixed;inset:0;background:rgba(7,30,30,.55);backdrop-filter:blur(3px);z-index:1070;opacity:0;transition:opacity .35s ease}
+.mob-menu-backdrop.open{display:block;opacity:1}
+.mob-menu{display:flex;flex-direction:column;justify-content:center;position:fixed;top:0;right:0;bottom:0;width:68%;max-width:300px;background:rgba(7,30,30,.72);backdrop-filter:blur(22px) saturate(1.6);-webkit-backdrop-filter:blur(22px) saturate(1.6);border-left:1px solid rgba(212,169,106,.22);z-index:1080;padding:5.5rem 1.6rem 4rem 1.5rem;transform:translateX(100%);transition:transform .4s cubic-bezier(0.16,1,0.3,1);pointer-events:none;overflow-y:auto}
+.mob-menu.open{transform:translateX(0);pointer-events:auto}
+.mob-menu-close{position:absolute;top:1rem;right:1rem;width:34px;height:34px;background:rgba(212,169,106,.08);border:1px solid rgba(212,169,106,.22);border-radius:6px;display:flex;align-items:center;justify-content:center;color:rgba(212,169,106,.7);font-size:.85rem;cursor:pointer;transition:all .2s}
+.mob-menu-close:hover{background:rgba(212,169,106,.2);color:var(--gold)}
+.mob-menu-brand{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;font-style:italic;letter-spacing:.04em;color:var(--gold);margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid rgba(212,169,106,.25)}
+.mob-menu-links{display:flex;flex-direction:column;width:100%}
+.mob-menu-links::before{content:'';display:block;height:1px;background:linear-gradient(90deg,rgba(212,169,106,.35),rgba(212,169,106,.08))}
+.mob-menu-links a{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;color:rgba(245,237,216,.78);letter-spacing:.01em;padding:.75rem 0;border-bottom:1px solid;border-image:linear-gradient(90deg,rgba(212,169,106,.35),rgba(212,169,106,.06)) 1;display:flex;align-items:center;justify-content:space-between;transition:color .22s,letter-spacing .22s}
+.mob-menu-links a::after{content:'↗';font-family:'Syne',sans-serif;font-size:.7rem;color:rgba(212,169,106,.3);transition:color .22s,transform .22s;flex-shrink:0;margin-left:.5rem}
+.mob-menu-links a:hover{color:#F5EDD8;letter-spacing:.04em}.mob-menu-links a:hover::after{color:var(--gold);transform:translate(3px,-3px)}
+.mob-menu-cta{margin-top:1.75rem;display:flex;align-items:center;justify-content:center;gap:.5rem;padding:.85rem 1.2rem;background:linear-gradient(135deg,#B8894E 0%,#D4A96A 40%,#E2C08A 60%,#D4A96A 100%);color:#071E1E;font-family:'Syne',sans-serif;font-size:.68rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+.mob-menu-socials{display:flex;gap:.6rem;margin-top:1.5rem}
+.mob-menu-socials a{width:32px;height:32px;background:rgba(245,237,216,.04);border:1px solid rgba(212,169,106,.18);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:.82rem;color:rgba(245,237,216,.4);transition:all .2s}
+.mob-menu-socials a:hover{background:rgba(212,169,106,.12);color:var(--gold);border-color:rgba(212,169,106,.5)}
+.mob-menu-meta{margin-top:1.1rem;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.82rem;letter-spacing:.03em;color:rgba(245,237,216,.25);line-height:1.8}
+
+/* PAGE HERO */
+.page-hero{padding:9rem 0 5rem;position:relative;overflow:hidden;background:var(--black-soft)}
+.page-hero::before{content:'';position:absolute;top:-20%;left:50%;transform:translateX(-50%);width:80vw;height:80vw;background:radial-gradient(ellipse,rgba(212,169,106,.07) 0%,transparent 65%);pointer-events:none}
+.page-hero::after{content:'';position:absolute;bottom:-10%;right:-5%;width:45vw;height:45vw;background:radial-gradient(ellipse,rgba(26,100,102,.3) 0%,transparent 65%);pointer-events:none}
+.hero-lines{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.hero-lines span{position:absolute;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,rgba(212,169,106,.12),transparent)}
+.hero-lines span:nth-child(1){left:20%}.hero-lines span:nth-child(2){left:40%}.hero-lines span:nth-child(3){left:60%}.hero-lines span:nth-child(4){left:80%}
+.hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1fr auto;align-items:end;gap:3rem}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:.75rem;font-family:var(--font-display);font-size:.7rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem}
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';width:30px;height:1px;background:var(--gold);opacity:.5}
+.page-hero h1{font-family:var(--font-display);font-size:clamp(3.5rem,9vw,7.5rem);font-weight:800;line-height:.95;letter-spacing:-.03em;margin-bottom:1.25rem}
+.page-hero h1 .l1{display:block;color:var(--white)}
+.page-hero h1 .l2{display:block;background:var(--grad-gold);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-style:italic}
+.hero-desc{font-family:var(--font-body);font-size:1.2rem;color:var(--white-dim);font-style:italic;max-width:560px}
+.hero-stats{display:flex;flex-direction:column;gap:1.5rem;align-items:flex-end}
+.hero-stat-num{display:block;font-family:var(--font-display);font-size:2.5rem;font-weight:800;background:var(--grad-gold);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.hero-stat-label{font-family:var(--font-display);font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--white-dim)}
+
+/* HOW TO ORDER */
+.order-banner{background:var(--black-card);border-top:1px solid rgba(212,169,106,.15);border-bottom:1px solid rgba(212,169,106,.15)}
+.order-banner-inner{display:grid;grid-template-columns:1fr 1px 1fr 1px 1fr;align-items:center;padding:2rem 0}
+.ob-step{display:flex;align-items:center;gap:1.1rem;padding:0 2rem}
+.ob-num{width:44px;height:44px;flex-shrink:0;background:var(--grad-gold);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:1.1rem;font-weight:800;color:var(--black)}
+.ob-text h4{font-family:var(--font-display);font-size:.88rem;font-weight:700;color:var(--white);margin-bottom:.15rem}
+.ob-text p{font-size:.85rem;color:var(--white-dim)}
+.ob-divider{width:1px;height:60px;background:rgba(212,169,106,.2)}
+
+/* FILTER TABS */
+.shop-filters{padding:3rem 0 0}
+.filter-row{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap}
+.filter-btn{font-family:var(--font-display);font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.6rem 1.4rem;border:1px solid rgba(212,169,106,.25);color:var(--white-dim);background:transparent;cursor:pointer;transition:all .3s ease}
+.filter-btn:hover{border-color:var(--gold);color:var(--gold)}
+.filter-btn.active{background:var(--grad-gold);color:var(--black);border-color:transparent}
+
+/* CATEGORY SECTION */
+.shop-section{padding:4rem 0 2rem}
+.category-header{display:flex;align-items:center;gap:1.5rem;margin-bottom:2.5rem}
+.cat-line{flex:1;height:1px;background:linear-gradient(to right,rgba(212,169,106,.3),transparent)}
+.cat-title{font-family:var(--font-display);font-size:1.75rem;font-weight:800;color:var(--white);white-space:nowrap}
+.cat-badge{font-family:var(--font-display);font-size:.62rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;background:var(--grad-gold);color:var(--black);padding:.3rem .85rem;flex-shrink:0}
+
+/* PRODUCT GRID */
+.product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem}
+
+/* PRODUCT CARD */
+.product-card{background:var(--black-card);border:1px solid rgba(212,169,106,.12);position:relative;overflow:hidden;transition:all .4s var(--ease)}
+.product-card:hover{border-color:rgba(212,169,106,.35);transform:translateY(-5px);box-shadow:0 20px 55px rgba(0,0,0,.5)}
+.product-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad-gold);transform:scaleX(0);transition:transform .4s ease;transform-origin:left;z-index:1}
+.product-card:hover::before{transform:scaleX(1)}
+.pc-img{position:relative;aspect-ratio:1;overflow:hidden;background:var(--black-edge)}
+.pc-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease);display:block}
+.product-card:hover .pc-img img{transform:scale(1.07)}
+.pc-img-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.75rem;background:var(--black-edge)}
+.pc-img-placeholder i{font-size:2.5rem;color:rgba(212,169,106,.3)}
+.pc-img-placeholder span{font-family:var(--font-display);font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(212,169,106,.3)}
+.pc-badge{position:absolute;top:.75rem;left:.75rem;z-index:2;font-family:var(--font-display);font-size:.56rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:.28rem .7rem}
+.pc-badge.new{background:var(--grad-gold);color:var(--black)}
+.pc-badge.bestseller{background:var(--teal-light);color:var(--gold-pale);border:1px solid rgba(212,169,106,.3)}
+.pc-badge.custom{background:rgba(7,30,30,.85);color:var(--gold);border:1px solid rgba(212,169,106,.4);backdrop-filter:blur(6px)}
+.pc-actions{position:absolute;bottom:.75rem;right:.75rem;z-index:2;display:flex;gap:.45rem;opacity:0;transform:translateY(8px);transition:all .35s ease}
+.product-card:hover .pc-actions{opacity:1;transform:translateY(0)}
+.pc-action{width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:.8rem;cursor:pointer;transition:all .25s ease}
+.pc-action.wa{background:#25D366;color:white}.pc-action.wa:hover{background:#1DAD52;transform:scale(1.1)}
+.pc-action.form{background:var(--grad-gold);color:var(--black)}.pc-action.form:hover{transform:scale(1.1)}
+.pc-info{padding:1.25rem}
+.pc-category{font-family:var(--font-display);font-size:.6rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.35rem;opacity:.75}
+.pc-name{font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--white);margin-bottom:.35rem;line-height:1.3}
+.pc-desc{font-family:var(--font-body);font-size:.88rem;color:var(--white-dim);line-height:1.6;margin-bottom:1rem}
+.pc-footer{display:flex;align-items:center;justify-content:space-between;gap:.75rem}
+.pc-price{font-family:var(--font-display);font-size:1.1rem;font-weight:800;background:var(--grad-gold);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.pc-price small{font-size:.7rem;font-weight:400;-webkit-text-fill-color:var(--gold-dark);background:none}
+.pc-order-btns{display:flex;gap:.4rem}
+.pc-btn{display:inline-flex;align-items:center;gap:.35rem;padding:.45rem .85rem;font-family:var(--font-display);font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;transition:all .3s ease;white-space:nowrap}
+.pc-btn.wa{background:#25D366;color:white}.pc-btn.wa:hover{background:#1DAD52}
+.pc-btn.form{border:1px solid rgba(212,169,106,.4);color:var(--gold)}.pc-btn.form:hover{background:rgba(212,169,106,.12)}
+
+/* CUSTOM BANNER */
+.custom-banner{margin:4rem 0;padding:3.5rem;background:var(--black-card);border:1px solid rgba(212,169,106,.2);position:relative;overflow:hidden;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center}
+.custom-banner::before{content:'CUSTOM';position:absolute;right:-1rem;top:50%;transform:translateY(-50%);font-family:var(--font-display);font-size:8rem;font-weight:800;color:transparent;-webkit-text-stroke:1px rgba(212,169,106,.06);pointer-events:none;white-space:nowrap;letter-spacing:-.05em}
+.custom-banner-text h3{font-family:var(--font-display);font-size:1.75rem;font-weight:800;color:var(--white);margin-bottom:.65rem}
+.custom-banner-text p{font-family:var(--font-body);font-size:1.05rem;color:var(--white-dim);font-style:italic;max-width:600px}
+.custom-banner-btns{display:flex;flex-direction:column;gap:.75rem;flex-shrink:0}
+
+/* ORDER FORM SECTION */
+.order-form-section{padding:6rem 0;background:var(--black-soft);position:relative}
+.order-form-section::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:60vw;height:60vw;background:radial-gradient(ellipse,rgba(26,100,102,.2) 0%,transparent 65%);pointer-events:none}
+.order-form-wrap{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1.1fr;gap:5rem;align-items:start}
+.order-form-info h2{font-family:var(--font-display);font-size:clamp(2rem,4vw,3.5rem);font-weight:800;color:var(--white);margin-bottom:1rem;line-height:1.05}
+.order-form-info>p{font-size:1.1rem;color:var(--white-dim);font-style:italic;margin-bottom:2rem;line-height:1.8}
+.contact-methods{display:flex;flex-direction:column;gap:1rem;margin-bottom:2rem}
+.contact-method{display:flex;align-items:center;gap:1rem;padding:1.1rem 1.25rem;background:var(--black-card);border:1px solid rgba(212,169,106,.15);transition:all .3s ease}
+.contact-method:hover{border-color:rgba(212,169,106,.4)}
+.cm-icon{width:44px;height:44px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.2rem}
+.cm-icon.wa{background:#25D366;color:white}
+.cm-icon.ig{background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:white}
+.cm-icon.email{background:var(--teal-mid);color:var(--gold-light);border:1px solid rgba(212,169,106,.2)}
+.cm-text h4{font-family:var(--font-display);font-size:.88rem;font-weight:700;color:var(--white);margin-bottom:.1rem}
+.cm-text span{font-size:.82rem;color:var(--white-dim)}
+.order-form{background:var(--black-card);border:1px solid rgba(212,169,106,.18);padding:2.5rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:0}
+.form-group{display:flex;flex-direction:column;gap:.45rem;margin-bottom:1rem}
+.form-group label{font-family:var(--font-display);font-size:.68rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gold)}
+.form-group input,.form-group select,.form-group textarea{background:var(--black-edge);border:1px solid rgba(212,169,106,.2);color:var(--white);font-family:var(--font-body);font-size:1rem;padding:.8rem 1rem;outline:none;transition:border-color .3s ease;width:100%}
+.form-group input::placeholder,.form-group textarea::placeholder{color:rgba(245,237,216,.3)}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--gold)}
+.form-group select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23D4A96A' d='M6 8L0 0h12z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center}
+.form-group select option{background:var(--black);color:var(--white)}
+.form-group textarea{resize:vertical;min-height:110px}
+.form-submit-row{display:flex;gap:1rem;align-items:center;flex-wrap:wrap;margin-top:1.5rem}
+.btn-gold{display:inline-flex;align-items:center;gap:.5rem;padding:1rem 2.5rem;background:var(--grad-gold);color:var(--black);font-family:var(--font-display);font-size:.8rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;transition:all .3s ease;box-shadow:0 0 40px rgba(212,169,106,.25);border:none;cursor:pointer}
+.btn-gold:hover{transform:translateY(-3px);box-shadow:0 12px 45px rgba(212,169,106,.45)}
+.btn-whatsapp{display:inline-flex;align-items:center;gap:.75rem;padding:1rem 2.5rem;background:#25D366;color:white;font-family:var(--font-display);font-size:.8rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;transition:all .3s ease}
+.btn-whatsapp:hover{background:#1DAD52;transform:translateY(-3px)}
+.btn-ghost{display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1.75rem;background:transparent;color:var(--white);font-family:var(--font-display);font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;border:1px solid rgba(247,243,236,.25);transition:all .3s ease}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+.form-note{font-size:.82rem;color:var(--white-dim);font-style:italic}
+.form-success{display:none;background:rgba(26,100,102,.25);border:1px solid rgba(26,100,102,.5);padding:1.25rem 1.5rem;text-align:center;margin-top:1rem}
+.form-success i{color:var(--gold);font-size:1.4rem;margin-bottom:.5rem;display:block}
+.form-success p{font-family:var(--font-display);font-size:.88rem;color:var(--white)}
+
+/* FOOTER */
+.footer{background:var(--black-soft);border-top:1px solid rgba(212,169,106,.18);padding:5rem 0 2.5rem}
+.footer-grid{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:3rem;margin-bottom:4rem}
+.footer-brand img{height:70px;width:auto;object-fit:contain;margin-bottom:1.25rem}
+.footer-brand p{font-size:1rem;color:var(--white-dim);line-height:1.7;margin-bottom:1.5rem}
+.socials{display:flex;gap:.75rem}
+.socials a{width:42px;height:42px;background:var(--black-card);border:1px solid rgba(212,169,106,.15);display:flex;align-items:center;justify-content:center;font-size:1rem;color:var(--white-dim);transition:all .3s ease}
+.socials a:hover{background:var(--gold);color:var(--black);border-color:var(--gold);transform:translateY(-3px)}
+.footer-col h4{font-family:var(--font-display);font-size:.75rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem}
+.footer-col ul{list-style:none}
+.footer-col ul li{margin-bottom:.7rem;font-size:.95rem;color:var(--white-dim)}
+.footer-col ul li i{color:var(--gold);width:16px;margin-right:.5rem}
+.footer-col ul li a{color:inherit}.footer-col ul li a:hover{color:var(--gold)}
+.footer-bottom{border-top:1px solid rgba(212,169,106,.15);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:.85rem;color:rgba(247,243,236,.3);font-family:var(--font-display)}
+.mob-bottom-nav{display:none}
+.fade-up{opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .5s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+
+/* TABLET */
+@media(max-width:1100px){
+.product-grid{grid-template-columns:repeat(3,1fr)}
+.order-form-wrap{grid-template-columns:1fr;gap:3rem}
+.footer-grid{grid-template-columns:1fr 1fr;gap:2rem}.footer-brand{grid-column:span 2}
+.hero-inner{grid-template-columns:1fr;gap:2rem}
+.hero-stats{flex-direction:row;align-items:center;justify-content:flex-start}
+}
+/* MOBILE */
+@media(max-width:767px){
+html{font-size:15px}
+body{padding-bottom:5rem}
+.container{padding:0 1.1rem}
+.nav{padding:.8rem 0;background:rgba(7,30,30,.97);backdrop-filter:blur(16px);border-bottom:1px solid rgba(212,169,106,.15)}
+.nav-inner{padding:0 1.1rem}
+.nav-logo img{height:40px}
+.nav-links{display:none!important}
+.hamburger{display:flex}
+.page-hero{padding:7rem 0 3.5rem}
+.page-hero h1{font-size:clamp(2.8rem,12vw,5rem)}
+.hero-desc{font-size:1rem}
+.hero-inner{gap:1.5rem}
+.hero-stats{gap:1rem;flex-wrap:wrap}
+.order-banner-inner{grid-template-columns:1fr;padding:1.5rem 0;gap:0}
+.ob-divider{display:none}
+.ob-step{padding:.85rem 0;border-bottom:1px solid rgba(212,169,106,.1)}
+.ob-step:last-child{border-bottom:none}
+.ob-num{width:36px;height:36px;font-size:.9rem}
+.filter-row{gap:.5rem}
+.filter-btn{font-size:.62rem;padding:.5rem 1rem}
+.product-grid{grid-template-columns:1fr 1fr;gap:.65rem}
+.pc-info{padding:.9rem}
+.pc-name{font-size:.88rem}
+.pc-desc{font-size:.8rem;margin-bottom:.7rem}
+.pc-price{font-size:.95rem}
+.pc-order-btns{gap:.3rem}
+.pc-btn{padding:.38rem .65rem;font-size:.55rem}
+.pc-actions{display:none}
+.custom-banner{grid-template-columns:1fr;gap:1.5rem;padding:2rem 1.25rem}
+.custom-banner::before{display:none}
+.custom-banner-btns{flex-direction:row;flex-wrap:wrap}
+.order-form-wrap{gap:2rem}
+.order-form{padding:1.5rem 1.1rem}
+.form-row{grid-template-columns:1fr;gap:0}
+.form-submit-row{flex-direction:column;align-items:stretch}
+.btn-gold,.btn-whatsapp{justify-content:center;padding:.9rem}
+.footer-grid{grid-template-columns:1fr;gap:1.75rem;margin-bottom:2rem}
+.footer-brand{grid-column:unset}.footer-brand img{height:50px}
+.footer-bottom{flex-direction:column;text-align:center;font-size:.73rem}
+.mob-bottom-nav{display:grid!important;grid-template-columns:repeat(4,1fr);position:fixed;bottom:0;left:0;right:0;height:4.25rem;padding-bottom:env(safe-area-inset-bottom,0);background:rgba(7,30,30,.99);backdrop-filter:blur(20px) saturate(1.4);border-top:1px solid rgba(212,169,106,.18);z-index:1000}
+.mob-bottom-nav a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.25rem;font-family:'Syne',sans-serif;font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,237,216,.38);position:relative;transition:color .22s}
+.mob-bottom-nav a i{font-size:1.12rem;transition:transform .22s}
+.mob-bottom-nav a.active,.mob-bottom-nav a:hover{color:#D4A96A}
+.mob-bottom-nav a:last-child{background:linear-gradient(135deg,#B8894E 0%,#D4A96A 40%,#E2C08A 60%,#D4A96A 100%);color:#071E1E;font-weight:800}
+.mob-bottom-nav a:last-child i{color:#071E1E}
+}
+@media(max-width:380px){.product-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div id="scroll-progress"></div>
+
+<!-- NAV -->
+<nav class="nav" id="mainNav">
+  <div class="nav-inner">
+    <div class="nav-logo"><a href="index.html"><img src="assets/images/logo.jpeg" alt="Hair by Akose"></a></div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#story">Story</a></li>
+      <li><a href="index.html#gallery">Portfolio</a></li>
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="merchandise.html" class="active-page">Shop</a></li>
+      <li><a href="contact.html" class="nav-cta">Book Now</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+<div class="mob-menu-backdrop" id="mobBackdrop"></div>
+<div class="mob-menu" id="mobMenu">
+  <button class="mob-menu-close" id="mobClose" aria-label="Close"><i class="fas fa-times"></i></button>
+  <div class="mob-menu-brand">Hair by Akose</div>
+  <div class="mob-menu-links">
+    <a href="index.html">Home</a>
+    <a href="index.html#story">Story</a>
+    <a href="index.html#gallery">Portfolio</a>
+    <a href="index.html#services">Services</a>
+    <a href="index.html#about">About</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="merchandise.html" style="color:var(--gold)">Shop</a>
+  </div>
+  <a href="contact.html" class="mob-menu-cta"><i class="fas fa-calendar-check"></i> Book Appointment</a>
+  <div class="mob-menu-socials">
+    <a href="https://www.instagram.com/hairbyakose" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://web.facebook.com/vivienne.akose" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+    <a href="https://www.tiktok.com/@hairbyakose" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+    <a href="https://wa.me/+254725351803" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+  </div>
+  <p class="mob-menu-meta">Nairobi &middot; +(254) 725-351-803<br>Mon–Sat: 9AM – 8PM</p>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="hero-lines"><span></span><span></span><span></span><span></span></div>
+  <div class="container">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-eyebrow">Handmade with Love &middot; Nairobi</div>
+        <h1><span class="l1">The Akose</span><span class="l2">Shop</span></h1>
+        <p class="hero-desc">Handcrafted accessories, premium bracelets, branded merch &amp; curated hair care &mdash; made and chosen with intention.</p>
+      </div>
+      <div class="hero-stats">
+        <div><span class="hero-stat-num">4</span><span class="hero-stat-label">Categories</span></div>
+        <div><span class="hero-stat-num">100%</span><span class="hero-stat-label">Handmade</span></div>
+        <div><span class="hero-stat-num">Custom</span><span class="hero-stat-label">Orders welcome</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW TO ORDER -->
+<div class="order-banner">
+  <div class="container">
+    <div class="order-banner-inner">
+      <div class="ob-step">
+        <div class="ob-num">01</div>
+        <div class="ob-text"><h4>Browse &amp; Choose</h4><p>Find your favourite item below</p></div>
+      </div>
+      <div class="ob-divider"></div>
+      <div class="ob-step">
+        <div class="ob-num">02</div>
+        <div class="ob-text"><h4>Order via WhatsApp or Form</h4><p>Message Akose directly or fill the form</p></div>
+      </div>
+      <div class="ob-divider"></div>
+      <div class="ob-step">
+        <div class="ob-num">03</div>
+        <div class="ob-text"><h4>Delivery or Pickup</h4><p>Within Nairobi &mdash; delivery available</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FILTER TABS -->
+<div class="container">
+  <div class="shop-filters">
+    <div class="filter-row">
+      <button class="filter-btn active" data-filter="all">All Products</button>
+      <button class="filter-btn" data-filter="accessories">Hair Accessories</button>
+      <button class="filter-btn" data-filter="bracelets">Bracelets &amp; Jewellery</button>
+      <button class="filter-btn" data-filter="branded">Branded Merch</button>
+      <button class="filter-btn" data-filter="haircare">Hair Care</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ HAIR ACCESSORIES ═══ -->
+<section class="shop-section" id="accessories" data-category="accessories">
+  <div class="container">
+    <div class="category-header fade-up">
+      <div class="cat-line" style="max-width:60px;background:linear-gradient(to right,rgba(212,169,106,.3),rgba(212,169,106,.3))"></div>
+      <h2 class="cat-title">Hair Accessories</h2>
+      <span class="cat-badge">Handmade</span>
+      <div class="cat-line"></div>
+    </div>
+    <div class="product-grid">
+
+      <div class="product-card" data-category="accessories">
+        <div class="pc-img">
+          <!-- REPLACE with: assets/images/merch/hair-beads-gold.jpeg -->
+          <img src="assets/images/merch/hair-beads-gold.jpeg" alt="Gold Hair Beads Set" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="pc-img-placeholder" style="display:none"><i class="fas fa-circle-nodes"></i><span>Hair Beads</span></div>
+          <span class="pc-badge new">New</span>
+          <div class="pc-actions">
+            <a href="https://wa.me/+254725351803?text=Hi%20Akose!%20I'd%20like%20to%20order%20the%20Gold%20Hair%20Beads%20Set." class="pc-action wa" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="#order-form" class="pc-action form"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+        <div class="pc-info">
+          <p class="pc-category">Hair Accessories</p>
+          <h3 class="pc-name">Gold Hair Beads Set</h3>
+          <p class="pc-desc">Handcrafted golden beads in assorted sizes — perfect for box braids, locs &amp; twists.</p>
+          <div class="pc-footer">
+            <span class="pc-price">KSh 350 <small>/ set</small></span>
+            <div class="pc-order-btns">
+              <a href="https://wa.me/+254725351803?text=Hi%20Akose!%20I'd%20like%20to%20order%20the%20Gold%20Hair%20Beads%20Set." class="pc-btn wa" target="_blank"><i class="fab fa-whatsapp"></i> Order</a>
+              <a href="#order-form" class="pc-btn form"><i class="fas fa-envelope"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="accessories">
+        <div class="pc-img">
+          <!-- REPLACE with: assets/images/merch/hair-cuffs.jpeg -->
+          <img src="assets/images/merch/hair-cuffs.jpeg" alt="Decorative Hair Cuffs" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="pc-img-placeholder" style="display:none"><i class="fas fa-ring"></i><span>Hair Cuffs</span></div>
+          <span class="pc-badge bestseller">Bestseller</span>
+          <div class="pc-actions">
+            <a href="https://wa.me/+254725351803?text=Hi%20Akose!%20I'd%20like%20to%20order%20Decorative%20Hair%20Cuffs." class="pc-action wa" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="#order-form" class="pc-action form"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+        <div class="pc-info">
+          <p class="pc-category">Hair Accessories</p>
+          <h3 class="pc-name">Decorative Hair Cuffs</h3>
+          <p class="pc-desc">Mixed metal hair cuffs with tribal-inspired patterns. Elevate any braid or loc style.</p>
+          <div class="pc-footer">
+            <span class="pc-price">KSh 500 <small>/ pack of 5</small></span>
+            <div class="pc-order-btns">
+              <a href="https://wa.me/+254725351803?text=Hi%20Akose!%20I'd%20like%20to%20order%20Decorative%20Hair%20Cuffs." class="pc-btn wa" target="_blank"><i class="fab fa-whatsapp"></i> Order</a>
+              <a href="#order-form" class="pc-btn form"><i class="fas fa-envelope"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="accessories">
+        <div class="pc-img">
+          <!-- REPLACE with: assets/images/merch/hair-pins.jpeg -->
+          <img src="assets/images/merch/hair-pins.jpeg" alt="Handmade Hair Pins" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="pc-img-placeholder" style="display:none"><i class="fas fa-star"></i><span>Hair Pins</span></div>
+          <div class="pc-actions">
+            <a href="https://wa.me/+254725351803?text=Hi%20Akose!%20I'd%20like%20to%20order%20Handmade%20Hair%20Pins." class="pc-action wa" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="#order-form" class="pc-action form"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+        <div class="pc-info">
+          <p class="pc-category">Hair Accessories</p>
+          <h3 class="pc-name">Handmade Hair Pins</h3>
+          <p class="pc-desc">Bead-tipped bobby pins &amp; hair pins crafted to add a pop of colour to any hairstyle.</p>
+          <div class="pc-footer">
+            <span class="pc-price">KSh 250 <small>/ set of 6</small></span>
+            <div class="pc-order-btns">
+              <a href="https://wa.me/+254725351803?text=Hi%20Akose!%20I'd%20like%20to%20order%20Handmade%20Hair%20Pins." class="pc-btn wa" target="_blank"><i class="fab fa-whatsapp"></i> Order</a>
+              <a href="#order-form" class="pc-btn form"><i class="fas fa-envelope"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="accessories">
+        <div class="pc-img">
+          <!-- REPLACE with: assets/images/merch/head-wrap.jpeg -->
+          <img src="assets/images/merch/head-wrap.jpeg" alt="African Print Head Wrap" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="pc-img-placeholder" style="display:none"><i class="fas fa-hat-cowboy-side"></i><span>Head Wrap</span></div>
+          <span class="pc-badge custom">Custom</span>
+          <div class="pc-actions">
+            <a href="https://wa.me/+254725351803?text=Hi%20Akose!%20I'd%20like%20a%20custom%20Head%20Wrap." class="pc-action wa" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="#order-form" class="pc-action form"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+        <div class="pc-info">
+          <p class="pc-category">Hair Accessories</p>
+          <h3 class="pc-name">African Print Head Wrap</h3>
+          <p class="pc-desc">Vibrant Ankara &amp; kitenge head wraps — bold, protective, and endlessly stylish.</p>
+          <div class="pc-footer">
+            <span class="pc-price">KSh 800</span>
+            <div class="pc-order-btns">
+              <a href="https://wa.me/+254725351803?text=Hi%20Akose!%20I'd%20like%20to%20order%20an%20African%20Print%20Head%20Wrap." class="pc-btn wa" target="_blank"><i class="fab fa-whatsapp"></i> Order</a>
+              <a href="#order-form" class="pc-btn form"><i class="fas fa-envelope"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ BRACELETS & JEWELLERY ═══ -->
+<section class="shop-section" id="bracelets" data-category="bracelets">
+  <div class="container">
+    <div class="category-header fade-up">
+      <div class="cat-line" style="max-width:60px;background:linear-gradient(to right,rgba(212,169,106,.3),rgba(212,169,106,.3))"></div>
+      <h2 class="cat-title">Bracelets &amp; Jewellery</h2>
+      <span class="cat-badge">Handcrafted</span>
+      <div class="cat-line"></div>
+    </div>
+    <div class="product-grid">
+
+      <div class="product-card" data-category="bracelets">
+        <div class="pc-img">
+          <!-- REPLACE with: assets/images/merch/beaded-bracelet.jpeg -->
+          <img src="assets/images/merch/beaded-bracelet.jpeg" alt="Beaded Statement Bracelet" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="pc-img-placeholder" style="display:none"><i class="fas fa-circle-dot"></i><span>Bracelet</span></div>
+          <span class="pc-badge bestseller">Bestseller</span>
+          <div class="pc-actions">
+            <a href="https://wa.me/+254725351803?text=Hi%20Akose!%20I'd%20like%20to%20order%20a%20Beaded%20Bracelet." class="pc-action wa" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="#order-form" class="pc-action form"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+        <div class="pc-info">
+          <p class="pc-category">Bracelets &amp; Jewellery</p>
+          <h3 class="pc-name">Beaded Statement Bracelet</h3>
+          <p class="pc-desc">Hand-strung colourful bead bracelets — stackable, adjustable &amp; perfect as gifts.</p>
+          <div class="pc-footer">
+            <span class="pc-price">KSh 400</span>
+            <div class="pc-order-btns">
+              <a href="https://wa.me/+254725351803?text=Hi%20Akose!%20I'd%20like%20to%20order%20a%20Beaded%20Bracelet." class="pc-btn wa" target="_blank"><i class="fab fa-whatsapp"></i> Order</a>
+              <a href="#order-form" class="pc-btn form"><i class="fas fa-envelope"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="bracelets">
+        <div class="pc-img">
+          <!-- REPLACE with: assets/images/merch/charm-bracelet.jpeg -->
+          <img src="assets/images/merch/charm-bracelet.jpeg" alt="Personalised Charm Bracelet" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="pc-img-placeholder" style="display:none"><i class="fas fa-link"></i><span>Charm Bracelet</span></div>
+          <span class="pc-badge custom">Custom</span>
+          <div class="pc-actions">
+            <a href="https://wa.me/+254725351803?text=Hi%20Akose!%20I'd%20like%20a%20custom%20Charm%20Bracelet." class="pc-action wa" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="#order-form" class="pc-action form"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+        <div class="pc-info">
+          <p class="pc-category">Bracelets &amp; Jewellery</p>
+          <h3 class="pc-name">Personalised Charm Bracelet</h3>
+          <p class="pc-desc">Choose your charms, colours &amp; bead styles. Each piece is uniquely yours.</p>
+          <div class="pc-footer">
+            <span class="pc-price">KSh 600 <small>+ custom</small></span>
+            <div class="pc-order-btns">
+              <a href="https://wa.me/+254725351803?text=Hi%20Akose!%20I'd%20like%20a%20personalised%20Charm%20Bracelet." class="pc-btn wa" target="_blank"><i class="fab fa-whatsapp"></i> Order</a>
+              <a href="#order-form" class="pc-btn form"><i class="fas fa-envelope"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="bracelets">
+        <div class="pc-img">
+          <!-- REPLACE with: assets/images/merch/ankle-bracelet.jpeg -->
+          <img src="assets/images/merch/ankle-bracelet.jpeg" alt="Beaded Anklet" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="pc-img-placeholder" style="display:none"><i class="fas fa-leaf"></i><span>Anklet</span></div>
+          <span class="pc-badge new">New</span>
+          <div class="pc-actions">
+            <a href="https://wa.me/+254725351803?text=Hi%20Akose!%20I'd%20like%20to%20order%20a%20Beaded%20Anklet." class="pc-action wa" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="#order-form" class="pc-action form"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+        <div class="pc-info">
+          <p class="pc-category">Bracelets &amp; Jewellery</p>
+          <h3 class="pc-name">Beaded Anklet</h3>
+          <p class="pc-desc">Dainty handmade anklets in gold, earth tones &amp; bold colour combinations.</p>
+          <div class="pc-footer">
+            <span class="pc-price">KSh 350</span>
+            <div class="pc-order-btns">
+              <a href="https://wa.me/+254725351803?text=Hi%20Akose!%20I'd%20like%20to%20order%20a%20Beaded%20Anklet." class="pc-btn wa" target="_blank"><i class="fab fa-whatsapp"></i> Order</a>
+              <a href="#order-form" class="pc-btn form"><i class="fas fa-envelope"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="bracelets">
+        <div class="pc-img">
+          <!-- REPLACE with: assets/images/merch/bracelet-set.jpeg -->
+          <img src="assets/images/merch/bracelet-set.jpeg" alt="Bracelet Gift Set" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="pc-img-placeholder" style="display:none"><i class="fas fa-gift"></i><span>Gift Set</span></div>
+          <div class="pc-actions">
+            <a href="https://wa.me/+254725351803?text=Hi%20Akose!%20I'd%20like%20to%20order%20the%20Bracelet%20Gift%20Set." class="pc-action wa" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="#order-form" class="pc-action form"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+        <div class="pc-info">
+          <p class="pc-category">Bracelets &amp; Jewellery</p>
+          <h3 class="pc-name">Bracelet Gift Set (3-pack)</h3>
+          <p class="pc-desc">Three complementary handmade bracelets in a gift-ready pouch. Great for birthdays.</p>
+          <div class="pc-footer">
+            <span class="pc-price">KSh 1,000 <small>/ set</small></span>
+            <div class="pc-order-btns">
+              <a href="https://wa.me/+254725351803?text=Hi%20Akose!%20I'd%20like%20to%20order%20the%20Bracelet%20Gift%20Set." class="pc-btn wa" target="_blank"><i class="fab fa-whatsapp"></i> Order</a>
+              <a href="#order-form" class="pc-btn form"><i class="fas fa-envelope"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ BRANDED MERCH ═══ -->
+<section class="shop-section" id="branded" data-category="branded">
+  <div class="container">
+    <div class="category-header fade-up">
+      <div class="cat-line" style="max-width:60px;background:linear-gradient(to right,rgba(212,169,106,.3),rgba(212,169,106,.3))"></div>
+      <h2 class="cat-title">Branded Merch</h2>
+      <span class="cat-badge">Limited</span>
+      <div class="cat-line"></div>
+    </div>
+    <div class="product-grid">
+
+      <div class="product-card" data-category="branded">
+        <div class="pc-img">
+          <!-- REPLACE with: assets/images/merch/tote-bag.jpeg -->
+          <img src="assets/images/merch/tote-bag.jpeg" alt="Hair by Akose Tote Bag" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="pc-img-placeholder" style="display:none"><i class="fas fa-bag-shopping"></i><span>Tote Bag</span></div>
+          <span class="pc-badge bestseller">Fan Fave</span>
+          <div class="pc-actions">
+            <a href="https://wa.me/+254725351803?text=Hi%20Akose!%20I'd%20like%20to%20order%20the%20Branded%20Tote%20Bag." class="pc-action wa" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="#order-form" class="pc-action form"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+        <div class="pc-info">
+          <p class="pc-category">Branded Merch</p>
+          <h3 class="pc-name">Hair by Akose Tote Bag</h3>
+          <p class="pc-desc">Heavy-duty canvas tote with the Hair by Akose logo. Eco-friendly &amp; stylish.</p>
+          <div class="pc-footer">
+            <span class="pc-price">KSh 1,200</span>
+            <div class="pc-order-btns">
+              <a href="https://wa.me/+254725351803?text=Hi%20Akose!%20I'd%20like%20to%20order%20the%20Branded%20Tote%20Bag." class="pc-btn wa" target="_blank"><i class="fab fa-whatsapp"></i> Order</a>
+              <a href="#order-form" class="pc-btn form"><i class="fas fa-envelope"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="branded">
+        <div class="pc-img">
+          <!-- REPLACE with: assets/images/merch/branded-cap.jpeg -->
+          <img src="assets/images/merch/branded-cap.jpeg" alt="Signature Branded Cap" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="pc-img-placeholder" style="display:none"><i class="fas fa-hat-wizard"></i><span>Cap</span></div>
+          <span class="pc-badge new">New</span>
+          <div class="pc-actions">
+            <a href="https://wa.me/+254725351803?text=Hi%20Akose!%20I'd%20like%20to%20order%20the%20Branded%20Cap." class="pc-action wa" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="#order-form" class="pc-action form"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+        <div class="pc-info">
+          <p class="pc-category">Branded Merch</p>
+          <h3 class="pc-name">Signature Branded Cap</h3>
+          <p class="pc-desc">Embroidered dad cap in black &amp; gold. One size fits most. Limited stock.</p>
+          <div class="pc-footer">
+            <span class="pc-price">KSh 1,500</span>
+            <div class="pc-order-btns">
+              <a href="https://wa.me/+254725351803?text=Hi%20Akose!%20I'd%20like%20to%20order%20the%20Branded%20Cap." class="pc-btn wa" target="_blank"><i class="fab fa-whatsapp"></i> Order</a>
+              <a href="#order-form" class="pc-btn form"><i class="fas fa-envelope"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="branded">
+        <div class="pc-img">
+          <!-- REPLACE with: assets/images/merch/branded-tshirt.jpeg -->
+          <img src="assets/images/merch/branded-tshirt.jpeg" alt="Akose Signature T-Shirt" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="pc-img-placeholder" style="display:none"><i class="fas fa-shirt"></i><span>T-Shirt</span></div>
+          <div class="pc-actions">
+            <a href="https://wa.me/+254725351803?text=Hi%20Akose!%20I'd%20like%20to%20order%20a%20Branded%20T-Shirt." class="pc-action wa" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="#order-form" class="pc-action form"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+        <div class="pc-info">
+          <p class="pc-category">Branded Merch</p>
+          <h3 class="pc-name">Akose Signature T-Shirt</h3>
+          <p class="pc-desc">Premium cotton tee with the iconic Hair by Akose print. Available in S–XL.</p>
+          <div class="pc-footer">
+            <span class="pc-price">KSh 1,800</span>
+            <div class="pc-order-btns">
+              <a href="https://wa.me/+254725351803?text=Hi%20Akose!%20I'd%20like%20to%20order%20a%20Branded%20T-Shirt." class="pc-btn wa" target="_blank"><i class="fab fa-whatsapp"></i> Order</a>
+              <a href="#order-form" class="pc-btn form"><i class="fas fa-envelope"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="branded">
+        <div class="pc-img">
+          <!-- REPLACE with: assets/images/merch/branded-mug.jpeg -->
+          <img src="assets/images/merch/branded-mug.jpeg" alt="Hair by Akose Mug" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="pc-img-placeholder" style="display:none"><i class="fas fa-mug-hot"></i><span>Mug</span></div>
+          <div class="pc-actions">
+            <a href="https://wa.me/+254725351803?text=Hi%20Akose!%20I'd%20like%20to%20order%20the%20Branded%20Mug." class="pc-action wa" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="#order-form" class="pc-action form"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+        <div class="pc-info">
+          <p class="pc-category">Branded Merch</p>
+          <h3 class="pc-name">Hair by Akose Mug</h3>
+          <p class="pc-desc">Ceramic mug with the Hair by Akose quote &amp; branding. Perfect gift for a hair lover.</p>
+          <div class="pc-footer">
+            <span class="pc-price">KSh 900</span>
+            <div class="pc-order-btns">
+              <a href="https://wa.me/+254725351803?text=Hi%20Akose!%20I'd%20like%20to%20order%20the%20Branded%20Mug." class="pc-btn wa" target="_blank"><i class="fab fa-whatsapp"></i> Order</a>
+              <a href="#order-form" class="pc-btn form"><i class="fas fa-envelope"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ HAIR CARE PRODUCTS ═══ -->
+<section class="shop-section" id="haircare" data-category="haircare">
+  <div class="container">
+    <div class="category-header fade-up">
+      <div class="cat-line" style="max-width:60px;background:linear-gradient(to right,rgba(212,169,106,.3),rgba(212,169,106,.3))"></div>
+      <h2 class="cat-title">Hair Care Products</h2>
+      <span class="cat-badge">Curated</span>
+      <div class="cat-line"></div>
+    </div>
+    <div class="product-grid">
+
+      <div class="product-card" data-category="haircare">
+        <div class="pc-img">
+          <!-- REPLACE with: assets/images/merch/edge-control.jpeg -->
+          <img src="assets/images/merch/edge-control.jpeg" alt="Edge Control" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="pc-img-placeholder" style="display:none"><i class="fas fa-spray-can"></i><span>Edge Control</span></div>
+          <span class="pc-badge bestseller">Top Pick</span>
+          <div class="pc-actions">
+            <a href="https://wa.me/+254725351803?text=Hi%20Akose!%20I'd%20like%20to%20order%20Edge%20Control." class="pc-action wa" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="#order-form" class="pc-action form"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+        <div class="pc-info">
+          <p class="pc-category">Hair Care</p>
+          <h3 class="pc-name">Akose-Approved Edge Control</h3>
+          <p class="pc-desc">Strong-hold, non-flaking edge control personally used &amp; recommended by Akose.</p>
+          <div class="pc-footer">
+            <span class="pc-price">KSh 650</span>
+            <div class="pc-order-btns">
+              <a href="https://wa.me/+254725351803?text=Hi%20Akose!%20I'd%20like%20to%20order%20Edge%20Control." class="pc-btn wa" target="_blank"><i class="fab fa-whatsapp"></i> Order</a>
+              <a href="#order-form" class="pc-btn form"><i class="fas fa-envelope"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="haircare">
+        <div class="pc-img">
+          <!-- REPLACE with: assets/images/merch/hair-oil.jpeg -->
+          <img src="assets/images/merch/hair-oil.jpeg" alt="Growth Scalp Hair Oil" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="pc-img-placeholder" style="display:none"><i class="fas fa-droplet"></i><span>Hair Oil</span></div>
+          <span class="pc-badge new">New</span>
+          <div class="pc-actions">
+            <a href="https://wa.me/+254725351803?text=Hi%20Akose!%20I'd%20like%20to%20order%20Growth%20Hair%20Oil." class="pc-action wa" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="#order-form" class="pc-action form"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+        <div class="pc-info">
+          <p class="pc-category">Hair Care</p>
+          <h3 class="pc-name">Growth Scalp Hair Oil</h3>
+          <p class="pc-desc">Nourishing blend of castor, peppermint &amp; argan oils for a healthy scalp &amp; growth.</p>
+          <div class="pc-footer">
+            <span class="pc-price">KSh 800</span>
+            <div class="pc-order-btns">
+              <a href="https://wa.me/+254725351803?text=Hi%20Akose!%20I'd%20like%20to%20order%20Growth%20Hair%20Oil." class="pc-btn wa" target="_blank"><i class="fab fa-whatsapp"></i> Order</a>
+              <a href="#order-form" class="pc-btn form"><i class="fas fa-envelope"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="haircare">
+        <div class="pc-img">
+          <!-- REPLACE with: assets/images/merch/hair-mousse.jpeg -->
+          <img src="assets/images/merch/hair-mousse.jpeg" alt="Curl Defining Mousse" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="pc-img-placeholder" style="display:none"><i class="fas fa-wind"></i><span>Mousse</span></div>
+          <div class="pc-actions">
+            <a href="https://wa.me/+254725351803?text=Hi%20Akose!%20I'd%20like%20to%20order%20Curl%20Defining%20Mousse." class="pc-action wa" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="#order-form" class="pc-action form"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+        <div class="pc-info">
+          <p class="pc-category">Hair Care</p>
+          <h3 class="pc-name">Curl Defining Mousse</h3>
+          <p class="pc-desc">Lightweight mousse that defines curls &amp; coils without crunch. Great for wash-and-gos.</p>
+          <div class="pc-footer">
+            <span class="pc-price">KSh 700</span>
+            <div class="pc-order-btns">
+              <a href="https://wa.me/+254725351803?text=Hi%20Akose!%20I'd%20like%20to%20order%20Curl%20Defining%20Mousse." class="pc-btn wa" target="_blank"><i class="fab fa-whatsapp"></i> Order</a>
+              <a href="#order-form" class="pc-btn form"><i class="fas fa-envelope"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="haircare">
+        <div class="pc-img">
+          <!-- REPLACE with: assets/images/merch/loc-butter.jpeg -->
+          <img src="assets/images/merch/loc-butter.jpeg" alt="Shea and Mango Loc Butter" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="pc-img-placeholder" style="display:none"><i class="fas fa-jar"></i><span>Loc Butter</span></div>
+          <span class="pc-badge bestseller">Top Pick</span>
+          <div class="pc-actions">
+            <a href="https://wa.me/+254725351803?text=Hi%20Akose!%20I'd%20like%20to%20order%20Loc%20Butter." class="pc-action wa" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="#order-form" class="pc-action form"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+        <div class="pc-info">
+          <p class="pc-category">Hair Care</p>
+          <h3 class="pc-name">Shea &amp; Mango Loc Butter</h3>
+          <p class="pc-desc">Rich whipped butter for moisturising locs, braids &amp; natural hair. Reduces frizz.</p>
+          <div class="pc-footer">
+            <span class="pc-price">KSh 750</span>
+            <div class="pc-order-btns">
+              <a href="https://wa.me/+254725351803?text=Hi%20Akose!%20I'd%20like%20to%20order%20Loc%20Butter." class="pc-btn wa" target="_blank"><i class="fab fa-whatsapp"></i> Order</a>
+              <a href="#order-form" class="pc-btn form"><i class="fas fa-envelope"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CUSTOM ORDER BANNER -->
+<div class="container">
+  <div class="custom-banner fade-up">
+    <div class="custom-banner-text">
+      <h3>Want Something Custom?</h3>
+      <p>Every piece Akose makes is crafted with love. If you have a specific colour, design, or combination in mind &mdash; just ask! Custom orders for bracelets, hair accessories, and accessory sets are always welcome.</p>
+    </div>
+    <div class="custom-banner-btns">
+      <a href="https://wa.me/+254725351803?text=Hi%20Akose!%20I'd%20like%20to%20place%20a%20custom%20order." class="btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp for Custom</a>
+      <a href="#order-form" class="btn-ghost"><i class="fas fa-envelope"></i> Fill the Form</a>
+    </div>
+  </div>
+</div>
+
+<!-- ORDER FORM -->
+<section class="order-form-section" id="order-form">
+  <div class="container">
+    <div class="order-form-wrap">
+      <div class="order-form-info fade-up">
+        <span class="section-label">Place Your Order</span>
+        <h2>How Would You<br>Like to Order?</h2>
+        <p>Fill in the form and Akose will get back to you within a few hours, or jump straight into WhatsApp for a faster response.</p>
+        <div class="contact-methods">
+          <a href="https://wa.me/+254725351803" class="contact-method" target="_blank">
+            <div class="cm-icon wa"><i class="fab fa-whatsapp"></i></div>
+            <div class="cm-text"><h4>WhatsApp (Fastest)</h4><span>+(254) 725-351-803 &mdash; reply within hours</span></div>
+          </a>
+          <a href="https://www.instagram.com/hairbyakose" class="contact-method" target="_blank">
+            <div class="cm-icon ig"><i class="fab fa-instagram"></i></div>
+            <div class="cm-text"><h4>Instagram DM</h4><span>@hairbyakose</span></div>
+          </a>
+          <div class="contact-method">
+            <div class="cm-icon email"><i class="fas fa-envelope"></i></div>
+            <div class="cm-text"><h4>Email / Form Below</h4><span>We'll reply within 24 hours</span></div>
+          </div>
+        </div>
+        <p style="font-size:.9rem;color:var(--white-dim);font-style:italic"><i class="fas fa-truck" style="color:var(--gold);margin-right:.5rem"></i> Delivery available within Nairobi. Pickup also welcome.</p>
+      </div>
+
+      <div class="order-form fade-up">
+        <span class="section-label" style="margin-bottom:1.5rem">Order Form</span>
+        <form id="shopOrderForm" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="of-name">Your Name *</label>
+              <input type="text" id="of-name" placeholder="e.g. Wanjiku Kamau" required>
+            </div>
+            <div class="form-group">
+              <label for="of-phone">Phone Number *</label>
+              <input type="tel" id="of-phone" placeholder="+254 7XX XXX XXX" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="of-email">Email Address</label>
+            <input type="email" id="of-email" placeholder="you@example.com">
+          </div>
+          <div class="form-group">
+            <label for="of-category">Product Category *</label>
+            <select id="of-category" required>
+              <option value="" disabled selected>Select a category</option>
+              <option>Hair Accessories</option>
+              <option>Bracelets &amp; Jewellery</option>
+              <option>Branded Merch</option>
+              <option>Hair Care Products</option>
+              <option>Custom Order</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="of-product">Product Name / Description *</label>
+            <input type="text" id="of-product" placeholder="e.g. Gold Hair Beads Set, Personalised Charm Bracelet" required>
+          </div>
+          <div class="form-group">
+            <label for="of-location">Delivery Location</label>
+            <input type="text" id="of-location" placeholder="e.g. Westlands, Nairobi / Self-pickup">
+          </div>
+          <div class="form-group">
+            <label for="of-message">Additional Notes / Custom Details</label>
+            <textarea id="of-message" placeholder="Colours, sizes, special requests, or anything else you'd like Akose to know..."></textarea>
+          </div>
+          <div class="form-submit-row">
+            <button type="submit" class="btn-gold"><i class="fas fa-paper-plane"></i> Send Order</button>
+            <span class="form-note">Or <a href="https://wa.me/+254725351803" target="_blank" style="color:var(--gold)">WhatsApp us directly</a></span>
+          </div>
+          <div class="form-success" id="formSuccess">
+            <i class="fas fa-check-circle"></i>
+            <p>Order received! Akose will reach out within a few hours to confirm your order.</p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="assets/images/logo.jpeg" alt="Hair by Akose">
+        <p>Professional mobile hair styling and handmade accessories, bringing beauty to your doorstep.</p>
+        <div class="socials">
+          <a href="https://www.instagram.com/hairbyakose?igsh=YW1pdTc0ZzBua2p4&utm_source=qr" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://web.facebook.com/vivienne.akose" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="https://www.tiktok.com/@hairbyakose?_r=1&_t=ZS-93RrembQpYD" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          <a href="http://www.youtube.com/@vivienneakose8306" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-col"><h4>Navigate</h4><ul><li><a href="index.html">Home</a></li><li><a href="index.html#story">My Story</a></li><li><a href="index.html#gallery">Portfolio</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="merchandise.html">Shop</a></li></ul></div>
+      <div class="footer-col"><h4>Shop Categories</h4><ul><li><a href="#accessories">Hair Accessories</a></li><li><a href="#bracelets">Bracelets &amp; Jewellery</a></li><li><a href="#branded">Branded Merch</a></li><li><a href="#haircare">Hair Care</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><i class="fas fa-phone"></i> +(254) 725-351-803</li><li><i class="fas fa-envelope"></i> <a href="mailto:hairbyakose@gmail.com">hairbyakose@gmail.com</a></li><li><i class="fas fa-map-marker-alt"></i> @ your place of comfort</li><li><i class="fas fa-clock"></i> Mon&ndash;Sat: 9AM &ndash; 8PM</li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Hair by Akose. All rights reserved.</span>
+      <span>Crafted with <i class="fas fa-heart" style="color:var(--gold)"></i> and passion &middot; by #mimsanii</span>
+    </div>
+  </div>
+</footer>
+
+<!-- MOBILE BOTTOM NAV -->
+<nav class="mob-bottom-nav" id="mobBottomNav">
+  <a href="index.html"><i class="fas fa-home"></i><span>Home</span></a>
+  <a href="index.html#services"><i class="fas fa-scissors"></i><span>Services</span></a>
+  <a href="merchandise.html" class="active"><i class="fas fa-bag-shopping"></i><span>Shop</span></a>
+  <a href="contact.html"><i class="fas fa-calendar-check"></i><span>Book</span></a>
+</nav>
+
+<script>
+/* scroll progress */
+var bar=document.getElementById('scroll-progress');
+if(bar)window.addEventListener('scroll',function(){bar.style.width=Math.min(window.scrollY/(document.body.scrollHeight-window.innerHeight)*100,100)+'%';},{passive:true});
+/* nav scrolled */
+var nav=document.getElementById('mainNav');
+if(nav)window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>60);},{passive:true});
+/* hamburger / mobile menu */
+var hb=document.getElementById('hamburger'),mm=document.getElementById('mobMenu'),bd=document.getElementById('mobBackdrop');
+function openMenu(){mm.classList.add('open');bd.classList.add('open');hb.classList.add('open');document.body.style.overflow='hidden';document.body.style.position='fixed';document.body.style.width='100%';}
+function cM(){mm.classList.remove('open');bd.classList.remove('open');hb.classList.remove('open');document.body.style.overflow='';document.body.style.position='';document.body.style.width='';}
+if(hb)hb.addEventListener('click',function(e){e.stopPropagation();mm.classList.contains('open')?cM():openMenu();});
+if(bd)bd.addEventListener('click',cM);
+var mc=document.getElementById('mobClose');if(mc)mc.addEventListener('click',cM);
+document.addEventListener('keydown',function(e){if(e.key==='Escape')cM();});
+/* filter tabs */
+var filterBtns=document.querySelectorAll('.filter-btn');
+var shopSections=document.querySelectorAll('.shop-section');
+filterBtns.forEach(function(btn){
+  btn.addEventListener('click',function(){
+    filterBtns.forEach(function(b){b.classList.remove('active');});
+    btn.classList.add('active');
+    var f=btn.getAttribute('data-filter');
+    shopSections.forEach(function(s){s.style.display=(f==='all'||s.getAttribute('data-category')===f)?'':'none';});
+  });
+});
+/* fade-up observer */
+var fadeEls=document.querySelectorAll('.fade-up');
+var ob=new IntersectionObserver(function(entries){entries.forEach(function(e,i){if(e.isIntersecting){setTimeout(function(){e.target.classList.add('visible');},i*55);ob.unobserve(e.target);}});},{threshold:0.08});
+fadeEls.forEach(function(el){ob.observe(el);});
+/* product card stagger */
+var cards=document.querySelectorAll('.product-card');
+cards.forEach(function(el){el.style.opacity='0';el.style.transform='translateY(16px)';el.style.transition='opacity .5s ease,transform .5s ease';});
+var pob=new IntersectionObserver(function(entries){entries.forEach(function(e,i){if(e.isIntersecting){setTimeout(function(){e.target.style.opacity='1';e.target.style.transform='translateY(0)';},i*65);pob.unobserve(e.target);}});},{threshold:0.07});
+cards.forEach(function(el){pob.observe(el);});
+/* form submit — compose WhatsApp message */
+var form=document.getElementById('shopOrderForm');
+var successMsg=document.getElementById('formSuccess');
+if(form){
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var name=document.getElementById('of-name').value.trim();
+    var phone=document.getElementById('of-phone').value.trim();
+    var cat=document.getElementById('of-category').value;
+    var prod=document.getElementById('of-product').value.trim();
+    if(!name||!phone||!cat||!prod){alert('Please fill in the required fields (Name, Phone, Category, Product).');return;}
+    var loc=document.getElementById('of-location').value.trim();
+    var msg=document.getElementById('of-message').value.trim();
+    var wa='Hi%20Akose!%20I%20have%20a%20shop%20order:%0A'
+      +'Name:%20'+encodeURIComponent(name)+'%0A'
+      +'Phone:%20'+encodeURIComponent(phone)+'%0A'
+      +'Category:%20'+encodeURIComponent(cat)+'%0A'
+      +'Product:%20'+encodeURIComponent(prod)
+      +(loc?'%0ADelivery:%20'+encodeURIComponent(loc):'')
+      +(msg?'%0ANotes:%20'+encodeURIComponent(msg):'');
+    form.querySelectorAll('input,select,textarea,button').forEach(function(el){el.disabled=true;});
+    if(successMsg)successMsg.style.display='block';
+    setTimeout(function(){window.open('https://wa.me/+254725351803?text='+wa,'_blank');},800);
+  });
+}
+</script>
+</body>
+</html>
