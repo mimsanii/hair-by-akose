@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Hair by Akose pricing - Affordable, transparent pricing for all hair styling services.">
-<title>Pricing | Hair by Akose</title>
+<meta name="description" content="View Hair by Akose's portfolio of beautiful braids, twists, weaves, and natural hair transformations.">
+<title>Portfolio | Hair by Akose</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -25,7 +25,7 @@ html{scroll-behavior:smooth;font-size:16px}
 body{font-family:var(--font-body);background:var(--black);color:var(--white);line-height:1.75;overflow-x:hidden}
 img{max-width:100%;height:auto;display:block}
 a{text-decoration:none;color:inherit;transition:all .3s ease}
-body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;opacity:.22;pointer-events:none!important}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;opacity:.22}
 .container{width:100%;max-width:1400px;margin:0 auto;padding:0 2rem}
 #scroll-progress{position:fixed;top:0;left:0;height:3px;background:var(--grad-gold);z-index:10000;width:0;transition:width .08s linear;pointer-events:none}
 
@@ -39,131 +39,214 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .nav-links a:hover,.nav-links a.active-link{color:var(--gold)}
 .nav-links .nav-cta{padding:.6rem 1.5rem;border:1px solid var(--gold);color:var(--gold);border-radius:100px}
 .nav-links .nav-cta:hover{background:var(--gold);color:var(--black)}
+
+/* ── HAMBURGER — glass pill (matches index.html) ── */
 .hamburger{
-  display:none;flex-direction:column;gap:6px;cursor:pointer;z-index:1100;
-  padding:.55rem .7rem;background:rgba(245,237,216,.06);
-  border:1px solid rgba(212,169,106,.25);border-radius:10px;
-  backdrop-filter:blur(8px);transition:background .25s,border-color .25s;
+  display:none;flex-direction:column;gap:6px;cursor:pointer;
+  z-index:1100;position:relative;padding:.55rem .7rem;
+  background:rgba(245,237,216,.06);border:1px solid rgba(212,169,106,.25);
+  border-radius:10px;backdrop-filter:blur(8px);
+  transition:background .25s,border-color .25s;
 }
 .hamburger:hover{background:rgba(212,169,106,.12);border-color:rgba(212,169,106,.5)}
 .hamburger span{display:block;height:1.5px;background:var(--white);border-radius:2px;transition:all .38s var(--ease)}
 .hamburger span:nth-child(1){width:22px}
 .hamburger span:nth-child(2){width:16px;margin-left:auto;background:var(--gold)}
 .hamburger span:nth-child(3){width:22px}
+.hamburger.open{background:rgba(212,169,106,.15);border-color:rgba(212,169,106,.5)}
 .hamburger.open span:nth-child(1){transform:rotate(45deg) translate(0,5.5px);width:20px}
 .hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
 .hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(0,-5.5px);width:20px}
 
-/* ── SLIDE PANEL ── */
-.mob-menu-backdrop{display:none;position:fixed;inset:0;background:rgba(7,30,30,.55);backdrop-filter:blur(3px);z-index:1070;opacity:0;transition:opacity .35s ease}
+/* ── SLIDE PANEL — same as index.html ── */
+.mob-menu-backdrop{
+  display:none;position:fixed;inset:0;
+  background:rgba(7,30,30,.55);backdrop-filter:blur(3px);
+  z-index:1070;opacity:0;transition:opacity .35s ease;
+}
 .mob-menu-backdrop.open{display:block;opacity:1}
 .mob-menu{
   display:flex;flex-direction:column;justify-content:center;
-  position:fixed;top:0;right:0;bottom:0;width:68%;max-width:300px;
-  background:rgba(7,30,30,.72);backdrop-filter:blur(22px) saturate(1.6);
+  position:fixed;top:0;right:0;bottom:0;
+  width:68%;max-width:300px;
+  background:rgba(7,30,30,.72);
+  backdrop-filter:blur(22px) saturate(1.6);
   -webkit-backdrop-filter:blur(22px) saturate(1.6);
-  border-left:1px solid rgba(212,169,106,.22);z-index:1080;
-  padding:5.5rem 1.6rem 4rem 1.5rem;
-  transform:translateX(100%);transition:transform .4s var(--ease);
+  border-left:1px solid rgba(212,169,106,.22);
+  z-index:1080;padding:5.5rem 1.6rem 4rem 1.5rem;
+  transform:translateX(100%);
+  transition:transform .4s var(--ease);
   pointer-events:none;overflow-y:auto;
 }
 .mob-menu.open{transform:translateX(0);pointer-events:auto}
-.mob-menu-close{position:absolute;top:1rem;right:1rem;width:34px;height:34px;background:rgba(212,169,106,.08);border:1px solid rgba(212,169,106,.22);border-radius:6px;display:flex;align-items:center;justify-content:center;color:rgba(212,169,106,.7);font-size:.85rem;cursor:pointer;transition:all .2s}
+.mob-menu-close{
+  position:absolute;top:1rem;right:1rem;width:34px;height:34px;
+  background:rgba(212,169,106,.08);border:1px solid rgba(212,169,106,.22);
+  border-radius:6px;display:flex;align-items:center;justify-content:center;
+  color:rgba(212,169,106,.7);font-size:.85rem;cursor:pointer;transition:all .2s;
+}
 .mob-menu-close:hover{background:rgba(212,169,106,.2);color:var(--gold)}
-.mob-menu-brand{font-family:var(--font-body);font-size:1.1rem;font-weight:600;font-style:italic;color:var(--gold);margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid rgba(212,169,106,.25)}
+.mob-menu-brand{
+  font-family:var(--font-body);font-size:1.1rem;font-weight:600;font-style:italic;
+  letter-spacing:.04em;color:var(--gold);margin-bottom:2rem;padding-bottom:1rem;
+  border-bottom:1px solid rgba(212,169,106,.25);
+}
 .mob-menu-links{display:flex;flex-direction:column;width:100%}
 .mob-menu-links::before{content:'';display:block;height:1px;background:linear-gradient(90deg,rgba(212,169,106,.35),rgba(212,169,106,.08))}
-.mob-menu-links a{font-family:var(--font-body);font-size:1.6rem;font-weight:600;color:rgba(245,237,216,.78);padding:.75rem 0;border-bottom:1px solid;border-image:linear-gradient(90deg,rgba(212,169,106,.35),rgba(212,169,106,.06)) 1;display:flex;align-items:center;justify-content:space-between;transition:color .22s,letter-spacing .22s}
+.mob-menu-links a{
+  font-family:var(--font-body);font-size:1.6rem;font-weight:600;
+  color:rgba(245,237,216,.78);letter-spacing:.01em;padding:.75rem 0;
+  border-bottom:1px solid;border-image:linear-gradient(90deg,rgba(212,169,106,.35),rgba(212,169,106,.06)) 1;
+  display:flex;align-items:center;justify-content:space-between;
+  transition:color .22s,letter-spacing .22s;
+}
 .mob-menu-links a.active-link{color:var(--gold)}
-.mob-menu-links a::after{content:'↗';font-family:var(--font-display);font-size:.7rem;font-style:normal;color:rgba(212,169,106,.3);transition:color .22s,transform .22s;flex-shrink:0;margin-left:.5rem}
-.mob-menu-links a:hover::after{color:var(--gold);transform:translate(3px,-3px)}
-.mob-menu-links a:hover{color:#F5EDD8;letter-spacing:.04em}
-.mob-menu-cta{margin-top:1.75rem;display:flex;align-items:center;justify-content:center;gap:.5rem;padding:.85rem 1.2rem;background:var(--grad-gold);color:#071E1E;font-family:var(--font-display);font-size:.68rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+.mob-menu-links a::after{
+  content:'↗';font-family:var(--font-display);font-size:.7rem;font-style:normal;
+  color:rgba(212,169,106,.3);transition:color .22s,transform .22s;flex-shrink:0;margin-left:.5rem;
+}
+.mob-menu-links a:hover::after,.mob-menu-links a:active::after{color:var(--gold);transform:translate(3px,-3px)}
+.mob-menu-links a:hover,.mob-menu-links a:active{color:#F5EDD8;letter-spacing:.04em}
+.mob-menu-cta{
+  margin-top:1.75rem;display:flex;align-items:center;justify-content:center;gap:.5rem;
+  padding:.85rem 1.2rem;background:var(--grad-gold);color:#071E1E;
+  font-family:var(--font-display);font-size:.68rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+}
 .mob-menu-socials{display:flex;gap:.6rem;margin-top:1.5rem}
-.mob-menu-socials a{width:32px;height:32px;background:rgba(245,237,216,.04);border:1px solid rgba(212,169,106,.18);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:.82rem;color:rgba(245,237,216,.4);transition:all .2s}
+.mob-menu-socials a{
+  width:32px;height:32px;background:rgba(245,237,216,.04);
+  border:1px solid rgba(212,169,106,.18);border-radius:4px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.82rem;color:rgba(245,237,216,.4);transition:all .2s;
+}
 .mob-menu-socials a:hover{background:rgba(212,169,106,.12);color:var(--gold);border-color:rgba(212,169,106,.5)}
-.mob-menu-meta{margin-top:1.1rem;font-family:var(--font-body);font-style:italic;font-size:.82rem;color:rgba(245,237,216,.25);line-height:1.8}
+.mob-menu-meta{
+  margin-top:1.1rem;font-family:var(--font-body);font-style:italic;
+  font-size:.82rem;letter-spacing:.03em;color:rgba(245,237,216,.25);line-height:1.8;
+}
 
 /* ── PAGE HERO ── */
 .page-hero{
-  min-height:60vh;display:grid;grid-template-columns:1fr 1fr;
-  gap:4rem;align-items:center;
-  padding:10rem 2rem 6rem;max-width:1400px;margin:0 auto;position:relative;
+  min-height:52vh;display:flex;align-items:center;justify-content:center;
+  text-align:center;padding:10rem 2rem 4rem;position:relative;overflow:hidden;
 }
-.hero-lines{position:fixed;inset:0;pointer-events:none;z-index:0}
-.hero-lines span{position:absolute;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,rgba(212,169,106,.08),transparent)}
+.page-hero::before{
+  content:'';position:absolute;top:-20%;left:50%;transform:translateX(-50%);
+  width:70vw;height:70vw;
+  background:radial-gradient(ellipse,rgba(212,169,106,.1) 0%,transparent 65%);
+  pointer-events:none;
+}
+.hero-lines{position:absolute;inset:0;pointer-events:none}
+.hero-lines span{position:absolute;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,rgba(212,169,106,.1),transparent)}
 .hero-lines span:nth-child(1){left:20%}.hero-lines span:nth-child(2){left:40%}
 .hero-lines span:nth-child(3){left:60%}.hero-lines span:nth-child(4){left:80%}
-.hero-text{position:relative;z-index:2;animation:fadeUp 1s var(--ease) both}
+.hero-inner{position:relative;z-index:2;animation:fadeUp .9s var(--ease) both}
 @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
-.hero-eyebrow{display:inline-flex;align-items:center;gap:.75rem;font-family:var(--font-display);font-size:.7rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem}
-.hero-eyebrow::before,.hero-eyebrow::after{content:'';width:30px;height:1px;background:var(--gold);opacity:.5}
-.page-title{font-family:var(--font-display);font-size:clamp(3rem,8vw,7rem);font-weight:800;line-height:.95;letter-spacing:-.03em;margin-bottom:1.5rem}
-.page-title .gold{background:var(--grad-gold);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-style:italic}
-.page-subtitle{font-size:1.25rem;color:var(--white-dim);font-style:italic;line-height:1.7;margin-bottom:2.5rem}
-.hero-chips{display:flex;gap:.75rem;flex-wrap:wrap}
-.chip{display:inline-flex;align-items:center;gap:.5rem;padding:.5rem 1.1rem;background:var(--black-card);border:1px solid rgba(212,169,106,.2);border-radius:100px;font-family:var(--font-display);font-size:.72rem;font-weight:600;letter-spacing:.08em;color:var(--white-dim)}
-.chip i{color:var(--gold)}
-
-/* ── CALCULATOR (desktop hero right) ── */
-.calculator-wrap{position:relative;z-index:2;animation:fadeUp 1s var(--ease) .2s both}
-.calculator-card{background:var(--black-card);border:1px solid rgba(212,169,106,.2);border-radius:20px;padding:2.5rem;box-shadow:0 40px 80px rgba(0,0,0,.5);position:relative;overflow:hidden}
-.calculator-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad-gold)}
-.calculator-card h2{font-family:var(--font-display);font-size:1.6rem;font-weight:800;color:var(--white);margin-bottom:.4rem}
-.calculator-card>p{font-size:1rem;color:var(--white-dim);margin-bottom:2rem;font-style:italic}
-.calc-label{display:block;font-family:var(--font-display);font-size:.72rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem}
-.calc-select{
-  width:100%;padding:1rem 1.25rem;background:var(--black-soft);
-  border:1px solid rgba(212,169,106,.2);border-radius:10px;
-  color:var(--white);font-family:var(--font-body);font-size:1.05rem;
-  cursor:pointer;transition:border-color .3s;appearance:none;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23D4A96A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-  background-repeat:no-repeat;background-position:right 1.25rem center;
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:.75rem;
+  font-family:var(--font-display);font-size:.7rem;font-weight:700;
+  letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;
 }
-.calc-select:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(212,169,106,.1)}
-.calc-select option{background:var(--black-card);color:var(--white)}
-.quote-result{display:none;margin-top:1.5rem;padding:1.5rem;background:var(--black-soft);border:1px solid rgba(212,169,106,.25);border-radius:12px}
-.quote-result.show{display:block;animation:fadeUp .4s var(--ease) both}
-.quote-name{font-family:var(--font-display);font-size:1.3rem;font-weight:700;color:var(--white);margin-bottom:1rem}
-.quote-stats{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem}
-.q-stat{background:var(--black-card);border-radius:10px;padding:1rem;text-align:center;border:1px solid rgba(212,169,106,.1)}
-.q-val{display:block;font-family:var(--font-display);font-size:1.3rem;font-weight:800;background:var(--grad-gold);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.q-lbl{font-family:var(--font-display);font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--white-dim);margin-top:.2rem;display:block}
-.btn-wa{display:flex;align-items:center;justify-content:center;gap:.75rem;width:100%;padding:1rem;background:#25D366;color:white;font-family:var(--font-display);font-size:.8rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;border:none;border-radius:10px;cursor:pointer;transition:all .3s}
-.btn-wa:hover{background:#1DAD52;transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,211,102,.3)}
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';width:40px;height:1px;background:var(--gold);opacity:.5}
+.page-title{
+  font-family:var(--font-display);font-size:clamp(3.5rem,10vw,8rem);
+  font-weight:800;line-height:.95;letter-spacing:-.03em;margin-bottom:1.25rem;
+  color:var(--white);
+}
+.page-title span{
+  display:block;background:var(--grad-gold);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;font-style:italic;
+}
+.page-subtitle{font-size:clamp(1rem,2vw,1.25rem);color:var(--white-dim);font-style:italic;max-width:520px;margin:0 auto}
 
-/* ── PRICING SECTION ── */
-.pricing-section{padding:7rem 0;background:var(--black-soft)}
-.cat-tabs{display:flex;gap:.75rem;flex-wrap:wrap;justify-content:center;margin-bottom:3.5rem}
-.cat-tab{padding:.65rem 1.5rem;font-family:var(--font-display);font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:transparent;color:var(--white-dim);border:1px solid rgba(212,169,106,.2);border-radius:100px;cursor:pointer;transition:all .3s}
-.cat-tab:hover{border-color:var(--gold);color:var(--gold)}
-.cat-tab.active{background:var(--grad-gold);color:var(--black);border-color:transparent;box-shadow:0 4px 20px rgba(212,169,106,.3)}
-.pricing-panel{display:none;animation:fadeUp .4s var(--ease) both}
-.pricing-panel.active{display:block}
-.panel-header{display:flex;align-items:center;gap:1.5rem;margin-bottom:2.5rem;padding-bottom:2rem;border-bottom:1px solid rgba(212,169,106,.15)}
-.panel-icon{width:64px;height:64px;border-radius:14px;background:rgba(212,169,106,.1);border:1px solid rgba(212,169,106,.2);display:flex;align-items:center;justify-content:center;font-size:1.75rem;color:var(--gold)}
-.panel-header h2{font-family:var(--font-display);font-size:2.5rem;font-weight:800;color:var(--white)}
-.panel-header p{font-size:1.05rem;color:var(--white-dim);font-style:italic}
-.price-rows{display:grid;gap:1px;background:rgba(212,169,106,.08);border-radius:16px;overflow:hidden;border:1px solid rgba(212,169,106,.1)}
-.price-row{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:2rem;padding:1.5rem 2rem;background:var(--black-card);transition:all .3s;cursor:pointer}
-.price-row:hover{background:var(--black-edge);padding-left:2.5rem}
-.price-row:hover .pr-name{color:var(--gold-light)}
-.pr-name{font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:var(--white);transition:color .3s}
-.pr-duration{font-family:var(--font-display);font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--white-dim);display:flex;align-items:center;gap:.4rem}
-.pr-duration i{color:var(--gold);opacity:.7}
-.pr-price{font-family:var(--font-display);font-size:1.2rem;font-weight:800;background:var(--grad-gold);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;white-space:nowrap}
-.book-row-btn{display:none;padding:.4rem 1rem;background:transparent;border:1px solid rgba(212,169,106,.3);border-radius:100px;color:var(--gold);font-family:var(--font-display);font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:all .3s;white-space:nowrap}
-.price-row:hover .book-row-btn{display:block}
-.book-row-btn:hover{background:var(--grad-gold);color:var(--black);border-color:transparent}
+/* ── FILTER BAR ── */
+.filter-section{
+  padding:2rem 0;background:var(--black-soft);
+  position:sticky;top:0;z-index:100;
+  border-bottom:1px solid rgba(212,169,106,.1);
+  backdrop-filter:blur(10px);
+}
+.filter-buttons{display:flex;gap:.65rem;justify-content:center;flex-wrap:wrap}
+.filter-btn{
+  padding:.55rem 1.35rem;font-family:var(--font-display);font-size:.72rem;
+  font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  background:transparent;color:var(--white-dim);
+  border:1px solid rgba(212,169,106,.2);border-radius:100px;
+  cursor:pointer;transition:all .3s ease;
+}
+.filter-btn:hover{border-color:var(--gold);color:var(--gold)}
+.filter-btn.active{background:var(--grad-gold);color:var(--black);border-color:transparent;box-shadow:0 4px 20px rgba(212,169,106,.3)}
 
-/* ── NOTES ── */
-.notes-section{padding:6rem 0;background:var(--black)}
-.notes-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:3.5rem}
-.note-card{padding:2rem;background:var(--black-card);border:1px solid rgba(212,169,106,.1);border-radius:16px;transition:all .3s}
-.note-card:hover{border-color:rgba(212,169,106,.3);transform:translateY(-4px)}
-.note-icon{width:48px;height:48px;border-radius:10px;background:rgba(212,169,106,.1);border:1px solid rgba(212,169,106,.2);display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:var(--gold);margin-bottom:1.25rem}
-.note-card h4{font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--white);margin-bottom:.5rem}
-.note-card p{font-size:1rem;color:var(--white-dim);line-height:1.7}
+/* ── GALLERY ── */
+.portfolio-gallery{padding:5rem 0 6rem;background:var(--black)}
+.gallery-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:1.25rem}
+.gallery-item{grid-column:span 4}
+.gallery-item.large{grid-column:span 6}
+.gallery-item.wide{grid-column:span 8}
+.gallery-item.tall{grid-column:span 3}
+.gallery-card{
+  position:relative;border-radius:14px;overflow:hidden;cursor:pointer;
+  background:var(--black-card);border:1px solid rgba(212,169,106,.08);
+  transition:all .4s var(--ease);height:100%;min-height:280px;
+}
+.gallery-item.large .gallery-card{min-height:380px}
+.gallery-item.wide  .gallery-card{min-height:260px}
+.gallery-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s var(--ease);position:absolute;inset:0}
+.gallery-card:hover img{transform:scale(1.07)}
+.gallery-card:hover{border-color:rgba(212,169,106,.3);box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.gallery-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(7,30,30,.92) 0%,rgba(7,30,30,.3) 50%,transparent 100%);
+  display:flex;flex-direction:column;justify-content:flex-end;padding:1.75rem;
+  opacity:0;transition:opacity .4s ease;
+}
+.gallery-card:hover .gallery-overlay{opacity:1}
+.gallery-overlay h3{font-family:var(--font-display);font-size:1.15rem;font-weight:700;color:var(--white);margin-bottom:.3rem}
+.gallery-overlay p{font-family:var(--font-display);font-size:.72rem;letter-spacing:.1em;color:var(--gold-light);text-transform:uppercase;margin-bottom:1rem}
+.zoom-btn{
+  width:38px;height:38px;border-radius:50%;background:var(--grad-gold);border:none;
+  color:var(--black);display:flex;align-items:center;justify-content:center;
+  font-size:.85rem;cursor:pointer;transition:all .3s ease;align-self:flex-start;
+}
+.zoom-btn:hover{transform:scale(1.15)}
+.gallery-tag{
+  position:absolute;top:1rem;left:1rem;
+  background:rgba(7,30,30,.8);border:1px solid rgba(212,169,106,.3);
+  border-radius:100px;padding:.28rem .8rem;
+  font-family:var(--font-display);font-size:.62rem;font-weight:700;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--gold);
+  backdrop-filter:blur(8px);z-index:2;
+}
+.gallery-item.hidden{display:none}
+.gallery-item.extra .gallery-card{min-height:280px}
+.load-more-wrap{text-align:center;margin-top:3.5rem}
+.btn-ghost-gold{
+  display:inline-flex;align-items:center;gap:.6rem;padding:1rem 2.5rem;
+  background:transparent;color:var(--gold);font-family:var(--font-display);
+  font-size:.8rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  border:1px solid rgba(212,169,106,.4);border-radius:100px;cursor:pointer;transition:all .3s ease;
+}
+.btn-ghost-gold:hover{background:var(--grad-gold);color:var(--black);border-color:transparent;box-shadow:0 8px 30px rgba(212,169,106,.3)}
+
+/* ── LIGHTBOX ── */
+.lightbox{
+  position:fixed;inset:0;background:rgba(7,30,30,.97);
+  backdrop-filter:blur(20px);z-index:2000;
+  display:none;align-items:center;justify-content:center;padding:2rem;
+}
+.lightbox.open{display:flex;animation:lbFade .3s ease}
+@keyframes lbFade{from{opacity:0}to{opacity:1}}
+.lightbox-inner{position:relative;max-width:900px;width:100%}
+.lightbox-inner img{width:100%;border-radius:16px;border:1px solid rgba(212,169,106,.2);box-shadow:0 40px 100px rgba(0,0,0,.8);max-height:85vh;object-fit:contain}
+.lightbox-close{position:absolute;top:-1rem;right:-1rem;width:44px;height:44px;border-radius:50%;background:var(--grad-gold);border:none;color:var(--black);font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s}
+.lightbox-close:hover{transform:scale(1.1)}
+.lightbox-caption{text-align:center;margin-top:1.25rem}
+.lightbox-caption h3{font-family:var(--font-display);font-size:1.25rem;color:var(--white)}
+.lightbox-caption p{font-family:var(--font-display);font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-top:.3rem}
+.lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:rgba(7,30,30,.8);border:1px solid rgba(212,169,106,.3);color:var(--gold);font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s}
+.lightbox-nav:hover{background:var(--grad-gold);color:var(--black);border-color:transparent}
+.lightbox-prev{left:-3.5rem}.lightbox-next{right:-3.5rem}
 
 /* ── CTA ── */
 .cta{padding:8rem 0;background:var(--black-soft);position:relative;overflow:hidden}
@@ -172,10 +255,10 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .cta-title{font-family:var(--font-display);font-size:clamp(2rem,5vw,4rem);font-weight:800;color:var(--white);margin-bottom:1rem}
 .cta-text{font-size:1.2rem;color:var(--white-dim);font-style:italic;margin-bottom:3rem}
 .cta-btns{display:flex;gap:1.25rem;justify-content:center;flex-wrap:wrap}
-.btn-gold{display:inline-flex;align-items:center;gap:.5rem;padding:1rem 2.5rem;background:var(--grad-gold);color:var(--black);font-family:var(--font-display);font-size:.8rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;border-radius:100px;transition:all .3s;box-shadow:0 0 30px rgba(212,169,106,.25);border:none;cursor:pointer}
+.btn-gold{display:inline-flex;align-items:center;gap:.5rem;padding:1rem 2.5rem;background:var(--grad-gold);color:var(--black);font-family:var(--font-display);font-size:.8rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;border-radius:100px;transition:all .3s;box-shadow:0 0 30px rgba(212,169,106,.25)}
 .btn-gold:hover{transform:translateY(-3px);box-shadow:0 10px 40px rgba(212,169,106,.4)}
-.btn-ghost{display:inline-flex;align-items:center;gap:.5rem;padding:1rem 2.5rem;background:transparent;color:var(--white);font-family:var(--font-display);font-size:.8rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;border-radius:100px;border:1px solid rgba(245,237,216,.25);transition:all .3s}
-.btn-ghost:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-3px)}
+.btn-whatsapp{display:inline-flex;align-items:center;gap:.75rem;padding:1rem 2.5rem;background:#25D366;color:white;font-family:var(--font-display);font-size:.8rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;border-radius:100px;transition:all .3s}
+.btn-whatsapp:hover{background:#1DAD52;transform:translateY(-3px)}
 
 /* ── FOOTER ── */
 .footer{background:var(--black-soft);border-top:1px solid rgba(212,169,106,.18);padding:5rem 0 2.5rem}
@@ -193,25 +276,19 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .footer-col ul li a:hover{color:var(--gold)}
 .footer-bottom{border-top:1px solid rgba(212,169,106,.1);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:.85rem;color:rgba(245,237,216,.3);font-family:var(--font-display)}
 
-/* ── HIDE MOBILE-ONLY ELEMENTS ON DESKTOP ── */
-.mobile-calc { display: none !important; }
-.cq-backdrop { display: none; pointer-events: none; }
-.cq-sheet { display: none; pointer-events: none; }
-.float-wa { display: none !important; }
-.mob-bottom-nav { display: none !important; }
-.hero-gold-panel { display: none !important; }
-
 /* ── TABLET ≤ 1024px ── */
 @media(max-width:1024px){
-  .page-hero{grid-template-columns:1fr;gap:3rem;padding-top:9rem}
-  .notes-grid{grid-template-columns:repeat(2,1fr)}
+  .gallery-item{grid-column:span 6}
+  .gallery-item.large{grid-column:span 6}
+  .gallery-item.wide{grid-column:span 12}
   .footer-grid{grid-template-columns:1fr 1fr;gap:2.5rem}
   .footer-brand{grid-column:span 2}
+  .lightbox-prev{left:-.5rem}.lightbox-next{right:-.5rem}
 }
 
-/* ════════════════════════════════════════
+/* ═══════════════════════════════════
    MOBILE ≤ 767px  —  BOLD SPLIT STYLE
-════════════════════════════════════════ */
+═══════════════════════════════════ */
 @media(max-width:767px){
   html{font-size:15px}
   body{padding-bottom:4.75rem}
@@ -223,172 +300,142 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
   .nav-logo img{height:40px}
   .nav-links{display:none!important}
   .hamburger{display:flex}
-  .hero-lines{display:none}
 
-  /* ── MOBILE HERO — bold split ── */
+  /* PAGE HERO — compact split-style header */
   .page-hero{
+    min-height:auto;padding:0;
     display:grid;grid-template-columns:38% 62%;
-    min-height:auto;padding:0;gap:0;
-    max-width:100%;margin:0;
+    align-items:stretch;
+  }
+  .page-hero::before{display:none}
+  .hero-lines{display:none}
+  .hero-inner{
+    grid-column:1 / span 2;
+    display:grid;grid-template-columns:38% 62%;
     align-items:stretch;
   }
 
-  /* gold left panel */
-  .hero-gold-panel{
-    display:flex !important;
+  /* LEFT: gold block with category label */
+  .hero-gold-side{
     background:var(--gold);
     display:flex;flex-direction:column;align-items:center;
     justify-content:space-between;
     padding:5.5rem .65rem 1.5rem;
     position:relative;overflow:hidden;
-    grid-row:1;
   }
-  .hero-gold-panel::before{
-    content:'₭';position:absolute;bottom:-1rem;left:50%;
+  .hero-gold-side::before{
+    content:'P';position:absolute;bottom:-1.5rem;left:50%;
     transform:translateX(-50%);
     font-family:var(--font-display);font-size:11rem;font-weight:800;
-    color:rgba(7,30,30,.1);line-height:1;pointer-events:none;
+    color:rgba(7,30,30,.11);line-height:1;pointer-events:none;
   }
-  .hero-gold-panel .brand-vert{
+  .hero-gold-side .brand-vert{
     font-family:var(--font-display);font-size:.48rem;font-weight:800;
     letter-spacing:.18em;text-transform:uppercase;color:var(--black);
     writing-mode:vertical-rl;text-orientation:mixed;transform:rotate(180deg);opacity:.7;
   }
-  .hero-gold-panel .price-tag{
+  .hero-gold-side .count-tag{
     background:var(--black);color:var(--gold);
-    font-family:var(--font-display);font-size:.48rem;font-weight:700;
-    letter-spacing:.12em;text-transform:uppercase;
+    font-family:var(--font-display);font-size:.5rem;font-weight:700;
+    letter-spacing:.15em;text-transform:uppercase;
     padding:.4rem .5rem;width:100%;text-align:center;
   }
 
-  /* dark right panel */
-  .hero-text{
+  /* RIGHT: dark block with title */
+  .hero-dark-side{
     background:var(--black-soft);
     display:flex;flex-direction:column;justify-content:flex-end;
     padding:5.5rem 1rem 1.5rem;
-    grid-row:1;animation:none;
   }
   .hero-eyebrow{font-size:.54rem;letter-spacing:.16em;margin-bottom:.7rem;justify-content:flex-start}
   .hero-eyebrow::before{width:12px}
   .hero-eyebrow::after{display:none}
-  .page-title{font-size:clamp(1.9rem,9vw,3rem);line-height:.92;letter-spacing:-.04em;margin-bottom:.75rem}
-  .page-title .gold{font-size:clamp(1.75rem,8.5vw,2.8rem)}
-  .page-subtitle{font-size:.82rem;line-height:1.55;margin-bottom:1rem}
-  .hero-chips{gap:.45rem;margin-bottom:0}
-  .chip{font-size:.58rem;padding:.38rem .75rem;letter-spacing:.06em}
+  .page-title{
+    font-size:clamp(2rem,9vw,3rem);
+    line-height:.92;letter-spacing:-.04em;margin-bottom:.8rem;color:var(--white);
+  }
+  .page-title span{font-size:clamp(1.8rem,8.5vw,2.8rem)}
+  .page-subtitle{font-size:.82rem;text-align:left;margin:0;line-height:1.55}
 
-  /* hide desktop calculator in hero on mobile */
-  .calculator-wrap{display:none}
-
-  /* ── MOBILE QUICK QUOTE — full card below hero ── */
-  .mobile-calc{
-    display:block !important;
-    background:var(--black-card);
-    border-bottom:1px solid rgba(212,169,106,.18);
-    padding:1.5rem 1rem;
-  }
-  .mobile-calc-top{
-    display:flex;align-items:center;justify-content:space-between;
-    margin-bottom:1.1rem;
-  }
-  .mobile-calc-top h3{
-    font-family:var(--font-display);font-size:1rem;font-weight:800;color:var(--white);
-  }
-  .mobile-calc-top span{
-    font-family:var(--font-body);font-size:.82rem;font-style:italic;color:var(--white-dim);
-  }
-  /* gold top line */
-  .mobile-calc::before{
-    content:'';display:block;height:2px;
-    background:var(--grad-gold);margin:-1.5rem -1rem 1.25rem;
-  }
-  .mobile-calc .calc-select{font-size:.92rem;padding:.82rem 1rem;border-radius:0}
-  .mobile-calc .quote-result{border-radius:0;margin-top:1rem}
-  .mobile-calc .quote-stats{grid-template-columns:1fr 1fr;gap:.6rem}
-  .mobile-calc .q-stat{padding:.75rem;border-radius:0}
-  .mobile-calc .q-val{font-size:1.1rem}
-  .mobile-calc .q-lbl{font-size:.56rem}
-  .mobile-calc .btn-wa{border-radius:0;padding:.85rem 1rem;font-size:.72rem}
-
-  /* ── PRICING SECTION ── */
-  .pricing-section{padding:2.5rem 0}
-
-  /* swipeable category tabs */
-  .cat-tabs{
+  /* FILTER BAR — horizontal scroll on mobile */
+  .filter-section{padding:1rem 0;top:56px}
+  .filter-buttons{
     flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;
     scrollbar-width:none;justify-content:flex-start;
-    padding:0 1rem 0;gap:.45rem;margin-bottom:1.5rem;
+    padding:0 1rem;gap:.5rem;
   }
-  .cat-tabs::-webkit-scrollbar{display:none}
-  .cat-tab{
-    flex-shrink:0;padding:.48rem 1rem;
-    font-size:.64rem;border-radius:0;
-    letter-spacing:.08em;white-space:nowrap;
+  .filter-buttons::-webkit-scrollbar{display:none}
+  .filter-btn{
+    flex-shrink:0;padding:.48rem 1.1rem;
+    font-size:.65rem;border-radius:0;letter-spacing:.08em;
+    white-space:nowrap;
   }
-  .cat-tab.active{border-radius:0}
+  .filter-btn.active{border-radius:0}
 
-  /* pricing panel */
-  .panel-header{
-    flex-direction:row;align-items:center;gap:.85rem;
-    margin-bottom:1.25rem;padding-bottom:1rem;
+  /* GALLERY — magazine masonry 2-col */
+  .portfolio-gallery{padding:2rem 0 4rem}
+  .gallery-grid{
+    display:grid;grid-template-columns:1fr 1fr;
+    grid-auto-rows:auto;gap:.4rem;padding:0 1rem;
   }
-  .panel-icon{width:44px;height:44px;border-radius:0;font-size:1.2rem;flex-shrink:0}
-  .panel-header h2{font-size:1.35rem}
-  .panel-header p{font-size:.88rem}
+  /* reset all desktop spans */
+  .gallery-item,
+  .gallery-item.large,
+  .gallery-item.wide,
+  .gallery-item.tall{grid-column:unset;aspect-ratio:unset}
 
-  /* price rows — editorial list style */
-  .price-rows{border-radius:0;border-left:none;border-right:none;gap:0;background:transparent}
-  .price-row{
-    grid-template-columns:1fr auto;
-    gap:.5rem .75rem;
-    padding:1rem 1rem;
-    border-bottom:1px solid rgba(212,169,106,.1);
-    border-radius:0;
-    /* show gold left bar accent */
-    border-left:3px solid transparent;
-    transition:border-left-color .22s,background .22s,padding-left .22s;
-  }
-  .price-row:last-child{border-bottom:none}
-  .price-row:hover{
-    background:rgba(212,169,106,.04);
-    border-left-color:var(--gold);
-    padding-left:1.25rem;
-  }
-  .pr-name{font-size:.95rem;grid-column:1;grid-row:1}
-  .pr-duration{font-size:.62rem;grid-column:1;grid-row:2;margin-top:.1rem}
-  .pr-price{
-    font-size:1rem;
-    grid-column:2;grid-row:1 / span 2;
-    align-self:center;text-align:right;
-  }
-  /* show book btn always on mobile (not hover-only) */
-  .book-row-btn{
-    display:block!important;
-    padding:.32rem .7rem;font-size:.58rem;
-    border-radius:0;
-    grid-column:2;grid-row:3;
-    align-self:center;
-  }
-  /* tap row → WhatsApp directly on mobile */
-  .price-row{cursor:pointer}
+  /* magazine layout pattern */
+  .gallery-item:nth-child(1){grid-column:span 2;aspect-ratio:16/9}
+  .gallery-item:nth-child(2){aspect-ratio:3/4}
+  .gallery-item:nth-child(3){aspect-ratio:3/4}
+  .gallery-item:nth-child(4){grid-column:span 2;aspect-ratio:21/8}
+  .gallery-item:nth-child(5){aspect-ratio:1}
+  .gallery-item:nth-child(6){aspect-ratio:1}
+  .gallery-item:nth-child(7){grid-column:span 2;aspect-ratio:16/7}
+  .gallery-item:nth-child(8){aspect-ratio:3/4}
+  .gallery-item:nth-child(9){aspect-ratio:3/4}
+  .gallery-item:nth-child(10){grid-column:span 2;aspect-ratio:16/8}
+  .gallery-item:nth-child(11){aspect-ratio:1}
+  .gallery-item:nth-child(12){aspect-ratio:1}
+  /* extra items 13+ get consistent aspect ratio on mobile */
+.gallery-item:nth-child(n+13){aspect-ratio:3/4}
+.gallery-item:nth-child(n+13):nth-child(odd){grid-column:1}
+.gallery-item:nth-child(n+13):nth-child(even){grid-column:2}
 
-  /* ── NOTES — 2-col grid ── */
-  .notes-section{padding:3rem 0}
-  .notes-grid{grid-template-columns:1fr 1fr;gap:.75rem;margin-top:1.5rem}
-  .note-card{padding:1.25rem;border-radius:0;transform:none!important}
-  .note-icon{width:38px;height:38px;border-radius:0;font-size:.95rem;margin-bottom:.85rem}
-  .note-card h4{font-size:.9rem;margin-bottom:.35rem}
-  .note-card p{font-size:.85rem;line-height:1.6}
+  .gallery-card{border-radius:4px;min-height:unset!important}
+  .gallery-item.extra .gallery-card { min-height: 220px; aspect-ratio: 3/4; }
 
-  /* ── CTA ── */
+  /* always-visible captions on mobile */
+  .gallery-overlay{
+    opacity:1;
+    background:linear-gradient(to top,rgba(7,30,30,.88) 0%,transparent 55%);
+    padding:.75rem;
+  }
+  .gallery-overlay h3{font-size:.8rem;margin-bottom:.08rem}
+  .gallery-overlay p{font-size:.62rem;margin-bottom:.5rem}
+  .zoom-btn{width:30px;height:30px;font-size:.72rem}
+  .gallery-tag{font-size:.56rem;padding:.22rem .65rem;top:.6rem;left:.6rem}
+
+  .load-more-wrap{margin-top:2rem;padding:0 1rem}
+  .btn-ghost-gold{padding:.85rem 1.5rem;font-size:.72rem;border-radius:0;width:100%;justify-content:center}
+
+  /* LIGHTBOX — full screen on mobile */
+  .lightbox{padding:.75rem}
+  .lightbox-inner img{border-radius:8px;max-height:70vh}
+  .lightbox-close{top:-.5rem;right:-.5rem;width:36px;height:36px;font-size:.95rem}
+  .lightbox-prev{left:0}.lightbox-next{right:0}
+  .lightbox-caption h3{font-size:1.05rem}
+  .lightbox-caption p{font-size:.65rem}
+
+  /* CTA */
   .cta{padding:4rem 0}
   .cta-inner{text-align:left;padding:0 1rem}
   .cta-title{font-size:clamp(1.55rem,8vw,2.4rem);margin-bottom:.85rem}
   .cta-text{font-size:.97rem;margin-bottom:1.75rem}
   .cta-btns{flex-direction:column;gap:.65rem;align-items:stretch}
-  .btn-gold,.btn-ghost{padding:.9rem 1.25rem;font-size:.74rem;border-radius:0;justify-content:center}
+  .btn-gold,.btn-whatsapp{padding:.9rem 1.25rem;font-size:.74rem;border-radius:0;justify-content:center}
 
-  /* ── FOOTER ── */
+  /* FOOTER */
   .footer{padding:2.5rem 0 1rem}
   .footer-grid{grid-template-columns:1fr;gap:1.75rem;margin-bottom:2rem}
   .footer-brand{grid-column:unset}
@@ -399,9 +446,9 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
   .footer-col ul li{font-size:.85rem;margin-bottom:.42rem}
   .footer-bottom{flex-direction:column;text-align:center;gap:.3rem;font-size:.7rem}
 
-  /* ── BOTTOM NAV ── */
+  /* BOTTOM NAV — matches index.html */
   .mob-bottom-nav{
-    display:grid !important;grid-template-columns:repeat(5,1fr);
+    display:grid!important;grid-template-columns:repeat(4,1fr);
     position:fixed;bottom:0;left:0;right:0;height:4.25rem;
     padding-bottom:env(safe-area-inset-bottom,0);
     background:rgba(7,30,30,.99);backdrop-filter:blur(20px);
@@ -425,234 +472,11 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
   }
   .mob-bottom-nav a:last-child i{color:#071E1E}
   .mob-bottom-nav a:last-child.active::before{display:none}
-
-  /* ── MOBILE CALC — custom trigger button ── */
-  .cq-trigger{
-    width:100%;display:flex;align-items:center;justify-content:space-between;
-    padding:.88rem 1rem;margin-bottom:0;
-    background:var(--black-soft);
-    border:1px solid rgba(212,169,106,.3);
-    border-radius:0;cursor:pointer;
-    font-family:var(--font-body);font-size:1rem;
-    color:var(--white-dim);text-align:left;
-    transition:border-color .25s,color .25s;
-  }
-  .cq-trigger:hover,.cq-trigger.active{
-    border-color:var(--gold);color:var(--white);
-  }
-  .cq-trigger #cqChevron{
-    color:var(--gold);font-size:.75rem;
-    transition:transform .3s var(--ease);flex-shrink:0;
-  }
-  .cq-trigger.active #cqChevron{transform:rotate(180deg)}
-
-  /* ── BOTTOM SHEET BACKDROP ── */
-  .cq-backdrop{
-    display:none;position:fixed;inset:0;
-    background:rgba(7,30,30,.65);backdrop-filter:blur(4px);
-    z-index:2000;opacity:0;transition:opacity .3s ease;
-  }
-  .cq-backdrop.open{display:block;opacity:1}
-
-  /* ── BOTTOM SHEET PANEL ── */
-  .cq-sheet{
-    display:flex;flex-direction:column;
-    position:fixed;left:0;right:0;bottom:0;
-    max-height:78vh;
-    background:#0A2828;
-    border-top:1px solid rgba(212,169,106,.25);
-    border-radius:20px 20px 0 0;
-    z-index:2001;
-    transform:translateY(100%);
-    transition:transform .38s var(--ease);
-    overflow:hidden;
-  }
-  .cq-sheet.open{transform:translateY(0)}
-
-  /* drag handle */
-  .cq-handle{
-    width:40px;height:4px;
-    background:rgba(212,169,106,.3);
-    border-radius:2px;
-    margin:.85rem auto .5rem;flex-shrink:0;
-  }
-
-  /* sheet header */
-  .cq-sheet-header{
-    display:flex;align-items:center;justify-content:space-between;
-    padding:.65rem 1.25rem 1rem;
-    border-bottom:1px solid rgba(212,169,106,.15);
-    flex-shrink:0;
-  }
-  .cq-sheet-title{
-    font-family:var(--font-display);font-size:.78rem;font-weight:800;
-    letter-spacing:.15em;text-transform:uppercase;color:var(--gold);
-  }
-  .cq-sheet-close{
-    width:32px;height:32px;border-radius:6px;
-    background:rgba(212,169,106,.1);border:1px solid rgba(212,169,106,.2);
-    color:rgba(212,169,106,.7);font-size:.8rem;
-    display:flex;align-items:center;justify-content:center;cursor:pointer;
-    transition:background .2s;
-  }
-  .cq-sheet-close:hover{background:rgba(212,169,106,.22);color:var(--gold)}
-
-  /* scrollable list */
-  .cq-list{overflow-y:auto;-webkit-overflow-scrolling:touch;flex:1;padding:0 0 2rem}
-  .cq-list::-webkit-scrollbar{width:3px}
-  .cq-list::-webkit-scrollbar-track{background:transparent}
-  .cq-list::-webkit-scrollbar-thumb{background:rgba(212,169,106,.3);border-radius:2px}
-
-  /* category group label */
-  .cq-group-label{
-    display:flex;align-items:center;gap:.6rem;
-    padding:.85rem 1.25rem .5rem;
-    font-family:var(--font-display);font-size:.6rem;font-weight:800;
-    letter-spacing:.2em;text-transform:uppercase;
-    color:var(--gold);
-    border-bottom:1px solid rgba(212,169,106,.1);
-    position:sticky;top:0;background:#0A2828;z-index:1;
-  }
-  .cq-group-label i{font-size:.8rem;opacity:.85}
-
-  /* service item */
-  .cq-item{
-    display:flex;align-items:center;justify-content:space-between;
-    padding:.9rem 1.25rem;
-    border-bottom:1px solid rgba(212,169,106,.07);
-    cursor:pointer;transition:background .2s,padding-left .2s;
-  }
-  .cq-item:hover,.cq-item:active{
-    background:rgba(212,169,106,.06);padding-left:1.5rem;
-  }
-  .cq-item.selected{
-    background:rgba(212,169,106,.1);
-    border-left:3px solid var(--gold);
-    padding-left:1rem;
-  }
-  .cq-name{
-    font-family:var(--font-body);font-size:1rem;font-weight:600;
-    color:rgba(245,237,216,.85);line-height:1.3;
-  }
-  .cq-item.selected .cq-name{color:var(--white)}
-  .cq-meta{
-    font-family:var(--font-display);font-size:.6rem;font-weight:700;
-    letter-spacing:.08em;color:var(--gold);white-space:nowrap;
-    margin-left:.75rem;text-align:right;flex-shrink:0;
-  }
-  /* checkmark on selected */
-  .cq-item.selected::after{
-    content:'\f00c';font-family:'Font Awesome 6 Free';font-weight:900;
-    color:var(--gold);font-size:.75rem;margin-left:.5rem;
-  }
-  .float-wa{
-    display:flex !important;
-    position:fixed;bottom:5rem;right:1rem;z-index:900;
-    align-items:center;gap:.5rem;
-    padding:.7rem 1.1rem;
-    background:#25D366;color:white;
-    font-family:var(--font-display);font-size:.65rem;font-weight:800;
-    letter-spacing:.1em;text-transform:uppercase;
-    border-radius:100px;
-    box-shadow:0 6px 24px rgba(37,211,102,.4);
-    animation:floatPulse 2.5s ease-in-out infinite;
-  }
-  @keyframes floatPulse{
-    0%,100%{box-shadow:0 6px 24px rgba(37,211,102,.4)}
-    50%{box-shadow:0 6px 32px rgba(37,211,102,.65)}
-  }
-  .float-wa i{font-size:1rem}
-}
-
-/* ════════════════════════════════════════
-   BOTTOM SHEET — global (not inside media query)
-   z-index must beat grain overlay (9999)
-════════════════════════════════════════ */
-.cq-backdrop{
-  display:none;position:fixed;inset:0;
-  background:rgba(7,30,30,.72);backdrop-filter:blur(5px);
-  z-index:10001;opacity:0;transition:opacity .3s ease;
-  pointer-events:none;
-}
-.cq-backdrop.open{display:block !important;opacity:1;pointer-events:auto !important}
-
-.cq-sheet{
-  display:flex;flex-direction:column;
-  position:fixed;left:0;right:0;bottom:0;
-  max-height:80vh;min-height:200px;
-  background:#0A2828;
-  border-top:1px solid rgba(212,169,106,.28);
-  border-radius:20px 20px 0 0;
-  z-index:10002;
-  transform:translateY(100%);
-  transition:transform .4s cubic-bezier(0.16,1,0.3,1);
-  overflow:hidden;
-  pointer-events:none;
-}
-.cq-sheet.open{transform:translateY(0);pointer-events:auto !important}
-
-.cq-handle{width:40px;height:4px;background:rgba(212,169,106,.35);border-radius:2px;margin:.9rem auto .4rem;flex-shrink:0}
-
-.cq-sheet-header{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:.6rem 1.25rem 1rem;
-  border-bottom:1px solid rgba(212,169,106,.15);flex-shrink:0;
-}
-.cq-sheet-title{
-  font-family:'Syne',sans-serif;font-size:.75rem;font-weight:800;
-  letter-spacing:.18em;text-transform:uppercase;color:#D4A96A;
-}
-.cq-sheet-close{
-  width:32px;height:32px;border-radius:6px;
-  background:rgba(212,169,106,.08);border:1px solid rgba(212,169,106,.2);
-  color:rgba(212,169,106,.65);font-size:.8rem;
-  display:flex;align-items:center;justify-content:center;
-  cursor:pointer;transition:background .2s;
-}
-.cq-sheet-close:hover{background:rgba(212,169,106,.2);color:#D4A96A}
-
-.cq-list{overflow-y:auto;-webkit-overflow-scrolling:touch;flex:1;padding:0 0 3rem}
-.cq-list::-webkit-scrollbar{width:3px}
-.cq-list::-webkit-scrollbar-thumb{background:rgba(212,169,106,.25);border-radius:2px}
-
-.cq-group-label{
-  display:flex;align-items:center;gap:.6rem;
-  padding:.8rem 1.25rem .45rem;
-  font-family:'Syne',sans-serif;font-size:.58rem;font-weight:800;
-  letter-spacing:.2em;text-transform:uppercase;color:#D4A96A;
-  border-bottom:1px solid rgba(212,169,106,.1);
-  position:sticky;top:0;background:#0A2828;z-index:2;
-}
-.cq-group-label i{font-size:.78rem}
-
-.cq-item{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:.88rem 1.25rem;
-  border-bottom:1px solid rgba(212,169,106,.07);
-  cursor:pointer;
-  transition:background .18s,border-left-color .18s;
-  border-left:3px solid transparent;
-}
-.cq-item:active{background:rgba(212,169,106,.08)}
-.cq-item.selected{
-  background:rgba(212,169,106,.1);
-  border-left-color:#D4A96A;
-}
-.cq-name{
-  font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;
-  color:rgba(245,237,216,.82);line-height:1.3;
-}
-.cq-item.selected .cq-name{color:#F5EDD8;font-weight:700}
-.cq-meta{
-  font-family:'Syne',sans-serif;font-size:.58rem;font-weight:700;
-  letter-spacing:.07em;color:#D4A96A;
-  white-space:nowrap;margin-left:.75rem;text-align:right;flex-shrink:0;
 }
 
 @media(max-width:380px){
-  .page-title{font-size:clamp(1.7rem,8.5vw,2.4rem)}
-  .page-title .gold{font-size:clamp(1.55rem,8vw,2.2rem)}
-  .notes-grid{grid-template-columns:1fr}
+  .page-title{font-size:clamp(1.75rem,8.5vw,2.5rem)}
+  .page-title span{font-size:clamp(1.6rem,8vw,2.3rem)}
 }
 </style>
 </head>
@@ -667,29 +491,26 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="index.html#story">Story</a></li>
-      <li><a href="portfolio.html">Portfolio</a></li>
-      <li><a href="index.html#services">Services</a></li>
+      <li><a href="portfolio.html" class="active-link">Portfolio</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
       <li><a href="index.html#about">About</a></li>
-      <li><a href="pricing.html" class="active-link">Pricing</a></li>
-      <li><a href="merchandise.html">Shop</a></li>
       <li><a href="contact.html" class="nav-cta">Book Now</a></li>
     </ul>
     <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
   </div>
 </nav>
 
-<!-- SLIDE PANEL -->
+<!-- SLIDE PANEL MENU -->
 <div class="mob-menu-backdrop" id="mobBackdrop" onclick="cM()"></div>
 <div class="mob-menu" id="mobMenu">
-  <button class="mob-menu-close" onclick="cM()"><i class="fas fa-times"></i></button>
+  <button class="mob-menu-close" onclick="cM()" aria-label="Close menu"><i class="fas fa-times"></i></button>
   <div class="mob-menu-brand">Hair by Akose</div>
   <div class="mob-menu-links">
-    <a href="index.html"       onclick="cM()">Home</a>
-    <a href="index.html#story" onclick="cM()">Story</a>
-    <a href="portfolio.html"   onclick="cM()">Portfolio</a>
-    <a href="index.html#about" onclick="cM()">About</a>
-    <a href="merchandise.html" onclick="cM()">Shop</a>
-    <a href="pricing.html"     onclick="cM()" class="active-link">Pricing</a>
+    <a href="index.html"        onclick="cM()">Home</a>
+    <a href="index.html#story"  onclick="cM()">Story</a>
+    <a href="portfolio.html"    onclick="cM()" class="active-link">Portfolio</a>
+    <a href="pricing.html"      onclick="cM()">Pricing</a>
+    <a href="index.html#about"  onclick="cM()">About</a>
   </div>
   <a href="contact.html" class="mob-menu-cta"><i class="fas fa-calendar-check"></i> Book Appointment</a>
   <div class="mob-menu-socials">
@@ -701,327 +522,220 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
   <p class="mob-menu-meta">Nairobi &middot; +(254) 725-351-803<br>Mon–Sat: 9AM – 8PM</p>
 </div>
 
-<!-- HERO + DESKTOP CALCULATOR -->
-<div style="background:var(--black);padding-bottom:0">
+<!-- PAGE HERO -->
+<section class="page-hero">
   <div class="hero-lines"><span></span><span></span><span></span><span></span></div>
-  <div class="page-hero">
-
-    <!-- MOBILE: gold left panel (hidden on desktop via CSS) -->
-    <div class="hero-gold-panel">
+  <div class="hero-inner">
+    <!-- mobile left gold panel -->
+    <div class="hero-gold-side">
       <span class="brand-vert">Hair by Akose</span>
-      <span class="price-tag">Fair Prices</span>
+      <span class="count-tag">12 Looks</span>
     </div>
-
-    <!-- hero text (right panel on mobile, left on desktop) -->
-    <div class="hero-text">
-      <div class="hero-eyebrow">Transparent Pricing</div>
-      <h1 class="page-title">Fair Prices,<br><span class="gold">Beautiful Hair</span></h1>
-      <p class="page-subtitle">No hidden fees. No surprises. Just honest pricing for gorgeous results at your doorstep.</p>
-      <div class="hero-chips">
-        <span class="chip"><i class="fas fa-check-circle"></i> No hidden fees</span>
-        <span class="chip"><i class="fas fa-map-marker-alt"></i> Mobile service</span>
-        <span class="chip"><i class="fab fa-whatsapp"></i> WhatsApp booking</span>
-        <span class="chip"><i class="fas fa-clock"></i> Flexible hours</span>
-      </div>
-    </div>
-
-    <!-- DESKTOP ONLY calculator -->
-    <div class="calculator-wrap">
-      <div class="calculator-card">
-        <h2>Quick Quote</h2>
-        <p>Select a service for instant pricing</p>
-        <label class="calc-label" for="serviceSelectDesktop">Choose Service</label>
-        <select class="calc-select" id="serviceSelectDesktop">
-          <option value="">— Select a service —</option>
-          <optgroup label="✦ Braids">
-            <option value="box-braids-small">Box Braids — Small</option>
-            <option value="box-braids-medium">Box Braids — Medium</option>
-            <option value="box-braids-jumbo">Box Braids — Jumbo</option>
-            <option value="cornrows-simple">Cornrows — Simple</option>
-            <option value="cornrows-complex">Cornrows — Complex</option>
-            <option value="knotless-braids">Knotless Braids</option>
-            <option value="micro-braiding">Micro Braiding</option>
-          </optgroup>
-          <optgroup label="✦ Twists">
-            <option value="senegalese-twists">Senegalese Twists</option>
-            <option value="marley-twists">Marley Twists</option>
-            <option value="passion-twists">Passion Twists</option>
-            <option value="kinky-twists">Kinky Twists</option>
-            <option value="twist-out">Twist Out</option>
-          </optgroup>
-          <optgroup label="✦ Weaves & Natural">
-            <option value="weave-install">Weave Install</option>
-            <option value="wig-lines">Wig Lines</option>
-            <option value="natural-styling">Natural Hair Styling</option>
-            <option value="bridal-styling">Bridal Styling</option>
-          </optgroup>
-          <optgroup label="✦ Children's">
-            <option value="kids-braids">Kids Braids</option>
-            <option value="kids-twists">Kids Twists</option>
-            <option value="kids-cornrows">Kids Cornrows</option>
-          </optgroup>
-          <optgroup label="✦ Locs">
-            <option value="micro-locs">Micro Locs</option>
-            <option value="micro-locs-retie">Micro Locs Retie</option>
-            <option value="locs-retouch">Locs Retouch</option>
-          </optgroup>
-        </select>
-        <div class="quote-result" id="quoteResultDesktop">
-          <div class="quote-name" id="quoteNameDesktop"></div>
-          <div class="quote-stats">
-            <div class="q-stat"><span class="q-val" id="quotePriceDesktop"></span><span class="q-lbl">KES Price</span></div>
-           
-          </div>
-          <button class="btn-wa" id="waBookDesktop"><i class="fab fa-whatsapp"></i> Book via WhatsApp</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- MOBILE QUICK QUOTE (below hero, mobile only) -->
-<div class="mobile-calc" id="mobileCalc">
-  <div class="mobile-calc-top">
-    <h3>Quick Quote</h3>
-    <span>Pick a service below</span>
-  </div>
-
-  <!-- custom trigger button (replaces native select) -->
-  <p class="calc-label">Choose Service</p>
-  <button class="cq-trigger" id="cqTrigger" type="button">
-    <span id="cqTriggerLabel">— Select a service —</span>
-    <i class="fas fa-chevron-down" id="cqChevron"></i>
-  </button>
-
-  <!-- result card -->
-  <div class="quote-result" id="quoteResultMob">
-    <div class="quote-name" id="quoteNameMob"></div>
-    <div class="quote-stats">
-      <div class="q-stat"><span class="q-val" id="quotePriceMob"></span><span class="q-lbl">KES Price</span></div>
-      
-    </div>
-    <button class="btn-wa" id="waBookMob"><i class="fab fa-whatsapp"></i> Book via WhatsApp</button>
-  </div>
-</div>
-
-<!-- CUSTOM SERVICE PICKER — bottom sheet -->
-<div class="cq-backdrop" id="cqBackdrop"></div>
-<div class="cq-sheet" id="cqSheet">
-  <!-- drag handle -->
-  <div class="cq-handle"></div>
-  <div class="cq-sheet-header">
-    <span class="cq-sheet-title">Choose a Service</span>
-    <button class="cq-sheet-close" id="cqClose"><i class="fas fa-times"></i></button>
-  </div>
-  <!-- scrollable service list -->
-  <div class="cq-list">
-
-    <div class="cq-group-label"><i class="fas fa-magic"></i> Braids</div>
-    <div class="cq-item" data-value="box-braids-small">
-      <span class="cq-name">Box Braids — Small</span>
-      <span class="cq-meta">KES 2,000</span>
-    </div>
-    <div class="cq-item" data-value="box-braids-medium">
-      <span class="cq-name">Box Braids — Medium</span>
-      <span class="cq-meta">KES 1,500</span>
-    </div>
-    <div class="cq-item" data-value="box-braids-jumbo">
-      <span class="cq-name">Box Braids — Jumbo</span>
-      <span class="cq-meta">KES 1,200</span>
-    </div>
-    <div class="cq-item" data-value="cornrows-simple">
-      <span class="cq-name">Cornrows — Simple</span>
-      <span class="cq-meta">KES 1,300 </span>
-    </div>
-    <div class="cq-item" data-value="cornrows-complex">
-      <span class="cq-name">Cornrows — Complex</span>
-      <span class="cq-meta">KES 1,500 </span>
-    </div>
-    <div class="cq-item" data-value="knotless-braids">
-      <span class="cq-name">Knotless Braids</span>
-      <span class="cq-meta">KES 1,200–2,000 </span>
-    </div>
-    <div class="cq-item" data-value="micro-braiding">
-      <span class="cq-name">Micro Braiding</span>
-      <span class="cq-meta">KES 5,000–8,000 </span>
-    </div>
-
-    <div class="cq-group-label"><i class="fas fa-leaf"></i> Twists</div>
-    <div class="cq-item" data-value="senegalese-twists">
-      <span class="cq-name">Senegalese Twists</span>
-      <span class="cq-meta">KES 1,500–2,000 </span>
-    </div>
-    <div class="cq-item" data-value="marley-twists">
-      <span class="cq-name">Marley Twists</span>
-      <span class="cq-meta">KES 1,500–2,000 </span>
-    </div>
-    <div class="cq-item" data-value="passion-twists">
-      <span class="cq-name">Passion Twists</span>
-      <span class="cq-meta">KES 1,500–2,000 </span>
-    </div>
-    <div class="cq-item" data-value="kinky-twists">
-      <span class="cq-name">Kinky Twists</span>
-      <span class="cq-meta">KES 1,500–2,000 </span>
-    </div>
-    <div class="cq-item" data-value="twist-out">
-      <span class="cq-name">Twist Out</span>
-      <span class="cq-meta">KES 1,000–1,500 </span>
-    </div>
-
-    <div class="cq-group-label"><i class="fas fa-gem"></i> Weaves &amp; Natural</div>
-    <div class="cq-item" data-value="weave-install">
-      <span class="cq-name">Weave Install</span>
-      <span class="cq-meta">KES 1,500–2,000 </span>
-    </div>
-    <div class="cq-item" data-value="wig-lines">
-      <span class="cq-name">Wig Lines</span>
-      <span class="cq-meta">KES 500–1,000 </span>
-    </div>
-    <div class="cq-item" data-value="natural-styling">
-      <span class="cq-name">Natural Hair Styling</span>
-      <span class="cq-meta">KES 1,000–1,800 </span>
-    </div>
-    <div class="cq-item" data-value="bridal-styling">
-      <span class="cq-name">Bridal Styling</span>
-      <span class="cq-meta">KES 1,800–2,000 </span>
-    </div>
-
-    <div class="cq-group-label"><i class="fas fa-child"></i> Children's</div>
-    <div class="cq-item" data-value="kids-braids">
-      <span class="cq-name">Kids Braids</span>
-      <span class="cq-meta">KES 1,000 </span>
-    </div>
-    <div class="cq-item" data-value="kids-twists">
-      <span class="cq-name">Kids Twists</span>
-      <span class="cq-meta">KES 1,000 </span>
-    </div>
-    <div class="cq-item" data-value="kids-cornrows">
-      <span class="cq-name">Kids Cornrows</span>
-      <span class="cq-meta">KES 800 </span>
-    </div>
-
-    <div class="cq-group-label"><i class="fas fa-spa"></i> Locs</div>
-    <div class="cq-item" data-value="micro-locs">
-      <span class="cq-name">Micro Locs</span>
-      <span class="cq-meta">KES 6,000 </span>
-    </div>
-    <div class="cq-item" data-value="micro-locs-retie">
-      <span class="cq-name">Micro Locs Retie</span>
-      <span class="cq-meta">KES 2,500–3,500 </span>
-    </div>
-    <div class="cq-item" data-value="locs-retouch">
-      <span class="cq-name">Locs Retouch</span>
-      <span class="cq-meta">KES 1,200–1,500 </span>
-    </div>
-
-  </div>
-</div>
-
-<!-- PRICING TABLES -->
-<section class="pricing-section" id="pricing">
-  <div class="container">
-    <div style="text-align:center;margin-bottom:1rem">
-      <span style="display:inline-flex;align-items:center;gap:.75rem;font-family:var(--font-display);font-size:.7rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem">
-        <span style="display:block;width:30px;height:1px;background:var(--gold);opacity:.6"></span>Full Price List<span style="display:block;width:30px;height:1px;background:var(--gold);opacity:.6"></span>
-      </span>
-      <h2 style="font-family:var(--font-display);font-size:clamp(2rem,4vw,3.5rem);font-weight:800;color:var(--white);margin-bottom:2rem">All Services</h2>
-    </div>
-    <div class="cat-tabs">
-      <button class="cat-tab active" data-tab="braids"><i class="fas fa-magic"></i> Braids</button>
-      <button class="cat-tab" data-tab="twists"><i class="fas fa-leaf"></i> Twists</button>
-      <button class="cat-tab" data-tab="weaves"><i class="fas fa-gem"></i> Weaves</button>
-      <button class="cat-tab" data-tab="kids"><i class="fas fa-child"></i> Kids</button>
-      <button class="cat-tab" data-tab="locs"><i class="fas fa-spa"></i> Locs</button>
-    </div>
-
-    <!-- BRAIDS -->
-    <div class="pricing-panel active" id="panel-braids">
-      <div class="panel-header">
-        <div class="panel-icon"><i class="fas fa-magic"></i></div>
-        <div><h2>Braids</h2><p>Classic &amp; knotless braiding styles for every occasion</p></div>
-      </div>
-      <div class="price-rows">
-        <div class="price-row" data-service="box-braids-small"><div><div class="pr-name">Box Braids — Small</div></div><div class="pr-duration"><i class="fas fa-clock"></i></div><div style="display:flex;align-items:center;gap:1rem"><div class="pr-price">KES 2,000</div><button class="book-row-btn">Book</button></div></div>
-        <div class="price-row" data-service="box-braids-medium"><div><div class="pr-name">Box Braids — Medium</div></div><div class="pr-duration"><i class="fas fa-clock"></i></div><div style="display:flex;align-items:center;gap:1rem"><div class="pr-price">KES 1,500</div><button class="book-row-btn">Book</button></div></div>
-        <div class="price-row" data-service="box-braids-jumbo"><div><div class="pr-name">Box Braids — Jumbo</div></div><div class="pr-duration"><i class="fas fa-clock"></i></div><div style="display:flex;align-items:center;gap:1rem"><div class="pr-price">KES 1,200</div><button class="book-row-btn">Book</button></div></div>
-        <div class="price-row" data-service="cornrows-simple"><div><div class="pr-name">Cornrows — Simple</div></div><div class="pr-duration"><i class="fas fa-clock"></i></div><div style="display:flex;align-items:center;gap:1rem"><div class="pr-price">KES 1,300</div><button class="book-row-btn">Book</button></div></div>
-        <div class="price-row" data-service="cornrows-complex"><div><div class="pr-name">Cornrows — Complex</div></div><div class="pr-duration"><i class="fas fa-clock"></i></div><div style="display:flex;align-items:center;gap:1rem"><div class="pr-price">KES 1,500</div><button class="book-row-btn">Book</button></div></div>
-        <div class="price-row" data-service="knotless-braids"><div><div class="pr-name">Knotless Braids</div></div><div class="pr-duration"><i class="fas fa-clock"></i></div><div style="display:flex;align-items:center;gap:1rem"><div class="pr-price">KES 1,200–2,000</div><button class="book-row-btn">Book</button></div></div>
-        <div class="price-row" data-service="micro-braiding"><div><div class="pr-name">Micro Braiding</div></div><div class="pr-duration"><i class="fas fa-clock"></i></div><div style="display:flex;align-items:center;gap:1rem"><div class="pr-price">KES 5,000–8,000</div><button class="book-row-btn">Book</button></div></div>
-      </div>
-    </div>
-
-    <!-- TWISTS -->
-    <div class="pricing-panel" id="panel-twists">
-      <div class="panel-header">
-        <div class="panel-icon"><i class="fas fa-leaf"></i></div>
-        <div><h2>Twists</h2><p>Natural, elegant twist styles for healthy hair</p></div>
-      </div>
-      <div class="price-rows">
-        <div class="price-row" data-service="senegalese-twists"><div><div class="pr-name">Senegalese Twists</div></div><div class="pr-duration"><i class="fas fa-clock"></i></div><div style="display:flex;align-items:center;gap:1rem"><div class="pr-price">KES 1,500–2,000</div><button class="book-row-btn">Book</button></div></div>
-        <div class="price-row" data-service="marley-twists"><div><div class="pr-name">Marley Twists</div></div><div class="pr-duration"><i class="fas fa-clock"></i></div><div style="display:flex;align-items:center;gap:1rem"><div class="pr-price">KES 1,500–2,000</div><button class="book-row-btn">Book</button></div></div>
-        <div class="price-row" data-service="passion-twists"><div><div class="pr-name">Passion Twists</div></div><div class="pr-duration"><i class="fas fa-clock"></i></div><div style="display:flex;align-items:center;gap:1rem"><div class="pr-price">KES 1,500–2,000</div><button class="book-row-btn">Book</button></div></div>
-        <div class="price-row" data-service="kinky-twists"><div><div class="pr-name">Kinky Twists</div></div><div class="pr-duration"><i class="fas fa-clock"></i></div><div style="display:flex;align-items:center;gap:1rem"><div class="pr-price">KES 1,500–2,000</div><button class="book-row-btn">Book</button></div></div>
-        <div class="price-row" data-service="twist-out"><div><div class="pr-name">Twist Out</div></div><div class="pr-duration"><i class="fas fa-clock"></i></div><div style="display:flex;align-items:center;gap:1rem"><div class="pr-price">KES 1,000–1,500</div><button class="book-row-btn">Book</button></div></div>
-      </div>
-    </div>
-
-    <!-- WEAVES -->
-    <div class="pricing-panel" id="panel-weaves">
-      <div class="panel-header">
-        <div class="panel-icon"><i class="fas fa-gem"></i></div>
-        <div><h2>Weaves &amp; Natural Hair</h2><p>Extensions, installs, and natural hair care</p></div>
-      </div>
-      <div class="price-rows">
-        <div class="price-row" data-service="weave-install"><div><div class="pr-name">Weave Install</div></div><div class="pr-duration"><i class="fas fa-clock"></i></div><div style="display:flex;align-items:center;gap:1rem"><div class="pr-price">KES 1,500–2,000</div><button class="book-row-btn">Book</button></div></div>
-        <div class="price-row" data-service="wig-lines"><div><div class="pr-name">Wig Lines</div></div><div class="pr-duration"><i class="fas fa-clock"></i> 1–2 hrs</div><div style="display:flex;align-items:center;gap:1rem"><div class="pr-price">KES 500–1,000</div><button class="book-row-btn">Book</button></div></div>
-        <div class="price-row" data-service="natural-styling"><div><div class="pr-name">Natural Hair Styling</div></div><div class="pr-duration"><i class="fas fa-clock"></i></div><div style="display:flex;align-items:center;gap:1rem"><div class="pr-price">KES 1,000–1,800</div><button class="book-row-btn">Book</button></div></div>
-        <div class="price-row" data-service="bridal-styling"><div><div class="pr-name">Bridal Styling</div></div><div class="pr-duration"><i class="fas fa-clock"></i></div><div style="display:flex;align-items:center;gap:1rem"><div class="pr-price">KES 1,800–2,000</div><button class="book-row-btn">Book</button></div></div>
-      </div>
-    </div>
-
-    <!-- KIDS -->
-    <div class="pricing-panel" id="panel-kids">
-      <div class="panel-header">
-        <div class="panel-icon"><i class="fas fa-child"></i></div>
-        <div><h2>Children's Styles</h2><p>Gentle, fun styles for little ones</p></div>
-      </div>
-      <div class="price-rows">
-        <div class="price-row" data-service="kids-braids"><div><div class="pr-name">Kids Braids</div></div><div class="pr-duration"><i class="fas fa-clock"></i></div><div style="display:flex;align-items:center;gap:1rem"><div class="pr-price">KES 1,000</div><button class="book-row-btn">Book</button></div></div>
-        <div class="price-row" data-service="kids-twists"><div><div class="pr-name">Kids Twists</div></div><div class="pr-duration"><i class="fas fa-clock"></i></div><div style="display:flex;align-items:center;gap:1rem"><div class="pr-price">KES 1,000</div><button class="book-row-btn">Book</button></div></div>
-        <div class="price-row" data-service="kids-cornrows"><div><div class="pr-name">Kids Cornrows</div></div><div class="pr-duration"><i class="fas fa-clock"></i></div><div style="display:flex;align-items:center;gap:1rem"><div class="pr-price">KES 800</div><button class="book-row-btn">Book</button></div></div>
-      </div>
-    </div>
-
-    <!-- LOCS -->
-    <div class="pricing-panel" id="panel-locs">
-      <div class="panel-header">
-        <div class="panel-icon"><i class="fas fa-spa"></i></div>
-        <div><h2>Locs Maintenance</h2><p>Professional loc care &amp; maintenance</p></div>
-      </div>
-      <div class="price-rows">
-        <div class="price-row" data-service="micro-locs"><div><div class="pr-name">Micro Locs</div></div><div class="pr-duration"><i class="fas fa-clock"></i></div><div style="display:flex;align-items:center;gap:1rem"><div class="pr-price">KES 6,000</div><button class="book-row-btn">Book</button></div></div>
-        <div class="price-row" data-service="micro-locs-retie"><div><div class="pr-name">Micro Locs Retie</div></div><div class="pr-duration"><i class="fas fa-clock"></i></div><div style="display:flex;align-items:center;gap:1rem"><div class="pr-price">KES 2,500–3,500</div><button class="book-row-btn">Book</button></div></div>
-        <div class="price-row" data-service="locs-retouch"><div><div class="pr-name">Locs Retouch</div></div><div class="pr-duration"><i class="fas fa-clock"></i></div><div style="display:flex;align-items:center;gap:1rem"><div class="pr-price">KES 1,200–1,500</div><button class="book-row-btn">Book</button></div></div>
-      </div>
+    <!-- mobile right dark panel / desktop full content -->
+    <div class="hero-dark-side">
+      <div class="hero-eyebrow">Hair by Akose</div>
+      <h1 class="page-title">My Work &amp;<br><span>Portfolio</span></h1>
+      <p class="page-subtitle">Browse transformations and see the artistry behind every style</p>
     </div>
   </div>
 </section>
 
-<!-- NOTES -->
-<section class="notes-section">
+<!-- FILTER -->
+<section class="filter-section">
   <div class="container">
-    <div style="text-align:center">
-      <span style="display:inline-flex;align-items:center;gap:.75rem;font-family:var(--font-display);font-size:.7rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem">
-        <span style="display:block;width:30px;height:1px;background:var(--gold);opacity:.6"></span>Good to Know<span style="display:block;width:30px;height:1px;background:var(--gold);opacity:.6"></span>
-      </span>
-      <h2 style="font-family:var(--font-display);font-size:clamp(2rem,4vw,3.5rem);font-weight:800;color:var(--white)">Pricing Notes</h2>
+    <div class="filter-buttons">
+      <button class="filter-btn active" data-filter="all">All Work</button>
+      <button class="filter-btn" data-filter="braids">Braids</button>
+      <button class="filter-btn" data-filter="curls">Curls</button>
+      <button class="filter-btn" data-filter="cornrows">Cornrows</button>
+      <button class="filter-btn" data-filter="twists">Twists</button>
+      <button class="filter-btn" data-filter="weaves">Weaves</button>
+      <button class="filter-btn" data-filter="natural">Natural</button>
+      <button class="filter-btn" data-filter="locs">Locs</button>
+      <button class="filter-btn" data-filter="kids">Kids</button>
     </div>
-    <div class="notes-grid">
-      <div class="note-card"><div class="note-icon"><i class="fas fa-info-circle"></i></div><h4>Price Variations</h4><p>Final price depends on hair length, thickness, and style complexity.</p></div>
-      <div class="note-card"><div class="note-icon"><i class="fas fa-shopping-bag"></i></div><h4>Hair &amp; Materials</h4><p>Client provides hair unless otherwise arranged. Additional cost may apply.</p></div>
-      <div class="note-card"><div class="note-icon"><i class="fas fa-map-marker-alt"></i></div><h4>Travel Fee</h4><p>May apply for locations outside service area — discussed during booking.</p></div>
-      <div class="note-card"><div class="note-icon"><i class="fas fa-calendar-check"></i></div><h4>Deposit Required</h4><p>A deposit is required to secure your appointment (non-refundable).</p></div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="portfolio-gallery">
+  <div class="container">
+    <div class="gallery-grid" id="galleryGrid">
+
+      <div class="gallery-item large" data-category="braids">
+        <div class="gallery-card">
+          <span class="gallery-tag">Braids</span>
+          <img src="assets/images/Normal-Braids.jpeg" alt="Normal Braids">
+          <div class="gallery-overlay"><h3>Normal Braids</h3><p>Protective Style</p><button class="zoom-btn"><i class="fas fa-expand"></i></button></div>
+        </div>
+      </div>
+
+            <div class="gallery-item large" data-category="braids">
+        <div class="gallery-card">
+          <span class="gallery-tag">Braids</span>
+          <img src="assets/images/Bohemian-braids.jpeg" alt="Bohemian Braids">
+          <div class="gallery-overlay"><h3>Bohemian Braids</h3><p>Artistic Style</p><button class="zoom-btn"><i class="fas fa-expand"></i></button></div>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="braids">
+        <div class="gallery-card">
+          <span class="gallery-tag">Braids</span>
+          <img src="assets/images/daisy.jpeg" alt="daisy braid style">
+          <div class="gallery-overlay"><h3>daisy braid style</h3><p>With Color</p><button class="zoom-btn"><i class="fas fa-expand"></i></button></div>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="cornrows">
+        <div class="gallery-card">
+          <span class="gallery-tag">Cornrows</span>
+          <img src="assets/images/kb.jpeg" alt="Knotless Braids">
+          <div class="gallery-overlay"><h3>Knotless Braids</h3><p>Sleek Finish</p><button class="zoom-btn"><i class="fas fa-expand"></i></button></div>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="locs">
+        <div class="gallery-card">
+          <span class="gallery-tag">Locs</span>
+          <img src="assets/images/butterfly.jpeg" alt="Butterfly Locs">
+          <div class="gallery-overlay"><h3>Butterfly Locs</h3><p>Custom Design</p><button class="zoom-btn"><i class="fas fa-expand"></i></button></div>
+        </div>
+      </div>
+
+      <div class="gallery-item large" data-category="twists">
+        <div class="gallery-card">
+          <span class="gallery-tag">Twists</span>
+          <img src="assets/images/Twistouts-natural-hair.jpeg" alt="Twistouts natural hair">
+          <div class="gallery-overlay"><h3>Twistouts</h3><p>Long Length</p><button class="zoom-btn"><i class="fas fa-expand"></i></button></div>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="twists">
+        <div class="gallery-card">
+          <span class="gallery-tag">Twists</span>
+          <img src="assets/images/Mini-Passion-Twist.jpeg" alt="Passion Twists">
+          <div class="gallery-overlay"><h3>Passion Twists</h3><p>Bohemian Style</p><button class="zoom-btn"><i class="fas fa-expand"></i></button></div>
+        </div>
+      </div>
+   
+      <div class="gallery-item" data-category="twists">
+        <div class="gallery-card">
+          <span class="gallery-tag">Twists</span>
+          <img src="assets/images/Aura-Twist.jpeg" alt="Aura Twist">
+          <div class="gallery-overlay"><h3>Aura Twist</h3><p>Elegant Style</p><button class="zoom-btn"><i class="fas fa-expand"></i></button></div>
+        </div>
+      </div>
+
+           <div class="gallery-item" data-category="twists">
+        <div class="gallery-card">
+          <span class="gallery-tag">Twists</span>
+          <img src="assets/images/Loose-Kinky-Twist.jpeg" alt="loose kinky twist">
+          <div class="gallery-overlay"><h3>Loose Kinky Twist</h3><p>Relaxed & Comfortable</p><button class="zoom-btn"><i class="fas fa-expand"></i></button></div>
+        </div>
+      </div>
+
+
+      <div class="gallery-item" data-category="cornrows">
+        <div class="gallery-card">
+          <span class="gallery-tag">Cornrows</span>
+          <img src="assets/images/Men’s-Conrows.jpeg" alt="Mens Cornrows">
+          <div class="gallery-overlay"><h3>Mens Cornrows</h3><p> Clean & Neat</p><button class="zoom-btn"><i class="fas fa-expand"></i></button></div>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="natural">
+        <div class="gallery-card">
+          <span class="gallery-tag">Natural</span>
+          <img src="assets/images/Natural.jpeg" alt="Natural Twist-Out">
+          <div class="gallery-overlay"><h3>Defined Twist-Out</h3><p>Volume & Definition</p><button class="zoom-btn"><i class="fas fa-expand"></i></button></div>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="locs">
+        <div class="gallery-card">
+          <span class="gallery-tag">Locs</span>
+          <img src="assets/images/Distressedlocs.jpeg" alt="Distressed locs">
+          <div class="gallery-overlay"><h3>Distressedlocs</h3><p>Fresh & Clean</p><button class="zoom-btn"><i class="fas fa-expand"></i></button></div>
+        </div>
+      </div>
+
+            <div class="gallery-item" data-category="locs">
+        <div class="gallery-card">
+          <span class="gallery-tag">Locs</span>
+          <img src="assets/images/locs.jpeg" alt="Locs">
+          <div class="gallery-overlay"><h3>Locs</h3><p>Fresh & Clean</p><button class="zoom-btn"><i class="fas fa-expand"></i></button></div>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="braids">
+        <div class="gallery-card">
+          <span class="gallery-tag">Braids</span>
+          <img src="assets/images/lemonade2.jpeg" alt="Lemonade Braids">
+          <div class="gallery-overlay"><h3>Lemonade Braids</h3><p>Quick Style</p><button class="zoom-btn"><i class="fas fa-expand"></i></button></div>
+        </div>
+      </div>
+
+      <!-- ── HIDDEN ITEMS — revealed by Load More ── -->
+<div class="gallery-item hidden extra" data-category="braids">
+  <div class="gallery-card">
+    <span class="gallery-tag">Braids</span>
+    <img src="assets/images/jumbo.jpeg" alt="Jumbo Knotless Braids">
+    <div class="gallery-overlay"><h3>Jumbo Knotless Braids</h3><p>Style Type</p><button class="zoom-btn"><i class="fas fa-expand"></i></button></div>
+  </div>
+</div>
+
+<div class="gallery-item hidden extra" data-category="curls">
+  <div class="gallery-card">
+    <span class="gallery-tag">Curls</span>
+    <img src="assets/images/italian.jpeg" alt="Italian Curls">
+    <div class="gallery-overlay"><h3>Italian Curls</h3><p>Style Type</p><button class="zoom-btn"><i class="fas fa-expand"></i></button></div>
+  </div>
+</div>
+
+<div class="gallery-item hidden extra" data-category="curls">
+  <div class="gallery-card">
+    <span class="gallery-tag">Curls</span>
+    <img src="assets/images/french.jpeg" alt="French Curls">
+    <div class="gallery-overlay"><h3>French Curls</h3><p>Style Type</p><button class="zoom-btn"><i class="fas fa-expand"></i></button></div>
+  </div>
+</div>
+
+<div class="gallery-item hidden extra" data-category="locs">
+  <div class="gallery-card">
+    <span class="gallery-tag">Locs</span>
+    <img src="assets/images/sasha.jpeg" alt="Sasha Locs">
+    <div class="gallery-overlay"><h3>Sasha Locs</h3><p>Style Type</p><button class="zoom-btn"><i class="fas fa-expand"></i></button></div>
+  </div>
+</div>
+
+<div class="gallery-item hidden extra" data-category="braids">
+  <div class="gallery-card">
+    <span class="gallery-tag">Braids</span>
+    <img src="assets/images/medium.jpeg" alt="Medium Knotless Braids">
+    <div class="gallery-overlay"><h3>Medium Knotless Braids</h3><p>Style Type</p><button class="zoom-btn"><i class="fas fa-expand"></i></button></div>
+  </div>
+</div>
+
+
+<div class="gallery-item hidden extra" data-category="kids">
+  <div class="gallery-card">
+    <span class="gallery-tag">Kids</span>
+    <img src="assets/images/kidsc.jpeg" alt="Kids Conrows">
+    <div class="gallery-overlay"><h3>Kids Conrows</h3><p>Style Type</p><button class="zoom-btn"><i class="fas fa-expand"></i></button></div>
+  </div>
+</div>
+
+<div class="gallery-item hidden extra" data-category="braids">
+  <div class="gallery-card">
+    <span class="gallery-tag">Curls</span>
+    <img src="assets/images/frenc2.jpeg" alt="French Curls with Color">
+    <div class="gallery-overlay"><h3>French Curls with Color</h3><p>Style Type</p><button class="zoom-btn"><i class="fas fa-expand"></i></button></div>
+  </div>
+</div>
+
+    </div>
+    <div class="load-more-wrap">
+      <button class="btn-ghost-gold" id="loadMore"><i class="fas fa-plus"></i> Load More Work</button>
     </div>
   </div>
 </section>
@@ -1030,11 +744,11 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 <section class="cta">
   <div class="container">
     <div class="cta-inner">
-      <h2 class="cta-title">Ready to Book Your Appointment?</h2>
-      <p class="cta-text">Contact via WhatsApp for instant booking and personalised pricing.</p>
+      <h2 class="cta-title">Want to Be My Next Transformation?</h2>
+      <p class="cta-text">Book your appointment today and let's create something beautiful together!</p>
       <div class="cta-btns">
-        <a href="https://wa.me/+254725351803?text=Hi%20Akose!%20I'd%20like%20to%20book%20an%20appointment." class="btn-gold" target="_blank"><i class="fab fa-whatsapp"></i> Book via WhatsApp</a>
-        <a href="contact.html" class="btn-ghost">Other Contact Options</a>
+        <a href="contact.html" class="btn-gold"><i class="fas fa-calendar-check"></i> Book Appointment</a>
+        <a href="https://wa.me/+254725351803" class="btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp Me</a>
       </div>
     </div>
   </div>
@@ -1054,9 +768,33 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
           <a href="http://www.youtube.com/@vivienneakose8306" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
         </div>
       </div>
-      <div class="footer-col"><h4>Navigate</h4><ul><li><a href="index.html#story">My Story</a></li><li><a href="portfolio.html">Portfolio</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="index.html#about">About</a></li></ul></div>
-      <div class="footer-col"><h4>Services</h4><ul><li><a href="index.html#services">Box Braids</a></li><li><a href="index.html#services">Cornrows</a></li><li><a href="index.html#services">Twists &amp; Locs</a></li><li><a href="index.html#services">Natural Hair</a></li></ul></div>
-      <div class="footer-col"><h4>Contact</h4><ul><li><i class="fas fa-phone"></i> +(254) 725-351-803</li><li><i class="fas fa-envelope"></i> <a href="/cdn-cgi/l/email-protection#b5c3dcc3dcd0dbdbd0d4dedac6d08787f5d2d8d4dcd99bd6dad8"><span class="__cf_email__" data-cfemail="90e6f9e6f9f5fefef5f1fbffe3f5a2a2d0f7fdf1f9fcbef3fffd">[email&#160;protected]</span></a></li><li><i class="fas fa-map-marker-alt"></i> @ your place of comfort</li><li><i class="fas fa-clock"></i> Mon–Sat: 9AM – 8PM</li></ul></div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="index.html#story">My Story</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="index.html#about">About</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="index.html#services">Box Braids</a></li>
+          <li><a href="index.html#services">Cornrows</a></li>
+          <li><a href="index.html#services">Twists & Locs</a></li>
+          <li><a href="index.html#services">Natural Hair</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><i class="fas fa-phone"></i> +(254) 725-351-803</li>
+          <li><i class="fas fa-envelope"></i> <a href="mailto:vivienneakose22@gmail.com">vivienneakose22@gmail.com</a></li>
+          <li><i class="fas fa-map-marker-alt"></i> @ your place of comfort</li>
+          <li><i class="fas fa-clock"></i> Mon–Sat: 9AM – 8PM</li>
+        </ul>
+      </div>
     </div>
     <div class="footer-bottom">
       <span>&copy; 2026 Hair by Akose. All rights reserved.</span>
@@ -1065,194 +803,194 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
   </div>
 </footer>
 
-<!-- FLOATING WHATSAPP (mobile only) -->
-<a href="https://wa.me/+254725351803" class="float-wa" target="_blank"><i class="fab fa-whatsapp"></i> Book Now</a>
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-inner">
+    <button class="lightbox-close" id="lightboxClose"><i class="fas fa-times"></i></button>
+    <button class="lightbox-nav lightbox-prev" id="lightboxPrev"><i class="fas fa-chevron-left"></i></button>
+    <button class="lightbox-nav lightbox-next" id="lightboxNext"><i class="fas fa-chevron-right"></i></button>
+    <img src="" alt="" id="lightboxImg">
+    <div class="lightbox-caption">
+      <h3 id="lightboxTitle"></h3>
+      <p id="lightboxMeta"></p>
+    </div>
+  </div>
+</div>
 
 <!-- MOBILE BOTTOM NAV -->
-<nav class="mob-bottom-nav" id="mobBottomNav">
-  <a href="index.html" class="active"><i class="fas fa-home"></i><span>Home</span></a>
-  <a href="pricing.html" class="active"><i class="fas fa-tags"></i><span>Pricing</span></a>
-  <a href="merchandise.html"><i class="fas fa-shopping-bag"></i><span>Shop</span></a>
-  <a href="index.html #gallery"><i class="fas fa-images"></i><span>Gallery</span></a>
+<nav class="mob-bottom-nav">
+  <a href="index.html"><i class="fas fa-home"></i><span>Home</span></a>
+  <a href="index.html#services"><i class="fas fa-scissors"></i><span>Services</span></a>
+  <a href="portfolio.html" class="active"><i class="fas fa-images"></i><span>Gallery</span></a>
   <a href="contact.html"><i class="fas fa-calendar-check"></i><span>Book</span></a>
 </nav>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-var WHATSAPP = '+254725351803';
-var services = {
-  'box-braids-small':  {name:'Box Braids — Small',        price:'2,000'       },
-  'box-braids-medium': {name:'Box Braids — Medium',       price:'1,500'       },
-  'box-braids-jumbo':  {name:'Box Braids — Jumbo',        price:'1,200'       },
-  'cornrows-simple':   {name:'Cornrows — Simple',         price:'1,300'      },
-  'cornrows-complex':  {name:'Cornrows — Complex',        price:'1,500'      },
-  'knotless-braids':   {name:'Knotless Braids',           price:'1,200–2,000'},
-  'micro-braiding':    {name:'Micro Braiding',            price:'5,000–8,000' },
-  'senegalese-twists': {name:'Senegalese Twists',         price:'1,500–2,000'},
-  'marley-twists':     {name:'Marley Twists',             price:'1,500–2,000' },
-  'passion-twists':    {name:'Passion Twists',            price:'1,500–2,000'},
-  'kinky-twists':      {name:'Kinky Twists',              price:'1,500–2,000' },
-  'twist-out':         {name:'Twist Out',                 price:'1,000–1,500' },
-  'weave-install':     {name:'Weave Install',             price:'1,500–2,000' },
-  'wig-lines':         {name:'Wig Lines',                 price:'500–1,000'   },
-  'natural-styling':   {name:'Natural Hair Styling',      price:'1,000–1,800' },
-  'bridal-styling':    {name:'Bridal Styling',            price:'1,800–2,000' },
-  'kids-braids':       {name:'Kids Braids',               price:'1,000'       },
-  'kids-twists':       {name:'Kids Twists',               price:'1,000'       },
-  'kids-cornrows':     {name:'Kids Cornrows',             price:'800'         },
-  'micro-locs':        {name:'Micro Locs',                price:'6,000'       },
-  'micro-locs-retie':  {name:'Micro Locs Retie',          price:'2,500–3,500' },
-  'locs-retouch':      {name:'Locs Retouch',              price:'1,200–1,500' },
-};
-
-function bookWA(svc){
-  var s = services[svc]; if(!s) return;
-  var msg = 'Hi Akose! \u{1F44B}\n\nI\'d like to book:\n\n\uD83D\uDCCC Service: '+s.name+'\n\uD83D\uDCB0 Price: KES '+s.price+'\n\u23F1\uFE0F Duration: '+s.time+' hours\n\nPlease let me know your available dates. Thank you!';
-  window.open('https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent(msg),'_blank');
-}
-
-/* ── scroll progress ── */
+<script>
+/* ── SCROLL PROGRESS ── */
 var bar = document.getElementById('scroll-progress');
-if(bar) window.addEventListener('scroll',function(){var p=window.scrollY/(document.body.scrollHeight-window.innerHeight)*100;bar.style.width=Math.min(p,100)+'%';},{passive:true});
+if(bar){
+  window.addEventListener('scroll', function(){
+    var p = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+    bar.style.width = Math.min(p,100) + '%';
+  }, {passive:true});
+}
 
-/* ── nav scrolled ── */
+/* ── NAV ── */
 var nav = document.getElementById('mainNav');
-if(nav) window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>60);},{passive:true});
-
-/* ── hamburger ── */
-var hb=document.getElementById('hamburger'),mm=document.getElementById('mobMenu'),bd=document.getElementById('mobBackdrop');
-function openMenu(){if(!mm||!hb)return;mm.classList.add('open');if(bd)bd.classList.add('open');hb.classList.add('open');document.body.style.overflow='hidden';document.body.style.position='fixed';document.body.style.width='100%';}
-function cM(){if(!mm||!hb)return;mm.classList.remove('open');if(bd)bd.classList.remove('open');hb.classList.remove('open');document.body.style.overflow='';document.body.style.position='';document.body.style.width='';}
-if(hb) hb.addEventListener('click',function(e){e.stopPropagation();mm&&mm.classList.contains('open')?cM():openMenu();});
-document.addEventListener('keydown',function(e){if(e.key==='Escape')cM();});
-
-/* ── calculator helper ── */
-function initCalc(selId, nameId, priceId, timeId, resultId, waBtnId){
-  var sel = document.getElementById(selId);
-  var res = document.getElementById(resultId);
-  if(!sel) return;
-  sel.addEventListener('change', function(){
-    var s = services[this.value];
-    if(!s){res.classList.remove('show');return;}
-    document.getElementById(nameId).textContent  = s.name;
-    document.getElementById(priceId).textContent = s.price;
-    if(timeId){ var tEl = document.getElementById(timeId); if(tEl) tEl.textContent = s.time; }
-    res.classList.add('show');
-    var waBtn = document.getElementById(waBtnId);
-    if(waBtn)(function(v){waBtn.onclick=function(){bookWA(v);};})(this.value);
-  });
+if(nav){
+  window.addEventListener('scroll', function(){
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  }, {passive:true});
 }
 
-/* ── DESKTOP CALCULATOR ── */
-initCalc('serviceSelectDesktop','quoteNameDesktop','quotePriceDesktop','','quoteResultDesktop','waBookDesktop');
+/* ── SLIDE PANEL ── */
+var hb = document.getElementById('hamburger');
+var mm = document.getElementById('mobMenu');
+var bd = document.getElementById('mobBackdrop');
 
-/* ── MOBILE CUSTOM BOTTOM-SHEET PICKER ── */
-var cqTrigger  = document.getElementById('cqTrigger');
-var cqSheet    = document.getElementById('cqSheet');
-var cqBackdrop = document.getElementById('cqBackdrop');
-var cqClose    = document.getElementById('cqClose');
-var cqItems    = document.querySelectorAll('.cq-item');
-var cqTriggerLabel = document.getElementById('cqTriggerLabel');
-var mobResult  = document.getElementById('quoteResultMob');
-var mobWaBtn   = document.getElementById('waBookMob');
-var selectedVal = '';
-
-function openSheet(){
-  cqSheet.classList.add('open');
-  cqBackdrop.classList.add('open');
-  document.body.style.overflow = 'hidden';
-  cqTrigger.classList.add('active');
+function openMenu(){
+  if(!mm||!hb) return;
+  mm.classList.add('open');
+  if(bd) bd.classList.add('open');
+  hb.classList.add('open');
+  document.body.style.overflow='hidden';
+  document.body.style.position='fixed';
+  document.body.style.width='100%';
 }
-function closeSheet(){
-  cqSheet.classList.remove('open');
-  cqBackdrop.classList.remove('open');
-  document.body.style.overflow = '';
-  cqTrigger.classList.remove('active');
+function cM(){
+  if(!mm||!hb) return;
+  mm.classList.remove('open');
+  if(bd) bd.classList.remove('open');
+  hb.classList.remove('open');
+  document.body.style.overflow='';
+  document.body.style.position='';
+  document.body.style.width='';
 }
+if(hb) hb.addEventListener('click', function(e){ e.stopPropagation(); mm&&mm.classList.contains('open')?cM():openMenu(); });
+document.addEventListener('keydown', function(e){ if(e.key==='Escape') cM(); });
 
-if(cqTrigger)  cqTrigger.addEventListener('click', openSheet);
-if(cqClose)    cqClose.addEventListener('click', closeSheet);
-if(cqBackdrop) cqBackdrop.addEventListener('click', closeSheet);
+/* ── FILTER ── */
+var filterBtns  = document.querySelectorAll('.filter-btn');
+var galleryItems = document.querySelectorAll('.gallery-item');
 
-cqItems.forEach(function(item){
-  item.addEventListener('click', function(){
-    /* deselect all */
-    cqItems.forEach(function(i){ i.classList.remove('selected'); });
-    this.classList.add('selected');
-    selectedVal = this.dataset.value;
-
-    /* update trigger label */
-    var name = this.querySelector('.cq-name').textContent;
-    cqTriggerLabel.textContent = name;
-    cqTriggerLabel.style.color = '#F5EDD8';
-
-    /* show result */
-    var s = services[selectedVal];
-    if(s){
-      document.getElementById('quoteNameMob').textContent  = s.name;
-      document.getElementById('quotePriceMob').textContent = s.price;
-      mobResult.classList.add('show');
-      if(mobWaBtn)(function(v){ mobWaBtn.onclick=function(){ bookWA(v); }; })(selectedVal);
-    }
-
-    /* close sheet after short delay so user sees selection */
-    setTimeout(closeSheet, 220);
-  });
-});
-
-/* ── category tabs ── */
-document.querySelectorAll('.cat-tab').forEach(function(tab){
-  tab.addEventListener('click',function(){
-    document.querySelectorAll('.cat-tab').forEach(function(t){t.classList.remove('active');});
-    document.querySelectorAll('.pricing-panel').forEach(function(p){p.classList.remove('active');});
+filterBtns.forEach(function(btn){
+  btn.addEventListener('click', function(){
+    filterBtns.forEach(function(b){ b.classList.remove('active'); });
     this.classList.add('active');
-    var panel = document.getElementById('panel-'+this.dataset.tab);
-    if(panel) panel.classList.add('active');
+    var filter = this.dataset.filter;
+    galleryItems.forEach(function(item, i){
+      var match = filter === 'all' || item.dataset.category === filter;
+      item.classList.toggle('hidden', !match);
+      if(match){
+        item.style.opacity = '0';
+        item.style.transform = 'translateY(12px)';
+        item.style.transition = 'opacity .4s ease '+( i*35 )+'ms, transform .4s ease '+(i*35)+'ms';
+        setTimeout(function(){ item.style.opacity='1'; item.style.transform='translateY(0)'; }, 20);
+      }
+    });
   });
 });
 
-/* ── price rows — click to book or pre-select calculator ── */
-document.querySelectorAll('.price-row').forEach(function(row){
-  /* book btn */
-  var btn = row.querySelector('.book-row-btn');
-  if(btn) btn.addEventListener('click',function(e){e.stopPropagation();bookWA(row.dataset.service);});
+/* ── LIGHTBOX ── */
+var lightbox     = document.getElementById('lightbox');
+var lightboxImg  = document.getElementById('lightboxImg');
+var lightboxTitle= document.getElementById('lightboxTitle');
+var lightboxMeta = document.getElementById('lightboxMeta');
+var lbIndex = 0;
 
-  /* row click — on mobile book directly, on desktop scroll to calc */
-  row.addEventListener('click',function(){
-    if(window.innerWidth <= 767){
-      bookWA(row.dataset.service);
-    } else {
-      var sel = document.getElementById('serviceSelectDesktop');
-      if(sel){ sel.value = row.dataset.service; sel.dispatchEvent(new Event('change')); }
-      var card = document.querySelector('.calculator-card');
-      if(card) card.scrollIntoView({behavior:'smooth',block:'center'});
-    }
-  });
-});
+function getVisible(){ return Array.from(galleryItems).filter(function(i){ return !i.classList.contains('hidden'); }); }
 
-/* ── hide float-wa when near bottom nav to avoid overlap ── */
-var floatWa = document.querySelector('.float-wa');
-if(floatWa){
-  window.addEventListener('scroll',function(){
-    var nearBottom = window.scrollY + window.innerHeight >= document.body.scrollHeight - 200;
-    floatWa.style.opacity = nearBottom ? '0' : '1';
-    floatWa.style.pointerEvents = nearBottom ? 'none' : 'auto';
-  },{passive:true});
+function openLightbox(item){
+  var img = item.querySelector('img');
+  var h3  = item.querySelector('.gallery-overlay h3');
+  var p   = item.querySelector('.gallery-overlay p');
+  lightboxImg.src   = img ? img.src : '';
+  lightboxImg.alt   = img ? img.alt : '';
+  lightboxTitle.textContent = h3 ? h3.textContent : '';
+  lightboxMeta.textContent  = p  ? p.textContent  : '';
+  lbIndex = getVisible().indexOf(item);
+  lightbox.classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeLightbox(){
+  lightbox.classList.remove('open');
+  document.body.style.overflow='';
+}
+function navLightbox(dir){
+  var vis = getVisible();
+  lbIndex = (lbIndex + dir + vis.length) % vis.length;
+  openLightbox(vis[lbIndex]);
 }
 
-/* ── fade-in on scroll ── */
-var fadeEls = document.querySelectorAll('.note-card,.price-row,.chip');
-fadeEls.forEach(function(el){el.style.opacity='0';el.style.transform='translateY(14px)';el.style.transition='opacity .45s ease,transform .45s ease';});
-var io = new IntersectionObserver(function(entries){
-  entries.forEach(function(e,i){
-    if(e.isIntersecting){setTimeout(function(){e.target.style.opacity='1';e.target.style.transform='translateY(0)';},i*38);io.unobserve(e.target);}
-  });
-},{threshold:.08});
-fadeEls.forEach(function(el){ io.observe(el); });
+document.querySelectorAll('.gallery-card').forEach(function(card){
+  card.addEventListener('click', function(){ openLightbox(card.closest('.gallery-item')); });
+});
+document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+document.getElementById('lightboxPrev').addEventListener('click', function(e){ e.stopPropagation(); navLightbox(-1); });
+document.getElementById('lightboxNext').addEventListener('click', function(e){ e.stopPropagation(); navLightbox(1); });
+lightbox.addEventListener('click', function(e){ if(e.target===lightbox) closeLightbox(); });
+document.addEventListener('keydown', function(e){
+  if(!lightbox.classList.contains('open')) return;
+  if(e.key==='Escape') closeLightbox();
+  if(e.key==='ArrowLeft')  navLightbox(-1);
+  if(e.key==='ArrowRight') navLightbox(1);
+});
 
-/* page fade in */
+/* ── LOAD MORE ── */
+var extraItems = document.querySelectorAll('.gallery-item.extra');
+var loadMoreBtn = document.getElementById('loadMore');
+var extrasLoaded = false;
+
+loadMoreBtn.addEventListener('click', function(){
+  if(extrasLoaded){ return; }
+  extrasLoaded = true;
+
+  var activeFilter = document.querySelector('.filter-btn.active');
+  var currentFilter = activeFilter ? activeFilter.dataset.filter : 'all';
+
+  extraItems.forEach(function(item, i){
+    var match = currentFilter === 'all' || item.dataset.category === currentFilter;
+
+    /* force the card to have height before revealing */
+    var card = item.querySelector('.gallery-card');
+    if(card) card.style.minHeight = '280px';
+
+    item.classList.remove('hidden');
+
+    if(match){
+      item.style.opacity = '0';
+      item.style.transform = 'translateY(16px)';
+      item.style.transition = 'opacity .45s ease '+(i*60)+'ms, transform .45s ease '+(i*60)+'ms';
+
+      /* re-attach lightbox */
+      if(card) card.addEventListener('click', function(){ openLightbox(item); });
+
+      /* trigger reflow so transition fires */
+      void item.offsetWidth;
+
+      setTimeout(function(){ 
+        item.style.opacity = '1'; 
+        item.style.transform = 'translateY(0)'; 
+      }, i * 60 + 20);
+    } else {
+      item.classList.add('hidden');
+    }
+  });
+
+ 
+
+  /* update button */
+  loadMoreBtn.innerHTML = '<i class="fas fa-check"></i> All work loaded';
+  loadMoreBtn.disabled = true;
+  loadMoreBtn.style.opacity = '.45';
+  loadMoreBtn.style.cursor = 'default';
+});
+
+/* ── FADE IN ON LOAD ── */
 document.body.style.opacity='0';
 setTimeout(function(){ document.body.style.transition='opacity .4s ease'; document.body.style.opacity='1'; }, 60);
-console.log('Pricing page ready \u2728');
+
+console.log('Portfolio ready ✨');
 </script>
 </body>
 </html>
