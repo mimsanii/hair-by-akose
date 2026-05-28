@@ -219,6 +219,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
   backdrop-filter:blur(8px);z-index:2;
 }
 .gallery-item.hidden{display:none}
+.gallery-item.extra .gallery-card{min-height:280px}
 .load-more-wrap{text-align:center;margin-top:3.5rem}
 .btn-ghost-gold{
   display:inline-flex;align-items:center;gap:.6rem;padding:1rem 2.5rem;
@@ -396,8 +397,13 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
   .gallery-item:nth-child(10){grid-column:span 2;aspect-ratio:16/8}
   .gallery-item:nth-child(11){aspect-ratio:1}
   .gallery-item:nth-child(12){aspect-ratio:1}
+  /* extra items 13+ get consistent aspect ratio on mobile */
+.gallery-item:nth-child(n+13){aspect-ratio:3/4}
+.gallery-item:nth-child(n+13):nth-child(odd){grid-column:1}
+.gallery-item:nth-child(n+13):nth-child(even){grid-column:2}
 
   .gallery-card{border-radius:4px;min-height:unset!important}
+  .gallery-item.extra .gallery-card { min-height: 220px; aspect-ratio: 3/4; }
 
   /* always-visible captions on mobile */
   .gallery-overlay{
@@ -540,6 +546,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
     <div class="filter-buttons">
       <button class="filter-btn active" data-filter="all">All Work</button>
       <button class="filter-btn" data-filter="braids">Braids</button>
+      <button class="filter-btn" data-filter="curls">Curls</button>
       <button class="filter-btn" data-filter="cornrows">Cornrows</button>
       <button class="filter-btn" data-filter="twists">Twists</button>
       <button class="filter-btn" data-filter="weaves">Weaves</button>
@@ -587,11 +594,11 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
         </div>
       </div>
 
-      <div class="gallery-item" data-category="cornrows">
+      <div class="gallery-item" data-category="locs">
         <div class="gallery-card">
-          <span class="gallery-tag">Cornrows</span>
-          <img src="assets/images/butterfly.jpeg" alt="butterfly cornrow design">
-          <div class="gallery-overlay"><h3>butterfly cornrow design</h3><p>Custom Design</p><button class="zoom-btn"><i class="fas fa-expand"></i></button></div>
+          <span class="gallery-tag">Locs</span>
+          <img src="assets/images/butterfly.jpeg" alt="Butterfly Locs">
+          <div class="gallery-overlay"><h3>Butterfly Locs</h3><p>Custom Design</p><button class="zoom-btn"><i class="fas fa-expand"></i></button></div>
         </div>
       </div>
 
@@ -660,23 +667,72 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
         </div>
       </div>
 
-      <div class="gallery-item" data-category="kids">
-        <div class="gallery-card">
-          <span class="gallery-tag">Kids</span>
-          <img src="assets/images/kb (2).jpeg" alt="Kids Cornrow Style">
-          <div class="gallery-overlay"><h3>Kids Cornrow Style</h3><p>Back to School</p><button class="zoom-btn"><i class="fas fa-expand"></i></button></div>
-        </div>
-      </div>
-
       <div class="gallery-item" data-category="braids">
         <div class="gallery-card">
           <span class="gallery-tag">Braids</span>
-          <img src="assets/images/lamonade2.jpeg" alt="Lemonade Braids">
+          <img src="assets/images/lemonade2.jpeg" alt="Lemonade Braids">
           <div class="gallery-overlay"><h3>Lemonade Braids</h3><p>Quick Style</p><button class="zoom-btn"><i class="fas fa-expand"></i></button></div>
         </div>
       </div>
 
-      
+      <!-- ── HIDDEN ITEMS — revealed by Load More ── -->
+<div class="gallery-item hidden extra" data-category="braids">
+  <div class="gallery-card">
+    <span class="gallery-tag">Braids</span>
+    <img src="assets/images/jumbo.jpeg" alt="Jumbo Knotless Braids">
+    <div class="gallery-overlay"><h3>Jumbo Knotless Braids</h3><p>Style Type</p><button class="zoom-btn"><i class="fas fa-expand"></i></button></div>
+  </div>
+</div>
+
+<div class="gallery-item hidden extra" data-category="curls">
+  <div class="gallery-card">
+    <span class="gallery-tag">Curls</span>
+    <img src="assets/images/italian.jpeg" alt="Italian Curls">
+    <div class="gallery-overlay"><h3>Italian Curls</h3><p>Style Type</p><button class="zoom-btn"><i class="fas fa-expand"></i></button></div>
+  </div>
+</div>
+
+<div class="gallery-item hidden extra" data-category="curls">
+  <div class="gallery-card">
+    <span class="gallery-tag">Curls</span>
+    <img src="assets/images/french.jpeg" alt="French Curls">
+    <div class="gallery-overlay"><h3>French Curls</h3><p>Style Type</p><button class="zoom-btn"><i class="fas fa-expand"></i></button></div>
+  </div>
+</div>
+
+<div class="gallery-item hidden extra" data-category="locs">
+  <div class="gallery-card">
+    <span class="gallery-tag">Locs</span>
+    <img src="assets/images/sasha.jpeg" alt="Sasha Locs">
+    <div class="gallery-overlay"><h3>Sasha Locs</h3><p>Style Type</p><button class="zoom-btn"><i class="fas fa-expand"></i></button></div>
+  </div>
+</div>
+
+<div class="gallery-item hidden extra" data-category="braids">
+  <div class="gallery-card">
+    <span class="gallery-tag">Braids</span>
+    <img src="assets/images/medium.jpeg" alt="Medium Knotless Braids">
+    <div class="gallery-overlay"><h3>Medium Knotless Braids</h3><p>Style Type</p><button class="zoom-btn"><i class="fas fa-expand"></i></button></div>
+  </div>
+</div>
+
+
+<div class="gallery-item hidden extra" data-category="kids">
+  <div class="gallery-card">
+    <span class="gallery-tag">Kids</span>
+    <img src="assets/images/kidsc.jpeg" alt="Kids Conrows">
+    <div class="gallery-overlay"><h3>Kids Conrows</h3><p>Style Type</p><button class="zoom-btn"><i class="fas fa-expand"></i></button></div>
+  </div>
+</div>
+
+<div class="gallery-item hidden extra" data-category="braids">
+  <div class="gallery-card">
+    <span class="gallery-tag">Curls</span>
+    <img src="assets/images/frenc2.jpeg" alt="French Curls with Color">
+    <div class="gallery-overlay"><h3>French Curls with Color</h3><p>Style Type</p><button class="zoom-btn"><i class="fas fa-expand"></i></button></div>
+  </div>
+</div>
+
     </div>
     <div class="load-more-wrap">
       <button class="btn-ghost-gold" id="loadMore"><i class="fas fa-plus"></i> Load More Work</button>
@@ -881,10 +937,53 @@ document.addEventListener('keydown', function(e){
 });
 
 /* ── LOAD MORE ── */
-document.getElementById('loadMore').addEventListener('click', function(){
-  this.innerHTML = '<i class="fas fa-check"></i> More coming soon!';
-  this.disabled = true;
-  this.style.opacity = '.5';
+var extraItems = document.querySelectorAll('.gallery-item.extra');
+var loadMoreBtn = document.getElementById('loadMore');
+var extrasLoaded = false;
+
+loadMoreBtn.addEventListener('click', function(){
+  if(extrasLoaded){ return; }
+  extrasLoaded = true;
+
+  var activeFilter = document.querySelector('.filter-btn.active');
+  var currentFilter = activeFilter ? activeFilter.dataset.filter : 'all';
+
+  extraItems.forEach(function(item, i){
+    var match = currentFilter === 'all' || item.dataset.category === currentFilter;
+
+    /* force the card to have height before revealing */
+    var card = item.querySelector('.gallery-card');
+    if(card) card.style.minHeight = '280px';
+
+    item.classList.remove('hidden');
+
+    if(match){
+      item.style.opacity = '0';
+      item.style.transform = 'translateY(16px)';
+      item.style.transition = 'opacity .45s ease '+(i*60)+'ms, transform .45s ease '+(i*60)+'ms';
+
+      /* re-attach lightbox */
+      if(card) card.addEventListener('click', function(){ openLightbox(item); });
+
+      /* trigger reflow so transition fires */
+      void item.offsetWidth;
+
+      setTimeout(function(){ 
+        item.style.opacity = '1'; 
+        item.style.transform = 'translateY(0)'; 
+      }, i * 60 + 20);
+    } else {
+      item.classList.add('hidden');
+    }
+  });
+
+ 
+
+  /* update button */
+  loadMoreBtn.innerHTML = '<i class="fas fa-check"></i> All work loaded';
+  loadMoreBtn.disabled = true;
+  loadMoreBtn.style.opacity = '.45';
+  loadMoreBtn.style.cursor = 'default';
 });
 
 /* ── FADE IN ON LOAD ── */
