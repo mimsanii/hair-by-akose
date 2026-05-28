@@ -498,4 +498,504 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
       <li><a href="pricing.html">Pricing</a></li>
       <li><a href="contact.html" class="nav-cta">Book Now</a></li>
     </ul>
-    <div c
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+<!-- SLIDE PANEL MENU -->
+<div class="mob-menu-backdrop" id="mobBackdrop" onclick="cM()"></div>
+<div class="mob-menu" id="mobMenu">
+  <button class="mob-menu-close" onclick="cM()" aria-label="Close menu"><i class="fas fa-times"></i></button>
+  <div class="mob-menu-brand">Hair by Akose</div>
+  <div class="mob-menu-links">
+    <a href="index.html"        onclick="cM()">Home</a>
+    <a href="index.html#story"  onclick="cM()">Story</a>
+    <a href="portfolio.html"    onclick="cM()" class="active-link">Portfolio</a>
+    <a href="index.html#testimonials"  onclick="cM()">Testimonials</a>
+    <a href="merchandise.html"  onclick="cM()">Merchandise</a>
+    <a href="pricing.html"      onclick="cM()">Pricing</a>
+    <a href="index.html#about"  onclick="cM()">About</a>
+  </div>
+  <a href="contact.html" class="mob-menu-cta"><i class="fas fa-calendar-check"></i> Book Appointment</a>
+  <div class="mob-menu-socials">
+    <a href="https://www.instagram.com/hairbyakose" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://web.facebook.com/vivienne.akose" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+    <a href="https://www.tiktok.com/@hairbyakose" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+    <a href="https://wa.me/+254725351803" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+  </div>
+  <p class="mob-menu-meta">Nairobi &middot; +(254) 725-351-803<br>Mon–Sat: 9AM – 8PM</p>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="hero-lines"><span></span><span></span><span></span><span></span></div>
+  <div class="hero-inner">
+    <!-- mobile left gold panel -->
+    <div class="hero-gold-side">
+      <span class="brand-vert">Hair by Akose</span>
+      <span class="count-tag">12 Looks</span>
+    </div>
+    <!-- mobile right dark panel / desktop full content -->
+    <div class="hero-dark-side">
+      <div class="hero-eyebrow">Hair by Akose</div>
+      <h1 class="page-title">My Work &amp;<br><span>Portfolio</span></h1>
+      <p class="page-subtitle">Browse transformations and see the artistry behind every style</p>
+    </div>
+  </div>
+</section>
+
+<!-- FILTER -->
+<section class="filter-section">
+  <div class="container">
+    <div class="filter-buttons">
+      <button class="filter-btn active" data-filter="all">All Work</button>
+      <button class="filter-btn" data-filter="braids">Braids</button>
+      <button class="filter-btn" data-filter="curls">Curls</button>
+      <button class="filter-btn" data-filter="cornrows">Cornrows</button>
+      <button class="filter-btn" data-filter="twists">Twists</button>
+      <button class="filter-btn" data-filter="weaves">Weaves</button>
+      <button class="filter-btn" data-filter="natural">Natural</button>
+      <button class="filter-btn" data-filter="locs">Locs</button>
+      <button class="filter-btn" data-filter="kids">Kids</button>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="portfolio-gallery">
+  <div class="container">
+    <div class="gallery-grid" id="galleryGrid">
+
+      <div class="gallery-item large" data-category="braids">
+        <div class="gallery-card">
+          <span class="gallery-tag">Braids</span>
+          <img src="assets/images/Normal-Braids.jpeg" alt="Normal Braids">
+          <div class="gallery-overlay"><h3>Normal Braids</h3><p>Protective Style</p><button class="zoom-btn"><i class="fas fa-expand"></i></button></div>
+        </div>
+      </div>
+
+            <div class="gallery-item large" data-category="braids">
+        <div class="gallery-card">
+          <span class="gallery-tag">Braids</span>
+          <img src="assets/images/Bohemian-braids.jpeg" alt="Bohemian Braids">
+          <div class="gallery-overlay"><h3>Bohemian Braids</h3><p>Artistic Style</p><button class="zoom-btn"><i class="fas fa-expand"></i></button></div>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="braids">
+        <div class="gallery-card">
+          <span class="gallery-tag">Braids</span>
+          <img src="assets/images/daisy.jpeg" alt="daisy braid style">
+          <div class="gallery-overlay"><h3>daisy braid style</h3><p>With Color</p><button class="zoom-btn"><i class="fas fa-expand"></i></button></div>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="cornrows">
+        <div class="gallery-card">
+          <span class="gallery-tag">Cornrows</span>
+          <img src="assets/images/kb.jpeg" alt="Knotless Braids">
+          <div class="gallery-overlay"><h3>Knotless Braids</h3><p>Sleek Finish</p><button class="zoom-btn"><i class="fas fa-expand"></i></button></div>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="locs">
+        <div class="gallery-card">
+          <span class="gallery-tag">Locs</span>
+          <img src="assets/images/butterfly.jpeg" alt="Butterfly Locs">
+          <div class="gallery-overlay"><h3>Butterfly Locs</h3><p>Custom Design</p><button class="zoom-btn"><i class="fas fa-expand"></i></button></div>
+        </div>
+      </div>
+
+      <div class="gallery-item large" data-category="twists">
+        <div class="gallery-card">
+          <span class="gallery-tag">Twists</span>
+          <img src="assets/images/Twistouts-natural-hair.jpeg" alt="Twistouts natural hair">
+          <div class="gallery-overlay"><h3>Twistouts</h3><p>Long Length</p><button class="zoom-btn"><i class="fas fa-expand"></i></button></div>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="twists">
+        <div class="gallery-card">
+          <span class="gallery-tag">Twists</span>
+          <img src="assets/images/Mini-Passion-Twist.jpeg" alt="Passion Twists">
+          <div class="gallery-overlay"><h3>Passion Twists</h3><p>Bohemian Style</p><button class="zoom-btn"><i class="fas fa-expand"></i></button></div>
+        </div>
+      </div>
+   
+      <div class="gallery-item" data-category="twists">
+        <div class="gallery-card">
+          <span class="gallery-tag">Twists</span>
+          <img src="assets/images/Aura-Twist.jpeg" alt="Aura Twist">
+          <div class="gallery-overlay"><h3>Aura Twist</h3><p>Elegant Style</p><button class="zoom-btn"><i class="fas fa-expand"></i></button></div>
+        </div>
+      </div>
+
+           <div class="gallery-item" data-category="twists">
+        <div class="gallery-card">
+          <span class="gallery-tag">Twists</span>
+          <img src="assets/images/Loose-Kinky-Twist.jpeg" alt="loose kinky twist">
+          <div class="gallery-overlay"><h3>Loose Kinky Twist</h3><p>Relaxed & Comfortable</p><button class="zoom-btn"><i class="fas fa-expand"></i></button></div>
+        </div>
+      </div>
+
+
+      <div class="gallery-item" data-category="cornrows">
+        <div class="gallery-card">
+          <span class="gallery-tag">Cornrows</span>
+          <img src="assets/images/Men’s-Conrows.jpeg" alt="Mens Cornrows">
+          <div class="gallery-overlay"><h3>Mens Cornrows</h3><p> Clean & Neat</p><button class="zoom-btn"><i class="fas fa-expand"></i></button></div>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="natural">
+        <div class="gallery-card">
+          <span class="gallery-tag">Natural</span>
+          <img src="assets/images/Natural.jpeg" alt="Natural Twist-Out">
+          <div class="gallery-overlay"><h3>Defined Twist-Out</h3><p>Volume & Definition</p><button class="zoom-btn"><i class="fas fa-expand"></i></button></div>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="locs">
+        <div class="gallery-card">
+          <span class="gallery-tag">Locs</span>
+          <img src="assets/images/Distressedlocs.jpeg" alt="Distressed locs">
+          <div class="gallery-overlay"><h3>Distressedlocs</h3><p>Fresh & Clean</p><button class="zoom-btn"><i class="fas fa-expand"></i></button></div>
+        </div>
+      </div>
+
+            <div class="gallery-item" data-category="locs">
+        <div class="gallery-card">
+          <span class="gallery-tag">Locs</span>
+          <img src="assets/images/locs.jpeg" alt="Locs">
+          <div class="gallery-overlay"><h3>Locs</h3><p>Fresh & Clean</p><button class="zoom-btn"><i class="fas fa-expand"></i></button></div>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="braids">
+        <div class="gallery-card">
+          <span class="gallery-tag">Braids</span>
+          <img src="assets/images/lemonade2.jpeg" alt="Lemonade Braids">
+          <div class="gallery-overlay"><h3>Lemonade Braids</h3><p>Quick Style</p><button class="zoom-btn"><i class="fas fa-expand"></i></button></div>
+        </div>
+      </div>
+
+      <!-- ── HIDDEN ITEMS — revealed by Load More ── -->
+<div class="gallery-item hidden extra" data-category="braids">
+  <div class="gallery-card">
+    <span class="gallery-tag">Braids</span>
+    <img src="assets/images/jumbo.jpeg" alt="Jumbo Knotless Braids">
+    <div class="gallery-overlay"><h3>Jumbo Knotless Braids</h3><p>Elegant Style</p><button class="zoom-btn"><i class="fas fa-expand"></i></button></div>
+  </div>
+</div>
+
+<div class="gallery-item hidden extra" data-category="curls">
+  <div class="gallery-card">
+    <span class="gallery-tag">Curls</span>
+    <img src="assets/images/italian.jpeg" alt="Italian Curls">
+    <div class="gallery-overlay"><h3>Italian Curls</h3><p>Fresh & Clean</p><button class="zoom-btn"><i class="fas fa-expand"></i></button></div>
+  </div>
+</div>
+
+<div class="gallery-item hidden extra" data-category="curls">
+  <div class="gallery-card">
+    <span class="gallery-tag">Curls</span>
+    <img src="assets/images/french.jpeg" alt="French Curls">
+    <div class="gallery-overlay"><h3>French Curls</h3><p>Stylized</p><button class="zoom-btn"><i class="fas fa-expand"></i></button></div>
+  </div>
+</div>
+
+<div class="gallery-item hidden extra" data-category="locs">
+  <div class="gallery-card">
+    <span class="gallery-tag">Locs</span>
+    <img src="assets/images/sasha.jpeg" alt="Sasha Locs">
+    <div class="gallery-overlay"><h3>Sasha Locs</h3><p>Fresh & Clean</p><button class="zoom-btn"><i class="fas fa-expand"></i></button></div>
+  </div>
+</div>
+
+<div class="gallery-item hidden extra" data-category="braids">
+  <div class="gallery-card">
+    <span class="gallery-tag">Braids</span>
+    <img src="assets/images/medium.jpeg" alt="Medium Knotless Braids">
+    <div class="gallery-overlay"><h3>Medium Knotless Braids</h3><p>Elegant Style</p><button class="zoom-btn"><i class="fas fa-expand"></i></button></div>
+  </div>
+</div>
+
+
+<div class="gallery-item hidden extra" data-category="kids">
+  <div class="gallery-card">
+    <span class="gallery-tag">Kids</span>
+    <img src="assets/images/kidsc.jpeg" alt="Kids Conrows">
+    <div class="gallery-overlay"><h3>Kids Conrows</h3><p>Fresh & Clean</p><button class="zoom-btn"><i class="fas fa-expand"></i></button></div>
+  </div>
+</div>
+
+<div class="gallery-item hidden extra" data-category="braids">
+  <div class="gallery-card">
+    <span class="gallery-tag">Curls</span>
+    <img src="assets/images/frenc2.jpeg" alt="French Curls with Color">
+    <div class="gallery-overlay"><h3>French Curls with Color</h3><p>Fresh & Clean</p><button class="zoom-btn"><i class="fas fa-expand"></i></button></div>
+  </div>
+</div>
+
+    </div>
+    <div class="load-more-wrap">
+      <button class="btn-ghost-gold" id="loadMore"><i class="fas fa-plus"></i> Load More Work</button>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="container">
+    <div class="cta-inner">
+      <h2 class="cta-title">Want to Be My Next Transformation?</h2>
+      <p class="cta-text">Book your appointment today and let's create something beautiful together!</p>
+      <div class="cta-btns">
+        <a href="contact.html" class="btn-gold"><i class="fas fa-calendar-check"></i> Book Appointment</a>
+        <a href="https://wa.me/+254725351803" class="btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp Me</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="assets/images/logo.jpeg" alt="Hair by Akose">
+        <p>Professional mobile hair styling and handmade accessories, bringing beauty to your doorstep.</p>
+        <div class="socials">
+          <a href="https://www.instagram.com/hairbyakose?igsh=YW1pdTc0ZzBua2p4&utm_source=qr" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://web.facebook.com/vivienne.akose" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="https://www.tiktok.com/@hairbyakose?_r=1&_t=ZS-93RrembQpYD" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          <a href="http://www.youtube.com/@vivienneakose8306" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="index.html#story">My Story</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="index.html#about">About</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="index.html#services">Box Braids</a></li>
+          <li><a href="index.html#services">Cornrows</a></li>
+          <li><a href="index.html#services">Twists & Locs</a></li>
+          <li><a href="index.html#services">Natural Hair</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><i class="fas fa-phone"></i> +(254) 725-351-803</li>
+          <li><i class="fas fa-envelope"></i> <a href="mailto:vivienneakose22@gmail.com">vivienneakose22@gmail.com</a></li>
+          <li><i class="fas fa-map-marker-alt"></i> @ your place of comfort</li>
+          <li><i class="fas fa-clock"></i> Mon–Sat: 9AM – 8PM</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Hair by Akose. All rights reserved.</span>
+      <span>Crafted with <i class="fas fa-heart" style="color:var(--gold)"></i> and passion &middot; by #mimsanii</span>
+    </div>
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-inner">
+    <button class="lightbox-close" id="lightboxClose"><i class="fas fa-times"></i></button>
+    <button class="lightbox-nav lightbox-prev" id="lightboxPrev"><i class="fas fa-chevron-left"></i></button>
+    <button class="lightbox-nav lightbox-next" id="lightboxNext"><i class="fas fa-chevron-right"></i></button>
+    <img src="" alt="" id="lightboxImg">
+    <div class="lightbox-caption">
+      <h3 id="lightboxTitle"></h3>
+      <p id="lightboxMeta"></p>
+    </div>
+  </div>
+</div>
+
+<!-- MOBILE BOTTOM NAV -->
+<nav class="mob-bottom-nav">
+  <a href="index.html"><i class="fas fa-home"></i><span>Home</span></a>
+  <a href="pricing.html"><i class="fas fa-tag"></i><span>Pricing</span></a>
+  <a href="merchandise.html"><i class="fas fa-shopping-bag"></i><span>Shop</span></a>
+  <a href="portfolio.html" class="active"><i class="fas fa-images"></i><span>Gallery</span></a>
+  <a href="contact.html"><i class="fas fa-calendar-check"></i><span>Book</span></a>
+</nav>
+
+<script>
+/* ── SCROLL PROGRESS ── */
+var bar = document.getElementById('scroll-progress');
+if(bar){
+  window.addEventListener('scroll', function(){
+    var p = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+    bar.style.width = Math.min(p,100) + '%';
+  }, {passive:true});
+}
+
+/* ── NAV ── */
+var nav = document.getElementById('mainNav');
+if(nav){
+  window.addEventListener('scroll', function(){
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  }, {passive:true});
+}
+
+/* ── SLIDE PANEL ── */
+var hb = document.getElementById('hamburger');
+var mm = document.getElementById('mobMenu');
+var bd = document.getElementById('mobBackdrop');
+
+function openMenu(){
+  if(!mm||!hb) return;
+  mm.classList.add('open');
+  if(bd) bd.classList.add('open');
+  hb.classList.add('open');
+  document.body.style.overflow='hidden';
+  document.body.style.position='fixed';
+  document.body.style.width='100%';
+}
+function cM(){
+  if(!mm||!hb) return;
+  mm.classList.remove('open');
+  if(bd) bd.classList.remove('open');
+  hb.classList.remove('open');
+  document.body.style.overflow='';
+  document.body.style.position='';
+  document.body.style.width='';
+}
+if(hb) hb.addEventListener('click', function(e){ e.stopPropagation(); mm&&mm.classList.contains('open')?cM():openMenu(); });
+document.addEventListener('keydown', function(e){ if(e.key==='Escape') cM(); });
+
+/* ── FILTER ── */
+var filterBtns  = document.querySelectorAll('.filter-btn');
+var galleryItems = document.querySelectorAll('.gallery-item');
+
+filterBtns.forEach(function(btn){
+  btn.addEventListener('click', function(){
+    filterBtns.forEach(function(b){ b.classList.remove('active'); });
+    this.classList.add('active');
+    var filter = this.dataset.filter;
+    galleryItems.forEach(function(item, i){
+      var match = filter === 'all' || item.dataset.category === filter;
+      item.classList.toggle('hidden', !match);
+      if(match){
+        item.style.opacity = '0';
+        item.style.transform = 'translateY(12px)';
+        item.style.transition = 'opacity .4s ease '+( i*35 )+'ms, transform .4s ease '+(i*35)+'ms';
+        setTimeout(function(){ item.style.opacity='1'; item.style.transform='translateY(0)'; }, 20);
+      }
+    });
+  });
+});
+
+/* ── LIGHTBOX ── */
+var lightbox     = document.getElementById('lightbox');
+var lightboxImg  = document.getElementById('lightboxImg');
+var lightboxTitle= document.getElementById('lightboxTitle');
+var lightboxMeta = document.getElementById('lightboxMeta');
+var lbIndex = 0;
+
+function getVisible(){ return Array.from(galleryItems).filter(function(i){ return !i.classList.contains('hidden'); }); }
+
+function openLightbox(item){
+  var img = item.querySelector('img');
+  var h3  = item.querySelector('.gallery-overlay h3');
+  var p   = item.querySelector('.gallery-overlay p');
+  lightboxImg.src   = img ? img.src : '';
+  lightboxImg.alt   = img ? img.alt : '';
+  lightboxTitle.textContent = h3 ? h3.textContent : '';
+  lightboxMeta.textContent  = p  ? p.textContent  : '';
+  lbIndex = getVisible().indexOf(item);
+  lightbox.classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeLightbox(){
+  lightbox.classList.remove('open');
+  document.body.style.overflow='';
+}
+function navLightbox(dir){
+  var vis = getVisible();
+  lbIndex = (lbIndex + dir + vis.length) % vis.length;
+  openLightbox(vis[lbIndex]);
+}
+
+document.querySelectorAll('.gallery-card').forEach(function(card){
+  card.addEventListener('click', function(){ openLightbox(card.closest('.gallery-item')); });
+});
+document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+document.getElementById('lightboxPrev').addEventListener('click', function(e){ e.stopPropagation(); navLightbox(-1); });
+document.getElementById('lightboxNext').addEventListener('click', function(e){ e.stopPropagation(); navLightbox(1); });
+lightbox.addEventListener('click', function(e){ if(e.target===lightbox) closeLightbox(); });
+document.addEventListener('keydown', function(e){
+  if(!lightbox.classList.contains('open')) return;
+  if(e.key==='Escape') closeLightbox();
+  if(e.key==='ArrowLeft')  navLightbox(-1);
+  if(e.key==='ArrowRight') navLightbox(1);
+});
+
+/* ── LOAD MORE ── */
+var extraItems = document.querySelectorAll('.gallery-item.extra');
+var loadMoreBtn = document.getElementById('loadMore');
+var extrasLoaded = false;
+
+loadMoreBtn.addEventListener('click', function(){
+  if(extrasLoaded){ return; }
+  extrasLoaded = true;
+
+  var activeFilter = document.querySelector('.filter-btn.active');
+  var currentFilter = activeFilter ? activeFilter.dataset.filter : 'all';
+
+  extraItems.forEach(function(item, i){
+    var match = currentFilter === 'all' || item.dataset.category === currentFilter;
+
+    /* force the card to have height before revealing */
+    var card = item.querySelector('.gallery-card');
+    if(card) card.style.minHeight = '280px';
+
+    item.classList.remove('hidden');
+
+    if(match){
+      item.style.opacity = '0';
+      item.style.transform = 'translateY(16px)';
+      item.style.transition = 'opacity .45s ease '+(i*60)+'ms, transform .45s ease '+(i*60)+'ms';
+
+      /* re-attach lightbox */
+      if(card) card.addEventListener('click', function(){ openLightbox(item); });
+
+      /* trigger reflow so transition fires */
+      void item.offsetWidth;
+
+      setTimeout(function(){ 
+        item.style.opacity = '1'; 
+        item.style.transform = 'translateY(0)'; 
+      }, i * 60 + 20);
+    } else {
+      item.classList.add('hidden');
+    }
+  });
+
+ 
+
+  /* update button */
+  loadMoreBtn.innerHTML = '<i class="fas fa-check"></i> All work loaded';
+  loadMoreBtn.disabled = true;
+  loadMoreBtn.style.opacity = '.45';
+  loadMoreBtn.style.cursor = 'default';
+});
+
+/* ── FADE IN ON LOAD ── */
+document.body.style.opacity='0';
+setTimeout(function(){ document.body.style.transition='opacity .4s ease'; document.body.style.opacity='1'; }, 60);
+
+console.log('Portfolio ready ✨');
+</script>
+</body>
+</html>
