@@ -195,8 +195,8 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 
 /* ── HIDE MOBILE-ONLY ELEMENTS ON DESKTOP ── */
 .mobile-calc { display: none !important; }
-.cq-backdrop { display: none !important; pointer-events: none !important; }
-.cq-sheet { display: none !important; pointer-events: none !important; }
+.cq-backdrop { display: none; pointer-events: none; }
+.cq-sheet { display: none; pointer-events: none; }
 .float-wa { display: none !important; }
 .mob-bottom-nav { display: none !important; }
 .hero-gold-panel { display: none !important; }
@@ -401,7 +401,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 
   /* ── BOTTOM NAV ── */
   .mob-bottom-nav{
-    display:grid !important;grid-template-columns:repeat(4,1fr);
+    display:grid !important;grid-template-columns:repeat(5,1fr);
     position:fixed;bottom:0;left:0;right:0;height:4.25rem;
     padding-bottom:env(safe-area-inset-bottom,0);
     background:rgba(7,30,30,.99);backdrop-filter:blur(20px);
@@ -668,8 +668,10 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
       <li><a href="index.html">Home</a></li>
       <li><a href="index.html#story">Story</a></li>
       <li><a href="portfolio.html">Portfolio</a></li>
-      <li><a href="pricing.html" class="active-link">Pricing</a></li>
+      <li><a href="index.html#services">Services</a></li>
       <li><a href="index.html#about">About</a></li>
+      <li><a href="pricing.html" class="active-link">Pricing</a></li>
+      <li><a href="merchandise.html">Shop</a></li>
       <li><a href="contact.html" class="nav-cta">Book Now</a></li>
     </ul>
     <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
@@ -685,8 +687,9 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
     <a href="index.html"       onclick="cM()">Home</a>
     <a href="index.html#story" onclick="cM()">Story</a>
     <a href="portfolio.html"   onclick="cM()">Portfolio</a>
-    <a href="pricing.html"     onclick="cM()" class="active-link">Pricing</a>
     <a href="index.html#about" onclick="cM()">About</a>
+    <a href="merchandise.html" onclick="cM()">Shop</a>
+    <a href="pricing.html"     onclick="cM()" class="active-link">Pricing</a>
   </div>
   <a href="contact.html" class="mob-menu-cta"><i class="fas fa-calendar-check"></i> Book Appointment</a>
   <div class="mob-menu-socials">
@@ -1066,10 +1069,11 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 <a href="https://wa.me/+254725351803" class="float-wa" target="_blank"><i class="fab fa-whatsapp"></i> Book Now</a>
 
 <!-- MOBILE BOTTOM NAV -->
-<nav class="mob-bottom-nav">
-  <a href="index.html"><i class="fas fa-home"></i><span>Home</span></a>
-  <a href="index.html#services"><i class="fas fa-scissors"></i><span>Services</span></a>
+<nav class="mob-bottom-nav" id="mobBottomNav">
+  <a href="index.html" class="active"><i class="fas fa-home"></i><span>Home</span></a>
   <a href="pricing.html" class="active"><i class="fas fa-tags"></i><span>Pricing</span></a>
+  <a href="merchandise.html"><i class="fas fa-shopping-bag"></i><span>Shop</span></a>
+  <a href="index.html #gallery"><i class="fas fa-images"></i><span>Gallery</span></a>
   <a href="contact.html"><i class="fas fa-calendar-check"></i><span>Book</span></a>
 </nav>
 
@@ -1131,14 +1135,15 @@ function initCalc(selId, nameId, priceId, timeId, resultId, waBtnId){
     if(!s){res.classList.remove('show');return;}
     document.getElementById(nameId).textContent  = s.name;
     document.getElementById(priceId).textContent = s.price;
-    document.getElementById(timeId).textContent  = s.time;
+    if(timeId){ var tEl = document.getElementById(timeId); if(tEl) tEl.textContent = s.time; }
     res.classList.add('show');
     var waBtn = document.getElementById(waBtnId);
     if(waBtn)(function(v){waBtn.onclick=function(){bookWA(v);};})(this.value);
   });
 }
+
 /* ── DESKTOP CALCULATOR ── */
-initCalc('serviceSelectDesktop','quoteNameDesktop','quotePriceDesktop','quoteTimeDesktop','quoteResultDesktop','waBookDesktop');
+initCalc('serviceSelectDesktop','quoteNameDesktop','quotePriceDesktop','','quoteResultDesktop','waBookDesktop');
 
 /* ── MOBILE CUSTOM BOTTOM-SHEET PICKER ── */
 var cqTrigger  = document.getElementById('cqTrigger');
@@ -1185,7 +1190,6 @@ cqItems.forEach(function(item){
     if(s){
       document.getElementById('quoteNameMob').textContent  = s.name;
       document.getElementById('quotePriceMob').textContent = s.price;
-      document.getElementById('quoteTimeMob').textContent  = s.time;
       mobResult.classList.add('show');
       if(mobWaBtn)(function(v){ mobWaBtn.onclick=function(){ bookWA(v); }; })(selectedVal);
     }
